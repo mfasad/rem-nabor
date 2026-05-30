@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как пользоваться Pasito 2: настройка и управление | Руководство — Рем Набор</title>
+    <meta name="description" content="Подробная инструкция по эксплуатации Pasito 2. Подключение, настройка режимов, работа с приложением и устранение неисправностей своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-polzovatsya-pasito-2.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как пользоваться Pasito 2: настройка и управление | Руководство">
+    <meta property="og:description" content="Подробная инструкция по эксплуатации Pasito 2. Подключение, настройка режимов, работа с приложением и устранение неисправностей своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/domashnie-konditsionery/">Домашние кондиционеры</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как пользоваться Pasito 2: настройка и управление | Руководство</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Полное руководство по использованию климатической системы Pasito 2</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-установка-и-подключение-к-электросети">Первичная установка и подключение к электросети</a></li><li><a href="#управление-через-пульт-и-панель-сенсорного-типа">Управление через пульт и панель сенсорного типа</a></li><li><a href="#настройка-wi-fi-модуля-и-мобильного-приложения">Настройка Wi-Fi модуля и мобильного приложения</a></li><li><a href="#режимы-работы-и-энергосбережение">Режимы работы и энергосбережение</a></li><li><a href="#техническое-обслуживание-и-чистка-фильтров">Техническое обслуживание и чистка фильтров</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современные системы климат-контроля становятся все более сложными, но функциональными, и устройство <em>Pasito 2</em> является ярким представителем этого класса оборудования. Правильная эксплуатация данного агрегата позволяет не только поддерживать идеальный микроклимат в помещении, но и существенно экономить электроэнергию за счет интеллектуальных алгоритмов. Многие пользователи сталкиваются с трудностями при первом запуске, так как интерфейс управления имеет свои нюансы, требующие внимательного изучения перед началом активной эксплуатации.</p>
+
+<p>Основная задача этого руководства — доступно объяснить, как пользоваться <strong>Pasito 2</strong>, чтобы вы могли извлечь максимум пользы из купленной техники. Мы разберем процесс первичной инсталляции, подключение к системе умного дома, тонкую настройку параметров и методы диагностики типовых сбоев. Понимание принципов работы компрессора и системы фильтрации поможет продлить срок службы вашего устройства на долгие годы без дорогостоящего сервисного обслуживания.</p>
+
+<p>Прежде чем приступить к детальному рассмотрению функций, стоит отметить, что <em>Pasito 2</em> отличается от предыдущих версий улучшенной эргономикой пульта и расширенными возможностями мобильного приложения. Это делает управление максимально интуитивным даже для тех, кто ранее не имел дела с подобной техникой. Однако игнорирование базовых правил монтажа может привести к снижению эффективности работы всей системы.</p>
+
+<h2 id="первичная-установка-и-подключение-к-электросети">Первичная установка и подключение к электросети</h2>
+
+<p>Начало работы с любым климатическим оборудованием требует тщательной подготовки места установки. Для <strong>Pasito 2</strong> критически важно обеспечить свободную циркуляцию воздуха вокруг корпуса, поэтому расстояние до стен и мебели должно составлять не менее 30 сантиметров. Неправильное размещение может вызвать перегрев теплообменника и активацию аварийных датчиков защиты, что приведет к внезапной остановке системы в самый жаркий момент.</p>
+
+<p>Подключение к электросети должно осуществляться через отдельную розетку с заземлением, способную выдержать пиковые нагрузки при старте компрессора. Использование удлинителей или тройников категорически не рекомендуется, так как это создает риск плохого контакта и возгорания проводки. Убедитесь, что напряжение в сети стабильно и соответствует паспортным данным устройства, указанным на информационной наклейке сзади корпуса.</p>
+
+<p>После физического подключения необходимо выполнить первичную инициализацию системы. Нажмите кнопку питания на панели управления или пульте ДУ и удерживайте её в течение 3 секунд до появления приветственного сигнала. В этот момент система проводит самодиагностику всех узлов, проверяя положение жалюзи и работоспособность сенсоров температуры. Если на дисплее появляется код ошибки <code>E01</code>, это сигнализирует о проблеме с датчиком комнатной температуры.</p>
+
+<blockquote>⚠️ Внимание: Не пытайтесь включать устройство сразу после переноски из холода в теплое помещение. Дайте конденсату внутри корпуса испариться в течение 2-3 часов, иначе возможно короткое замыкание электронных плат.</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для продления срока службы компрессора рекомендуется использовать устройство только через 10-15 минут после подключения к сети, чтобы стабилизировалось давление хладагента в системе.</p></div>
+
+<h2 id="управление-через-пульт-и-панель-сенсорного-типа">Управление через пульт и панель сенсорного типа</h2>
+
+<p>Интерфейс управления <em>Pasito 2</em> разработан с учетом потребностей различных пользователей, предлагая как классический пульт ДУ, так и сенсорную панель на самом корпусе. Основные режимы работы переключаются через меню <code>Mode</code>, где доступны функции охлаждения, обогрева, осушения и вентиляции. Каждая функция имеет свои оптимальные диапазоны температур, выход за которые может привести к некорректной работе инверторного двигателя.</p>
+
+<p>Сенсорная панель реагирует на легкие касания, но может требовать более сильного нажатия, если вы используете устройство во влажных помещениях или мокрыми руками. Для блокировки управления от детей предусмотрена комбинация клавиш, которая активируется одновременным нажатием кнопок <code>+</code> и <code>-</code> в течение 5 секунд. На дисплее при этом загорается значок замка, подтверждающий активацию защиты от случайных изменений настроек.</p>
+
+<p>Функция <strong>Turbo</strong> позволяет максимально быстро достичь заданной температуры, переводя вентилятор нашие обороты. Использовать этот режим рекомендуется ограниченное время, так как он создает повышенный уровень шума и увеличивает потребление энергии. После достижения целевых параметров система автоматически перейдет в экономичный режим поддержания климата.</p>
+
+<ul>
+<li>🌡️ Кнопка <code>Temp</code> позволяет регулировать целевую температуру с шагом в 0.5 градуса для максимальной точности.</li>
+<li>💨 Регулировка скорости вентилятора осуществляется циклическим нажатием кнопки <code>Fan</code> от минимума до максимума.</li>
+<li>🔄 Функция <code>Swing</code> управляет положением горизонтальных и вертикальных жалюзи для равномерного распределения потока.</li>
+<li>🌙 Ночной режим <code>Sleep</code> плавно повышает температуру ночью и снижает шум работы устройства.</li>
+</ul>
+
+<div class="poll-widget" id="poll-f33e6302"><div class="poll-widget-question">📊 Какой режим вы используете чаще всего?</div><div class="poll-widget-option" data-poll="f33e6302" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Охлаждение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f33e6302" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Обогрев</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f33e6302" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Осушение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f33e6302" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Вентиляция</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f33e6302" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Автоматический</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="настройка-wi-fi-модуля-и-мобильного-приложения">Настройка Wi-Fi модуля и мобильного приложения</h2>
+
+<p>Одной из ключевых особенностей модели <em>Pasito 2</strong> является возможность удаленного управления через смартфон. Для начала настройки необходимо скачать официальное приложение производителя из магазина приложений и создать учетную запись. Процесс сопряжения начинается с перевода кондиционера в режим настройки: удерживайте кнопку <code>Wi-Fi</code> на пульте до тех пор, пока индикатор на дисплее не начнет мигать с частотой два раза в секунду.</p>
+
+<p>В приложении выберите опцию «Добавить устройство» и следуйте инструкциям на экране. Вам потребуется ввести пароль от вашей домашней сети Wi-Fi, убедившись, что она работает в диапазоне 2.4 ГГц, так как данная модель не поддерживает сети 5 ГГц. После успешного подключения устройство появится в списке доступных гаджетов, и вы сможете управлять им из любой точки мира при наличии интернета.</p>
+
+<p>Мобильное приложение предоставляет расширенную статистику потребления энергии и позволяет создавать сценарии работы. Например, можно настроить автоматическое включение за час до вашего возвращения с работы или интеграцию с голосовыми ассистентами. Это дает возможность контролировать климат голосом, что особенно удобно в ситуациях, когда пульт находится далеко или потерян.</p>
+
+<table>
+<thead>
+<tr>
+<th>Функция в приложении</th>
+<th>Описание действия</th>
+<th>Доступность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Таймер включения</td>
+<td>Запуск устройства в заданное время</td>
+<td>Ежедневно/Единожды</td>
+</tr>
+<tr>
+<td>Эко-статистика</td>
+<td>Отчет о потреблении кВт/ч за период</td>
+<td>Только онлайн</td>
+</tr>
+<tr>
+<td>Диагностика фильтров</td>
+<td>Уведомление о необходимости чистки</td>
+<td>Автоматически</td>
+</tr>
+<tr>
+<td>Геолокация</td>
+<td>Включение при приближении к дому</td>
+<td>Требует GPS</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>⚠️ Внимание: Интерфейс мобильного приложения может обновляться разработчиками. Если вы не находите знакомую кнопку, проверьте наличие обновлений программы в магазине приложений или сверьтесь с актуальной справкой в разделе «Помощь».</blockquote>
+
+<details class="faq-item"><summary>Что делать, если устройство не подключается к Wi-Fi?</summary><div class="faq-answer"><p>Чаще всего проблема кроется в несоответствии частоты роутера. Убедитесь, что ваш телефон подключен именно к сети 2.4 ГГц, а не 5 ГГц, так как модуль Pasito 2 не видит высокочастотные сети. Также проверьте, не стоит ли в настройках роутера скрытие SSID или фильтрация по MAC-адресам.</p></div></details>
+
+<h2 id="режимы-работы-и-энергосбережение">Режимы работы и энергосбережение</h2>
+
+<p>Эффективное использование <strong>Pasito 2</em> напрямую зависит от правильного выбора режима работы в зависимости от внешних условий. В автоматическом режиме система сама анализирует разницу между текущей и заданной температурой, выбирая оптимальную стратегию охлаждения или обогрева. Это наиболее энергоэффективный вариант для повседневного использования, исключающий человеческий фактор и ошибки в настройках.</p>
+
+<p>Режим осушения особенно актуален в периоды межсезонья или в регионах с высокой влажностью. В этом состоянии вентилятор работает на минимальных оборотах, а компрессор включается короткими циклами для удаления влаги из воздуха без существенного изменения температуры. Это предотвращает появление плесени и создает более комфортное ощущение прохлады даже при высоких значениях термометра.</p>
+
+<p>Для максимальной экономии электроэнергии рекомендуется устанавливать температуру не ниже 22-24 градусов летом. Каждое снижение настройки на один градус увеличивает потребление энергии примерно на 5-7%, что существенно сказывается на счетах за электричество в долгосрочной перспективе. Инверторная технология <em>Pasito 2</em> позволяет поддерживать заданный уровень с минимальными затратами после достижения целевого значения.</p>
+
+<ul>
+<li>❄️ Режим <code>Cool</code> предназначен исключительно для понижения температуры в жаркую погоду.</li>
+<li>☀️ Режим <code>Heat</code> активирует реверсивный цикл для обогрева помещения зимой.</li>
+<li>💧 Режим <code>Dry</code> удаляет лишнюю влагу, делая воздух менее душным.</li>
+<li>🍃 Режим <code>Fan</code> работает только как вентилятор, без участия компрессора.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Самый экономичный способ эксплуатации — использование автоматического режима с температурой 24°C и закрытыми окнами для предотвращения теплопритоков.</p></div>
+
+<h2 id="техническое-обслуживание-и-чистка-фильтров">Техническое обслуживание и чистка фильтров</h2>
+
+<p>Регулярное техническое обслуживание является залогом долгой и бесперебойной работы климатической системы. В модели <em>Pasito 2</em> предусмотрена система индикации загрязнения фильтров, которая срабатывает примерно каждые 200-300 часов работы. Игнорирование этих сигналов приводит к зарастанию теплообменника пылью, что снижает эффективность теплоотдачи и заставляет компрессор работать с перегрузкой.</p>
+
+<p>Для очистки воздушных фильтров необходимо открыть переднюю панель корпуса, нажав на фиксаторы по бокам. Аккуратно извлеките сетчатые элементы и промойте их под проточной водой с использованием мягкого моющего средства. Сушить фильтры следует в тени при комнатной температуре, избегая воздействия прямых солнечных лучей или горячего воздуха, которые могут деформировать материал.</p>
+
+<p>Раз в год рекомендуется проводить более глубокую чистку внутреннего блока с использованием специализированных спреев для кондиционеров. Это позволяет удалить бактерии и грибок с лопастей вентилятора и дренажной ванночки, предотвращая появление неприятного запаха при включении. Если вы не уверены в своих силах, лучше доверить эту процедуру профессиональным сервисным инженерам.</p>
+
+<div class="checklist-block"><h4>☑️ Ежемесячное обслуживание Pasito 2</h4><label class="check-item"><input type="checkbox"><span>Проверить индикацию загрязнения</span></label><label class="check-item"><input type="checkbox"><span>Промыть воздушные фильтры</span></label><label class="check-item"><input type="checkbox"><span>Протереть корпус влажной тканью</span></label><label class="check-item"><input type="checkbox"><span>Проверить работу пульта ДУ</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии посторонних шумов</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<blockquote>⚠️ Внимание: Никогда не включайте устройство с мокрыми или не до конца высохшими фильтрами. Попадание воды на электрические компоненты может вызвать короткое замыкание и выход платы управления из строя.</blockquote>
+
+<h2 id="диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</h2>
+
+<p>Даже самое надежное оборудование иногда дает сбои, и <strong>Pasito 2</strong> оснащен развитой системой самодиагностики для упрощения поиска проблем. При возникновении неисправности на дисплее отображается соответствующий код, который помогает определить характер поломки без вызова мастера. Знание расшифровки основных кодов позволяет быстро устранить простые проблемы, такие как потеря сигнала или временный сбой датчиков.</p>
+
+<p>Наиболее часто встречающиеся ошибки связаны с проблемами связи между внутренним и внешним блоками или неисправностью температурных сенсоров. Если код ошибки появляется периодически и исчезает после перезагрузки, это может указывать на скачки напряжения в сети или временные помехи в линии передачи данных. В таких случаях установка стабилизатора напряжения часто решает проблему кардинально.</p>
+
+<p>Если система выдает код, указывающий на утечку хладагента или неисправность компрессора, дальнейшая самостоятельная эксплуатация запрещена. Попытки запустить устройство в аварийном режиме могут привести к полному выходу из строя дорогостоящих узлов. В этом случае необходимо немедленно отключить питание и обратиться в авторизованный сервисный центр для проведения профессиональной диагностики.</p>
+
+<pre><code>Список основных кодов ошибок Pasito 2:
+<p>E01 — Ошибка датчика температуры в помещении</p>
+<p>E02 — Ошибка датчика температуры испарителя</p>
+<p>E04 — Ошибка связи между блоками</p>
+<p>E08 — Защита от перегрузки компрессора</p>
+<p>E12 — Срабатывание защиты от протечки воды</code></pre></p>
+
+<details class="faq-item"><summary>Можно ли сбросить ошибку самостоятельно?</summary><div class="faq-answer"><p>Многие временные ошибки (например, E04) сбрасываются полным отключением устройства от электросети на 10-15 минут. Если после включения ошибка появляется снова, значит проблема носит аппаратный характер и требует вмешательства специалиста.</p></div></details>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему Pasito 2 не охлаждает воздух, хотя работает?</summary>
+<p>Вероятнее всего, загрязнены воздушные фильтры или закрыты жалюзи, что препятствует нормальной циркуляции воздуха. Также проверьте, не установлен ли режим «Вентилятор» вместо «Охлаждение». Если фильтры чисты, возможно, произошла утечка фреона, что требует вызова мастера.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять фильтры в Pasito 2?</summary>
+<p>Сетчатые фильтры грубой очистки необходимо промывать каждые 2 недели в период активной эксплуатации. Угольные фильтры тонкой очистки (если установлены дополнительно) подлежат замене раз в 3-6 месяцев в зависимости от запыленности помещения.</p>
+</details>
+
+<details>
+<summary>Можно ли использовать Pasito 2 при температуре на улице ниже -10°C?</summary>
+<p>Стандартные модели не предназначены для работы на обогрев при экстремально низких температурах, так как масло в компрессоре густеет, а наружный блок обмерзает. Используйте устройство только в пределах температурного диапазона, указанного в технической документации.</p>
+</details>
+
+<details>
+<summary>Что делать, если пульт дистанционного управления перестал реагировать?</summary>
+<p>В первую очередь замените батарейки на новые. Проверьте, нет ли препятствий между пультом и приемником сигнала на корпусе. Если это не помогло, попробуйте сфотографировать инфракрасный диод пульта через камеру смартфона при нажатии кнопок — если диод светится на экране, пульт исправен, и проблема в приемнике кондиционера.</p>
+</details>
+
+<details>
+<summary>Почему из кондиционера капает вода?</summary>
+<p>Это может быть вызвано засорением дренажной трубки или неправильным углом наклона внутреннего блока. Также конденсат может появляться при работе в режиме охлаждения в очень влажную погоду, если дренаж не справляется с объемом влаги. Проверьте чистоту дренажной системы.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-установка-и-подключение-к-электросети">Первичная установка и подключение к электросети</a></li><li><a href="#управление-через-пульт-и-панель-сенсорного-типа">Управление через пульт и панель сенсорного типа</a></li><li><a href="#настройка-wi-fi-модуля-и-мобильного-приложения">Настройка Wi-Fi модуля и мобильного приложения</a></li><li><a href="#режимы-работы-и-энергосбережение">Режимы работы и энергосбережение</a></li><li><a href="#техническое-обслуживание-и-чистка-фильтров">Техническое обслуживание и чистка фильтров</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-snyat-pravilno-konditsioner.html" class="related-card">Как правильно снять кондиционер: пошаговая инструкция 2026</a></li><li><a href="/articles/k/ka/kak-ponyat-chto-kompressor-konditsionera-zaklinil.html" class="related-card">Как определить заклинивание компрессора кондиционера: признаки</a></li><li><a href="/articles/p/pr/proshivka-na-knajt-80.html" class="related-card">Прошивка кондиционера Knight 80: пошаговое руководство и советы</a></li><li><a href="/articles/p/po/pochemu-techet-pasito-2.html" class="related-card">Почему течёт Пасито 2: 7 причин и как устранить протечку</a></li><li><a href="/articles/d/da/davlenie-410-freona-v-split-sisteme-pri-rabote.html" class="related-card">Давление фреона 410A в сплит-системе: нормы при работе</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-snyat-pravilno-konditsioner.html" class="related-bottom-card"><span class="related-bottom-title">Как правильно снять кондиционер: пошаговая инструкция 2026</span><span class="related-bottom-desc">Детальное руководство по демонтажу сплит-системы своими руками: инструменты, техника безопасности, с</span></a><a href="/articles/k/ka/kak-ponyat-chto-kompressor-konditsionera-zaklinil.html" class="related-bottom-card"><span class="related-bottom-title">Как определить заклинивание компрессора кондиционера: признаки</span><span class="related-bottom-desc">Узнайте, как понять, что компрессор кондиционера заклинил. Основные симптомы, диагностика, тесты и п</span></a><a href="/articles/p/pr/proshivka-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Прошивка кондиционера Knight 80: пошаговое руководство и советы</span><span class="related-bottom-desc">Как правильно обновить ПО на сплит-системе Knight 80: выбор прошивки, инструкция по установке, решен</span></a><a href="/articles/p/po/pochemu-techet-pasito-2.html" class="related-bottom-card"><span class="related-bottom-title">Почему течёт Пасито 2: 7 причин и как устранить протечку</span><span class="related-bottom-desc">Разбираемся, почему капает или течёт кондиционер Midea Pasito 2: неисправности дренажа, забитый филь</span></a><a href="/articles/d/da/davlenie-410-freona-v-split-sisteme-pri-rabote.html" class="related-bottom-card"><span class="related-bottom-title">Давление фреона 410A в сплит-системе: нормы при работе</span><span class="related-bottom-desc">Таблица рабочего давления фреона R410A в сплит-системе. Как проверить давление в разрезе температуры</span></a><a href="/articles/t/tr/trassa-konditsionera-10-metrov.html" class="related-bottom-card"><span class="related-bottom-title">Трасса кондиционера 10 метров: нормы, заправка и монтаж</span><span class="related-bottom-desc">Как влияет длина трассы 10 метров на работу кондиционера? Увеличение фреона, диаметр труб, перепады </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как включить автономный отопитель: инструкция и ошибки — Рем Набор</title>
+    <meta name="description" content="Подробное руководство по запуску автономного отопителя салона. Проверка, настройка таймера, коды ошибок и безопасная эксплуатация Webasto и Eberspacher.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-vklyuchit-avtonomnyj-otopitel.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как включить автономный отопитель: инструкция и ошибки">
+    <meta property="og:description" content="Подробное руководство по запуску автономного отопителя салона. Проверка, настройка таймера, коды ошибок и безопасная эксплуатация Webasto и Eberspacher.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/otoplenie-salona/">Отопление салона</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как включить автономный отопитель: инструкция и ошибки</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как правильно включить автономный отопитель: пошаговое руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-системы-к-первому-запуску">Подготовка системы к первому запуску</a></li><li><a href="#алгоритм-ручного-включения-отопителя">Алгоритм ручного включения отопителя</a></li><li><a href="#настройка-и-использование-таймера-запуска">Настройка и использование таймера запуска</a></li><li><a href="#диагностика-типовых-ошибок-и-сбоев">Диагностика типовых ошибок и сбоев</a></li><li><a href="#особенности-эксплуатации-в-экстремальный-холод">Особенности эксплуатации в экстремальный холод</a></li><li><a href="#техническое-обслуживание-и-продление-ресурса">Техническое обслуживание и продление ресурса</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Запуск <strong>автономного отопителя</strong> — это процедура, которая кажется простой лишь на первый взгляд, но на практике требует соблюдения строгих алгоритмов безопасности. Водители часто сталкиваются с тем, что устройство не реагирует на нажатие кнопки или выдает ошибку сразу после старта. Это происходит из-за блокировок системы управления, низкого напряжения в бортовой сети или отсутствия топлива в камере сгорания.</p>
+
+<p>В этой статье мы разберем не только последовательность действий для моделей <em>Webasto</em> и <em>Eberspacher</em>, но и диагностику типичных сбоев. Понимание принципов работы <strong>жидкостного подогревателя</strong> позволит вам избежать поломок и обеспечить комфорт в салоне даже в самые лютые морозы. Мы рассмотрим как ручной запуск, так и программирование через таймер.</p>
+
+<p>Прежде чем пытаться запустить устройство, убедитесь, что уровень топлива в баке достаточен. Большинство современных систем имеют защиту от работы «на сухую», но старые модели могут попытаться прокачать насос, что приведет к его перегреву. Если вы планируете длительную стоянку с работающим отопителем, проверьте заряд аккумулятора, так как свеча накаливания и насос потребляют значительный ток.</p>
+
+<h2 id="подготовка-системы-к-первому-запуску">Подготовка системы к первому запуску</h2>
+
+<p>Первичный запуск или старт после длительного простоя требует особого внимания к состоянию магистралей. Воздушные пробки в топливной системе — главная причина, по которой <strong>автономка</strong> уходит в аварийный режим после нескольких попыток розжига. Необходимо визуально осмотреть топливопровод на предмет перегибов и повреждений изоляции.</p>
+
+<p>Если устройство устанавливалось недавно, критически важно проверить герметичность всех соединений. Утечка дизельного топлива или антифриза в подкапотном пространстве может привести к возгоранию. Особое внимание уделите месту врезки в систему охлаждения двигателя: хомуты должны быть затянуты с усилием, рекомендованным производителем <em>жидкостного подогревателя</em>.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не пытайтесь разгерметизировать топливную систему для удаления воздуха при работающем двигателе автомобиля или в замкнутом гараже без вентиляции. Пары топлива взрывоопасны.</p>
+</blockquote>
+
+<p>Проверьте состояние выхлопной трубы отопителя. Она не должна касаться пластиковых элементов кузова, проводки или топливопровода. Вибрация при работе устройства может со временем сместить глушитель, что приведет к прогару соседних деталей. Убедитесь, что забор воздуха для горения не заблокирован грязью или листвой.</p>
+
+<h2 id="алгоритм-ручного-включения-отопителя">Алгоритм ручного включения отопителя</h2>
+
+<p>Стандартная процедура запуска большинства моделей сводится к удержанию кнопки включения на панели управления. Индикация на дисплее обычно мигает, сообщая о процессе предварительного прогрева свечи накаливания. Этот этап занимает от 30 до 60 секунд, в зависимости от температуры окружающей среды и модели <strong>подогревателя</strong>.</p>
+
+<p>После того как свеча раскалится, блок управления подает сигнал на топливный насос. Вы услышите характерное жужжание или щелчки, означающие подачу солярки в камеру сгорания. Если в этот момент не произойдет розжига, система сделает несколько повторных попыток, прежде чем выдать код ошибки.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед запуском</h4><label class="check-item"><input type="checkbox"><span>Уровень топлива в баке выше 1/4</span></label><label class="check-item"><input type="checkbox"><span>Напряжение АКБ не менее 12В</span></label><label class="check-item"><input type="checkbox"><span>Выхлопная труба не забита</span></label><label class="check-item"><input type="checkbox"><span>Отсутствует запах топлива в салоне</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Важно знать, что в режиме ручного управления <em>автономный отопитель</em> работает циклично. Он нагревает охлаждающую жидкость до определенной температуры, затем отключается и ждет остывания. Некоторые продвинутые модели позволяют регулировать интенсивность нагрева, выбирая режимы «Эко», «Комфорт» или «Максимум» через меню пульта.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если отопитель запускается, но сразу глохнет, попробуйте запустить его повторно не ранее чем через 5 минут. Свеча накаливания должна остыть, чтобы сбросить термозащиту блока управления.</p></div>
+
+<h2 id="настройка-и-использование-таймера-запуска">Настройка и использование таймера запуска</h2>
+
+<p>Использование таймера — наиболее удобный способ эксплуатации, позволяющий садиться в уже прогретый автомобиль. Программирование выполняется через меню пульта управления или специализированное приложение на смартфоне, если установлен модуль <em>GSM</em> или <em>Bluetooth</em>. Точность часов необходимо проверять регулярно, так как сбой синхронизации приведет к тому, что машина не прогреется к нужному времени.</p>
+
+<p>При настройке учитывайте время, необходимое для полного прогрева двигателя. В сильные морозы этот процесс может занимать до 40-50 минут. Если вы поставите таймер за 15 минут до выхода, в салоне будет тепло, но двигатель останется холодным, что затруднит начало движения.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр настройки</th>
+<th>Рекомендуемое значение</th>
+<th>Влияние на работу</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Время включения</td>
+<td>За 30-40 мин до выезда</td>
+<td>Полный прогрев мотора и салона</td>
+</tr>
+<tr>
+<td>Длительность работы</td>
+<td>Автоматически (по температуре)</td>
+<td>Экономия топлива и ресурса свечи</td>
+</tr>
+<tr>
+<td>Повтор запуска</td>
+<td>Отключен</td>
+<td>Предотвращение разряда АКБ</td>
+</tr>
+</tbody>
+</table>
+
+<p>Современные системы позволяют устанавливать несколько профилей запуска на разные дни недели. Это полезно, если ваш график работы меняется. Однако помните, что частые циклы «старт-стоп» в течение короткого промежутка времени увеличивают износ <strong>свечи накаливания</strong> и насоса-дозатора.</p>
+
+<div class="poll-widget" id="poll-c1c116c4"><div class="poll-widget-question">📊 Как вы чаще всего включаете отопитель?</div><div class="poll-widget-option" data-poll="c1c116c4" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Кнопкой в салоне</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c1c116c4" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">По таймеру</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c1c116c4" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Через мобильное приложение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c1c116c4" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Дистанционным брелоком</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-типовых-ошибок-и-сбоев">Диагностика типовых ошибок и сбоев</h2>
+
+<p>Если на дисплее появился значок ошибки или устройство перестало реагировать на команды, необходимо считать код неисправности. Мигание индикатора определенным количеством раз соответствует конкретному сбою в работе <em>блока управления</em>. Чаще всего проблемы связаны с подачей топлива или качеством напряжения.</p>
+
+<p>Ошибка по переполнению или недоливу топлива часто возникает из-за завоздушивания системы. В этом случае может потребоваться процедура прокачки, которая на некоторых моделях активируется удержанием комбинации клавиш. Также стоит проверить предохранитель цепи питания насоса, который мог перегореть из-за скачка напряжения.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Постоянный сброс ошибки без устранения первопричины приведет к полному выходу из строя электронного блока. Если ошибка повторяется более 3 раз подряд, обратитесь к специалисту.</p>
+</blockquote>
+
+<p>Низкое напряжение бортовой сети — еще один частый виновник отказов. Если аккумулятор разряжен ниже 11.5 Вольт, <strong>автономный отопитель</strong> может запуститься, но аварийно отключиться в процессе работы. Зимой емкость АКБ падает, поэтому перед сезоном желательно проверить состояние клемм и зарядить батарею стационарным устройством.</p>
+
+<details class="faq-item"><summary>Таблица частых кодов ошибок (общая)</summary><div class="faq-answer"><p>01 - Сбой пламени (нет топлива или плохая свеча)|02 - Перегрев (забит радиатор или помпа)|03 - Низкое напряжение (разряжен аккумулятор)|04 - Обрыв цепи (проблема с проводкой)</p></div></details>
+
+<h2 id="особенности-эксплуатации-в-экстремальный-холод">Особенности эксплуатации в экстремальный холод</h2>
+
+<p>При температурах ниже -25°C свойства дизельного топлива меняются, что может затруднить работу насоса-дозатора. Парафинизация солярки в тонких трубках топливопровода приводит к тому, что <strong>жидкостный подогреватель</strong> не получает нужного объема горючего. Использование зимнего топлива или антигеля становится обязательным условием беспроблемной работы.</p>
+
+<p>Загустевание моторного масла в двигателе автомобиля создает повышенное сопротивление для циркуляции антифриза. Помпа отопителя может работать с перегрузкой, пытаясь продавить жидкость через холодный радиатор. В таких условиях рекомендуется предварительно запустить двигатель автомобиля на короткое время, чтобы сдвинуть масло, а затем включить <em>автономку</em>.</p>
+
+<p>Конденсат, образующийся в выхлопной трубе при коротких циклах работы, может замерзнуть и заблокировать выход газов. Это приведет к быстрому перегреву камеры сгорания и аварийному отключению. Старайтесь давать устройству отработать полный цикл или периодически прогревать его до полного испарения влаги.</p>
+
+<h2 id="техническое-обслуживание-и-продление-ресурса">Техническое обслуживание и продление ресурса</h2>
+
+<p>Регулярное обслуживание значительно продлевает жизнь устройству. Основной элемент, требующий внимания — это свеча накаливания. Со временем на ней образуется нагар, который ухудшает качество розжига. Чистку или замену свечи рекомендуется проводить каждые 2-3 сезона активной эксплуатации.</p>
+
+<p>Также необходимо следить за состоянием воздушного фильтра, если он предусмотрен конструкцией вашей модели. Забитый фильтр нарушает соотношение воздух/топливо, что ведет к коптению и неполному сгоранию. Чистка камеры сгорания от нагара — процедура более сложная и требует частичной разборки устройства.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Главный секрет долгой жизни автономки — качественное топливо и регулярная профилактика системы зажигания хотя бы раз в год перед зимним сезоном.</p></div>
+
+<details>
+<summary>Можно ли включать автономный отопитель в движении?</summary>
+<p>Да, современные модели <em>Webasto</em> и <em>Eberspacher</em> предназначены для работы как на стоянке, так и во время движения. Они выступают в роли дополнительного контура отопления, помогая основному двигателю быстрее прогреть салон. Однако на старых моделях без датчика потока жидкости работа на ходу могла быть заблокирована.</p>
+</details>
+
+<details>
+<summary>Сколько топлива потребляет автономный отопитель?</summary>
+<p>Расход зависит от режима работы и мощности устройства. В среднем маломощные модели (2 кВт) потребляют около 0.2-0.3 литра в час, а мощные (5 кВт и выше) — до 0.6-0.7 литра в час. На полном баке легковой автомобиль может проработать в режиме обогрева несколько суток непрерывно.</p>
+</details>
+
+<details>
+<summary>Почему отопитель дымит при запуске?</summary>
+<p>Небольшое количество дыма в первые минуты работы допустимо — это выгорают остатки масла или топлива после предыдущего цикла. Если дым черный и густойится долго, это указывает на неправильную смесь (много топлива, мало воздуха) или неисправность свечи накаливания.</p>
+</details>
+
+<details>
+<summary>Можно ли управлять отопителем с телефона?</summary>
+<p>Да, если устройство оснащено телематическим модулем. Для этого используются фирменные приложения, позволяющие запускать подогрев, проверять температуру и получать уведомления об ошибках на смартфон через сотовую сеть или Bluetooth в зоне прямой видимости.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-системы-к-первому-запуску">Подготовка системы к первому запуску</a></li><li><a href="#алгоритм-ручного-включения-отопителя">Алгоритм ручного включения отопителя</a></li><li><a href="#настройка-и-использование-таймера-запуска">Настройка и использование таймера запуска</a></li><li><a href="#диагностика-типовых-ошибок-и-сбоев">Диагностика типовых ошибок и сбоев</a></li><li><a href="#особенности-эксплуатации-в-экстремальный-холод">Особенности эксплуатации в экстремальный холод</a></li><li><a href="#техническое-обслуживание-и-продление-ресурса">Техническое обслуживание и продление ресурса</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kalina-1-radiator-pechki-artikul.html" class="related-card">Радиатор печки Калина 1: артикулы, замена и выбор</a></li><li><a href="/articles/z/za/zamena-motorchika-pechki-sobol-4kh4.html" class="related-card">Замена моторчика печки Соболь 4х4: пошаговая инструкция</a></li><li><a href="/articles/r/ra/radiator-otopitelya-2123-daaz.html" class="related-card">Радиатор отопителя 2123 ДААЗ: замена, неисправности, артикулы</a></li><li><a href="/articles/s/sv/svecha-nakala-dlya-avtonomki.html" class="related-card">Свечи накала для автономки: выбор, замена и диагностика</a></li><li><a href="/articles/s/s-/s-odnoj-storony-duet-kholodnyj-vozdukh-a-s-drugoj-goryachij.html" class="related-card">С одной стороны дует холодный воздух, с другой — горячий: причины и ремонт</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kalina-1-radiator-pechki-artikul.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор печки Калина 1: артикулы, замена и выбор</span><span class="related-bottom-desc">Полный список артикулов радиатора отопителя Лада Калина 1. Инструкция по замене, сравнение медных и </span></a><a href="/articles/z/za/zamena-motorchika-pechki-sobol-4kh4.html" class="related-bottom-card"><span class="related-bottom-title">Замена моторчика печки Соболь 4х4: пошаговая инструкция</span><span class="related-bottom-desc">Как самостоятельно заменить моторчик печки на Соболь 4х4: выбор детали, инструменты, демонтаж и уста</span></a><a href="/articles/r/ra/radiator-otopitelya-2123-daaz.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор отопителя 2123 ДААЗ: замена, неисправности, артикулы</span><span class="related-bottom-desc">Подробное руководство по диагностике, замене и выбору радиатора печки Нива 2123 (ДААЗ). Артикулы, це</span></a><a href="/articles/s/sv/svecha-nakala-dlya-avtonomki.html" class="related-bottom-card"><span class="related-bottom-title">Свечи накала для автономки: выбор, замена и диагностика</span><span class="related-bottom-desc">Как правильно выбрать, проверить и заменить свечи накала в автономном отопителе. Признаки неисправно</span></a><a href="/articles/s/s-/s-odnoj-storony-duet-kholodnyj-vozdukh-a-s-drugoj-goryachij.html" class="related-bottom-card"><span class="related-bottom-title">С одной стороны дует холодный воздух, с другой — горячий: причины и ремонт</span><span class="related-bottom-desc">Разбираемся, почему в салоне авто или помещении с одной стороны дует холодный воздух, а с другой — г</span></a><a href="/articles/l/la/largus-zamena-radiatora-pechki-s-konditsionerom.html" class="related-bottom-card"><span class="related-bottom-title">Замена радиатора печки Lada Largus с кондиционером: инструкция</span><span class="related-bottom-desc">Пошаговое руководство по замене радиатора отопителя на Лада Ларгус с кондиционером. Снятие панели, в</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

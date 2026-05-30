@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>ДТВ 01 12 2: подключение к котлу, схема и настройка — Рем Набор</title>
+    <meta name="description" content="Подробная инструкция по подключению контроллера ДТВ 01 12 2 к газовому котлу. Настройка контактов, выбор датчиков и устранение неисправностей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/d/dt/dtv-01-12-2-podklyuchenie-k-kotlu.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ДТВ 01 12 2: подключение к котлу, схема и настройка">
+    <meta property="og:description" content="Подробная инструкция по подключению контроллера ДТВ 01 12 2 к газовому котлу. Настройка контактов, выбор датчиков и устранение неисправностей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/vodonagrevateli-i-kotly/">Водонагреватели и котлы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">ДТВ 01 12 2: подключение к котлу, схема и настройка</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Подключение контроллера ДТВ 01 12 2 к котлу: схема и настройка</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#назначение-и-технические-особенности-контроллера">Назначение и технические особенности контроллера</a></li><li><a href="#подготовительные-работы-и-выбор-места-установки">Подготовительные работы и выбор места установки</a></li><li><a href="#схема-подключения-проводов-к-клеммной-колодке">Схема подключения проводов к клеммной колодке</a></li><li><a href="#настройка-режимов-работы-и-калибровка-датчиков">Настройка режимов работы и калибровка датчиков</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#техника-безопасности-и-финальные-проверки">Техника безопасности и финальные проверки</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Эффективное управление системой отопления часто требует установки дополнительного контроллера, такого как <em>ДТВ 01 12 2</em>. Это компактное устройство позволяет автоматизировать работу котла в зависимости от температуры воздуха в помещении или на улице, экономя тем самым энергоносители. Правильная коммутация устройства с нагревательным оборудованием является критически важным этапом, от которого зависит не только комфорт в доме, но и безопасность эксплуатации всей системы.</p>
+
+<p>Многие пользователи сталкиваются с трудностями при идентификации клемм и выборе режима работы, так как маркировка на платах разных производителей котлов может отличаться. В этой статье мы детально разберем алгоритм подключения, рассмотрим типичные схемы для различных типов котлов и ответим на вопросы, возникающие в процессе монтажа. Вы узнаете, как избежать ошибок, способных вывести из строя электронику обогревателя.</p>
+
+<h2 id="назначение-и-технические-особенности-контроллера">Назначение и технические особенности контроллера</h2>
+
+<p>Устройство <strong>ДТВ 01 12 2</strong> представляет собой специализированный термостат или погодозависимую автоматику, предназначенную для управления исполнительными механизмами котельного оборудования. Основной задачей прибора является разрыв или замыкание цепи управления горелкой в зависимости от показаний подключенных датчиков. Это позволяет поддерживать заданную температуру теплоносителя или воздуха с высокой точностью, исключая тактование котла.</p>
+
+<p>Важно отметить, что данный контроллер работает с низковольтными цепями, что делает его безопасным для самостоятельного монтажа при соблюдении базовых правил электротехники. Однако, внутри корпуса котла могут присутствовать опасные напряжения 220В, поэтому перед началом любых работ необходимо полностью обесточить оборудование. Питанием для самого контроллера обычно служит встроенный источник или внешняя шина 12/24В, в зависимости от модификации.</p>
+
+<p>Конструктивно прибор оснащен несколькими группами контактов, каждая из которых отвечает за свою функцию. Например, одни клеммы предназначены для подключения комнатного термостата, другие — для уличного датчика, а третьи служат для управления циркуляционным насосом или сервоприводами. Понимание логики работы этих групп необходимо для корректной интеграции устройства в существующую систему отопления вашего дома.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Перед вскрытием корпуса котла убедитесь, что газовый кран перекрыт, а автомат защиты в электрощите выключен. Остаточное напряжение на конденсаторах платы управления может сохраняться до 5 минут после отключения питания.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вы не уверены в типе вашей системы отопления (открытая или закрытая), проконсультируйтесь с паспортом котла перед подключением дополнительных датчиков давления.</p></div>
+
+<h2 id="подготовительные-работы-и-выбор-места-установки">Подготовительные работы и выбор места установки</h2>
+
+<p>Качество работы автоматики напрямую зависит от места установки самого контроллера и датчиков. Для <em>ДТВ 01 12 2</em> критически важно отсутствие прямых солнечных лучей, сквозняков и источников искусственного тепла рядом с корпусом прибора. Неправильный выбор локации приведет к тому, что котел будет работать в некорректном режиме, перегревая или недогревая помещения.</p>
+
+<p>Перед началом монтажа следует подготовить необходимый инструмент и расходные материалы. Вам понадобится набор отверток, мультиметр для проверки целостности цепей, а также качественный соединительный кабель сечением не менее 0.75 мм². Использование тонких проводов может привести к падению напряжения на длинных участках трассы и ложным срабатываниям автоматики.</p>
+
+<p>Также необходимо изучить паспорт вашего котла, чтобы найти клеммную колодку для подключения внешних регуляторов. Обычно она обозначается символами TA, RT или изображением термостата. В некоторых моделях для активации внешнего управления требуется установить перемычку или изменить настройки в сервисном меню, что нужно сделать до физического подключения проводов.</p>
+
+<ul>
+<li>🛠️ Проверьте наличие свободного места в клеммной коробке котла для размещения дополнительных проводов.</li>
+<li>📏 Замерьте расстояние от места установки контроллера до котла, чтобы запаса кабеля хватило с учетом изгибов трассы.</li>
+<li>🔌 Убедитесь, что сечение провода соответствует токовой нагрузке и длине линии (рекомендуется медный двужильный кабель).</li>
+<li>📄 Найдите в документации котла схему подключения внешних термостатов и погодозависимой автоматики.</li>
+</ul>
+
+<div class="poll-widget" id="poll-785512f6"><div class="poll-widget-question">📊 Какой тип котла вы подключаете?</div><div class="poll-widget-option" data-poll="785512f6" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Настенный газовый</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="785512f6" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Напольный твердотопливный</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="785512f6" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Электрический</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="785512f6" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Дизельный</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="схема-подключения-проводов-к-клеммной-колодке">Схема подключения проводов к клеммной колодке</h2>
+
+<p>Самый ответственный этап — это коммутация проводов согласно электрической схеме. Контроллер <strong>ДТВ 01 12 2</strong> обычно имеет маркировку клемм, где "L" и "N" могут обозначать питание (если оно требуется отдельно), а контакты "1" и "2" или "COM" и "NO" служат для управления сухим контактом. Ошибка в подключении может привести к короткому замыканию платы управления котла.</p>
+
+<p>Для подключения необходимо снять переднюю панель котла и найти группу контактов для термостата. Если там установлена заводская перемычка, её нужно аккуратно извлечь плоскогубцами, предварительно запомнив её положение. На место перемычки или параллельно ей (в зависимости от логики работы) подключаются провода от контроллера. Полярность для сухого контакта обычно не важна, но для датчиков с напряжением питания соблюдение полярности обязательно.</p>
+
+<p>После физического соединения проводов рекомендуется проверить цепь мультиметром в режиме прозвонки. Убедитесь, что нет короткого замыкания между соседними клеммами и что контакт надежный. Слабый зажим винта может привести к нагреву места соединения и оплавлению изоляции в процессе длительной эксплуатации под нагрузкой.</p>
+
+<table>
+<thead>
+<tr>
+<th>Контакт на ДТВ</th>
+<th>Назначение</th>
+<th>Подключение к котлу</th>
+<th>Тип сигнала</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (L1)</td>
+<td>Фаза питания / Сигнал</td>
+<td>Клемма L или фаза термостата</td>
+<td>220В или Сухой контакт</td>
+</tr>
+<tr>
+<td>2 (N1)</td>
+<td>Ноль питания / Сигнал</td>
+<td>Клемма N или ноль термостата</td>
+<td>220В или Сухой контакт</td>
+</tr>
+<tr>
+<td>3 (S1)</td>
+<td>Датчик температуры</td>
+<td>Вход датчика (если есть)</td>
+<td>Сопротивление</td>
+</tr>
+<tr>
+<td>4 (GND)</td>
+<td>Заземление</td>
+<td>Корпус или шина заземления</td>
+<td>Защита</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не подключайте провода под напряжением. Даже если котел выключен кнопкой, фаза может приходить непосредственно на плату управления. Всегда используйте индикаторную отвертку для проверки.</p>
+</blockquote>
+
+<div class="checklist-block"><h4>☑️ Проверка подключения</h4><label class="check-item"><input type="checkbox"><span>Визуальный осмотр изоляции</span></label><label class="check-item"><input type="checkbox"><span>Затяжка винтов клемм</span></label><label class="check-item"><input type="checkbox"><span>Прозвонка цепи тестером</span></label><label class="check-item"><input type="checkbox"><span>Отсутствие лишних проводов в клеммнике</span></label><label class="check-item"><input type="checkbox"><span>Проверка заземления</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="настройка-режимов-работы-и-калибровка-датчиков">Настройка режимов работы и калибровка датчиков</h2>
+
+<p>После того как провода подключены и система собрана, необходимо перейти к программной настройке. Контроллер <em>ДТВ 01 12 2</em> часто требует выбора типа подключаемого датчика (NTC, PTC или 0-10В). Неправильный выбор типа датчика в меню приведет к тому, что устройство будет показывать неверную температуру или выдавать ошибку сенсора.</p>
+
+<p>Процесс калибровки обычно заключается в сравнении показаний контроллера с эталонным термометром. Если вы видите расхождение в 1-2 градуса, это допустимо, но более значительные отклонения требуют коррекции через сервисное меню. В некоторых моделях есть функция смещения показаний (offset), позволяющая программно выровнять значения без физической замены датчика.</p>
+
+<p>Также важно настроить гистерезис — разницу температур, при которой котел включается и выключается. Слишком маленький гистерезис приведет к частым запускам горелки, что снижает её ресурс, а слишком большой создаст дискомфорт из-за колебаний температуры в помещении. Оптимальным значением для жилых помещений считается диапазон 0.5–1.0°C.</p>
+
+<details class="faq-item"><summary>Как сбросить настройки к заводским?</summary><div class="faq-answer"><p>Для сброса настроек контроллера ДТВ 01 12 2 к заводским значениям обычно необходимо удерживать комбинацию кнопок «Меню» и «Вниз» в течение 5-7 секунд до появления соответствующего индикатора на дисплее. Точная комбинация может отличаться в зависимости от ревизии платы.</p></div></details>
+
+<h2 id="диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</h2>
+
+<p>В процессе эксплуатации могут возникать ситуации, когда контроллер перестает корректно управлять котлом. Чаще всего это связано с обрывом линии связи, окислением контактов или выходом из строя самого датчика температуры. Дисплей устройства может мигать или показывать специфические коды ошибок, которые помогут локализовать проблему.</p>
+
+<p>Если котел не запускается по команде от <strong>ДТВ 01 12 2</strong>, первым делом проверьте состояние сухого контакта. В режиме ожидания (когда температура ниже уставки) контакт должен быть замкнут. Если мультиметр показывает бесконечное сопротивление, проблема может быть в настройках контроллера или в неисправности его внутреннего реле. Также стоит проверить предохранитель на плате управления котла.</p>
+
+<p>Частой ошибкой является наводка от силовых кабелей на сигнальные линии. Если провода термостата проложены в одном кабель-канале с кабелем 220В, наводки могут вызывать хаотичные включения и выключения котла. В таких случаях необходимо разнести линии или использовать экранированный кабель, подключив экран к заземлению только с одной стороны.</p>
+
+<ul>
+<li>🔍 Проверьте целостность соединительного кабеля между контроллером и котлом на предмет перегибов и повреждений.</li>
+<li>🌡️ Сравните показания датчика с независимым термометром для выявления drift (дрейфа) показаний.</li>
+<li>⚡ Измерьте напряжение на клеммах питания контроллера — оно должно быть стабильным и соответствовать паспортным данным.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Большинство ошибок связи возникают из-за плохого контакта в клеммной колодке или окисления проводов, а не из-за поломки электроники.</p></div>
+
+<h2 id="техника-безопасности-и-финальные-проверки">Техника безопасности и финальные проверки</h2>
+
+<p>Завершающим этапом работ является сборка корпуса котла и проведение пробного пуска. Убедитесь, что все крышки установлены на свои места и надежно зафиксированы, так как нарушение герметичности камеры сгорания недопустимо. Включите питание и наблюдайте за первым циклом работы системы, контролируя моменты включения и выключения горелки.</p>
+
+<p>Обратите внимание на отсутствие посторонних запахов гари или пластика, которые могут свидетельствовать о перегреве изоляции в местах новых соединений. Если в первые минуты работы контроллер ведет себя адекватно и температура в системе начинает расти согласно заданным параметрам, монтаж можно считать успешным.</p>
+
+<p>Регулярное обслуживание подключенного оборудования включает в себя periodic проверку затяжки клемм и очистку датчиков от пыли. Пылевой налет на датчике температуры воздуха может искажать реальные показания, заставляя котел работать с повышенной нагрузкой. Простая продувка сжатым воздухом раз в отопительный сезон продлит срок службы системы.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Производители котлов могут изменять расположение клемм и логику работы в новых моделях. Всегда сверяйте схему подключения с актуальной инструкцией к вашей конкретной модификации котла, так как универсальных решений для всех брендов не существует.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При прокладке кабеля через стены используйте гофрированную трубу — это защитит провода от грызунов и механических повреждений при усадке здания.</p></div>
+
+<details>
+<summary>Можно ли подключить ДТВ 01 12 2 к котлу без снятия перемычки?</summary>
+<p>В большинстве случаев перемычку на клеммах термостата котла необходимо снимать, так как она имитирует постоянно замкнутый контакт (режим работы без термостата). Если оставить перемычку и подключить контроллер параллельно, котел будет работать непрерывно, игнорируя команды автоматики. Однако существуют схемы, где подключение ведется на дополнительные контакты, но это редкость и должно быть указано в паспорте котла.</p>
+</details>
+
+<details>
+<summary>Какой длины может быть кабель от контроллера до котла?</summary>
+<p>Для стандартных низковольтных сигнальных линий рекомендуемая длина кабеля не должна превышать 30-50 метров. При увеличении длины линии растет её сопротивление и влияние электромагнитных помех, что может привести к некорректной работе. Если требуется большая длина, необходимо использовать кабель большего сечения или устанавливать усилитель сигнала.</p>
+</details>
+
+<details>
+<summary>Что делать, если контроллер показывает ошибку датчика?</summary>
+<p>Ошибка датчика чаще всего указывает на обрыв цепи или короткое замыкание в линии измерения. Проверьте надежность подключения проводов к клеммам контроллера и самого датчика. Если линия цела, возможно, вышел из строя сам чувствительный элемент датчика температуры, и его потребуется заменить на аналог с таким же сопротивлением.</p>
+</details>
+
+<details>
+<summary>Влияет ли подключение ДТВ на гарантию котла?</summary>
+<p>Подключение сторонней автоматики, такой как ДТВ 01 12 2, не аннулирует гарантию на котел, если монтаж выполнен без нарушения целостности заводской проводки и платы управления. Однако, если в процессе подключения произойдет короткое замыкание, повлекшее выгорание платы, такой случай гарантийным считаться не будет. Все работы должны проводиться при отключенном питании.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#назначение-и-технические-особенности-контроллера">Назначение и технические особенности контроллера</a></li><li><a href="#подготовительные-работы-и-выбор-места-установки">Подготовительные работы и выбор места установки</a></li><li><a href="#схема-подключения-проводов-к-клеммной-колодке">Схема подключения проводов к клеммной колодке</a></li><li><a href="#настройка-режимов-работы-и-калибровка-датчиков">Настройка режимов работы и калибровка датчиков</a></li><li><a href="#диагностика-неисправностей-и-коды-ошибок">Диагностика неисправностей и коды ошибок</a></li><li><a href="#техника-безопасности-и-финальные-проверки">Техника безопасности и финальные проверки</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ko/kotel-baksi-skhema-podklyucheniya.html" class="related-card">Схема подключения котла Baxi: инструкция с фото и ошибками</a></li><li><a href="/articles/p/po/pompa-dlya-vody-na-butyl-ne-kachaet-vodu-prichiny.html" class="related-card">Помпа для бутыли не качает воду: 7 причин и как починить</a></li><li><a href="/articles/k/ka/kak-ustanovit-datchik-temperatury-na-kotel-otopleniya.html" class="related-card">Как правильно установить датчик температуры на котел отопления</a></li><li><a href="/articles/k/ka/kak-podklyuchit-termostat-k-elektrokotlu.html" class="related-card">Как подключить термостат к электрокотлу: схема и инструкция</a></li><li><a href="/articles/n/ne/ne-rabotaet-termostat-bojlera.html" class="related-card">Не работает термостат бойлера: диагностика и ремонт своими руками</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ko/kotel-baksi-skhema-podklyucheniya.html" class="related-bottom-card"><span class="related-bottom-title">Схема подключения котла Baxi: инструкция с фото и ошибками</span><span class="related-bottom-desc">Пошаговая схема подключения котла Baxi к отоплению, водоснабжению и электричеству. Типичные ошибки, </span></a><a href="/articles/p/po/pompa-dlya-vody-na-butyl-ne-kachaet-vodu-prichiny.html" class="related-bottom-card"><span class="related-bottom-title">Помпа для бутыли не качает воду: 7 причин и как починить</span><span class="related-bottom-desc">Почему не качает помпа для воды? Полный разбор неисправностей: от батареек до поломки крыльчатки. Ре</span></a><a href="/articles/k/ka/kak-ustanovit-datchik-temperatury-na-kotel-otopleniya.html" class="related-bottom-card"><span class="related-bottom-title">Как правильно установить датчик температуры на котел отопления</span><span class="related-bottom-desc">Пошаговая инструкция по монтажу датчика температуры для котлов отопления: выбор места, подключение, </span></a><a href="/articles/k/ka/kak-podklyuchit-termostat-k-elektrokotlu.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить термостат к электрокотлу: схема и инструкция</span><span class="related-bottom-desc">Пошаговая инструкция по подключению термостата к электрокотлу. Схемы проводки, выбор модели, настрой</span></a><a href="/articles/n/ne/ne-rabotaet-termostat-bojlera.html" class="related-bottom-card"><span class="related-bottom-title">Не работает термостат бойлера: диагностика и ремонт своими руками</span><span class="related-bottom-desc">Гид по устранению неисправностей термостата водонагревателя. Симптомы поломки, пошаговая инструкция </span></a><a href="/articles/t/te/termostaticheskij-smesitel-goryachaya-voda-sprava.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить термостатический смеситель: горячая вода справа</span><span class="related-bottom-desc">Инструкция по монтажу термостатического смесителя. Разберем, как настроить горячую воду справа и изб</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

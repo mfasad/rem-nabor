@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Pаsito 2 не включается но заряжается: диагностика и ремонт — Рем Набор</title>
+    <meta name="description" content="Как реанимировать электросамокат Ninebot KickScooter 2? Диагностика индикаторов, ошибки BMS, ремонт платы и тест батареи своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/pa/pasito-2-ne-vklyuchaetsya-no-zaryazhaetsya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Pаsito 2 не включается но заряжается: диагностика и ремонт">
+    <meta property="og:description" content="Как реанимировать электросамокат Ninebot KickScooter 2? Диагностика индикаторов, ошибки BMS, ремонт платы и тест батареи своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Pаsito 2 не включается но заряжается: диагностика и ремонт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему Ninebot KickScooter 2 не включается, но показывает зарядку</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-и-анализ-индикаторов">Первичная диагностика и анализ индикаторов</a></li><li><a href="#проверка-напряжения-батареи-и-порогов-bms">Проверка напряжения батареи и порогов BMS</a></li><li><a href="#диагностика-системы-управления-и-контроллера">Диагностика системы управления и контроллера</a></li><li><a href="#вскрытие-деки-и-визуальный-осмотр-компонентов">Вскрытие деки и визуальный осмотр компонентов</a></li><li><a href="#сброс-ошибок-и-перепрошивка-контроллера">Сброс ошибок и перепрошивка контроллера</a></li><li><a href="#ремонт-и-замена-элементов-питания">Ремонт и замена элементов питания</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда электросамокат <em>Ninebot KickScooter 2</em> демонстрирует признаки жизни при подключении к сети, но отказывается запускаться в рабочем режиме, является одной из самых распространенных и пугающих для владельцев. Вы видите, как загорается порт зарядки, возможно, даже реагирует индикатор батареи, но нажатие на кнопку питания не вызывает никакой реакции дисплея. Это классический симптом конфликта между системой управления батареей <strong>BMS</strong> и контроллером двигателя.</p>
+
+<p>В большинстве случаев проблема кроется не в полном выходе из строя аккумулятора, а в его глубоком разряде или программном сбое управляющей электроники. Когда напряжение на одной из ячеек падает ниже критического порога, умная плата защиты блокирует подачу тока на двигатель, чтобы предотвратить возгорание или необратимую деградацию химии. Однако цепь зарядки остается активной, что и создает иллюзию частичной работоспособности устройства.</p>
+
+<p>Не стоит сразу нести самокат в сервисный центр, так как в 70% случаев проблему можно решить самостоятельно с помощью мультиметра и базовых знаний электротехники. Ниже мы подробно разберем алгоритм диагностики, методы «толчка» батареи и способы проверки внутренних компонентов, которые помогут вернуть вашу технику к жизни без лишних затрат.</p>
+
+<h2 id="первичная-диагностика-и-анализ-индикаторов">Первичная диагностика и анализ индикаторов</h2>
+
+<p>Прежде чем разбирать самокат, необходимо внимательно изучить поведение светодиодных индикаторов. Логика работы <em>Ninebot ES2</em> и его модификаций заложена таким образом, что определенные комбинации миганий указывают на конкретный тип неисправности. Если при подключении зарядного устройства индикатор горит красным, а после отключения гаснет полностью — это сигнал о глубоком разряде.</p>
+
+<p>Попробуйте оставить самокат на зарядке на длительное время, от 4 до 8 часов, даже если индикатор не меняет цвет. Иногда системе <strong>BMS</strong> требуется много времени, чтобы поднять напряжение на ячейках до минимального рабочего уровня. В этот период ток заряда может быть очень низким, что визуально не отображается стандартной индикацией.</p>
+
+<p>Обратите внимание на поведение кнопки питания. Если при нажатии она издает слабый щелчок или индикаторы мигают один раз и гаснут, значит, контроллер получает питание, но не может пройти процедуру самодиагностики. Это часто указывает на ошибку связи между основной платой и блоком батареи.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если при попытке включения вы слышите резкий треск или чувствуете запах гари, немедленно отключите устройство от сети. Это признак короткого замыкания внутри аккумуляторного отсека, и дальнейшие попытки включения могут привести к пожару.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-c4e84af8"><div class="poll-widget-question">📊 Как ведет себя индикатор при зарядке?</div><div class="poll-widget-option" data-poll="c4e84af8" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Горит красный и не меняется</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c4e84af8" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Мигает красным/зеленым</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c4e84af8" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Горит зеленым сразу</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="c4e84af8" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Вообще не реагирует</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="проверка-напряжения-батареи-и-порогов-bms">Проверка напряжения батареи и порогов BMS</h2>
+
+<p>Для точной диагностики вам потребуется цифровой мультиметр. Основная цель — измерить напряжение на выходных контактах батареи, не вскрывая корпус. На моделях серии <em>KickScooter 2</em> доступ к контактам часто возможен через сервисный порт или после аккуратного снятия декоративной заглушки на деке.</p>
+
+<p>Нормальное рабочее напряжение для 36-вольтовой системы должно находиться в диапазоне от 40 до 42 Вольт в полностью заряженном состоянии. Если мультиметр показывает значения ниже 30 Вольт, система защиты <strong>BMS</strong> переходит в режим глубокой блокировки. В этом состоянии она программно «отключает» выходные ключи, и контроллер самоката просто не видит источник питания.</p>
+
+<p>Существует методика выравнивания напряжения, известная как «толчок». Она подразумевает подачу внешнего напряжения на клеммы батареи, чтобы обмануть плату защиты и заставить её включить выходные транзисторы. Делать это нужно крайне осторожно, используя источник питания с ограничением по току.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте лабораторный блок питания с ограничением тока не более 2А при попытке «толкнуть» батарею. Прямое подключение мощного зарядного устройства может вызвать искрение и повреждение контактной группы.</p></div>
+
+<p>Если после поднятия напряжения до 36-38 Вольт самокат начинает включаться, проблема подтверждена: одна или несколько ячеек имеют повышенное внутреннее сопротивление или саморазряд. В таком случае эксплуатация без замены элементов риска может привести к повторному отключению в самый неподходящий момент.</p>
+
+<h2 id="диагностика-системы-управления-и-контроллера">Диагностика системы управления и контроллера</h2>
+
+<p>Если с напряжением батареи все в порядке (мультиметр показывает >38В), но самокат все равно не включается, подозрение падает на контроллер или проводку. Внутри деки <em>Ninebot</em> находится сложная сеть соединений, где любой окислившийся контакт может стать причиной отказа всей системы.</p>
+
+<p>Частой проблемой является отхождение шлейфа дисплея или повреждение провода кнопки включения. Вибрации при езде по неровностям постепенно ослабляют коннекторы. Необходимо проверить целостность цепи от кнопки до платы управления с помощью режима прозвонки мультиметра.</p>
+
+<p>Также стоит осмотреть сам <strong>контроллер</strong> на предмет визуальных повреждений. Вздувшиеся конденсаторы, следы копоти или перегретые микросхемы говорят о выходе компонента из строя. В некоторых случаях контроллер уходит в защиту из-за короткого замыкания в обмотках мотор-колеса.</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Метод проверки</th>
+<th>Решение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Индикатор не горит</td>
+<td>Обрыв цепи питания</td>
+<td>Прозвонка проводов от батареи</td>
+<td>Восстановление контакта</td>
+</tr>
+<tr>
+<td>Мигает 1 раз и гаснет</td>
+<td>Низкое напряжение BMS</td>
+<td>Замер вольтажа на клеммах</td>
+<td>Подзарядка внешним источником</td>
+</tr>
+<tr>
+<td>Горит красный при зарядке</td>
+<td>Глубокий разряд ячеек</td>
+<td>Балансировка ячеек</td>
+<td>Замена аккумулятора</td>
+</tr>
+<tr>
+<td>Звук ошибки при включении</td>
+<td>Сбой контроллера</td>
+<td>Считывание кодов ошибок</td>
+<td>Перепрошивка или замена</td>
+</tr>
+</tbody>
+</table>
+
+<div class="checklist-block"><h4>☑️ Диагностика электроники</h4><label class="check-item"><input type="checkbox"><span>Измерить напряжение батареи</span></label><label class="check-item"><input type="checkbox"><span>Проверить предохранитель</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть коннекторы</span></label><label class="check-item"><input type="checkbox"><span>Прозвонить кнопку включения</span></label><label class="check-item"><input type="checkbox"><span>Проверить плату BMS</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="вскрытие-деки-и-визуальный-осмотр-компонентов">Вскрытие деки и визуальный осмотр компонентов</h2>
+
+<p>Если внешняя диагностика не дала результатов, придется переходить к механическому вмешательству. Корпус деки <em>Ninebot ES2</em> состоит из двух частей, скрепленных множеством винтов. Будьте внимательны: некоторые саморезы скрыты под резиновыми заглушками или наклейками.</p>
+
+<p>После снятия нижней крышки вы получите доступ к аккумулятору и контроллеру. Первым делом визуально оцените состояние проводов. Ищите перебитые жилы, особенно в местах выхода жгутов из корпуса. Окисление контактов на разъемах <strong>XT60</strong> или <strong>XH</strong> — частая причина потери контакта.</p>
+
+<p>Особое внимание уделите плате <strong>BMS</strong>, которая обычно расположена сверху аккумуляторного блока. Наличие следов электролита или коррозии на плате говорит о попадании влаги. Даже если визуально плата чистая, рекомендуется прозвонить предохранитель, который часто установлен в разрыве плюсового провода.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При вскрытии деки соблюдайте осторожность с литий-ионными элементами. Не допускайте их прокола или короткого замыкания металлическими инструментами, так как это может вызвать мгновенное воспламенение.</p>
+</blockquote>
+
+<details class="faq-item"><summary>Как безопасно снять деку?</summary><div class="faq-answer"><p>Сначала открутите все видимые винты по периметру. Затем аккуратно подденьте пластиковую накладку в районе рулевой колонки. Не тяните резко, чтобы не порвать шлейфы, идущие к дисплею. Лучше всего работать с частично разряженной батареей (до 50%), чтобы снизить риск короткого замыкания при случайном контакте.</p></div></details>
+
+<h2 id="сброс-ошибок-и-перепрошивка-контроллера">Сброс ошибок и перепрошивка контроллера</h2>
+
+<p>Иногда проблема носит программный характер. Контроллер может «зависнуть» в состоянии ошибки, из которого не выходит даже после перезагрузки. Для моделей <em>Ninebot</em> существует возможность сброса настроек через специальное приложение или сервисный режим.</p>
+
+<p>Попробуйте выполнить жесткую перезагрузку системы. Для этого необходимо отключить разъем батареи от контроллера на 5-10 минут, а затем подключить его обратно. Это позволяет конденсаторам на плате полностью разрядиться и сбросить временные регистры ошибок.</p>
+
+<p>Если самокат удалось включить, но он работает нестабильно, рекомендуется обновить прошивку через официальное приложение <em>Ninebot</em>. В некоторых случаях старая версия ПО некорректно интерпретирует данные с датчиков тока, что приводит к ложным срабатываниям защиты.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Отключение питания на 10 минут — самый простой и безопасный способ сбросить логику контроллера без использования сложного оборудования.</p></div>
+
+<h2 id="ремонт-и-замена-элементов-питания">Ремонт и замена элементов питания</h2>
+
+<p>Если диагностика выявила неисправность самих аккумуляторов, потребуется их замена. В самокатах <em>Ninebot KickScooter 2</em> используются элементы формата 18650. Просто заменить одну ячейку нельзя — необходимо подбирать элементы с одинаковым внутренним сопротивлением и емкостью.</p>
+
+<p>Процесс замены требует навыков пайки или использования точечной сварки. Никелевые ленты, соединяющие ячейки, должны быть надежно приварены. Пайка обычным паяльником опасна перегревом элемента, что сокращает его срок службы и повышает риск вздутия.</p>
+
+<p>После сборки нового блока обязательна процедура балансировки. Все параллельные группы ячеек должны иметь одинаковое напряжение с точностью до 0.01 Вольта. Игнорирование этого этапа приведет к тому, что <strong>BMS</strong> снова уйдет в защиту после нескольких циклов заряда-разряда.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему самокат заряжается, но не включается?</summary>
+<p>Это означает, что цепь зарядки исправна, но плата BMS заблокировала выходное напряжение из-за глубокого разряда одной из ячеек или внутренней ошибки контроллера. Требуется поднятие напряжения внешним источником или замена аккумулятора.</p>
+</details>
+
+<details>
+<summary>Можно ли ездить на самокате, если он включается только от зарядки?</summary>
+<p>Категорически нет. Если устройство работает только при подключенном зарядном устройстве, это говорит о критической неисправности системы питания. Эксплуатация в таком режиме может привести к возгоранию батареи или поломке контроллера.</p>
+</details>
+
+<details>
+<summary>Сколько стоит замена батареи на Ninebot ES2?</summary>
+<p>Стоимость зависит от типа элементов (оригинал или аналог) и емкости. В среднем замена всего аккумуляторного блока обходится в 40-60% от стоимости нового самоката. Ремонт отдельных ячеек дешевле, но требует квалифицированного подхода.</p>
+</details>
+
+<details>
+<summary>Как понять, что сгорел контроллер?</summary>
+<p>При сгоревшем контроллере часто отсутствует реакция на кнопку включения даже при полном заряде батареи, может наблюдаться нагрев корпуса в зоне электроники или специфический запах горелой изоляции. Точный диагноз ставится после прозвонки силовых ключей мультиметром.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-и-анализ-индикаторов">Первичная диагностика и анализ индикаторов</a></li><li><a href="#проверка-напряжения-батареи-и-порогов-bms">Проверка напряжения батареи и порогов BMS</a></li><li><a href="#диагностика-системы-управления-и-контроллера">Диагностика системы управления и контроллера</a></li><li><a href="#вскрытие-деки-и-визуальный-осмотр-компонентов">Вскрытие деки и визуальный осмотр компонентов</a></li><li><a href="#сброс-ошибок-и-перепрошивка-контроллера">Сброс ошибок и перепрошивка контроллера</a></li><li><a href="#ремонт-и-замена-элементов-питания">Ремонт и замена элементов питания</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/m/mi/mini-khlebopekarnya-hb-151je-instruktsiya.html" class="related-card">Мини хлебопекарня HB-151JE: Инструкция, Настройки и Обзор</a></li><li><a href="/articles/p/po/pochemu-plyuetsya-novyj-isparitel.html" class="related-card">Почему плюется новый испаритель: причины плеска и плевков</a></li><li><a href="/articles/t/to/top-pompovykh-ruzhej-12-kalibra.html" class="related-card">ТОП-10 помповых ружей 12 калибра 2026: рейтинг для охоты и спорта</a></li><li><a href="/articles/i/is/isparitel-na-ajdzhast-s.html" class="related-card">Испаритель на iJust S: как почистить, заменить и продлить срок службы</a></li><li><a href="/articles/0/0-/0-3-oma-skolko-vatt.html" class="related-card">0.3 Ом сколько Ватт: расчет мощности и выбор батарей</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/m/mi/mini-khlebopekarnya-hb-151je-instruktsiya.html" class="related-bottom-card"><span class="related-bottom-title">Мини хлебопекарня HB-151JE: Инструкция, Настройки и Обзор</span><span class="related-bottom-desc">Полная инструкция к мини хлебопекарне HB-151JE. Режимы выпечки, рецепты, устранение неисправностей и</span></a><a href="/articles/p/po/pochemu-plyuetsya-novyj-isparitel.html" class="related-bottom-card"><span class="related-bottom-title">Почему плюется новый испаритель: причины плеска и плевков</span><span class="related-bottom-desc">Подробный разбор причин, почему новый испаритель плюется жидкостью. Как прокачать вату, настроить мо</span></a><a href="/articles/t/to/top-pompovykh-ruzhej-12-kalibra.html" class="related-bottom-card"><span class="related-bottom-title">ТОП-10 помповых ружей 12 калибра 2026: рейтинг для охоты и спорта</span><span class="related-bottom-desc">Экспертный обзор лучших помповых ружей 12 калибра: сравнение характеристик, цены, плюсы и минусы. Ка</span></a><a href="/articles/i/is/isparitel-na-ajdzhast-s.html" class="related-bottom-card"><span class="related-bottom-title">Испаритель на iJust S: как почистить, заменить и продлить срок службы</span><span class="related-bottom-desc">Пошаговое руководство по обслуживанию испарителя для вейпа iJust S: признаки неисправности, чистка, </span></a><a href="/articles/0/0-/0-3-oma-skolko-vatt.html" class="related-bottom-card"><span class="related-bottom-title">0.3 Ом сколько Ватт: расчет мощности и выбор батарей</span><span class="related-bottom-desc">Узнайте, сколько Ватт выдает батарея на 0.3 Ом. Таблица мощностей, расчет по закону Ома, выбор аккум</span></a><a href="/articles/r/rb/rba-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">РБА на кнайт 80: Обзор, характеристики и ремонт</span><span class="related-bottom-desc">Подробный разбор РБА серии Knight 80. Технические параметры, частые неисправности, диагностика и рук</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

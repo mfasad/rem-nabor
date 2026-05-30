@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Водянка не охлаждает процессор: диагностика и ремонт СЖО — Рем Набор</title>
+    <meta name="description" content="Жидкостное охлаждение перестало работать? Полный гид по диагностике: проверка помпы, уровня жидкости, засоров и воздушных пробок. Узнайте, почему радиатор холодный.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/v/vo/vodyanka-ne-okhlazhdaet-protsessor.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Водянка не охлаждает процессор: диагностика и ремонт СЖО">
+    <meta property="og:description" content="Жидкостное охлаждение перестало работать? Полный гид по диагностике: проверка помпы, уровня жидкости, засоров и воздушных пробок. Узнайте, почему радиатор холодный.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/radiatory-i-teploobmenniki/">Радиаторы и теплообменники</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Водянка не охлаждает процессор: диагностика и ремонт СЖО</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему водяное охлаждение перестало отводить тепло от процессора</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#диагностика-первичных-признаков-отказа-помпы">Диагностика первичных признаков отказа помпы</a></li><li><a href="#воздушные-пробки-и-уровень-теплоносителя">Воздушные пробки и уровень теплоносителя</a></li><li><a href="#механические-засоры-и-деградация-жидкости">Механические засоры и деградация жидкости</a></li><li><a href="#проблемы-монтажа-и-прижима-водоблока">Проблемы монтажа и прижима водоблока</a></li><li><a href="#влияние-внешних-температур-и-воздушного-потока">Влияние внешних температур и воздушного потока</a></li><li><a href="#когда-требуется-замена-компонентов">Когда требуется замена компонентов</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда система водяного охлаждения (СЖО) внезапно перестает справляться со своими прямыми обязанностями, вызывает панику у любого пользователя. Вы замечаете, что температуры процессора взлетают до критических значений, а радиатор остается ледяным на ощупь, тогда как водоблок на CPU раскален. Это классический симптом того, что циркуляция теплоносителя нарушена или полностью остановлена.</p>
+
+<p>В отличие от воздушных кулеров, где отказ обычно сводится к остановке вентилятора, в жидкостных контурах проблем может быть масса: от выхода из строя <strong>помпы</strong> до образования воздушной пробки или критического падения уровня жидкости. В этой статье мы детально разберем механику отказа и способы восстановления работоспособности контура.</p>
+
+<p>Игнорирование этих симптомов может привести к термическому троттлингу (снижению частот процессора) или, в худшем случае, к выходу дорогостоящего оборудования из строя из-за перегрева. Поэтому действовать нужно быстро и системно.</p>
+
+<h2 id="диагностика-первичных-признаков-отказа-помпы">Диагностика первичных признаков отказа помпы</h2>
+
+<p>Первым делом необходимо исключить простейшие причины. Часто пользователи забывают, что помпа требует отдельного подключения к материнской плате. Если вы недавно проводили апгрейд или чистку системы, проверьте кабель питания помпы. Он должен быть подключен к разъему <code>AIO_PUMP</code> или <code>CPU_FAN</code> (в режиме постоянного напряжения).</p>
+
+<p>Прислушайтесь к работе системы. Исправная помпа издает едва заметный низкочастотный гул или вибрацию, которую можно почувствовать, приложив палец к водоблоку. Полная тишина при включенном компьютере — тревожный сигнал. Однако шум не всегда означает исправность; треск или бульканье могут указывать на кавитацию или попадание воздуха в крыльчатку.</p>
+
+<p>Обратите внимание на индикаторы. Многие современные модели, такие как <em>Corsair H100i</em> или <em>NZXT Kraken</em>, имеют подсветку или программный мониторинг. Если софт показывает скорость вращения помпы 0 RPM, значит, механизм мертв или не получает питание. В старых сборных системах визуальный контроль сложнее.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не пытайтесь проверять работу помпы "на сухую" вне контура более нескольких секунд. Это приведет к перегреву подшипников скольжения и быстрому износу керамической оси.</p>
+</blockquote>
+
+<div class="poll-widget" id="poll-68715ead"><div class="poll-widget-question">📊 Как ведет себя ваша система охлаждения сейчас?</div><div class="poll-widget-option" data-poll="68715ead" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Помпа молчит и радиатор холодный</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="68715ead" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Помпа гудит, но температуры высокие</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="68715ead" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Слышно бульканье в трубках</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="68715ead" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Температуры скачут резко вверх и вниз</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="воздушные-пробки-и-уровень-теплоносителя">Воздушные пробки и уровень теплоносителя</h2>
+
+<p>Одной из самых коварных причин, почему водянка не охлаждает, является воздушная пробка. Воздух легче жидкости и скапливается в самой высокой точке контура. Если эта точка оказывается внутри водоблока процессора, тепло просто не отводится, так как жидкость не контактирует с медной подошвой.</p>
+
+<p>Часто проблема возникает после транспортировки компьютера в горизонтальном положении или после долгого простоя. В таких случаях воздух может заблокировать каналы микро-ребер внутри водоблока. Также стоит проверить расширительный бачок (если он есть в вашей кастомной сборке). Падение уровня жидкости ниже критической отметки приводит к захвату воздуха помпой.</p>
+
+<p>Для удаления воздушной пробки необходимо аккуратно наклонять системный блок в разные стороны при работающей помпе. Это помогает пузырькам подняться в радиатор, где они не мешают циркуляции. В некоторых случаях помогает кратковременное увеличение оборотов помпы до 100% через BIOS.</p>
+
+<ul>
+<li>🫧 Проверьте, не перевернут ли системный блок (радиатор должен быть выше помпы).</li>
+<li>💧 Осмотрите прозрачные трубки на предмет видимых пузырей воздуха.</li>
+<li>📉 Убедитесь, что уровень жидкости в бачке находится между метками Min и Max.</li>
+</ul>
+
+<p>Если уровень жидкости упал значительно, это свидетельствует о разгерметизации системы. Даже микроскопическая трещина в фитинге со временем приведет к полному осушению контура и остановке охлаждения.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При сборке кастомной петли всегда располагайте радиатор выше всех остальных компонентов. Это гарантирует, что воздух будет собираться в самой верхней точке радиатора, а не в водоблоках.</p></div>
+
+<h2 id="механические-засоры-и-деградация-жидкости">Механические засоры и деградация жидкости</h2>
+
+<p>Со временем любая охлаждающая жидкость деградирует. Дистиллированная вода способствует коррозии и росту биологических организмов (водорослей, бактерий), которые образуют слизь. Эта слизь забивает тонкие каналы водоблока, превращая их в непроходимый лабиринт.</p>
+
+<p>Использование некачественных присадок или смешивание жидкостей разных цветов и составов может привести к выпадению осадка. Этот осадок действует как абразив, изнашивая помпу, и как цемент, закупоривая радиатор. Визуально это проявляется в изменении цвета жидкости на мутный или коричневый.</p>
+
+<p>Для диагностики засора можно аккуратно (при выключенном ПК и слитой жидкости) снять шланг с выхода радиатора и продуть его. Если сопротивление потоку воздуха слишком велико, значит, соты радиатора забиты. В таких случаях простая промывка дистиллированной водой может не помочь, потребуется химическая очистка специальными средствами, такими как <em>Mayhems Blitz</em>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Метод устранения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Горячий водоблок, холодный радиатор</td>
+<td>Остановка помпы или воздушная пробка</td>
+<td>Проверка питания, удаление воздуха</td>
+</tr>
+<tr>
+<td>Температуры растут постепенно</td>
+<td>Загрязнение радиатора пылью</td>
+<td>Продувка сжатым воздухом</td>
+</tr>
+<tr>
+<td>Жидкость изменила цвет</td>
+<td>Биологическое загрязнение</td>
+<td>Полная промывка системы</td>
+</tr>
+<tr>
+<td>Свист или визг помпы</td>
+<td>Износ подшипника</td>
+<td>Замена помпы</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Химическая очистка системы</summary><div class="faq-answer"><p>Если вы используете агрессивные чистящие средства, убедитесь, что они совместимы с материалами вашего контура (никель, медь, акрил, резина). Некоторые кислоты могут разъесть никелевое покрытие за несколько часов.</p></div></details>
+
+<h2 id="проблемы-монтажа-и-прижима-водоблока">Проблемы монтажа и прижима водоблока</h2>
+
+<p>Иногда сама система охлаждения исправна, помпа крутит, жидкость чистая, но процессор все равно перегревается. В этом случае проблема кроется в физическом контакте между подошвой водоблока и теплораспределительной крышкой процессора (IHS).</p>
+
+<p>Недостаточный прижим — частая ошибка при самостоятельной сборке. Если винты закручены неравномерно или с недостаточным усилием, образуются микроскопические зазоры, которые термопаста заполнить не может. Воздух является отличным теплоизолятором, поэтому даже зазор в несколько микрон критичен.</p>
+
+<p>Также стоит проверить состояние термоинтерфейса. Старая термопаста могла высохнуть и превратиться в камень, потеряв теплопроводность. При повторной установке водоблок нужно снимать, очищать спиртом и наносить свежий слой. Для процессоров с большой площадью кристалла (например, <em>Intel Core i9</em> или <em>AMD Ryzen 9</em>) рекомендуется использовать жидкий металл или специализированные пасты с высокой вязкостью.</p>
+
+<p>Не забудьте снять защитную полиэтиленовую пленку с подошвы водоблока перед установкой! Это звучит как шутка, но даже опытные сборщики иногда допускают эту ошибку, что приводит к мгновенному перегреву.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При использовании жидкого металла убедитесь, что ваш водоблок имеет защиту от вытекания (пористую прокладку или специальную конструкцию), так как жидкий металл электропроводен и может вызвать короткое замыкание на материнской плате.</p>
+</blockquote>
+
+<h2 id="влияние-внешних-температур-и-воздушного-потока">Влияние внешних температур и воздушного потока</h2>
+
+<p>Эффективность водяного охлаждения напрямую зависит от разницы температур между жидкостью и окружающим воздухом. Если в помещении жарко или корпус плохо продувается, радиатор не сможет отдать тепло в атмосферу, и температура жидкости в контуре будет расти.</p>
+
+<p>В замкнутом корпусе с плохой вентиляцией горячий воздух от видеокарты может рециркулировать и снова попадать в радиатор СЖО. Это создает эффект "теплового мешка". В таких условиях даже исправная водянка не сможет охладить процессор ниже определенной границы.</p>
+
+<p>Проверьте работу вентиляторов на радиаторе. Они должны создавать направленный поток воздуха. Оптимальная схема для большинства корпусов: забор холодного воздуха спереди и выдув горячего сзади и сверху. Радиатор СЖО лучше всего размещать на выдув (верх или задняя стенка), чтобы горячий воздух сразу покидал корпус.</p>
+
+<div class="checklist-block"><h4>☑️ Аудит воздушных потоков</h4><label class="check-item"><input type="checkbox"><span>Проверить направление вращения всех вентиляторов</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии пылевых фильтров, забитых грязью</span></label><label class="check-item"><input type="checkbox"><span>Проверить кабель-менеджмент (не перекрывает ли он поток)</span></label><label class="check-item"><input type="checkbox"><span>Оценить температуру внутри корпуса датчиками</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="когда-требуется-замена-компонентов">Когда требуется замена компонентов</h2>
+
+<p>Если вы перебрали всю систему, промыли её, заменили пасту и проверили питание, но проблема сохраняется, возможно, ресурс компонентов исчерпан. Помпы в необслуживаемых системах (AIO) обычно рассчитаны на 3-5 лет работы. После этого срока смазка в подшипниках высыхает, и вал начинает подклинивать.</p>
+
+<p>В кастомных системах ресурс зависит от качества помпы. Модели с магнитной левитацией служат дольше, чем обычные подшипники скольжения. Если помпа издает посторонние звуки даже после удаления воздуха, её механическая часть повреждена.</p>
+
+<p>Также стоит учитывать моральное устаревание. Старые радиаторы с крупным оребрением (10-12 FPI) могут не справляться с тепловыделением современных процессоров, потребляющих 250-300 Вт. В таком случае единственным решением будет апгрейд радиатора на модель с большей площадью рассеивания.</p>
+
+<p>Для пользователей готовых решений от брендов вроде <em>DeepCool</em> или <em>Arctic</em>, срок гарантии часто составляет от 2 до 6 лет. Если система вышла из строя в этот период, рациональнее воспользоваться гарантийным обслуживанием, чем пытаться ремонтировать герметичный блок самостоятельно.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Средний срок службы необслуживаемой системы водяного охлаждения составляет около 4-5 лет. После этого срока вероятность отказа помпы или испарения жидкости стремится к 100%.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему радиатор холодный, а процессор горячий?</summary>
+<p>Это верный признак того, что горячая жидкость не доходит до радиатора. Скорее всего, помпа не работает, либо в контуре образовалась мощная воздушная пробка, блокирующая циркуляцию в зоне водоблока.</p>
+</details>
+
+<details>
+<summary>Можно ли долить обычную воду в систему охлаждения?</summary>
+<p>Категорически не рекомендуется. Обычная водопроводная вода содержит соли и минералы, которые вызовут накипь и коррозию. Используйте только дистиллированную воду со специальными биоцидными присадками.</p>
+</details>
+
+<details>
+<summary>Как понять, что помпа умирает?</summary>
+<p>Основные признаки: появление постороннего шума (треск, скрежет), вибрация корпуса помпы, нестабильные показания оборотов в мониторинге и постепенный рост температур при неизменной нагрузке.</p>
+</details>
+
+<details>
+<summary>Нужно ли менять жидкость в необслуживаемой СЖО?</summary>
+<p>В заводских герметичных системах (AIO) замена жидкости не предусмотрена и часто невозможна без разрушения конструкции. Если жидкость деградировала, систему обычно заменяют целиком.</p>
+</details>
+
+<details>
+<summary>Влияет ли ориентация корпуса на работу помпы?</summary>
+<p>Да. Для долговечности помпы важно, чтобы она располагалась ниже уровня радиатора. Если помпа стоит выше радиатора, в ней может скапливаться воздух, что приводит к кавитации и шуму.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#диагностика-первичных-признаков-отказа-помпы">Диагностика первичных признаков отказа помпы</a></li><li><a href="#воздушные-пробки-и-уровень-теплоносителя">Воздушные пробки и уровень теплоносителя</a></li><li><a href="#механические-засоры-и-деградация-жидкости">Механические засоры и деградация жидкости</a></li><li><a href="#проблемы-монтажа-и-прижима-водоблока">Проблемы монтажа и прижима водоблока</a></li><li><a href="#влияние-внешних-температур-и-воздушного-потока">Влияние внешних температур и воздушного потока</a></li><li><a href="#когда-требуется-замена-компонентов">Когда требуется замена компонентов</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/a/al/alyuminievyj-radiator-dlya-okhlazhdeniya.html" class="related-card">Алюминиевый радиатор для охлаждения: выбор, установка и ремонт</a></li><li><a href="/articles/l/lu/luzar-garantiya-na-radiatory.html" class="related-card">Лузар: гарантия на радиаторы 2026 — условия, сроки и нюансы</a></li><li><a href="/articles/r/ra/radiator-firmy-termal-otzyvy.html" class="related-card">Радиаторы фирмы Термал: реальные отзывы, плюсы и минусы</a></li><li><a href="/articles/r/ra/radiator-pechki-na-largus.html" class="related-card">Замена радиатора печки на Лада Ларгус своими руками</a></li><li><a href="/articles/r/ra/radiatory-sat-otzyvy-kachestvo.html" class="related-card">Радиаторы SAT: отзывы о качестве, плюсы и минусы (2026)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/a/al/alyuminievyj-radiator-dlya-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Алюминиевый радиатор для охлаждения: выбор, установка и ремонт</span><span class="related-bottom-desc">Как выбрать алюминиевый радиатор охлаждения для авто или техники? Сравнение с медными, инструкции по</span></a><a href="/articles/l/lu/luzar-garantiya-na-radiatory.html" class="related-bottom-card"><span class="related-bottom-title">Лузар: гарантия на радиаторы 2026 — условия, сроки и нюансы</span><span class="related-bottom-desc">Разбираем официальные условия гарантии Лузар на радиаторы охлаждения и отопления: сроки, что покрыва</span></a><a href="/articles/r/ra/radiator-firmy-termal-otzyvy.html" class="related-bottom-card"><span class="related-bottom-title">Радиаторы фирмы Термал: реальные отзывы, плюсы и минусы</span><span class="related-bottom-desc">Обзор алюминиевых радиаторов Термал: отзывы владельцев, технические характеристики, плюсы и минусы. </span></a><a href="/articles/r/ra/radiator-pechki-na-largus.html" class="related-bottom-card"><span class="related-bottom-title">Замена радиатора печки на Лада Ларгус своими руками</span><span class="related-bottom-desc">Инструкция по замене радиатора отопителя на Лада Ларгус. Снятие, установка, выбор запчастей и устран</span></a><a href="/articles/r/ra/radiatory-sat-otzyvy-kachestvo.html" class="related-bottom-card"><span class="related-bottom-title">Радиаторы SAT: отзывы о качестве, плюсы и минусы (2026)</span><span class="related-bottom-desc">Реальные отзывы владельцев о радиаторах SAT: анализ качества, сравнение моделей, типичные проблемы и</span></a><a href="/articles/r/ra/radiator-miles-otzyvy-kachestvo.html" class="related-bottom-card"><span class="related-bottom-title">Радиаторы Miles: честные отзывы и анализ качества 2026</span><span class="related-bottom-desc">Реальные отзывы владельцев о радиаторах Miles: плюсы и минусы, сравнение моделей, советы по выбору и</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

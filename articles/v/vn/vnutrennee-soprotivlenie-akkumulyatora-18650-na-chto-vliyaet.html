@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Внутреннее сопротивление аккумулятора 18650: влияние на работу — Рем Набор</title>
+    <meta name="description" content="Как внутреннее сопротивление Li-Ion 18650 влияет на мощность, нагрев и срок службы. Таблица норм, методы измерения и критерии отбраковки.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/v/vn/vnutrennee-soprotivlenie-akkumulyatora-18650-na-chto-vliyaet.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Внутреннее сопротивление аккумулятора 18650: влияние на работу">
+    <meta property="og:description" content="Как внутреннее сопротивление Li-Ion 18650 влияет на мощность, нагрев и срок службы. Таблица норм, методы измерения и критерии отбраковки.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Внутреннее сопротивление аккумулятора 18650: влияние на работу</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Внутреннее сопротивление аккумулятора 18650: на что влияет и как измерить</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#физическая-природа-внутреннего-сопротивления">Физическая природа внутреннего сопротивления</a></li><li><a href="#влияние-на-отдаваемую-мощность-и-нагрев">Влияние на отдаваемую мощность и нагрев</a></li><li><a href="#как-сопротивление-влияет-на-срок-службы">Как сопротивление влияет на срок службы</a></li><li><a href="#методы-измерения-внутреннего-сопротивления">Методы измерения внутреннего сопротивления</a></li><li><a href="#нормы-сопротивления-для-разных-типов-ячеек">Нормы сопротивления для разных типов ячеек</a></li><li><a href="#практические-советы-по-снижению-сопротивления-в-сборках">Практические советы по снижению сопротивления в сборках</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Аккумуляторы формата <em>18650</em> давно стали стандартом индустрии, питая всё от портативных фонарей до тяговых батарей электромобилей. Однако при выборе или диагностике элементов многие пользователи зацикливаются исключительно на емкости, игнорируя критически важный параметр — <strong>внутреннее сопротивление</strong>. Именно этот показатель определяет способность батареи отдавать ток без существенных потерь напряжения и перегрева.</p>
+
+<p>Высокое сопротивление превращает даже новый аккумулятор в неэффективный источник энергии, вызывая быстрое падение напряжения под нагрузкой. Понимание физических процессов, происходящих внутри ячейки при прохождении тока, позволит вам избежать ошибок при сборке батарейных сборок и продлить жизнь вашим устройствам.</p>
+
+<h2 id="физическая-природа-внутреннего-сопротивления">Физическая природа внутреннего сопротивления</h2>
+
+<p>Внутреннее сопротивление аккумулятора — это не какой-то отдельный резистор, впаянный внутрь корпуса. Это суммарная величина, складывающаяся из сопротивления электролита, сепаратора, электродов, токоотводов и самых слабых мест — контактных соединений внутри банки. В химии <em>Li-Ion</em> систем этот параметр напрямую зависит от ионной проводимости электролита и электронного контакта между активными материалами.</p>
+
+<p><strong>Омическое сопротивление</strong> и поляризационное сопротивление работают вместе, создавая барьер для тока. Когда вы подключаете нагрузку, напряжение на клеммах мгновенно просаживается согласно закону Ома для полной цепи. Чем выше этот барьер, тем больше энергии тратится впустую, превращаясь в тепло внутри элемента, а не в полезную работу на выходе.</p>
+
+<p>Стоит отметить, что сопротивление не является константой. Оно динамически меняется в зависимости от температуры, степени заряда (SOC) и возраста элемента. Холодный аккумулятор <code>2500 mAh</code> может иметь сопротивление в 2-3 раза выше, чем тот же элемент при комнатной температуре, что критично для зимней эксплуатации.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Измеряйте сопротивление только при температуре элемента не ниже +20°C, так как холод искажает результаты в большую сторону, создавая ложное впечатление износа.</p></div>
+
+<h2 id="влияние-на-отдаваемую-мощность-и-нагрев">Влияние на отдаваемую мощность и нагрев</h2>
+
+<p>Главное последствие высокого внутреннего сопротивления — это ограничение пикового тока. Если вашему устройству, например, мощному вейпу или электроинструменту, требуется ток <code>20 А</code>, а батарея из-за высокого сопротивления не может его обеспечить без просадки напряжения ниже порога отключения, устройство просто не запустится или будет работать с перебоями.</p>
+
+<p>Второй негативный эффект — тепловой разгон. Потерянная энергия рассеивается в виде тепла по формуле <code>P = I² * R</code>. Поскольку ток возводится в квадрат, даже небольшое увеличение сопротивления при высоких токах разряда приводит к экспоненциальному росту температуры. Это не просто дискомфорт при использовании, это реальная угроза деградации химии.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если аккумулятор <em>18650</em> нагревается сильнее, чем на 10-15 градусов выше температуры окружающей среды при штатной нагрузке, это верный признак того, что его внутреннее сопротивление вышло за допустимые пределы.</p>
+</blockquote>
+
+<p>Высокотоковые модели, такие как <em>Sony VTC6</em> или <em>Samsung 25R</em>, специально разрабатываются с минимальным сопротивлением, чтобы выдерживать токи отдачи в 20-30 Ампер. Использование обычных энергоемких ячеек в таких режимах приведет к их мгновенному выходу из строя.</p>
+
+<div class="poll-widget" id="poll-011c4c37"><div class="poll-widget-question">📊 Какой параметр для вас важнее при выборе 18650?</div><div class="poll-widget-option" data-poll="011c4c37" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Максимальная емкость (mAh)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="011c4c37" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Минимальное сопротивление (мОм)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="011c4c37" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Низкая цена</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="011c4c37" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Известный бренд</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="как-сопротивление-влияет-на-срок-службы">Как сопротивление влияет на срок службы</h2>
+
+<p>Циклический ресурс аккумулятора напрямую коррелирует с его внутренним сопротивлением. По мере старения и деградации химии сопротивление растет. Когда оно достигает определенного порога, батарея считается выработавшей свой ресурс, даже если остаточная емкость еще кажется приемлемой. Элемент просто не может эффективно работать под нагрузкой.</p>
+
+<p>Эксплуатация ячеек с повышенным сопротивлением в сборках (паках) создает дисбаланс. В процессе заряда такие элементы будут нагреваться сильнее соседей и достигать напряжения отсечки быстрее, что приводит к недозаряду всей сборки. При разряде, наоборот, они просадятся первыми, вызывая глубокий разряд отдельных банок, что губительно для лития.</p>
+
+<p><strong>Деградация SEI-слоя</strong> на аноде является основной причиной роста сопротивления со временем. Этот слой утолщается при каждом цикле, особенно при высоких температурах или глубоких разрядах, увеличивая барьер для прохождения ионов лития.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Рост внутреннего сопротивления — это необратимый процесс старения; вернуть старому аккумулятору заводские параметры невозможно никакими методами "раскачки".</p></div>
+
+<h2 id="методы-измерения-внутреннего-сопротивления">Методы измерения внутреннего сопротивления</h2>
+
+<p>Для точной диагностики состояния <em>Li-Ion</em> элементов недостаточно обычного мультиметра, измеряющего напряжение. Вам потребуется специализированное оборудование, способное измерять импеданс переменного тока или падение напряжения под импульсной нагрузкой. Бытовые зарядные устройства типа <em>LiitoKala</em> или <em>Opus</em> часто имеют встроенную функцию замера, но их точность может варьироваться.</p>
+
+<p>Наиболее точным методом считается использование миллиомметров, работающих на частоте 1 кГц (AC IR). Этот метод позволяет отсечь влияние поляризации и измерить чистое омическое сопротивление. Метод постоянного тока (DC IR), основанный на сравнении напряжения без нагрузки и под нагрузкой, дает завышенные результаты, но более близок к реальным условиям работы.</p>
+
+<p>При измерении критически важно обеспечить надежный контакт щупов. Окисленные контакты или плохой прижим добавят свои миллиомы к результату, сделав измерения бессмысленными. Профессиональные стенды используют четырехпроводную схему подключения для исключения сопротивления проводов.</p>
+
+<details class="faq-item"><summary>Почему показания разных приборов отличаются?</summary><div class="faq-answer"><p>Разные приборы используют разные методы (AC 1kHz vs DC Load) и частоты измерительного сигнала. AC-метод показывает "чистое" сопротивление химии, а DC-метод — сопротивление с учетом поляризации, которое всегда выше.</p></div></details>
+
+<h2 id="нормы-сопротивления-для-разных-типов-ячеек">Нормы сопротивления для разных типов ячеек</h2>
+
+<p>Значения внутреннего сопротивления кардинально отличаются в зависимости от назначения элемента. Высокоемкие батареи (Energy) жертвуют токоотдачей ради плотности энергии, поэтому их сопротивление выше. Высокотоковые (Power) ячейки имеют толстые токосъемники и особую химию, обеспечивающую минимальный импеданс.</p>
+
+<p>Ниже приведена таблица ориентировочных значений для популярных моделей в исправном состоянии при комнатной температуре:</p>
+
+<table>
+<thead>
+<tr>
+<th>Модель аккумулятора</th>
+<th>Тип</th>
+<th>Емкость (типичная)</th>
+<th>Нормальное сопротивление (мОм)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Panasonic NCR18650B</em></td>
+<td>Высокая емкость</td>
+<td>3400 mAh</td>
+<td>45 - 65 мОм</td>
+</tr>
+<tr>
+<td><em>Samsung INR18650-25R</em></td>
+<td>Высокотоковый</td>
+<td>2500 mAh</td>
+<td>15 - 25 мОм</td>
+</tr>
+<tr>
+<td><em>Sony US18650VTC6</em></td>
+<td>Высокотоковый</td>
+<td>3000 mAh</td>
+<td>13 - 20 мОм</td>
+</tr>
+<tr>
+<td><em>LG INR18650HG2</em></td>
+<td>Высокотоковый</td>
+<td>3000 mAh</td>
+<td>14 - 22 мОм</td>
+</tr>
+<tr>
+<td><em>Samsung ICR18650-22P</em></td>
+<td>Бюджетный</td>
+<td>2200 mAh</td>
+<td>50 - 70 мОм</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если ваши замеры показывают значения, превышающие верхнюю границу нормы более чем на 30-40%, такой элемент следует считать изношенным. Для сборки батарейных блоков разброс сопротивления между элементами не должен превышать 2-3 мОм, иначе балансировка будет нарушена.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Избегайте сборки паков из элементов с разным внутренним сопротивлением. Разница в 10 мОм и более приведет к тому, что слабые банки будут греться и деградировать в разы быстрее, убивая всю сборку.</p>
+</blockquote>
+
+<div class="checklist-block"><h4>☑️ Критерии отбраковки б/у аккумуляторов</h4><label class="check-item"><input type="checkbox"><span>Сопротивление выше 80 мОм для высокотоковых моделей</span></label><label class="check-item"><input type="checkbox"><span>Разброс сопротивления в группе более 5 мОм</span></label><label class="check-item"><input type="checkbox"><span>Напряжение саморазряда ниже 3.0В за сутки</span></label><label class="check-item"><input type="checkbox"><span>Визуальные повреждения изоляции</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="практические-советы-по-снижению-сопротивления-в-сборках">Практические советы по снижению сопротивления в сборках</h2>
+
+<p>Даже если вы подобрали идеальные элементы, неправильная сборка может нивелировать их преимущества. Сопротивление всей батареи складывается из сопротивления ячеек и сопротивления соединений. Использование тонких никелевых лент или плохой контактной сварки добавляет лишние миллиомы на каждом узле.</p>
+
+<p>Для мощных сборок рекомендуется использовать медные шины вместо чистого никеля, так как медь обладает значительно лучшей проводимостью. Также важно следить за чистотой контактных площадок перед сваркой. Любая окисная пленка работает как дополнительный резистор.</p>
+
+<p>Теплоотвод также играет роль. Если сборка работает в замкнутом корпусе без вентиляции, нагрев повысит сопротивление электролита, создавая замкнутый круг: нагрев -> рост сопротивления -> больший нагрев. Продумывайте конструкцию корпуса заранее.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При контактной сварке используйте импульсный режим с минимально необходимым временем импульса. Перегрев места приварки ленты к клемме локально увеличивает сопротивление контакта.</p></div>
+
+<details>
+<summary>Можно ли снизить внутреннее сопротивление старого аккумулятора?</summary>
+<p>Физически снизить омическое сопротивление изношенной химии невозможно. Некоторые методы вроде "тренировки" малыми токами могут временно улучшить показатели за счет выравнивания потенциала, но это не восстанавливает деградировавший SEI-слой. Если сопротивление выросло из-за старения, элемент подлежит утилизации.</p>
+</details>
+
+<details>
+<summary>Влияет ли уровень заряда на показания сопротивления?</summary>
+<p>Да, влияет значительно. На краях диапазона заряда (менее 10% и более 90%) сопротивление всегда выше, чем в среднем диапазоне (40-60%). Для сравнения элементов всегда приводите их к одному уровню заряда, например, 3.7В - 3.8В.</p>
+</details>
+
+<details>
+<summary>Какое сопротивление считается критическим для утилизации?</summary>
+<p>Для высокотоковых элементов критическим порогом обычно считается 40-50 мОм. Для высокоемких (3400 mAh) — около 80-100 мОм. Превышение этих значений делает использование элемента в нагрузках с током более 1-2А опасным из-за перегрева.</p>
+</details>
+
+<details>
+<summary>Почему дешевые китайские аккумуляторы имеют высокое сопротивление?</summary>
+<p>Производители бюджетных ячеек часто экономят на качестве материалов электродов, толщине фольги токосъемников и чистоте электролита. Это приводит к изначально высокому импедансу, который быстро растет в процессе эксплуатации, даже если заявленная емкость выглядит правдоподобно.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#физическая-природа-внутреннего-сопротивления">Физическая природа внутреннего сопротивления</a></li><li><a href="#влияние-на-отдаваемую-мощность-и-нагрев">Влияние на отдаваемую мощность и нагрев</a></li><li><a href="#как-сопротивление-влияет-на-срок-службы">Как сопротивление влияет на срок службы</a></li><li><a href="#методы-измерения-внутреннего-сопротивления">Методы измерения внутреннего сопротивления</a></li><li><a href="#нормы-сопротивления-для-разных-типов-ячеек">Нормы сопротивления для разных типов ячеек</a></li><li><a href="#практические-советы-по-снижению-сопротивления-в-сборках">Практические советы по снижению сопротивления в сборках</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/m/ma/manto-aio-80w-kit-kartridzh.html" class="related-card">Manto AIO 80W Kit: обзор картриджа и настройка устройства</a></li><li><a href="/articles/k/kn/knight-80-kak-polzovatsya.html" class="related-card">Knight 80: как пользоваться пультом и настроить пк-бокс</a></li><li><a href="/articles/s/si/sistema-okhlazhdeniya-dlya-pogreba.html" class="related-card">Система охлаждения погреба: виды и монтаж своими руками</a></li><li><a href="/articles/p/po/pochemu-pod-ne-vidit-kartridzh.html" class="related-card">Почему POD не видит картридж: диагностика и решение</a></li><li><a href="/articles/p/po/pochemu-vejp-bulkaet-pri-zatyazhke.html" class="related-card">Почему вейп булькает при затяжке: причины и как устранить</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/m/ma/manto-aio-80w-kit-kartridzh.html" class="related-bottom-card"><span class="related-bottom-title">Manto AIO 80W Kit: обзор картриджа и настройка устройства</span><span class="related-bottom-desc">Подробный разбор Manto AIO 80W Kit. Характеристики картриджа, инструкция по замене, устранение проте</span></a><a href="/articles/k/kn/knight-80-kak-polzovatsya.html" class="related-bottom-card"><span class="related-bottom-title">Knight 80: как пользоваться пультом и настроить пк-бокс</span><span class="related-bottom-desc">Подробная инструкция по использованию пульта Knight 80. Как подключить, настроить кнопки, обновить П</span></a><a href="/articles/s/si/sistema-okhlazhdeniya-dlya-pogreba.html" class="related-bottom-card"><span class="related-bottom-title">Система охлаждения погреба: виды и монтаж своими руками</span><span class="related-bottom-desc">Как сделать вентиляцию и охлаждение в погребе. Виды систем, схемы монтажа, выбор оборудования и конт</span></a><a href="/articles/p/po/pochemu-pod-ne-vidit-kartridzh.html" class="related-bottom-card"><span class="related-bottom-title">Почему POD не видит картридж: диагностика и решение</span><span class="related-bottom-desc">Устройство не видит картридж? Узнайте причины окисления контактов, поломки датчика и методы ремонта.</span></a><a href="/articles/p/po/pochemu-vejp-bulkaet-pri-zatyazhke.html" class="related-bottom-card"><span class="related-bottom-title">Почему вейп булькает при затяжке: причины и как устранить</span><span class="related-bottom-desc">Вейп булькает и плюется жидкостью? Узнайте причины попадания жижи в испаритель, как настроить мощнос</span></a><a href="/articles/0/0-/0-7-om-eto-skolko-vatt.html" class="related-bottom-card"><span class="related-bottom-title">0.7 Ом — сколько Ватт? Расчет мощности и нагрев</span><span class="related-bottom-desc">Узнайте, сколько ватт выделяется на сопротивлении 0.7 Ом при разных токах. Расчет по формулам, табли</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

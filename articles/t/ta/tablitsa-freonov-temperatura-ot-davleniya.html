@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Таблица фреонов: температура кипения от давления для диагностики — Рем Набор</title>
+    <meta name="description" content="Полная таблица зависимости давления и температуры фреонов R134a, R410A, R22. Как пользоваться P-T диаграммой для заправки кондиционера.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/ta/tablitsa-freonov-temperatura-ot-davleniya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Таблица фреонов: температура кипения от давления для диагностики">
+    <meta property="og:description" content="Полная таблица зависимости давления и температуры фреонов R134a, R410A, R22. Как пользоваться P-T диаграммой для заправки кондиционера.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/freon-i-khladagenty/">Фреон и хладагенты</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Таблица фреонов: температура кипения от давления для диагностики</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Таблица фреонов: зависимость температуры от давления для точной диагностики</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#физические-основы-почему-давление-зависит-от-температуры">Физические основы: почему давление зависит от температуры</a></li><li><a href="#ключевые-отличия-популярных-хладагентов-r22-r134a-и-r410a">Ключевые отличия популярных хладагентов R22, R134a и R410A</a></li><li><a href="#как-пользоваться-таблицей-p-t-соответствия-на-практике">Как пользоваться таблицей P-T соответствия на практике</a></li><li><a href="#таблица-зависимости-давления-от-температуры-для-основных-фреонов">Таблица зависимости давления от температуры для основных фреонов</a></li><li><a href="#влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</a></li><li><a href="#типичные-ошибки-при-диагностике-и-заправке">Типичные ошибки при диагностике и заправке</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Для любого специалиста по обслуживанию климатической техники понимание взаимосвязи между давлением и температурой кипения хладагента является базовым навыком. Без этой информации невозможно корректно диагностировать неисправность, проверить уровень заправки или выявить утечки в системе. Многие новички ошибочно полагают, что существует единый стандарт для всех газов, однако физика процессов диктует свои правила для каждого типа вещества.</p>
+
+<p>Ошибки в определении типа фреона могут привести к серьезным последствиям. Неправильный подбор давления при заправке может вывести из строя компрессор, снизить эффективность теплообмена или даже вызвать аварийную остановку оборудования. В этой статье мы подробно разберем, как пользоваться таблицами соответствия, какие факторы влияют на показания манометров и почему цифровые термометры часто надежнее стрелочных приборов.</p>
+
+<p>Современные системы кондиционирования становятся все более сложными, но физические законы термодинамики остаются неизменными. Зная точку кипения конкретного фреона при определенном давлении, вы можете с высокой точностью определить перегрев или переохлаждение в контуре. Это ключевые параметры для настройки <strong>ТРВ (терморегулирующего вентиля)</strong> и оценки работоспособности всей системы.</p>
+
+<h2 id="физические-основы-почему-давление-зависит-от-температуры">Физические основы: почему давление зависит от температуры</h2>
+
+<p>В замкнутом контуре холодильной машины хладагент находится в состоянии равновесия между жидкой и газообразной фазами. При любой заданной температуре существует строго определенное давление насыщенного пара. Это фундаментальное свойство, которое не зависит от объема системы, пока в ней присутствуют обе фазы вещества одновременно.</p>
+
+<p>Если вы измеряете давление на всасывающей магистрали, вы фактически измеряете температуру кипения фреона в испарителе. Например, если манометр показывает определенное значение для <em>R134a</em>, вы можете мгновенно узнать, при какой температуре кипит жидкость в испарителе, просто посмотрев в таблицу. Это позволяет сравнивать фактическую температуру трубы с расчетной.</p>
+
+<p>Однако Газ на выходе из испарителя всегда теплее, чем температура его кипения. Разница между температурой газа в трубе и температурой насыщения (найденной по давлению) называется <strong>перегревом</strong>. Нормальный перегрев обычно составляет от 5 до 8 градусов Цельсия.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Измерения давления имеют смысл только при работающем компрессоре и установившемся режиме. Если система выключена, давление выравнивается во всем контуре и соответствует температуре окружающей среды, что не дает информации о работе испарителя или конденсатора.</p>
+</blockquote>
+
+<p>Понимание этих процессов критично при поиске неисправностей. Низкое давление может указывать не только на нехватку фреона, но и на проблемы с вентилятором испарителя или засорение фильтра-осушителя. Без анализа температурных перепадов вы рискуете просто «долить газ», не устранив истинную причину поломки.</p>
+
+<div class="poll-widget" id="poll-4da298a0"><div class="poll-widget-question">📊 Какой манометрической станцией вы пользуетесь?</div><div class="poll-widget-option" data-poll="4da298a0" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Стрелочная классическая</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4da298a0" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Цифровая с базой данных</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4da298a0" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Комбинированная (электронная + механическая)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4da298a0" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только термометр-щуп</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="ключевые-отличия-популярных-хладагентов-r22-r134a-и-r410a">Ключевые отличия популярных хладагентов R22, R134a и R410A</h2>
+
+<p>Разные типы фреонов имеют совершенно разные характеристики давления при одинаковых температурах. Использование таблиц или настроек манометра, предназначенных для одного типа газа, при работе с другим, приведет к фатальным ошибкам в диагностике. Рассмотрим три самых распространенных типа, с которыми сталкиваются мастера.</p>
+
+<p><em>R22</em> (хладон-22) — это классический хладагент, который постепенно выводится из обращения из-за вреда озоновому слою, но все еще встречается в старых системах. Он работает при относительно низких давлениях. При температуре 25°C его давление насыщения составляет около 5.8 бар. Это одномолекулярное вещество, поэтому при утечке состав смеси не меняется.</p>
+
+<p><em>R134a</em> широко используется в автомобильных кондиционерах и бытовых холодильниках. Его рабочее давление немного выше, чем у R22, но ниже, чем у новых смесей. При той же температуре 25°C давление составит примерно 6.6 бар. Особенность этого фреона в том, что он очень чувствителен к наличию влаги в системе, что требует тщательного вакуумирования.</p>
+
+<p><em>R410A</em> — это современный стандарт для сплит-систем. Это зеотропная смесь, работающая под значительно более высоким давлением. При 25°C давление может достигать 16.6 бар. <strong>Критически важно</strong>: заправлять системы на R410A необходимо только в жидкой фазе, чтобы не нарушить пропорцию компонентов смеси, иначе изменятся температурные свойства.</p>
+
+<ul>
+<li>🌡️ <strong>R22:</strong> Низкое рабочее давление, требует минерального или алкилбензольного масла.</li>
+<li>🚗 <strong>R134a:</strong> Среднее давление, требует полиэфирного (POE) или PAG масла, несовместим с минеральным.</li>
+<li>❄️ <strong>R410A:</strong> Высокое давление (в 1.6 раза выше R22), требует синтетического POE масла и специальных толстостенных трубок.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не смешивайте разные типы фреонов в одной системе. Даже небольшая примесь R22 в контуре с R410A может привести к нестабильной работе компрессора и изменению точки росы, что вызовет образование льда или перегрев.</p>
+</blockquote>
+
+<p>При переходе с одного типа хладагента на другой (ретрофит) необходимо полностью заменить масло и часто фильтр-осушитель. Простая откачка старого газа и заправка новым недопустима из-за химической несовместимости смазочных материалов.</p>
+
+<h2 id="как-пользоваться-таблицей-p-t-соответствия-на-практике">Как пользоваться таблицей P-T соответствия на практике</h2>
+
+<p>Таблица давление-температура (P-T chart) — это главный инструмент диагноста. Она позволяет перевести показания манометра в температуру и наоборот. Процесс использования выглядит следующим образом: сначала вы подключаете станцию к сервисному порту и считываете давление.</p>
+
+<p>Далее находите в таблице строку с вашим типом фреона и столбец с измеренным давлением. На пересечении вы получите температуру насыщения. Теперь возьмите контактный термометр и измерьте реальную температуру трубы в том же месте, где подключен манометр (или на выходе из теплообменника).</p>
+
+<p>Сравните два значения. Если реальная температура трубы выше температуры насыщения, у вас есть перегрев. Если ниже — возможно переохлаждение или наличие жидкости в линии всасывания, что опасно для компрессора. <strong>Идеальный баланс</strong> достигается, когда разница стабильна в течение нескольких минут работы.</p>
+
+<div class="checklist-block"><h4>☑️ Диагностика по P-T таблице</h4><label class="check-item"><input type="checkbox"><span>Подключить манометры и запустить систему</span></label><label class="check-item"><input type="checkbox"><span>Записать давление на стороне низкого давления</span></label><label class="check-item"><input type="checkbox"><span>Найти температуру насыщения в таблице</span></label><label class="check-item"><input type="checkbox"><span>Измерить температуру трубы термометром</span></label><label class="check-item"><input type="checkbox"><span>Рассчитать разницу (перегрев)</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Для удобства многие современные манометрические станции имеют шкалы, размеченные сразу в градусах для разных фреонов. Однако они часто имеют погрешность. Использование подробной таблицы или электронного калькулятора дает более точный результат, особенно при экстремальных температурах окружающей среды.</p>
+
+<p>Помните, что таблица дает температуру кипения <em>внутри</em> теплообменника. Температура поверхности трубы всегда будет немного отличаться из-за теплопроводности металла и изоляции. Учитывайте этот фактор при анализе данных.</p>
+
+<h2 id="таблица-зависимости-давления-от-температуры-для-основных-фреонов">Таблица зависимости давления от температуры для основных фреонов</h2>
+
+<p>Ниже приведена сокращенная справочная таблица для быстрой оценки параметров. Давление указано в барах (бар), температура в градусах Цельсия (°C). Данные являются приблизительными для температуры насыщения.</p>
+
+<table>
+<thead>
+<tr>
+<th>Температура (°C)</th>
+<th>R22 (бар)</th>
+<th>R134a (бар)</th>
+<th>R410A (бар)</th>
+<th>R407C (бар)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-10</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>5.7</td>
+<td>4.3</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2.9</td>
+<td>2.9</td>
+<td>7.9</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>4.0</td>
+<td>4.1</td>
+<td>10.8</td>
+<td>8.3</td>
+</tr>
+<tr>
+<td>25</td>
+<td>5.8</td>
+<td>6.6</td>
+<td>16.6</td>
+<td>12.5</td>
+</tr>
+<tr>
+<td>40</td>
+<td>8.5</td>
+<td>10.1</td>
+<td>24.3</td>
+<td>18.8</td>
+</tr>
+</tbody>
+</table>
+
+<p>Как видно из таблицы, разброс значений огромен. Ошибка в определении типа фреона всего на одну позицию может привести к тому, что вы будете оценивать систему по неверным критериям. Например, давление 10 бар для R22 — это аварийно высокое значение, а для R410A при температуре 10°C — норма.</p>
+
+<p>При работе с зеотропными смесями, такими как <em>R407C</em>, существует понятие температурного глайда (температурного скольжения). Давление кипения и давление конденсации для таких смесей не соответствуют одной температуре, а находятся в диапазоне. В таблице обычно указывается среднее значение или значения для начала и конца фазового перехода.</p>
+
+<details class="faq-item"><summary>Что такое температурный глайд?</summary><div class="faq-answer"><p>Температурный глайд — это разница температур между началом и концом кипения смеси при постоянном давлении. Для R407C он может достигать 5-7 градусов, что усложняет настройку ТРВ по сравнению с чистыми фреонами.</p></div></details>
+
+<h2 id="влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</h2>
+
+<p>Показания манометров не существуют в вакууме. На них влияет множество внешних факторов, которые необходимо учитывать для получения достоверной картины. Температура окружающей среды — первый и самый важный параметр.</p>
+
+<p>Если вы проводите замеры в жаркий полдень, давление в системе кондиционирования будет значительно выше, чем утром или вечером при той же нагрузке. Это нормально. Конденсатор хуже отдает тепло горячему воздуху, поэтому давление конденсации растет. Не пытайтесь "сбросить" давление до утренних значений, это приведет к недогреву.</p>
+
+<p>Состояние теплообменников также играет роль. Грязный конденсатор (наружный блок) приведет к аномально высокому давлению и температуре нагнетания. Грязный испаритель (внутренний блок) вызовет падение давления всасывания и возможное обмерзание. <strong>Визуальный осмотр</strong> радиаторов обязателен перед подключением инструментов.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Длина соединительных шлангов манометрической станции влияет на точность. Длинные и тонкие шланги могут создавать дополнительное сопротивление и изменять объем системы, что искажает показания при коротких циклах измерений. Используйте шланги с минимальным внутренним объемом.</p>
+</blockquote>
+
+<p>Также стоит учитывать высоту над уровнем моря. Атмосферное давление меняется с высотой, что влияет на работу вакуумных насосов и абсолютные значения давления в системе, хотя для большинства бытовых задач этим можно пренебречь.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед началом диагностики всегда очищайте радиаторы конденсатора и испарителя. Часто "недостаток фреона" оказывается просто забитым пухом радиатором, из-за чего система не может эффективно работать.</p></div>
+
+<h2 id="типичные-ошибки-при-диагностике-и-заправке">Типичные ошибки при диагностике и заправке</h2>
+
+<p>Самая распространенная ошибка — попытка заправить систему "на глаз" или по давлению без учета температуры. Давление — это лишь косвенный параметр. Главная цель — обеспечить правильный теплообмен, который контролируется через перегрев и переохлаждение.</p>
+
+<p>Вторая ошибка — игнорирование типа масла. Как упоминалось ранее, <em>POE масло</em> (полиэфирное), используемое с R410A и R134a, гигроскопично. Оно впитывает влагу из воздуха за считанные минуты. Если вы держите систему открытой долго, внутри образуется кислота, которая разъедает обмотки компрессора.</p>
+
+<p>Третья ошибка — заправка R410A в паровой фазе. Поскольку это смесь, при испарении компоненты улетучиваются с разной скоростью. Если вы перевернете баллон вверх дном и начнете запускать газ, состав в системе изменится, и она перестанет работать эффективно. Всегда заправляйте вниз дном.</p>
+
+<ul>
+<li>🚫 <strong>Игнорирование вакуумирования:</strong> Остаточная влага и воздух в системе снижают производительность и вызывают окисление.</li>
+<li>🌡️ <strong>Неверный расчет перегрева:</strong> Попытка добиться нулевого перегрева приведет к гидроудару в компрессоре.</li>
+<li>⚖️ <strong>Перезаправка:</strong> Избыток фреона повышает давление конденсации, увеличивает нагрузку на компрессор и расход электроэнергии.</li>
+</ul>
+
+<p>Профессиональный подход требует взвешивания фреона при заправке. Таблицы и манометры служат для контроля и тонкой настройки, но основной объем должен быть заправлен по весу, указанному на шильдике оборудования.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Золотое правило мастера: Давление говорит о температуре кипения, но только вес заправленного фреона и расчет перегрева гарантируют правильную работу системы.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли смешивать R410A и R22 в одной системе?</summary>
+<p>Категорически нет. Эти фреоны используют разные типы масел (минеральное/алкилбензольное для R22 и синтетическое POE для R410A). Смешивание приведет к образованию осадка, закупорке капиллярной трубки и выходу компрессора из строя. Кроме того, они работают при разном давлении.</p>
+</details>
+
+<details>
+<summary>Почему давление на манометре скачет?</summary>
+<p>Пульсация давления может быть вызвана неисправностью компрессора (например, поломкой клапанов), наличием неконденсируемых газов (воздуха) в системе или нестабильной работой ТРВ. Также это может быть следствием недостаточного количества фреона, когда в испаритель попадает смесь газа и жидкости неравномерно.</p>
+</details>
+
+<details>
+<summary>Как определить утечку, если давление в норме?</summary>
+<p>Если система выключена и давление соответствует температуре окружающей среды (по таблице P-T), это не гарантирует отсутствие утечки. Утечка может быть медленной. Для поиска используйте течеискатель, мыльный раствор или ультрафиолетовую краску, добавленную в масло. Также следите за появлением масляных пятен на стыках труб.</p>
+</details>
+
+<details>
+<summary>Что такое переохлаждение и как его измерить?</summary>
+<p>Переохлаждение — это разница между температурой конденсации (найденной по давлению на стороне высокого давления) и фактической температурой жидкости на выходе из конденсатора. Нормальное переохлаждение обычно составляет 5-10 градусов. Оно показывает, насколько эффективно работает конденсатор и достаточно ли фреона в контуре.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#физические-основы-почему-давление-зависит-от-температуры">Физические основы: почему давление зависит от температуры</a></li><li><a href="#ключевые-отличия-популярных-хладагентов-r22-r134a-и-r410a">Ключевые отличия популярных хладагентов R22, R134a и R410A</a></li><li><a href="#как-пользоваться-таблицей-p-t-соответствия-на-практике">Как пользоваться таблицей P-T соответствия на практике</a></li><li><a href="#таблица-зависимости-давления-от-температуры-для-основных-фреонов">Таблица зависимости давления от температуры для основных фреонов</a></li><li><a href="#влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</a></li><li><a href="#типичные-ошибки-при-диагностике-и-заправке">Типичные ошибки при диагностике и заправке</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-razobrat-kartridzh-pasito-2.html" class="related-card">Разборка картриджа Pasito 2: пошаговая инструкция с фото</a></li><li><a href="/articles/k/ka/kak-uznat-zakonchilsya-li-freon.html" class="related-card">Как узнать закончился ли фреон: признаки утечки в авто и кондиционере</a></li><li><a href="/articles/v/vi/vidy-freona-dlya-konditsionera.html" class="related-card">Фреон для кондиционера: виды, свойства и как выбрать правильно</a></li><li><a href="/articles/k/ka/kakoj-freon-ispolzuetsya-v-konditsionerakh.html" class="related-card">Фреон в кондиционерах: какой используется в 2026 году и как выбрать</a></li><li><a href="/articles/s/sk/skolko-freona-v-kholodilnike-atlant.html" class="related-card">Сколько фреона в холодильнике Атлант: таблица по моделям (2026)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-razobrat-kartridzh-pasito-2.html" class="related-bottom-card"><span class="related-bottom-title">Разборка картриджа Pasito 2: пошаговая инструкция с фото</span><span class="related-bottom-desc">Как правильно разобрать картридж Pasito 2 для чистки или замены фильтров? Детальная инструкция с сов</span></a><a href="/articles/k/ka/kak-uznat-zakonchilsya-li-freon.html" class="related-bottom-card"><span class="related-bottom-title">Как узнать закончился ли фреон: признаки утечки в авто и кондиционере</span><span class="related-bottom-desc">Узнайте, как проверить уровень хладагента. Симптомы утечки, диагностика своими руками, таблица норм </span></a><a href="/articles/v/vi/vidy-freona-dlya-konditsionera.html" class="related-bottom-card"><span class="related-bottom-title">Фреон для кондиционера: виды, свойства и как выбрать правильно</span><span class="related-bottom-desc">Разбираемся в типах фреона для кондиционеров: R22, R410A, R32 и другие. Сравниваем характеристики, с</span></a><a href="/articles/k/ka/kakoj-freon-ispolzuetsya-v-konditsionerakh.html" class="related-bottom-card"><span class="related-bottom-title">Фреон в кондиционерах: какой используется в 2026 году и как выбрать</span><span class="related-bottom-desc">Разбираемся, какие хладагенты (R22, R410A, R32) применяются в современных кондиционерах, их плюсы и </span></a><a href="/articles/s/sk/skolko-freona-v-kholodilnike-atlant.html" class="related-bottom-card"><span class="related-bottom-title">Сколько фреона в холодильнике Атлант: таблица по моделям (2026)</span><span class="related-bottom-desc">Точные данные о количестве фреона в холодильниках Атлант разных серий. Как проверить уровень хладаге</span></a><a href="/articles/k/ko/kolichestvo-freona-exceed-vx.html" class="related-bottom-card"><span class="related-bottom-title">Сколько фреона в кондиционере Exceed VX: нормы и типы хладагента</span><span class="related-bottom-desc">Точный объем фреона для кондиционеров Exceed VX. Типы хладагента R32, R410A. Таблица заправки, инстр</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

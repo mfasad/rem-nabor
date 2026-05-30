@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему не работает вентилятор охлаждения на Ниве: поиск причин — Рем Набор</title>
+    <meta name="description" content="Подробный разбор причин отказа вентилятора на Ниве. Диагностика термодатчика, реле, предохранителей и мотора. Советы по ремонту своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/po/pochemu-ne-srabatyvaet-ventilyator-na-nive.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему не работает вентилятор охлаждения на Ниве: поиск причин">
+    <meta property="og:description" content="Подробный разбор причин отказа вентилятора на Ниве. Диагностика термодатчика, реле, предохранителей и мотора. Советы по ремонту своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему не работает вентилятор охлаждения на Ниве: поиск причин</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему не работает вентилятор охлаждения на Ниве: диагностика и ремонт</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-электрической-цепи">Первичная диагностика электрической цепи</a></li><li><a href="#проверка-датчика-включения-вентилятора">Проверка датчика включения вентилятора</a></li><li><a href="#диагностика-реле-и-блока-управления">Диагностика реле и блока управления</a></li><li><a href="#неисправности-самого-электродвигателя">Неисправности самого электродвигателя</a></li><li><a href="#особенности-системы-охлаждения-на-инжекторной-ниве">Особенности системы охлаждения на инжекторной Ниве</a></li><li><a href="#альтернативные-причины-перегрева-без-отказа-вентилятора">Альтернативные причины перегрева без отказа вентилятора</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Перегрев двигателя — это одна из самых серьезных проблем, с которой может столкнуться владелец внедорожника <em>Нива</em>. В условиях бездорожья или плотного городского трафика система охлаждения испытывает колоссальные нагрузки, и если <strong>вентилятор радиатора</strong> не включается вовремя, стрелка температуры стремительно ползет в красную зону. Игнорирование этой неисправности может привести к деформации головки блока цилиндров, прогару прокладки ГБЦ и дорогостоящему капитальному ремонту.</p>
+
+<p>Почему же электрический вентилятор перестает реагировать на повышение температуры? Причин может быть множество: от банального перегорания предохранителя до выхода из строя самого электромотора. В этой статье мы детально разберем электрическую схему, методы диагностики и способы устранения неполадок, чтобы вы могли восстановить работоспособность системы своими руками.</p>
+
+<p>Обычно система включается автоматически при достижении определенной температуры охлаждающей жидкости. Однако, если этого не происходит, водитель должен немедленно среагировать. Важно понимать, что на разных модификациях <em>ВАЗ-2121</em>, <em>ВАЗ-21214</em> и <em>Chevrolet Niva</em> схемы управления могут незначительно отличаться, но базовые принципы диагностики остаются едиными.</p>
+
+<h2 id="первичная-диагностика-электрической-цепи">Первичная диагностика электрической цепи</h2>
+
+<p>Прежде чем снимать детали и разбирать половину моторного отсека, необходимо провести визуальный осмотр и простейшую проверку целостности цепи. Чаще всего проблема кроется в самом слабом звене системы защиты — <strong>предохранителе</strong>. Если он перегорел, ток просто не доходит до исполнительных механизмов, и вентилятор остается неподвижным.</p>
+
+<p>На классических моделях Нива блок предохранителей расположен под капотом или в салоне, в зависимости от года выпуска. Вам потребуется найти элемент, отвечающий за цепь вентилятора. Обычно это предохранитель на 16А или 25А. Если нить внутри прозрачного корпуса разорвана или почернела, необходима замена. Однако просто поставить новый элемент недостаточно — нужно понять, почему произошел скачок тока.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не устанавливайте предохранитель большего номинала или, тем более, не замыкайте контакты проволокой ("жучок"). Это может привести к возгоранию проводки и полному выгоранию электродвигателя вентилятора.</p>
+</blockquote>
+
+<p>Следующим этапом проверяем надежность контактных соединений. Вибрация при движении по бездорожью часто приводит к окислению клемм или их ослаблению. Особое внимание уделите "массе" — проводу, соединяющему двигатель вентилятора с кузовом автомобиля. Плохой контакт создает высокое сопротивление, из-за чего мотор не получает достаточной мощности для запуска.</p>
+
+<p>Для проверки целостности проводов можно использовать мультиметр в режиме прозвонки. Если на разъеме вентилятора есть напряжение при включенном зажигании и замкнутом датчике, но мотор молчит, значит, проблема локализирована в самом вентиляторе или его непосредственном подключении.</p>
+
+<div class="poll-widget" id="poll-7a6705e5"><div class="poll-widget-question">📊 Как часто у вас перегревается Нива?</div><div class="poll-widget-option" data-poll="7a6705e5" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только в пробках</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7a6705e5" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">На бездорожье</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7a6705e5" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Постоянно</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7a6705e5" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было проблем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="проверка-датчика-включения-вентилятора">Проверка датчика включения вентилятора</h2>
+
+<p>Датчик температуры (термовыключатель) — это ключевой элемент автоматики. Именно он замыкает цепь при нагреве антифриза до критической отметки (обычно 92-97 градусов). На старых моделях Нивы датчик вкручивается непосредственно в радиатор, тогда как на инжекторных версиях сигнал может поступать от датчика в блоке цилиндров к <strong>ЭБУ</strong> (электронному блоку управления).</p>
+
+<p>Самый быстрый способ проверить механический датчик в радиаторе — это метод исключения. При заглушенном двигателе (чтобы избежать КЗ и удара током) отсоедините разъемы от датчика и замкните их между собой куском провода или отверткой. Если при включенном зажигании вентилятор сразу заработал на полную мощность, значит, сам мотор и проводка исправны, а виноват именно датчик.</p>
+
+<p>Если же при замыкании контактов тишина, проблема глубже. Возможно, датчик исправен, но не срабатывает из-за неверных показаний, либо проблема в цепи до него. На инжекторных Нивах ситуация сложнее: ЭБУ получает данные с датчика температуры охлаждающей жидкости (ОЖ) и сам решает, когда подать сигнал на <strong>реле вентилятора</strong>.</p>
+
+<p>Неисправный датчик ОЖ может показывать блоку управления, что двигатель холодный, даже когда он кипит. В таком случае ЭБУ просто не дает команду на включение. Проверить это можно через диагностический сканер, подключившись к разъему OBD-II и посмотрев реальные показания температуры в потоке данных.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При замене датчика обязательно используйте новую медную шайбу и герметик для резьбы, чтобы избежать течи антифриза под высоким давлением.</p></div>
+
+<h2 id="диагностика-реле-и-блока-управления">Диагностика реле и блока управления</h2>
+
+<p>В цепи управления вентилятором часто используется промежуточное реле. Оно необходимо для того, чтобы слаботочный сигнал от датчика или ЭБУ мог управлять мощным током, потребляемым электромотором. Если реле залипло в разомкнутом состоянии или сгорела его обмотка, вентилятор не запустится, даже если все остальные элементы исправны.</p>
+
+<p>На <em>Нива Шевроле</em> и современных инжекторных моделях реле расположены в монтажном блоке. Чтобы проверить его работоспособность, можно попробовать заменить подозрительное реле на заведомо исправное аналогичное (например, реле ближнего света или сигнала, если они имеют одинаковую маркировку и распиновку). Характерный щелчок при включении зажигания или при замыкании датчика свидетельствует о том, что реле пытается сработать.</p>
+
+<p>Однако щелчок не гарантирует, что силовые контакты внутри реле чистые и проводят ток. Со временем на контактах образуется нагар, увеличивающий сопротивление. В результате на вентилятор приходит не 12 вольт, а значительно меньше, чего недостаточно для старта ротора.</p>
+
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Симптом неисправности</th>
+<th>Метод проверки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Предохранитель</td>
+<td>Полное отсутствие реакции системы</td>
+<td>Визуальный осмотр нити, прозвонка тестером</td>
+</tr>
+<tr>
+<td>Датчик темп.</td>
+<td>Вентилятор не включается при перегреве</td>
+<td>Замыкание контактов разъема вручную</td>
+</tr>
+<tr>
+<td>Реле</td>
+<td>Щелчки есть, но мотор не крутит</td>
+<td>Замена на заведомо исправное реле</td>
+</tr>
+<tr>
+<td>Электромотор</td>
+<td>Гудит, но не вращается, или тишина</td>
+<td>Прямая подача 12В от АКБ</td>
+</tr>
+</tbody>
+</table>
+
+<p>В некоторых случаях виновником становится сам <strong>блок управления</strong>. Если драйвер выхода вентилятора внутри ЭБУ выгорел, команда не будет поступать на реле. Это редкая, но возможная ситуация, часто возникающая после неквалифицированного вмешательства в электронику или коротких замыканий.</p>
+
+<h2 id="неисправности-самого-электродвигателя">Неисправности самого электродвигателя</h2>
+
+<p>Если напряжение доходит до разъема вентилятора, предохранители целы, реле щелкает, а крыльчатка стоит на месте, значит, проблема кроется в самом <strong>электромоторе</strong>. Это может быть износ щеток, загрязнение коллектора или межвитковое замыкание в обмотке статора.</p>
+
+<p>Чтобы окончательно убедиться в этом, необходимо подать питание напрямую от аккумуляторной батареи. Снимите разъем с вентилятора и подсоедините два провода непосредственно к клеммам мотора. Соблюдайте полярность, хотя для коллекторных двигателей постоянного тока она влияет только на направление вращения (в данном случае важно лишь, чтобы он закрутился).</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При прямой подаче напряжения убедитесь, что лопасти вентилятора ничем не зажаты и могут свободно вращаться. Резкий старт мощного мотора может травмировать руки или повредить радиатор, если крыльчатка упрется в соты.</p>
+</blockquote>
+
+<p>Если при прямой подаче 12 вольт вентилятор молчит или издает лишь тихий гул, его необходимо снимать и ремонтировать либо заменять на новый. Частая причина заклинивания — высыхание смазки в подшипниках втулок. В таком случае мотор пытается разогнаться, потребляет огромный ток (что может выбивать предохранитель), но не может провернуться из-за механического сопротивления.</p>
+
+<p>Иногда проблема кроется не в электрике, а в механике. Погнутые лопасти, налипшая грязь или смещение корпуса вентилятора могут создавать физический блок. Визуально осмотрите крыльчатку на предмет трещин и деформаций. Дисбаланс крыльчатки также приводит к быстрому разрушению подшипников мотора.</p>
+
+<details class="faq-item"><summary>Как продлить жизнь мотору вентилятора?</summary><div class="faq-answer"><p>Регулярно очищайте пространство между радиатором и вентилятором от грязи, пуха и листьев. Забитые соты радиатора повышают температуру срабатывания, заставляя вентилятор работать на износ. Также полезно раз в сезон снимать вентилятор и смазывать подшипники моторным маслом или специальной смазкой, если конструкция позволяет.</p></div></details>
+
+<h2 id="особенности-системы-охлаждения-на-инжекторной-ниве">Особенности системы охлаждения на инжекторной Ниве</h2>
+
+<p>На инжекторных версиях <em>ВАЗ-21214</em> и <em>Chevrolet Niva</em> управление вентилятором полностью взято на себя электроникой. Здесь нет прямого замыкания цепи датчиком в радиаторе. Сигнал идет по цепочке: Датчик ОЖ → ЭБУ → Реле → Вентилятор. Это усложняет диагностику, но делает работу системы более гибкой.</p>
+
+<p>В таких системах часто используется два режима работы вентилятора или даже два отдельных вентилятора (основной и дополнительный). Если один из них не работает, двигатель все равно может охлаждаться, но менее эффективно. Важно проверить работу обоих контуров.</p>
+
+<p>Одной из скрытых проблем может быть некорректная прошивка ЭБУ. В тюнингованных версиях программного обеспечения пороги включения вентилятора могут быть изменены. Если предыдущий владелец или сервис залили "экономичную" прошивку, вентилятор может включаться слишком поздно, когда температура уже критическая.</p>
+
+<pre><code>Проверка сигнала на реле:
+<p>1. Включите зажигание.</p>
+<p>2. Замкните контакты датчика температуры.</p>
+<p>3. Проверьте наличие +12В на управляющем контакте реле (обычно тонкий провод).</p>
+<p>4. Если напряжения нет — проблема в ЭБУ или проводке до него.</code></pre></p>
+
+<p>Также стоит упомянуть о так называемой "дополнительной помпе". На некоторых моделях она включается одновременно с вентилятором для усиления циркуляции антифриза. Если эта помпа неисправна, даже работающий вентилятор может не справиться с отводом тепла из-за локального закипания жидкости в рубашке охлаждения.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>На инжекторных Нивах отказ вентилятора часто связан не с самим мотором, а с потерей сигнала от датчика температуры ОЖ или неисправностью цепи управления ЭБУ.</p></div>
+
+<h2 id="альтернативные-причины-перегрева-без-отказа-вентилятора">Альтернативные причины перегрева без отказа вентилятора</h2>
+
+<p>Иногда водитель грешит на вентилятор, хотя он исправно включается и крутит, но двигатель все равно кипит. В этом случае проблема не в том, что вентилятор не срабатывает, а в том, что его эффективности недостаточно для текущих условий. Это может указывать на засорение радиатора снаружи (грязь, насекомые) или изнутри (накипь, продукты коррозии).</p>
+
+<p>Немаловажную роль играет состояние термостата. Если его клинит в закрытом положении, антифриз циркулирует только по малому кругу, не попадая в радиатор. Вентилятор будет дуть на холодный радиатор, а двигатель — закипать. Проверить это просто: потрогайте нижний патрубок радиатора при прогретом двигателе. Если он холодный, а верхний горячий — термостат под замену.</p>
+
+<p>Воздушная пробка в системе охлаждения — еще один частый враг Нивы. Пузырь воздуха блокирует поступление жидкости к датчику температуры. В результате датчик "думает", что мотор холодный, и не дает команду на включение вентилятора, хотя в блоке цилиндров уже кипит.</p>
+
+<ul>
+<li>🚿 <strong>Промывка системы:</strong> Используйте специальные химические составы для удаления накипи перед заменой антифриза.</li>
+<li>💨 <strong>Удаление воздуха:</strong> Прогрейте двигатель с открытой крышкой расширительного бачка и активно прожмите патрубки рукой.</li>
+<li>🌡️ <strong>Контроль уровня:</strong> Низкий уровень антифриза приводит к тому, что датчик оказывается выше уровня жидкости и измеряет температуру пара, а не жидкости.</li>
+</ul>
+
+<p>Плохое качество антифриза также играет роль. Дешевые жидкости могут вспениваться или иметь низкую температуру кипения. В таких случаях даже исправная система не спасет от перегрева в тяжелых условиях.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Характеристики охлаждающих жидкостей и требования к их замене могут меняться в зависимости от рекомендаций завода-изготовителя для конкретной модификации двигателя. Всегда сверяйтесь с сервисной книжкой вашего автомобиля перед покупкой антифриза.</p>
+</blockquote>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+<summary>Можно ли ездить, если вентилятор не работает, но я буду следить за температурой?</summary>
+<p>Категорически не рекомендуется. Реакция человека слишком медленная по сравнению со скоростью нагрева двигателя в пробке или на подъеме. За те секунды, пока вы заметите рост стрелки и остановитесь, могут произойти необратимые деформации металла головки блока. Лучше устранить неисправность перед выездом.</p>
+</details>
+
+<details>
+<summary>Почему вентилятор работает постоянно, не выключаясь?</summary>
+<p>Это обратная проблема. Чаще всего виноват замкнутый датчик температуры (контакты слиплись) или залипшее реле. Также возможно короткое замыкание в проводке управления, из-за чего на реле постоянно подается сигнал включения. Реже — неисправность ЭБУ.</p>
+</details>
+
+<details>
+<summary>Какой предохранитель отвечает за вентилятор на Ниве Шевроле?</summary>
+<p>Расположение предохранителей зависит от года выпуска. Обычно это предохранитель F1 или F2 в основном блоке под капотом (номинал 30А или 50А). Точную информацию смотрите на крышке блока предохранителей вашего автомобиля, так как схемы могут отличаться.</p>
+</details>
+
+<details>
+<summary>Как временно завести вентилятор в пути при поломке?</summary>
+<p>Можно вывести кнопку управления вентилятором в салон. Для этого нужно разорвать цепь управления реле и вывести два провода на кнопку в кабине. Это позволит вам включать вентилятор принудительно вручную при приближении стрелки к 90 градусам. Это мера временная, но спасительная в дальней дороге.</p>
+</details>
+
+<details>
+<summary>Влияет ли работа кондиционера на включение вентилятора?</summary>
+<p>Да, на большинстве современных Нив при включении кондиционера (A/C) вентилятор охлаждения должен запускаться принудительно, независимо от температуры двигателя, для обеспечения работы конденсора. Если при включении кондиционера вентилятор не стартует, проверьте цепь управления климатической установкой и соответствующее реле.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-электрической-цепи">Первичная диагностика электрической цепи</a></li><li><a href="#проверка-датчика-включения-вентилятора">Проверка датчика включения вентилятора</a></li><li><a href="#диагностика-реле-и-блока-управления">Диагностика реле и блока управления</a></li><li><a href="#неисправности-самого-электродвигателя">Неисправности самого электродвигателя</a></li><li><a href="#особенности-системы-охлаждения-на-инжекторной-ниве">Особенности системы охлаждения на инжекторной Ниве</a></li><li><a href="#альтернативные-причины-перегрева-без-отказа-вентилятора">Альтернативные причины перегрева без отказа вентилятора</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/pr/proverka-raboty-ventilyatora-okhlazhdeniya-radiatora.html" class="related-card">Проверка вентилятора охлаждения радиатора: диагностика и ремонт</a></li><li><a href="/articles/r/ra/radiator-okhlazhdeniya-solyaris-2.html" class="related-card">Радиатор охлаждения Hyundai Solaris 2: выбор, замена, ремонт</a></li><li><a href="/articles/p/pa/parit-radiator-okhlazhdeniya-chto-delat.html" class="related-card">Парит радиатор охлаждения: диагностика, причины и методы устранения</a></li><li><a href="/articles/t/te/termostat-na-shevi-nivu.html" class="related-card">Термостат на Шевроле Ниву: выбор, проверка и замена</a></li><li><a href="/articles/n/ne/ne-vyklyuchaetsya-ventilyator-okhlazhdeniya-na-grante-8-klapannoj-prichina.html" class="related-card">Почему не выключается вентилятор на Лада Гранта 8 клапанов</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/pr/proverka-raboty-ventilyatora-okhlazhdeniya-radiatora.html" class="related-bottom-card"><span class="related-bottom-title">Проверка вентилятора охлаждения радиатора: диагностика и ремонт</span><span class="related-bottom-desc">Как проверить вентилятор охлаждения радиатора своими руками. Пошаговая диагностика датчика, реле, пр</span></a><a href="/articles/r/ra/radiator-okhlazhdeniya-solyaris-2.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор охлаждения Hyundai Solaris 2: выбор, замена, ремонт</span><span class="related-bottom-desc">Как выбрать и поменять радиатор на Солярис 2. Симптомы перегрева, промывка системы, замена термостат</span></a><a href="/articles/p/pa/parit-radiator-okhlazhdeniya-chto-delat.html" class="related-bottom-card"><span class="related-bottom-title">Парит радиатор охлаждения: диагностика, причины и методы устранения</span><span class="related-bottom-desc">Почему парит радиатор охлаждения двигателя? Полный разбор причин поломки, инструкция по диагностике </span></a><a href="/articles/t/te/termostat-na-shevi-nivu.html" class="related-bottom-card"><span class="related-bottom-title">Термостат на Шевроле Ниву: выбор, проверка и замена</span><span class="related-bottom-desc">Как выбрать термостат на Шеви Ниву (8-клапанный двигатель). Проверка, замена, устранение перегрева и</span></a><a href="/articles/n/ne/ne-vyklyuchaetsya-ventilyator-okhlazhdeniya-na-grante-8-klapannoj-prichina.html" class="related-bottom-card"><span class="related-bottom-title">Почему не выключается вентилятор на Лада Гранта 8 клапанов</span><span class="related-bottom-desc">Полный разбор причин, почему вентилятор охлаждения на Гранте 8 клапанной работает постоянно. Диагнос</span></a><a href="/articles/p/pr/pri-kakoj-temperature-otkryvaetsya-bolshoj-krug-termostata.html" class="related-bottom-card"><span class="related-bottom-title">При какой температуре открывается термостат: нормы и проверка</span><span class="related-bottom-desc">Узнайте точную температуру открытия большого круга термостата. Разбор принципа работы, признаки неис</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

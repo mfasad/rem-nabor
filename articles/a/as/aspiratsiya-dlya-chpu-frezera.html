@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Аспирация для ЧПУ фрезера: выбор и монтаж системы своими руками — Рем Набор</title>
+    <meta name="description" content="Полное руководство по аспирации ЧПУ. Выбор циклона, расчет мощности, схемы подключения и монтаж. Избавьтесь от пыли и стружки эффективно.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/a/as/aspiratsiya-dlya-chpu-frezera.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Аспирация для ЧПУ фрезера: выбор и монтаж системы своими руками">
+    <meta property="og:description" content="Полное руководство по аспирации ЧПУ. Выбор циклона, расчет мощности, схемы подключения и монтаж. Избавьтесь от пыли и стружки эффективно.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Аспирация для ЧПУ фрезера: выбор и монтаж системы своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Аспирация для ЧПУ фрезера: выбор и монтаж системы своими руками</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принципы-работы-и-типы-систем-пылеудаления">Принципы работы и типы систем пылеудаления</a></li><li><a href="#расчет-производительности-и-выбор-вентилятора">Расчет производительности и выбор вентилятора</a></li><li><a href="#компоновка-воздуховодов-и-минимизация-потерь">Компоновка воздуховодов и минимизация потерь</a></li><li><a href="#фильтрация-и-утилизация-отходов">Фильтрация и утилизация отходов</a></li><li><a href="#шумоподавление-и-вибрация-оборудования">Шумоподавление и вибрация оборудования</a></li><li><a href="#техническое-обслуживание-и-диагностика-неисправностей">Техническое обслуживание и диагностика неисправностей</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Обработка материалов на станках с числовым программным управлением неизбежно сопровождается образованием огромного количества отходов. Будь то мелкодисперсная древесная пыль, длинная алюминиевая стружка или абразивные частицы композитов — все это требует немедленного удаления из рабочей зоны. Качественная <strong>аспирация для ЧПУ фрезера</strong> — это не просто вопрос чистоты в цеху, а критически важный элемент безопасности оператора и долговечности самого оборудования.</p>
+
+<p>Эффективная система отсоса предотвращает заклинивание направляющих, перегрев шпинделя и загрязнение электроники. Более того, концентрация пыли в воздухе выше предельно допустимых норм представляет прямую угрозу здоровью человека, вызывая респираторные заболевания. В этой статье мы детально разберем принципы построения, расчет производительности и нюансы монтажа систем пылеудаления, которые вы сможете реализовать самостоятельно или оптимизировать решения.</p>
+
+<h2 id="принципы-работы-и-типы-систем-пылеудаления">Принципы работы и типы систем пылеудаления</h2>
+
+<p>В основе любой системы лежит создание потока воздуха, который увлекает за собой твердые частицы от источника образования (фрезы) к месту сбора (фильтру или бункеру). Для станков ЧПУ чаще всего используются два основных типа систем: <em>прямоточные</em> и <em>циклонные</em>. Прямоточные системы, где воздух проходит напрямую через фильтр-мешок, подходят только для легкой древесной пыли, но быстро забиваются при обработке композитов или металлов.</p>
+
+<p>Циклонные сепараторы являются золотым стандартом для современного hobby и полупрофессионального оборудования. В них используется центробежная сила для отделения основной массы стружки до того, как воздух попадет в фильтр тонкой очистки. Это значительно продлевает жизнь фильтрующим элементам и поддерживает стабильный поток воздуха. <strong>Аэродинамическое сопротивление</strong> в таких системах ниже, что позволяет использовать менее мощные, но более эффективные вентиляторы.</p>
+
+<p>При выборе конфигурации важно учитывать тип обрабатываемых материалов. Для дерева достаточно скорости потока в магистрали около 20 м/с, тогда как для тяжелой металлической стружки этот параметр должен быть увеличен до 25-30 м/с, чтобы частицы не оседали в трубах. Неправильный подбор типа системы приведет к тому, что даже мощный двигатель не сможет «протянуть» загрязненный воздух через забитые каналы.</p>
+
+<div class="poll-widget" id="poll-12162500"><div class="poll-widget-question">📊 Какой материал вы обрабатываете чаще всего?</div><div class="poll-widget-option" data-poll="12162500" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Древесина и МДФ</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="12162500" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Алюминий и цветные металлы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="12162500" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Пластики и композиты</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="12162500" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Камень и акрил</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="расчет-производительности-и-выбор-вентилятора">Расчет производительности и выбор вентилятора</h2>
+
+<p>Ключевым параметром при проектировании является объем воздуха, который система должна перемещать за единицу времени. Этот показатель измеряется в кубических метрах в час (м³/ч) и зависит от диаметра всасывающего патрубка на шпинделе и требуемой скорости потока. Ошибки в расчетах на этом этапе приводят к тому, что стружка остается в столе, а фильтр моментально выходит из строя.</p>
+
+<p>Для расчета минимально необходимой производительности используйте формулу, учитывающую площадь сечения воздуховода и целевую скорость. Например, для патрубка диаметром 100 мм (площадь сечения ≈ 0.0078 м²) и скорости 20 м/с требуемая производительность составит около 560 м³/ч. Однако это теоретический минимум; на практике необходимо добавлять запас в 20-30% на потери в фильтрах и поворотах труб.</p>
+
+<p>Выбирая вентилятор, обращайте внимание не только на максимальный объем воздуха, но и на статическое давление. Канальные вентиляторы, используемые в вентиляции помещений, часто имеют высокую производительность, но низкое давление, из-за чего они не могут преодолеть сопротивление длинной трассы и фильтра. Специализированные <strong>радиальные вентиляторы</strong> (типа «улитка») создают высокое разрежение, необходимое для эффективной работы с ЧПУ.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При выборе вентилятора всегда смотрите на график аэродинамических характеристик (кривая P-Q). Точка пересечения кривой сопротивления вашей системы и кривой вентилятора покажет реальную производительность, которая всегда ниже паспортной.</p></div>
+
+<h2 id="компоновка-воздуховодов-и-минимизация-потерь">Компоновка воздуховодов и минимизация потерь</h2>
+
+<p>Трасса от станка до циклона должна быть максимально короткой и прямой. Каждый поворот, сужение или расширение трубы увеличивает аэродинамическое сопротивление системы. Использование гофрированных шлангов на длинных участках категорически не рекомендуется, так как их ребристая внутренняя поверхность создает огромную турбулентность и снижает скорость потока на 30-40% по сравнению с гладкими трубами.</p>
+
+<p>Оптимальным решением является использование спирально-навивных оцинкованных труб. Они обладают гладкой внутренней поверхностью и высокой жесткостью, что предотвращает схлопывание под вакуумом. Если необходимо изменить направление потока, используйте отводы с большим радиусом закругления (минимум 1.5 диаметра трубы) вместо острых углов в 90 градусов. Это позволит сохранить ламинарность потока и энергию частиц.</p>
+
+<p>При разводке сети на несколько станков обязательна установка шиберных заслонок. Они позволяют перекрывать неиспользуемые ветки, концентрируя всю мощность всасывания на работающем станке. Без заслонок производительность системы распределяется между всеми точками забора, что делает аспирацию неэффективной ни в одной из них. <strong>Герметичность соединений</strong> также играет решающую роль: даже небольшие щели могут нарушить балансировку системы.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка трассы воздуховода</h4><label class="check-item"><input type="checkbox"><span>Отсутствие гофры на длинных участках</span></label><label class="check-item"><input type="checkbox"><span>Минимальное количество поворотов</span></label><label class="check-item"><input type="checkbox"><span>Установка заслонок на отводах</span></label><label class="check-item"><input type="checkbox"><span>Герметизация стыков алюминиевым скотчем</span></label><label class="check-item"><input type="checkbox"><span>Крепление труб хомутами каждые 1.5 метра</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="фильтрация-и-утилизация-отходов">Фильтрация и утилизация отходов</h2>
+
+<p>После циклона воздух все еще содержит мелкую фракцию пыли, которую необходимо уловить перед выбросом в помещение или на улицу. Для этих целей используются картриджные фильтры или фильтры-мешки из нетканого материала. Картриджные фильтры с площадью поверхности 10-20 м² обеспечивают высочайшую степень очистки и занимают меньше места, но требуют качественной системы пневмоочистки (импульсной продувки).</p>
+
+<p>Система импульсной продувки критически важна для поддержания производительности. Она представляет собой компрессор и электромагнитные клапаны, которые кратковременно подают сжатый воздух внутрь фильтрующих элементов, выбивая накопившуюся пыль в бункер. Без такой системы фильтр быстро забивается, и мощность всасывания падает до нуля. Настройка таймера продувки зависит от запыленности: при фрезеровке МДФ интервал должен быть короче, чем при работе с деревом.</p>
+
+<p>Для сбора твердых отходов используются герметичные бункеры объемом от 60 до 200 литров. Важно, чтобы бункер был установлен на надежную платформу, способную выдержать вес наполненного контейнера со стружкой. В нижней части бункера часто устанавливают затвор типа «звезда» или простой шаровой клапан для удобной выгрузки без разгерметизации системы во время работы.</p>
+
+<blockquote>⚠️ Внимание: При обработке алюминиевых сплавов стружка может быть взрывоопасной в сочетании с мелкой пылью в замкнутом объеме. Убедитесь, что ваша система заземлена для отвода статического электричества, и рассмотрите установку взрыворазрядных панелей на фильтре.</blockquote>
+
+<h2 id="шумоподавление-и-вибрация-оборудования">Шумоподавление и вибрация оборудования</h2>
+
+<p>Промышленные вентиляторы и циклоны создают значительный уровень шума, который может превышать комфортные значения в 70-80 дБ. Длительное нахождение в таком шуме вредно для слуха оператора. Для снижения акустического дискомфорта вентилятор следует устанавливать на виброопоры или резиновые прокладки, которые гасят передачу вибрации на корпус станка или пол.</p>
+
+<p>Дополнительно рекомендуется изготовление звукоизолирующего короба для двигателя вентилятора. Короб должен быть выполнен из плотного материала (ДСП, фанера) с внутренней обшивкой из акустического поролона или минеральной ваты. При этом необходимо предусмотреть отверстия для притока воздуха для охлаждения двигателя, выполненные в виде лабиринта, чтобы звук не выходил наружу напрямую.</p>
+
+<p>Также источником шума является сам поток воздуха в трубах. Свист на высоких скоростях можно устранить, проверив стыки на наличие заусенцев и убедившись, что внутри труб нет посторонних предметов. Правильно подобранный диаметр магистрали позволяет снизить скорость потока до приемлемого уровня без потери эффективности транспортировки стружки.</p>
+
+<details class="faq-item"><summary>Как сделать тихий короб своими руками</summary><div class="faq-answer"><p>Соберите каркас из бруска 50х50 мм, обшейте его листами ОСБ толщиной 12 мм. Внутрь уложите слой акустической ваты толщиной 50 мм, закройте ее перфорированным оргалитом или тканью. Обязательно оставьте съемную крышку для доступа к двигателю для обслуживания.</p></div></details>
+
+<h2 id="техническое-обслуживание-и-диагностика-неисправностей">Техническое обслуживание и диагностика неисправностей</h2>
+
+<p>Регулярное обслуживание системы аспирации гарантирует ее стабильную работу годами. Основной задачей является своевременная очистка фильтров и проверка герметичности контура. Если вы заметили, что стружка перестала удаляться из зоны реза, первым делом проверьте наполненность бункера и состояние фильтрующих элементов.</p>
+
+<p>В таблице ниже приведены основные симптомы неисправностей и методы их устранения:</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Возможная причина</th>
+<th>Метод устранения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Слабый поток воздуха</td>
+<td>Забит фильтр или бункер полон</td>
+<td>Очистить фильтр продувкой, опорожнить бункер</td>
+</tr>
+<tr>
+<td>Свист в трубах</td>
+<td>Высокая скорость или щели в стыках</td>
+<td>Проверить герметичность, установить дроссель</td>
+</tr>
+<tr>
+<td>Вибрация вентилятора</td>
+<td>Дисбаланс крыльчатки</td>
+<td>Очистить крыльчатку от налипшей пыли, отбалансировать</td>
+</tr>
+<tr>
+<td>Стружка оседает в трубах</td>
+<td>Недостаточная скорость потока</td>
+<td>Увеличить мощность вентилятора или уменьшить диаметр трубы</td>
+</tr>
+</tbody>
+</table>
+
+<p>Раз в полгода рекомендуется проводить полную ревизию системы: проверять натяжение ремней привода (если он есть), смазывать подшипники двигателя и осматривать целостность шлангов. Особое внимание уделите заземлению: со временем контакты могут окислиться, что приведет к накоплению статики и риску возгорания пыли.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Регулярная проверка перепада давления на фильтре (с помощью манометра) — самый надежный способ понять, когда нужна очистка, не дожидаясь падения мощности всасывания.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли использовать бытовой пылесос для аспирации ЧПУ?</summary>
+<p>Бытовые пылесосы категорически не подходят для постоянной работы с ЧПУ. Их двигатели не рассчитаны на непрерывную работу (режим S1), быстро перегреваются и выходят из строя. Кроме того, их фильтры мгновенно забиваются мелкой пылью, а объем контейнера слишком мал для серьезной обработки.</p>
+</details>
+
+<details>
+<summary>Какой диаметр трубы лучше выбрать: 100 мм или 120 мм?</summary>
+<p>Выбор зависит от производительности вашего вентилятора. Для моторов до 1.5 кВт оптимальным является диаметр 100 мм, так как он обеспечивает высокую скорость потока. Для систем мощностью от 2.2 кВт и выше лучше использовать 120 мм или 150 мм, чтобы снизить сопротивление и шум, сохраняя достаточный объем прокачиваемого воздуха.</p>
+</details>
+
+<details>
+<summary>Нужно ли выводить воздух на улицу?</summary>
+<p>Желательно, но не всегда обязательно. Если установлена качественная система фильтрации (класс F9 или выше), воздух можно возвращать в помещение, что особенно актуально зимой для сохранения тепла. Однако при работе с токсичными материалами или очень мелкой пылью вывод на улицу является обязательным требованием безопасности.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять фильтры?</summary>
+<p>Срок службы фильтров зависит от интенсивности работы. Картриджные фильтры при наличии импульсной продувки служат годами, требуя лишь периодической замены при механическом повреждении. Фильтры-мешки из ткани могут потребовать замены раз в 1-2 года, если они потеряли эластичность или порвались.</p>
+</details>
+
+<blockquote>⚠️ Внимание: Характеристики оборудования, нормы ПДК (предельно допустимой концентрации) пыли и требования пожарной безопасности могут различаться в зависимости от региона и конкретных условий эксплуатации. Всегда сверяйтесь с технической документацией производителя вашего станка и местными нормативными актами перед монтажом.</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принципы-работы-и-типы-систем-пылеудаления">Принципы работы и типы систем пылеудаления</a></li><li><a href="#расчет-производительности-и-выбор-вентилятора">Расчет производительности и выбор вентилятора</a></li><li><a href="#компоновка-воздуховодов-и-минимизация-потерь">Компоновка воздуховодов и минимизация потерь</a></li><li><a href="#фильтрация-и-утилизация-отходов">Фильтрация и утилизация отходов</a></li><li><a href="#шумоподавление-и-вибрация-оборудования">Шумоподавление и вибрация оборудования</a></li><li><a href="#техническое-обслуживание-и-диагностика-неисправностей">Техническое обслуживание и диагностика неисправностей</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/pa/pasito-mini-migaet-krasnym-3-raza.html" class="related-card">Пасито мини мигает красным 3 раза: расшифровка кода и ремонт</a></li><li><a href="/articles/k/kl/klimaticheskaya-ustanovka-dlya-pogreba.html" class="related-card">Климатическая установка для погреба: выбор и монтаж своими руками</a></li><li><a href="/articles/c/ch/chto-delat-esli-zalil-zhizhu-v-isparitel-xros.html" class="related-card">Залил жижу в испаритель Xros: способы очистить от протечки</a></li><li><a href="/articles/k/ka/kakoj-rimskij-gorod-byl-razrushen-v-rezultate-izverzheniya-vulkana-vezuvij.html" class="related-card">Какой римский город разрушил Везувий: История Помпей</a></li><li><a href="/articles/m/mo/mozhno-li-promyvat-isparitel-vodoj-dlya-vejpa.html" class="related-card">Можно ли мыть испаритель вейпа водой: экспертный разбор</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/pa/pasito-mini-migaet-krasnym-3-raza.html" class="related-bottom-card"><span class="related-bottom-title">Пасито мини мигает красным 3 раза: расшифровка кода и ремонт</span><span class="related-bottom-desc">Почему Пасито мини мигает красным 3 раза? Полный разбор ошибки, инструкции по сбросу, чистке и ремон</span></a><a href="/articles/k/kl/klimaticheskaya-ustanovka-dlya-pogreba.html" class="related-bottom-card"><span class="related-bottom-title">Климатическая установка для погреба: выбор и монтаж своими руками</span><span class="related-bottom-desc">Как сделать правильный выбор климатической установки для погреба. Монтаж сплит-системы, настройка вл</span></a><a href="/articles/c/ch/chto-delat-esli-zalil-zhizhu-v-isparitel-xros.html" class="related-bottom-card"><span class="related-bottom-title">Залил жижу в испаритель Xros: способы очистить от протечки</span><span class="related-bottom-desc">Залил жижу в испаритель Xros? Узнайте, как очистить устройство от протечки, просушить контакты и изб</span></a><a href="/articles/k/ka/kakoj-rimskij-gorod-byl-razrushen-v-rezultate-izverzheniya-vulkana-vezuvij.html" class="related-bottom-card"><span class="related-bottom-title">Какой римский город разрушил Везувий: История Помпей</span><span class="related-bottom-desc">Узнайте, какой римский город был уничтожен извержением Везувия в 79 году н.э. Подробный разбор траге</span></a><a href="/articles/m/mo/mozhno-li-promyvat-isparitel-vodoj-dlya-vejpa.html" class="related-bottom-card"><span class="related-bottom-title">Можно ли мыть испаритель вейпа водой: экспертный разбор</span><span class="related-bottom-desc">Стоит ли промывать испаритель вейпа водой? Узнайте правду о рисках, последствиях и безопасных способ</span></a><a href="/articles/p/po/pochemu-plyuetsya-kartridzh-zhizhej-vaporesso.html" class="related-bottom-card"><span class="related-bottom-title">Почему плюется картридж Vaporesso: причины и решения</span><span class="related-bottom-desc">Разбираемся, почему плюется жижа в картриджах Vaporesso. Основные причины: конденсат, слабая тяга, н</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

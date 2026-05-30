@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему вентилятор охлаждения работает на холодном двигателе Гранты — Рем Набор</title>
+    <meta name="description" content="Разбираем причины срабатывания вентилятора охлаждения на холодном двигателе Lada Granta. Диагностика датчиков, ЭБУ и возможные неисправности.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/s/sr/srabatyvaet-ventilyator-okhlazhdeniya-na-kholodnom-dvigatele-granta.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему вентилятор охлаждения работает на холодном двигателе Гранты">
+    <meta property="og:description" content="Разбираем причины срабатывания вентилятора охлаждения на холодном двигателе Lada Granta. Диагностика датчиков, ЭБУ и возможные неисправности.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему вентилятор охлаждения работает на холодном двигателе Гранты</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Вентилятор охлаждения Гранты включается на холодном двигателе: причины и решения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-как-работает-система-охлаждения-гранты-в-норме">1. Как работает система охлаждения Гранты в норме</a></li><li><a href="#2-основные-причины-включения-вентилятора-на-холодном-двигателе">2. Основные причины включения вентилятора на холодном двигателе</a></li><li><a href="#3-диагностика-проблемы-пошаговая-инструкция">3. Диагностика проблемы: пошаговая инструкция</a></li><li><a href="#4-как-устранить-проблему-своими-руками">4. Как устранить проблему своими руками</a></li><li><a href="#5-когда-стоит-обратиться-в-сервис">5. Когда стоит обратиться в сервис</a></li><li><a href="#6-профилактика-проблем-с-системой-охлаждения">6. Профилактика проблем с системой охлаждения</a></li><li><a href="#faq-частые-вопросы-о-вентиляторе-охлаждения-гранты">FAQ: Частые вопросы о вентиляторе охлаждения Гранты</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Если вы заметили, что вентилятор охлаждения вашей <em>Lada Granta</em> начинает работать сразу после запуска двигателя или даже при полностью холодном моторе — это явный сигнал о неисправности. В штатном режиме вентилятор должен включаться только при достижении температуры охлаждающей жидкости <strong>95–105°C</strong> (в зависимости от прошивки ЭБУ). Постоянная работа на холодном двигателе не только создаёт излишний шум, но и может указывать на серьёзные проблемы в системе охлаждения или электрике.</p>
+
+<p>В этой статье мы разберём все возможные причины такого поведения — от банального замыкания проводки до неисправности <strong>датчика температуры охлаждающей жидкости (ДТОЖ)</strong> или сбоев в работе <strong>электронного блока управления (ЭБУ)</strong>. Также вы узнаете, как самостоятельно диагностировать проблему и какие меры предпринять для её устранения. Отдельное внимание уделим особенностям <em>Гранты</em> с двигателями <code>1.6 8V</code> и <code>1.6 16V</code>, так как их системы управления имеют различия.</p>
+
+<h2 id="1-как-работает-система-охлаждения-гранты-в-норме">1. Как работает система охлаждения Гранты в норме</h2>
+
+<p>Прежде чем искать неисправности, важно понять, как система охлаждения должна функционировать в исправном состоянии. На <em>Lada Granta</em> (как и на большинстве современных авто) вентилятор охлаждения радиатора управляется <strong>ЭБУ</strong> на основе данных от:</p>
+
+<ul>
+  <li>🔹 <strong>Датчика температуры охлаждающей жидкости (ДТОЖ)</strong> — основной источник информации для блока управления.</li>
+  <li>🔹 <strong>Датчика температуры воздуха</strong> (в некоторых модификациях).</li>
+  <li>🔹 <strong>Датчика скорости автомобиля</strong> — влияет на режим работы вентилятора при движении.</li>
+  <li>🔹 <strong>Кондиционера</strong> — если он включён, вентилятор может запускаться принудительно.</li>
+</ul>
+
+<p>В нормальном режиме алгоритм работы следующий:</p>
+
+<ol>
+  <li>При температуре ОЖ ниже <strong>92°C</strong> вентилятор выключен.</li>
+  <li>При достижении <strong>95–98°C</strong> ЭБУ подаёт сигнал на реле, и вентилятор включается на низкой скорости.</li>
+  <li>Если температура превышает <strong>102–105°C</strong>, вентилятор переходит на высокую скорость.</li>
+  <li>После охлаждения до <strong>~90°C</strong> вентилятор отключается.</li>
+</ol>
+
+<p>На холодном двигателе (температура ОЖ ниже <strong>50°C</strong>) вентилятор включаться не должен. Если это происходит — значит, система получает ложные сигналы или работает в аварийном режиме.</p>
+
+<div class="poll-widget" id="poll-b858250f"><div class="poll-widget-question">📊 Как часто у вас возникают проблемы с системой охлаждения?</div><div class="poll-widget-option" data-poll="b858250f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Часто, раз в месяц и чаще</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b858250f" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Иногда, раз в полгода</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b858250f" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Рядом, но не со мной</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b858250f" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было проблем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="2-основные-причины-включения-вентилятора-на-холодном-двигателе">2. Основные причины включения вентилятора на холодном двигателе</h2>
+
+<p>Причин, по которым вентилятор охлаждения <em>Гранты</em> может срабатывать на холодном моторе, несколько. Их можно условно разделить на <strong>электрические</strong> (проблемы с проводкой, реле, ЭБУ) и <strong>механические</strong> (неисправности датчиков, термостата). Рассмотрим каждую подробно.</p>
+
+<h3>2.1. Неисправность датчика температуры охлаждающей жидкости (ДТОЖ)</h3>
+
+<p><strong>ДТОЖ</strong> — самый частый виновник ложного срабатывания вентилятора. Датчик расположен на термостате или рядом с ним и передаёт данные о температуре ОЖ в ЭБУ. Если ДТОЖ выходит из строя, он может:</p>
+
+<ul>
+  <li>🔥 Показывать завышенную температуру (например, <strong>120°C</strong> вместо реальных <strong>20°C</strong>).</li>
+  <li>🔥 Давать хаотичные сигналы (скачки показаний).</li>
+  <li>🔥 Коротить на массу или плюс, что ЭБУ воспринимает как критическую температуру.</li>
+</ul>
+
+<p>Как проверить ДТОЖ?</p>
+
+<ol>
+  <li>Снимите разъём с датчика и замерьте сопротивление мультиметром при разных температурах:
+    <table>
+      <thead>
+        <tr><th>Температура ОЖ, °C</th><th>Сопротивление ДТОЖ, кОм</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td>7.0–9.0</td></tr>
+        <tr><td>20</td><td>2.7–3.5</td></tr>
+        <tr><td>50</td><td>0.9–1.2</td></tr>
+        <tr><td>90</td><td>0.2–0.3</td></tr>
+        <tr><td>100</td><td>0.15–0.2</td></tr>
+      </tbody>
+    </table>
+  </li>
+  <li>Если сопротивление не соответствует таблице — датчик неисправен.</li>
+  <li>Проверьте напряжение на разъёме ДТОЖ при включённом зажигании: должно быть <strong>5 В</strong>.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>На Грантах с двигателем 1.6 16V (21126/21127) ДТОЖ имеет другой артикул, чем на 8-клапанных моторах. Уточните совместимость перед покупкой!</p></div>
+
+<h3>2.2. Замыкание проводки или неисправность реле вентилятора</h3>
+
+<p>Если проводка, идущая от ЭБУ к реле вентилятора, повреждена (например, перетёрта или замкнута на массу), это может приводить к постоянной подаче напряжения на вентилятор. Также проблема может крыться в самом <strong>реле</strong> (обычно оно расположено в монтажном блоке под капотом).</p>
+
+<p>Как диагностировать:</p>
+
+<ul>
+  <li>🔧 Проверьте предохранитель <code>F7 (20A)</code> в монтажном блоке — если он сгорел, ищите короткое замыкание.</li>
+  <li>🔧 Поменяйте реле вентилятора с заведомо исправным (например, с реле ближнего света).</li>
+  <li>🔧 Прозвоните провода от ЭБУ до реле на предмет обрыва или замыкания.</li>
+</ul>
+
+<details class="faq-item"><summary>Где находится реле вентилятора на Гранте?</summary><div class="faq-answer"><p>На Гранте с 8-клапанным двигателем реле вентилятора (К1) расположено в дополнительном блоке реле рядом с монтажным блоком предохранителей (под капотом, слева по ходу движения). На 16-клапанных моторах реле может быть интегрировано в ЭБУ или находиться в салонном блоке реле.</p></div></details>
+
+<h3>2.3. Сбои в работе ЭБУ или прошивки</h3>
+
+<p>Иногда причиной становится <strong>некорректная прошивка ЭБУ</strong> или сбой в его работе. Это особенно актуально для <em>Грант</em> с двигателями <code>1.6 16V</code>, где ЭБУ более чувствителен к ошибкам. Признаки проблемы:</p>
+
+<ul>
+  <li>🚨 Вентилятор включается сразу после запуска двигателя и не выключается.</li>
+  <li>🚨 На приборной панели горит <strong>Check Engine</strong> (код ошибки можно считать сканером).</li>
+  <li>🚨 Двигатель работает неустойчиво (плавают обороты, рывки).</li>
+</ul>
+
+<p>Что делать:</p>
+
+<ol>
+  <li>Подключите диагностический сканер (например, <em>ELM327</em>) и проверьте наличие ошибок по ДТОЖ или цепи вентилятора.</li>
+  <li>Если есть ошибки <code>P0115</code>–<code>P0119</code> — проблема в ДТОЖ или его цепи.</li>
+  <li>Сбросьте ошибки и посмотрите, появятся ли они снова.</li>
+  <li>В крайнем случае может потребоваться перепрошивка ЭБУ (лучше обратиться к специалистам).</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если после сброса ошибок ЭБУ вентилятор продолжает работать неправильно, скорее всего, проблема в "железе" (датчик, проводка), а не в прошивке.</p></div>
+
+<h3>2.4. Неисправность термостата</h3>
+
+<p>Хотя термостат напрямую не управляет вентилятором, его заклинивание в закрытом положении может приводить к локальному перегреву ОЖ около ДТОЖ. В результате датчик фиксирует высокую температуру, и ЭБУ включает вентилятор даже на холодном двигателе.</p>
+
+<p>Признаки неисправного термостата:</p>
+
+<ul>
+  <li>🌡️ Двигатель долго прогревается (стрелка температуры ползёт медленно).</li>
+  <li>🌡️ Нижний патрубок радиатора холодный, а верхний горячий.</li>
+  <li>🌡️ Печка дует холодным воздухом даже после прогрева.</li>
+</ul>
+
+<p>Как проверить:</p>
+
+<ol>
+  <li>Запустите холодный двигатель и потрогайте нижний патрубок радиатора. Он должен оставаться холодным до тех пор, пока двигатель не прогреется до <strong>80–85°C</strong>.</li>
+  <li>Если патрубок начинает нагреваться почти сразу — термостат заклинил в открытом положении.</li>
+  <li>Если патрубок остаётся холодным даже после прогрева двигателя — термостат заклинил в закрытом положении.</li>
+</ol>
+
+<h3>2.5. Влияние кондиционера</h3>
+
+<p>На <em>Грантах</em> с кондиционером вентилятор охлаждения может включаться принудительно при активации климат-контроля, даже если двигатель холодный. Это нормально, так как вентилятор охлаждает <strong>конденсатор кондиционера</strong>. Однако если вентилятор работает постоянно, возможны:</p>
+
+<ul>
+  <li>☃️ Замыкание кнопки включения кондиционера.</li>
+  <li>☃️ Неисправность датчика давления фреона.</li>
+  <li>☃️ Сбой в блоке управления климатом.</li>
+</ul>
+
+<p>Чтобы исключить влияние кондиционера, попробуйте отключить его и понаблюдать за поведением вентилятора.</p>
+
+<h2 id="3-диагностика-проблемы-пошаговая-инструкция">3. Диагностика проблемы: пошаговая инструкция</h2>
+
+<p>Чтобы точно определить причину срабатывания вентилятора на холодном двигателе, следуйте этому алгоритму:</p>
+
+<div class="checklist-block"><h4>☑️ Диагностика вентилятора охлаждения Гранты</h4><label class="check-item"><input type="checkbox"><span>Проверьте температуру ОЖ на приборной панели</span></label><label class="check-item"><input type="checkbox"><span>Отключите разъём ДТОЖ и проверьте сопротивление</span></label><label class="check-item"><input type="checkbox"><span>Поменяйте реле вентилятора на заведомо исправное</span></label><label class="check-item"><input type="checkbox"><span>Проверьте предохранитель F7 (20A)</span></label><label class="check-item"><input type="checkbox"><span>Подключите диагностический сканер для чтения ошибок</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p><strong>Шаг 1. Проверка показаний температуры</strong></p>
+
+<p>Заведите двигатель и посмотрите на указатель температуры на приборной панели. Если стрелка сразу показывает <strong>90°C и выше</strong>, а двигатель холодный — проблема в ДТОЖ или его цепи.</p>
+
+<p><strong>Шаг 2. Проверка ДТОЖ</strong></p>
+
+<p>Отсоедините разъём от датчика и замерьте сопротивление (см. таблицу выше). Если сопротивление не соответствует норме — замените датчик. Также проверьте напряжение на разъёме при включённом зажигании (должно быть <strong>5 В</strong>).</p>
+
+<p><strong>Шаг 3. Проверка реле и предохранителя</strong></p>
+
+<p>Найдите реле вентилятора (см. спойлер выше) и замените его на заведомо исправное. Проверьте предохранитель <code>F7</code> — если он сгорел, ищите короткое замыкание в цепи.</p>
+
+<p><strong>Шаг 4. Диагностика ЭБУ</strong></p>
+
+<p>Подключите сканер и считайте ошибки. Особое внимание обратите на коды:</p>
+
+<ul>
+  <li><code>P0115</code> — неисправность цепи ДТОЖ.</li>
+  <li><code>P0116</code> — выход сигнала ДТОЖ за пределы допустимого диапазона.</li>
+  <li><code>P0480</code> — неисправность цепи управления вентилятором.</li>
+</ul>
+
+<p><strong>Шаг 5. Проверка термостата</strong></p>
+
+<p>Убедитесь, что термостат открывается при прогреве двигателя (см. раздел 2.4).</p>
+
+<h2 id="4-как-устранить-проблему-своими-руками">4. Как устранить проблему своими руками</h2>
+
+<p>В зависимости от найденной неисправности, способы ремонта будут разными. Рассмотрим наиболее распространённые случаи.</p>
+
+<h3>4.1. Замена ДТОЖ</h3>
+
+<p>Если датчик температуры неисправен, его необходимо заменить. Для этого:</p>
+
+<ol>
+  <li>Слейте часть охлаждающей жидкости (до уровня ниже датчика).</li>
+  <li>Отсоедините разъём от ДТОЖ.</li>
+  <li>Ключом на <strong>19</strong> выкрутите датчик.</li>
+  <li>Установите новый датчик (артикул для 8-клапанных моторов — <code>2108-3851010</code>, для 16-клапанных — <code>2112-3851010</code>).</li>
+  <li>Долейте ОЖ и проверьте отсутствие подтёков.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед заменой ДТОЖ очистите посадочное место от грязи и старого герметика. Наносить новый герметик не обязательно — достаточно плотно закрутить датчик.</p></div>
+
+<h3>4.2. Ремонт проводки или замена реле</h3>
+
+<p>Если проблема в проводке:</p>
+
+<ul>
+  <li>🔧 Найдите место замыкания (обычно это перетёртые провода около радиатора или ЭБУ).</li>
+  <li>🔧 Заизолируйте повреждённый участок или замените жгут.</li>
+  <li>🔧 Если неисправно реле — замените его (артикул — <code>2110-3747-10</code>).</li>
+</ul>
+
+<h3>4.3. Замена термостата</h3>
+
+<p>Если термостат заклинил, его нужно заменить. Для этого:</p>
+
+<ol>
+  <li>Слейте ОЖ из системы.</li>
+  <li>Ослабьте хомуты и снимите патрубки с термостата.</li>
+  <li>Выкрутите болты крепления термостата (ключ на <strong>10</strong> или <strong>13</strong>).</li>
+  <li>Установите новый термостат (артикул для Гранты — <code>2190-1306010</code> для 8V и <code>2112-1306010</code> для 16V).</li>
+  <li>Залейте новую ОЖ и прокачайте систему (удалите воздушные пробки).</li>
+</ol>
+
+<h3>4.4. Сброс ошибок ЭБУ</h3>
+
+<p>Если проблема была вызвана сбоем ЭБУ, иногда помогает сброс ошибок и адаптаций. Для этого:</p>
+
+<ol>
+  <li>Отключите минусовую клемму аккумулятора на <strong>10–15 минут</strong>.</li>
+  <li>Подключите её обратно и заведите двигатель.</li>
+  <li>Если ошибки остались — используйте диагностический сканер для их сброса.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>После сброса ошибок ЭБУ может потребоваться адаптация дроссельной заслонки (особенно на 16-клапанных моторах).</p></div>
+
+<h2 id="5-когда-стоит-обратиться-в-сервис">5. Когда стоит обратиться в сервис</h2>
+
+<p>Не все неисправности можно устранить самостоятельно. Обратитесь к специалистам, если:</p>
+
+<ul>
+  <li>⚠️ После замены ДТОЖ и проверки проводки вентилятор всё равно включается на холодном двигателе.</li>
+  <li>⚠️ Диагностический сканер показывает ошибки, связанные с ЭБУ (<code>P0600</code>–<code>P0606</code>).</li>
+  <li>⚠️ Двигатель работает неустойчиво, есть пропуски зажигания или другие серьёзные симптомы.</li>
+  <li>⚠️ Требуется перепрошивка ЭБУ (самостоятельно это делать не рекомендуется).</li>
+</ul>
+
+<p>В сервисе смогут:</p>
+
+<ul>
+  <li>🔧 Провести глубокую диагностику ЭБУ с помощью профессионального оборудования.</li>
+  <li>🔧 Проверить целостность цепей управления вентилятором с помощью осциллографа.</li>
+  <li>🔧 Перепрошить ЭБУ с сохранением всех адаптаций.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При выборе сервиса отдавайте предпочтение тем, кто специализируется на отечественных авто (Лада, ВАЗ). Они лучше знают особенности ЭБУ и прошивок Гранты.</p></div>
+
+<h2 id="6-профилактика-проблем-с-системой-охлаждения">6. Профилактика проблем с системой охлаждения</h2>
+
+<p>Чтобы избежать проблем с вентилятором охлаждения в будущем, следуйте этим рекомендациям:</p>
+
+<ul>
+  <li>🛠️ Регулярно (раз в <strong>2 года</strong> или <strong>40 000 км</strong>) меняйте охлаждающую жидкость.</li>
+  <li>🛠️ Следите за уровнем ОЖ в расширительном бачке — он должен быть между отметками <strong>MIN</strong> и <strong>MAX</strong>.</li>
+  <li>🛠️ Проверяйте состояние патрубков системы охлаждения — они не должны быть твёрдыми или иметь трещины.</li>
+  <li>🛠️ Периодически очищайте радиатор от грязи и насекомых (особенно если ездите по пыльным дорогам).</li>
+  <li>🛠️ Не используйте воду вместо антифриза — это приводит к коррозии и выходу из строя ДТОЖ.</li>
+</ul>
+
+<p>Также обращайте внимание на первые признаки неисправностей:</p>
+
+<ul>
+  <li>🚨 Двигатель начинает перегреваться (стрелка температуры поднимается выше нормы).</li>
+  <li>🚨 Вентилятор включается слишком часто или работает постоянно.</li>
+  <li>🚨 Печка дует холодным воздухом при прогретом двигателе.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вы часто стоите в пробках, следите за температурой двигателя особенно внимательно. Вентилятор в таких условиях работает интенсивнее, и риск перегрева выше.</p></div>
+
+<h2 id="faq-частые-вопросы-о-вентиляторе-охлаждения-гранты">FAQ: Частые вопросы о вентиляторе охлаждения Гранты</h2>
+
+<details>
+  <summary>Может ли вентилятор включаться на холодном двигателе из-за низкого уровня антифриза?</summary>
+  <p>Да, но косвенно. При низком уровне ОЖ датчик температуры может находиться в воздухе, а не в жидкости, и показывать некорректные данные. Однако чаще это приводит к <strong>позднему включению вентилятора</strong>, а не к раннему. Если вентилятор срабатывает сразу после запуска, проблема, скорее всего, в ДТОЖ или проводке.</p>
+</details>
+
+<details>
+  <summary>Как отличить неисправность ДТОЖ от проблемы с ЭБУ?</summary>
+  <p>Если неисправен ДТОЖ, обычно:</p>
+  <ul>
+    <li>Стрелка температуры на панели ведёт себя хаотично (скачет или всегда показывает максимум).</li>
+    <li>Вентилятор включается сразу после запуска.</li>
+  </ul>
+  <p>Если проблема в ЭБУ:</p>
+  <ul>
+    <li>Могут быть другие симптомы (плавающие обороты, ошибки по другим датчикам).</li>
+    <li>Вентилятор может работать постоянно, даже если ДТОЖ исправен.</li>
+  </ul>
+  <p>Точную причину покажет диагностика сканером.</p>
+</details>
+
+<details>
+  <summary>Можно ли ездить, если вентилятор работает постоянно?</summary>
+  <p>Кратковременно — можно, но это чревато:</p>
+  <ul>
+    <li>🔋 Разрядом аккумулятора (вентилятор потребляет много энергии).</li>
+    <li>🔥 Перегрузкой цепи и выходом из строя реле или предохранителя.</li>
+    <li>🚗 Возможным перегревом, если вентилятор не отключается из-за неисправного ДТОЖ (ЭБУ "не видит" реальную температуру).</li>
+  </ul>
+  <p>Лучше устранить проблему как можно скорее.</p>
+</details>
+
+<details>
+  <summary>Сколько стоит замена ДТОЖ на Гранте?</summary>
+  <p>Стоимость зависит от региона и типа двигателя:</p>
+  <ul>
+    <li>💰 Датчик для 8-клапанного мотора: <strong>200–400 руб.</strong></li>
+    <li>💰 Датчик для 16-клапанного мотора: <strong>300–600 руб.</strong></li>
+    <li>💰 Замена в сервисе: <strong>500–1 000 руб.</strong> (в зависимости от сложности доступа).</li>
+  </ul>
+  <p>Самостоятельная замена займёт <strong>15–30 минут</strong> и сэкономит деньги.</p>
+</details>
+
+<details>
+  <summary>Может ли термостат влиять на работу вентилятора?</summary>
+  <p>Да, но косвенно. Если термостат заклинил в закрытом положении, ОЖ циркулирует только по малому кругу, и область вокруг ДТОЖ может перегреваться. В результате датчик показывает высокую температуру, и ЭБУ включает вентилятор. Однако это проявляется уже на <strong>прогретом двигателе</strong>, а не на холодном. Если вентилятор срабатывает сразу после запуска, ищите проблему в другом.</p>
+</details>
+
+<blockquote>⚠️ <strong>Внимание!</strong> Если после замены ДТОЖ или термостата вентилятор продолжает работать неправильно, не игнорируйте проблему. Длительная работа вентилятора на холодном двигателе может указывать на короткое замыкание в цепи, что чревато <strong>пожаром</strong> или выходом из строя ЭБУ.</blockquote>
+
+<blockquote>⚠️ <strong>Внимание!</strong> На некоторых Грантах с <em>ЭБУ Bosch M7.9.7</em> (16-клапанные моторы) после отключения аккумулятора могут сброситься адаптации дроссельной заслонки. Если после ремонта двигатель работает неустойчиво, выполните процедуру обучения заслонки (инструкция есть в руководстве по ремонту).</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-как-работает-система-охлаждения-гранты-в-норме">1. Как работает система охлаждения Гранты в норме</a></li><li><a href="#2-основные-причины-включения-вентилятора-на-холодном-двигателе">2. Основные причины включения вентилятора на холодном двигателе</a></li><li><a href="#3-диагностика-проблемы-пошаговая-инструкция">3. Диагностика проблемы: пошаговая инструкция</a></li><li><a href="#4-как-устранить-проблему-своими-руками">4. Как устранить проблему своими руками</a></li><li><a href="#5-когда-стоит-обратиться-в-сервис">5. Когда стоит обратиться в сервис</a></li><li><a href="#6-профилактика-проблем-с-системой-охлаждения">6. Профилактика проблем с системой охлаждения</a></li><li><a href="#faq-частые-вопросы-о-вентиляторе-охлаждения-гранты">FAQ: Частые вопросы о вентиляторе охлаждения Гранты</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/pa/patrubki-v-mashine-eto.html" class="related-card">Патрубки в машине: виды, назначение и как их проверить самостоятельно</a></li><li><a href="/articles/7/77/7700869985-patrubok-sistemy-okhlazhdeniya.html" class="related-card">Патрубок 7700869985: назначение, замена и выбор аналогов</a></li><li><a href="/articles/z/za/zamena-pompy-ff2-18.html" class="related-card">Замена помпы на Ford Focus 2 1.8: пошаговое руководство с фото</a></li><li><a href="/articles/k/ka/kak-razobrat-pompu-zmz-406.html" class="related-card">Как разобрать помпу ЗМЗ 406: пошаговая инструкция с фото</a></li><li><a href="/articles/p/pe/peredelka-termostata-kalina-1-na-grantovskij.html" class="related-card">Переделка термостата Калина 1 на Грантовский: пошаговая инструкция</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/pa/patrubki-v-mashine-eto.html" class="related-bottom-card"><span class="related-bottom-title">Патрубки в машине: виды, назначение и как их проверить самостоятельно</span><span class="related-bottom-desc">Что такое патрубки в автомобиле, их функции, признаки износа и пошаговая инструкция по диагностике. </span></a><a href="/articles/7/77/7700869985-patrubok-sistemy-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Патрубок 7700869985: назначение, замена и выбор аналогов</span><span class="related-bottom-desc">Подробный гайд по патрубку системы охлаждения 7700869985: где применяется, как проверить на износ, и</span></a><a href="/articles/z/za/zamena-pompy-ff2-18.html" class="related-bottom-card"><span class="related-bottom-title">Замена помпы на Ford Focus 2 1.8: пошаговое руководство с фото</span><span class="related-bottom-desc">Как самостоятельно заменить водяной насос на ФФ2 1.8: признаки неисправности, выбор запчасти, инстру</span></a><a href="/articles/k/ka/kak-razobrat-pompu-zmz-406.html" class="related-bottom-card"><span class="related-bottom-title">Как разобрать помпу ЗМЗ 406: пошаговая инструкция с фото</span><span class="related-bottom-desc">Детальный гайд по разборке водяного насоса ЗМЗ 406: инструменты, порядок действий, типичные ошибки и</span></a><a href="/articles/p/pe/peredelka-termostata-kalina-1-na-grantovskij.html" class="related-bottom-card"><span class="related-bottom-title">Переделка термостата Калина 1 на Грантовский: пошаговая инструкция</span><span class="related-bottom-desc">Подробный гайд по модернизации системы охлаждения. Как переделать термостат Лада Калина на грантовск</span></a><a href="/articles/t/te/termostat-2123-1306010-55.html" class="related-bottom-card"><span class="related-bottom-title">Термостат 2123-1306010-55: замена и проверка на Ниве Шевроле</span><span class="related-bottom-desc">Как заменить термостат 2123-1306010-55 на Lada Niva 4x4. Инструкция по проверке, признаки неисправно</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Расчет перегрева фреона в испарителе: формулы и нормы — Рем Набор</title>
+    <meta name="description" content="Подробная инструкция по расчету перегрева хладагента в испарителе. Формулы, таблица давлений, влияние на работу кондиционера и поиск неисправностей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/pe/peregrev-freona-v-isparitele-kak-poschitat.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Расчет перегрева фреона в испарителе: формулы и нормы">
+    <meta property="og:description" content="Подробная инструкция по расчету перегрева хладагента в испарителе. Формулы, таблица давлений, влияние на работу кондиционера и поиск неисправностей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/freon-i-khladagenty/">Фреон и хладагенты</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Расчет перегрева фреона в испарителе: формулы и нормы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как рассчитать перегрев фреона в испарителе: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#физическая-сущность-перегрева-в-контуре-охлаждения">Физическая сущность перегрева в контуре охлаждения</a></li><li><a href="#необходимые-инструменты-и-подготовка-к-замерам">Необходимые инструменты и подготовка к замерам</a></li><li><a href="#пошаговая-инструкция-по-расчету-перегрева">Пошаговая инструкция по расчету перегрева</a></li><li><a href="#нормативные-значения-и-интерпретация-результатов">Нормативные значения и интерпретация результатов</a></li><li><a href="#влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</a></li><li><a href="#диагностика-неисправностей-по-величине-перегрева">Диагностика неисправностей по величине перегрева</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Правильная настройка и диагностика системы кондиционирования невозможны без понимания термодинамических процессов, происходящих внутри контура. Одним из ключевых параметров, определяющих эффективность работы холодильной машины, является <strong>перегрев фреона</strong> на выходе из испарителя. Этот показатель служит индикатором того, насколько полно используется теплообменная поверхность и не попадает ли жидкий хладагент в компрессор.</p>
+
+<p>Многие мастера пренебрегают точными расчетами, полагаясь лишь на ощупь или визуальный осмотр инея на трубках, что часто приводит к поломкам дорогостоящего оборудования. Неправильный перегрев может стать причиной гидроудара, разрушения клапанов компрессора или, наоборот, перегрева обмоток двигателя из-за недостаточного охлаждения всасываемым газом. В этой статье мы разберем методику точного вычисления этой величины.</p>
+
+<p>Для начала работы вам потребуется минимальный набор инструментов: манометрическая станция с термометром-щупом или цифровым термометром с высокой точностью. Без измерения реальной температуры трубы и давления в системе получить достоверные данные невозможно. Давайте перейдем непосредственно к сути процесса и физике явления.</p>
+
+<h2 id="физическая-сущность-перегрева-в-контуре-охлаждения">Физическая сущность перегрева в контуре охлаждения</h2>
+
+<p>В идеальном цикле Карно испарение хладагента должно заканчиваться ровно в тот момент, когда фреон покидает испаритель. Однако на практике обеспечить точное совпадение этих границ крайне сложно из-за переменных тепловых нагрузок. <strong>Перегрев</strong> — это разница между фактической температурой газа на выходе из теплообменника и температурой его кипения при данном давлении.</p>
+
+<p>Если говорить простым языком, это количество тепла, которое успел поглотить уже полностью испарившийся газ, прежде чем он попал в магистраль всасывания. Наличие этого параметра гарантирует, что в компрессор поступает исключительно газообразный <em>фреон</em>, а не смесь газа и жидкости. Жидкость несжимаема, и ее попадание в цилиндр компрессора ведет к мгновенному механическому разрушению деталей.</p>
+
+<p>С другой стороны, чрезмерно высокий перегрев свидетельствует о том, что испаритель работает неэффективно. Часть его поверхности занята перегретым паром, который имеет низкий коэффициент теплоотдачи по сравнению с кипящей жидкостью. Это снижает общую холодопроизводительность системы и повышает температуру нагнетания, что критично для долговечности масла и уплотнений.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Отсутствие перегрева (нулевое значение) — это прямой сигнал о том, что жидкий хладагент уходит в компрессор. Эксплуатация системы в таком режиме даже в течение короткого времени может привести к клину компрессора.</p>
+</blockquote>
+
+<p>Понимание природы перегрева позволяет диагностировать множество скрытых проблем, которые не видны при внешнем осмотре. Например, загрязнение испарителя или неисправность ТРВ (терморегулирующего вентиля) сразу же сказываются на этой величине. Поэтому регулярный контроль данного параметра — обязательная часть технического обслуживания.</p>
+
+<h2 id="необходимые-инструменты-и-подготовка-к-замерам">Необходимые инструменты и подготовка к замерам</h2>
+
+<p>Прежде чем приступать к вычислениям, необходимо убедиться в исправности измерительных приборов. Погрешность манометра или термометра даже в 1-2 градуса может привести к ошибочным выводам о состоянии системы. Для корректного замера вам понадобятся следующие инструменты:</p>
+
+<ul>
+<li>🌡️ <strong>Цифровой термометр</strong> с выносным датчиком или термопарой, обеспечивающий точность измерения не хуже ±0.5°C.</li>
+<li>📊 <strong>Манометрическая коллекторная станция</strong>, откалиброванная под конкретный тип хладагента (R410A, R22, R134a и т.д.).</li>
+<li>🔧 <strong>Теплоизоляционный материал</strong> для изоляции места замера температуры трубы от воздействия окружающего воздуха.</li>
+<li>📱 <strong>Таблица насыщения (PT-диаграмма)</strong> для используемого типа фреона или приложение в смартфоне.</li>
+</ul>
+
+<p>Подготовка системы к замерам также играет критическую роль. Кондиционер или холодильная машина должны работать в стабильном режиме не менее 15-20 минут. Замеры, снятые сразу после запуска, не отражают реального состояния теплообмена, так как инерция системы еще не позволила температурам и давлениям выровняться.</p>
+
+<p>Важно правильно выбрать место установки температурного датчика. Оно должно находиться на всасывающей магистрали как можно ближе к выходу из испарителя, но до любого теплообмена с окружающей средой. Если труба не изолирована в этом месте, показания будут завышены из-за подогрева газа теплом из помещения или улицы.</p>
+
+<div class="poll-widget" id="poll-65b22bd5"><div class="poll-widget-question">📊 Какой инструмент вы используете для замера температуры?</div><div class="poll-widget-option" data-poll="65b22bd5" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Стрелочный термометр с хомутом</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="65b22bd5" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Цифровой мультиметр с термопарой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="65b22bd5" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Пирометр (бесконтактный)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="65b22bd5" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Ощупываю рукой для примерной оценки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="пошаговая-инструкция-по-расчету-перегрева">Пошаговая инструкция по расчету перегрева</h2>
+
+<p>Процесс расчета состоит из последовательных действий, каждое из которых требует внимательности. Ошибка на любом этапе исказит конечный результат. Следуйте алгоритму, чтобы получить достоверные данные о работе вашей системы.</p>
+
+<p>Сначала подключите манометр низкого давления к сервисному порту всасывающей магистрали. Зафиксируйте показание давления в системе. Это значение необходимо для определения температуры кипения хладагента. Обратите внимание, что для смесевых хладагентов (как <em>R410A</em>) важно использовать давление, соответствующее температуре кипения (Bubble Point), хотя на практике для перегрева часто используют среднее значение или Dew Point в зависимости от методики производителя.</p>
+
+<p>Затем установите датчик термометра на трубу всасывания. Для обеспечения хорошего теплового контакта используйте термопасту и плотно прижмите датчик хомутом или изоляционной лентой. Дождитесь стабилизации показаний на дисплее термометра. Это будет ваша фактическая температура газа.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм замера перегрева</h4><label class="check-item"><input type="checkbox"><span>Подключить манометр низкого давления</span></label><label class="check-item"><input type="checkbox"><span>Зафиксировать давление всасывания</span></label><label class="check-item"><input type="checkbox"><span>Установить датчик температуры на трубу</span></label><label class="check-item"><input type="checkbox"><span>Найти температуру кипения по таблице</span></label><label class="check-item"><input type="checkbox"><span>Вычесть температуру кипения из фактической</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Теперь обратитесь к таблице насыщения для вашего типа фреона. Найдите строку с вашим измеренным давлением и посмотрите соответствующую ей температуру кипения. Формула расчета предельно проста:</p>
+
+<pre><code>Перегрев = T_факт - T_кипения</code></pre>
+
+<p>Где <code>T_факт</code> — температура, показанная термометром на трубе, а <code>T_кипения</code> — температура, найденная в таблице по давлению. Результат выражается в градусах Цельсия (или Кельвина, разница одинакова). Именно эта цифра говорит нам о состоянии заправки и работе расширительного устройства.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При использовании пирометра (бесконтактного термометра) убедитесь, что поверхность трубы чистая и не имеет окислов. Коэффициент излучения металла может исказить показания, поэтому лучше использовать контактный метод.</p>
+</blockquote>
+
+<h2 id="нормативные-значения-и-интерпретация-результатов">Нормативные значения и интерпретация результатов</h2>
+
+<p>Получив цифру перегрева, необходимо сравнить ее с рекомендованными значениями для конкретного типа оборудования. Универсального стандарта не существует, так как разные системы спроектированы под разные условия работы. Однако есть общие диапазоны, принятые в индустрии.</p>
+
+<p>Для большинства бытовых сплит-систем и коммерческих кондиционеров нормальным считается перегрев в диапазоне от 5 до 8 градусов Цельсия. В промышленных холодильных машинах с ТРВ этот диапазон может быть шире — от 6 до 10 градусов. Системы с капиллярной трубкой часто работают с меньшим перегревом, но риск попадания жидкости в них выше.</p>
+
+<p>Ниже приведена таблица с ориентировочными значениями перегрева для различных ситуаций:</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип системы</th>
+<th>Оптимальный перегрев (°C)</th>
+<th>Допустимый диапазон (°C)</th>
+<th>Риск при отклонении</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Бытовой кондиционер (R410A)</td>
+<td>6 - 8</td>
+<td>5 - 10</td>
+<td>Гидроудар или перегрев компрессора</td>
+</tr>
+<tr>
+<td>Промышленный чиллер (R134a)</td>
+<td>5 - 7</td>
+<td>4 - 9</td>
+<td>Снижение КПД испарителя</td>
+</tr>
+<tr>
+<td>Автомобильный кондиционер</td>
+<td>8 - 12</td>
+<td>7 - 15</td>
+<td>Нестабильная работа ТРВ</td>
+</tr>
+<tr>
+<td>Низкотемпературная камера</td>
+<td>6 - 10</td>
+<td>5 - 12</td>
+<td>Обмерзание всасывающей линии</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если расчетный перегрев значительно ниже нормы (например, 0-3 градуса), это указывает на переполнение системы хладагентом или неисправность ТРВ, который пропускает слишком много жидкости. Если же перегрев превышает 15 градусов, система недогружена фреоном, либо испаритель загрязнен, либо расширительное устройство забито.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При диагностике всегда учитывайте температуру воздуха в помещении. Если в комнате очень жарко, перегрев естественным образом увеличится, и это не всегда признак неисправности.</p></div>
+
+<h2 id="влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</h2>
+
+<p>При проведении диагностики Температура окружающей среды, загрязненность теплообменников и нагрузка на испаритель могут существенно менять показания.</p>
+
+<p>Например, если испаритель покрыт слоем пыли или шерсти, теплообмен ухудшается. Фреон не успевает полностью испариться в отведенном объеме, и жидкая фаза смещается к выходу, снижая перегрев. В то же время, если вентилятор испарителя работает слабо, эффект будет аналогичным. Поэтому перед замерами всегда проводите визуальный осмотр и чистку блоков.</p>
+
+<p>Длина всасывающей магистрали также имеет значение. Если термодатчик установлен далеко от испарителя, газ по пути может нагреться от теплых стен или соседних труб нагнетания. Это приведет к ложному завышению показаний перегрева. В таких случаях необходимо вносить поправку или переносить точку замера ближе к выходу из теплообменника.</p>
+
+<p>Существует также понятие «полезного» и «вредного» перегрева. Полезный перегрев возникает внутри испарителя и участвует в охлаждении. Вредный — возникает в трубопроводах после испарителя и лишь повышает температуру всасывания, не давая холода. При расчетах мы стремимся минимизировать вредный перегрев качественной изоляцией труб.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Технические характеристики и допустимые параметры могут отличаться в зависимости от модели оборудования. Всегда сверяйтесь с сервисным мануалом производителя конкретной установки, так как некоторые инверторные системы работают в нестандартных режимах.</p>
+</blockquote>
+
+<details class="faq-item"><summary>Что такое PT-диаграмма?</summary><div class="faq-answer"><p>PT-диаграмма (Pressure-Temperature) — это таблица или график, связывающий давление насыщенного пара хладагента с его температурой. Для каждого типа фреона (R22, R410A, R32) эта диаграмма уникальна. Без нее невозможно перевести показание манометра в температуру кипения, что делает расчет перегрева невозможным. Современные цифровые манометры часто имеют встроенную базу данных PT-диаграмм.</p></div></details>
+
+<h2 id="диагностика-неисправностей-по-величине-перегрева">Диагностика неисправностей по величине перегрева</h2>
+
+<p>Анализ перегрева позволяет с высокой точностью локализовать проблему в холодильном контуре. Это более надежный метод, чем просто измерение давления, так как давление может быть в норме при неправильной температуре. Рассмотрим основные сценарии отклонений.</p>
+
+<p>При низком перегреве (менее 5°C) наиболее вероятны следующие причины: избыточная заправка фреоном, слишком широкая настройка ТРВ, неисправность ТРВ (заклинило в открытом положении) или высокая нагрузка на испаритель. В системах с капиллярной трубкой это почти всегда перелив хладагента.</p>
+
+<p>Высокий перегрев (более 12-15°C) указывает на противоположные проблемы: утечку фреона (недолив), засорение фильтра-осушителя, подсос воздуха в систему, неисправность ТРВ (заклинило в закрытом положении) или недостаточную нагрузку на испаритель (например, забитый фильтр в помещении).</p>
+
+<p>Особое внимание следует уделить стабильности показаний. Если перегрев постоянно «плавает» (циклически меняется от 2 до 15 градусов), это верный признак неправильной работы ТРВ или наличия влаги в системе (ледяная пробка). Стабильный, но аномальный перегрев говорит о статической проблеме (заправка, засор).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Стабильность показаний перегрева во времени часто важнее абсолютного значения. Колебания указывают на динамические проблемы с регулированием потока хладагента.</p></div>
+
+<p>Устранение выявленных проблем должно производиться последовательно. Сначала проверяется чистота теплообменников и работа вентиляторов, затем анализируется заправка, и только потом производится замена или регулировка расширительных устройств. Слепая дозаправка без расчета перегрева часто усугубляет ситуацию.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли рассчитать перегрев без термометра, только по давлению?</summary>
+<p>Нет, это невозможно. Давление определяет только температуру кипения (насыщения). Чтобы узнать перегрев, необходимо знать фактическую температуру газа в трубе, которую можно измерить только термометром. Попытки оценить температуру «на ощупь» дают огромную погрешность.</p>
+</details>
+
+<details>
+<summary>Какой перегрев должен быть у автомобильного кондиционера?</summary>
+<p>Для автомобильных систем нормальный перегрев обычно выше, чем у стационарных, и составляет от 8 до 15°C. Это связано с высокими вибрациями, переменными оборотами компрессора и сложными условиями работы под капотом. Точные данные смотрите в спецификации автопроизводителя.</p>
+</details>
+
+<details>
+<summary>Влияет ли тип фреона (R22 или R410A) на метод расчета?</summary>
+<p>Метод расчета (формула) одинаков для всех хладагентов. Разница заключается только в используемой таблице насыщения (PT-диаграмме). Для R410A, который является зеотропной смесью, существует разница между температурой начала и конца кипения (температурный глайд), что требует внимательности при выборе точки в таблице, но базовый принцип остается тем же.</p>
+</details>
+
+<details>
+<summary>Почему перегрев меняется в зависимости от нагрузки?</summary>
+<p>При увеличении тепловой нагрузки на испаритель фреон кипит интенсивнее, и граница испарения смещается к выходу, что может снизить перегрев. И наоборот, при малой нагрузке испаритель «недогружен», газ успевает сильнее нагреться, и перегрев растет. Системы с ЭРВ (электронным расширительным вентилем) автоматически компенсируют эти изменения.</p>
+</details>
+
+<details>
+<summary>Что делать, если перегрев в норме, но кондиционер не холодит?</summary>
+<p>Если перегрев в норме, значит соотношение фаз и заправка корректны. Проблема, скорее всего, в количестве фреона, а в эффективности теплообмена (грязные радиаторы, слабый поток воздуха) или механической неисправности компрессора (низкая производительность клапанов), либо в наличии неконденсируемых газов в системе.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#физическая-сущность-перегрева-в-контуре-охлаждения">Физическая сущность перегрева в контуре охлаждения</a></li><li><a href="#необходимые-инструменты-и-подготовка-к-замерам">Необходимые инструменты и подготовка к замерам</a></li><li><a href="#пошаговая-инструкция-по-расчету-перегрева">Пошаговая инструкция по расчету перегрева</a></li><li><a href="#нормативные-значения-и-интерпретация-результатов">Нормативные значения и интерпретация результатов</a></li><li><a href="#влияние-внешних-факторов-на-точность-измерений">Влияние внешних факторов на точность измерений</a></li><li><a href="#диагностика-неисправностей-по-величине-перегрева">Диагностика неисправностей по величине перегрева</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/f/fr/freon-yadovit-ili-net.html" class="related-card">Фреон ядовит или нет: опасность для человека и правила безопасности</a></li><li><a href="/articles/p/pe/pech-dlya-kazana-iz-ballona-ot-freona.html" class="related-card">Печь для казана из фреонового баллона: пошаговая инструкция 2026</a></li><li><a href="/articles/l/li/linejka-kholodilshchika-134-freon.html" class="related-card">Линейка холодильщика R134a: выбор, таблица давления, ошибки</a></li><li><a href="/articles/c/ch/chto-zakachivayut-v-kholodilnik-dlya-kholoda.html" class="related-card">Что заливают в холодильник для холода: фреон и альтернативы</a></li><li><a href="/articles/o/ob/oborudovanie-dlya-zapravki-kholodilnikov-freonom.html" class="related-card">Оборудование для заправки холодильников фреоном: выбор и правила работы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/f/fr/freon-yadovit-ili-net.html" class="related-bottom-card"><span class="related-bottom-title">Фреон ядовит или нет: опасность для человека и правила безопасности</span><span class="related-bottom-desc">Подробный разбор токсичности фреона: виды хладагентов, симптомы отравления, меры предосторожности пр</span></a><a href="/articles/p/pe/pech-dlya-kazana-iz-ballona-ot-freona.html" class="related-bottom-card"><span class="related-bottom-title">Печь для казана из фреонового баллона: пошаговая инструкция 2026</span><span class="related-bottom-desc">Как сделать печь для казана из баллона от фреона своими руками: чертежи, инструменты, ошибки и совет</span></a><a href="/articles/l/li/linejka-kholodilshchika-134-freon.html" class="related-bottom-card"><span class="related-bottom-title">Линейка холодильщика R134a: выбор, таблица давления, ошибки</span><span class="related-bottom-desc">Полный обзор линеек для заправки фреона R134a. Таблица температур и давлений, калибровка, выбор моде</span></a><a href="/articles/c/ch/chto-zakachivayut-v-kholodilnik-dlya-kholoda.html" class="related-bottom-card"><span class="related-bottom-title">Что заливают в холодильник для холода: фреон и альтернативы</span><span class="related-bottom-desc">Разбираемся, какой хладагент используется в бытовых холодильниках, как его заправляют и чем можно за</span></a><a href="/articles/o/ob/oborudovanie-dlya-zapravki-kholodilnikov-freonom.html" class="related-bottom-card"><span class="related-bottom-title">Оборудование для заправки холодильников фреоном: выбор и правила работы</span><span class="related-bottom-desc">Какое оборудование нужно для заправки холодильников фреоном? Виды станций, манометров, вакуумных нас</span></a><a href="/articles/l/la/lampa-dlya-poiska-utechki-freona.html" class="related-bottom-card"><span class="related-bottom-title">Лампа для поиска утечки фреона: виды, принцип работы, выбор</span><span class="related-bottom-desc">Профессиональный обзор ламп для поиска утечек хладагента. UV-светодиоды, очки, присадки и техника бе</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

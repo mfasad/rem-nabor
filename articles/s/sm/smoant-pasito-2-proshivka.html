@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Smoant Pasito 2: как обновить прошивку самостоятельно (пошагово) — Рем Набор</title>
+    <meta name="description" content="Инструкция по обновлению прошивки для Smoant Pasito 2: где скачать файл, как прошить через USB/Pasito Studio, ошибки и их исправление. Актуально для моделей 2021-2026 гг.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/s/sm/smoant-pasito-2-proshivka.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Smoant Pasito 2: как обновить прошивку самостоятельно (пошагово)">
+    <meta property="og:description" content="Инструкция по обновлению прошивки для Smoant Pasito 2: где скачать файл, как прошить через USB/Pasito Studio, ошибки и их исправление. Актуально для моделей 2021-2026 гг.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Smoant Pasito 2: как обновить прошивку самостоятельно (пошагово)</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Прошивка Smoant Pasito 2: официальные файлы, инструкция по обновлению и решение ошибок</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-зачем-обновлять-прошивку-smoant-pasito-2">1. Зачем обновлять прошивку Smoant Pasito 2?</a></li><li><a href="#2-где-скачать-официальную-прошивку-для-pasito-2">2. Где скачать официальную прошивку для Pasito 2?</a></li><li><a href="#3-подготовка-устройства-к-прошивке">3. Подготовка устройства к прошивке</a></li><li><a href="#4-пошаговая-инструкция-прошивка-через-pasito-studio">4. Пошаговая инструкция: прошивка через Pasito Studio</a></li><li><a href="#5-ручное-обновление-через-usb-для-опытных-пользователей">5. Ручное обновление через USB (для опытных пользователей)</a></li><li><a href="#6-типичные-ошибки-и-их-решения">6. Типичные ошибки и их решения</a></li><li><a href="#7-откат-на-предыдущую-версию-прошивки">7. Откат на предыдущую версию прошивки</a></li><li><a href="#8-часто-задаваемые-вопросы-faq">8. Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Электронная сигарета <em>Smoant Pasito 2</em> — популярное устройство среди вейперов благодаря сбалансированной производительности, компактному дизайну и поддержке фирменных прошивок. Обновление программного обеспечения (ПО) позволяет исправить баги, улучшить стабильность работы или добавить новые функции, например, поддержку дополнительных режимов парения. Однако некорректная прошивка может привести к <strong>«окирпичиванию»** устройства — полной потере работоспособности.</strong></p>
+
+<p>В этом руководстве мы разберём, как безопасно обновить прошивку <em>Pasito 2</em> через официальное ПО <em>Pasito Studio</strong> или вручную через USB, где скачать актуальные файлы (включая альтернативные источники), а также какие ошибки чаще всего возникают при прошивке и как их избежать. Отдельное внимание уделим <strong>откату на предыдущую версию</em> и восстановлению устройства после сбоя.</p>
+
+<p>Статья актуальна для всех модификаций <em>Smoant Pasito 2</em>, включая версии с аккумулятором <code>18650</code> и встроенной батареей. Если ваше устройство выпущено до 2021 года, проверьте совместимость прошивки — некоторые старые ревизии могут не поддерживать новые версии ПО.</p>
+
+<div class="poll-widget" id="poll-5fec5190"><div class="poll-widget-question">📊 Как вы обычно обновляете прошивку своих девайсов?</div><div class="poll-widget-option" data-poll="5fec5190" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Через официальное ПО</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5fec5190" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Вручную по инструкциям</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5fec5190" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не обновлял</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5fec5190" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Доверяю только сервисным центрам</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="1-зачем-обновлять-прошивку-smoant-pasito-2">1. Зачем обновлять прошивку Smoant Pasito 2?</h2>
+
+<p>Производитель регулярно выпускает обновления для <em>Pasito 2</em>, и вот ключевые причины установить последнюю версию:</p>
+
+<ul>
+  <li>🔧 <strong>Исправление багов</strong>: Устранение проблем с подсчётом затяжек, некорректным отображением сопротивления спирали или самопроизвольным отключением устройства.</li>
+  <li>⚡ <strong>Оптимизация энергопотребления</strong>: Новые алгоритмы управления батареей могут увеличить время автономной работы на 10–15%.</li>
+  <li>🎛️ <strong>Новые режимы парения</strong>: Например, добавление <code>TCR</code>-профилей для никеля или титана в режиме контроля температуры.</li>
+  <li>🛡️ <strong>Безопасность</strong>: Закрытие уязвимостей, которые могли привести к перегреву или короткому замыканию.</li>
+</ul>
+
+<p>Однако обновление не всегда обязательно. Если ваше устройство работает стабильно, а новые функции вам не нужны, рисковать не стоит. <mark>Прошивка версии 1.0.5 для Pasito 2 (выпущена в марте 2023) содержит критическое исправление для устройств с батареей <code>21700</code> — без неё возможен сбой калибровки мощности.</mark></p>
+
+<blockquote>⚠️ <strong>Внимание</strong>: Обновление прошивки сбрасывает пользовательские настройки (профили мощности, счетчик затяжек). Запишите или сфотографируйте текущие параметры перед началом процесса.</blockquote>
+
+<h2 id="2-где-скачать-официальную-прошивку-для-pasito-2">2. Где скачать официальную прошивку для Pasito 2?</h2>
+
+<p>Официальные файлы прошивок <em>Smoant Pasito 2</em> публикуются на сайте производителя, но доступ к ним может быть ограничен в зависимости от региона. Ниже — проверенные источники:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Источник</th>
+      <th>Ссылка (доступ)</th>
+      <th>Особенности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Официальный сайт Smoant</td>
+      <td>support.smoant.com/firmware</td>
+      <td>Требуется регистрация. Файлы проверены на вирусы, но обновления выходят с задержкой.</td>
+    </tr>
+    <tr>
+      <td>Форум E-Cigarette Forum</td>
+      <td>forum.e-cigarette-forum.com/threads/...</td>
+      <td>Пользователи выкладывают бета-версии и патчи. Риск нестабильных сборок.</td>
+    </tr>
+    <tr>
+      <td>Телеграм-канал Smoant Russia</td>
+      <td>@smoant_russia</td>
+      <td>Актуальные прошивки для российского рынка, русифицированные меню.</td>
+    </tr>
+    <tr>
+      <td>GitHub (неофициальные порты)</td>
+      <td>github.com/vaping-mods/smoant-pasito2</td>
+      <td>Модифицированные прошивки с расширенными функциями (например, поддержка <code>ArcticFox</code>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Перед скачиванием проверьте:</p>
+<ul>
+  <li>📌 <strong>Версию устройства</strong>: На коробке или в меню <code>Настройки → Информация</code> посмотрите ревизию (например, <code>Pasito 2 V1.2</code>).</li>
+  <li>📅 <strong>Дата выпуска файла</strong>: Прошивка старше 6 месяцев может быть несовместима с новыми атомайзерами.</li>
+  <li>🔍 <strong>Хеш-сумму</strong>: Сравните <code>MD5</code> или <code>SHA-1</code> файла с указанными на сайте, чтобы избежать подделок.</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание</strong>: Файлы прошивок для <em>Pasito 2</em> и оригинального <em>Pasito</em> (первой версии) несовместимы! Установка неправильной прошивки приведёт к ошибке <code>ERROR 0x404</code> и потребует восстановления через сервисный режим.</blockquote>
+
+<h2 id="3-подготовка-устройства-к-прошивке">3. Подготовка устройства к прошивке</h2>
+
+<p>Неправильная подготовка — основная причина сбоев. Следуйте чек-листу:</p>
+
+
+<p>Зарядить батарею минимум на 50%|Удалить атомайзер (во избежание короткого замыкания)|Скачать прошивку и распаковать архив|Подготовить USB-кабель (оригинальный или с поддержкой передачи данных)|Отключить антивирус (он может блокировать Pasito Studio)--></p>
+
+<p>Дополнительные рекомендации:</p>
+<ul>
+  <li>🔌 Используйте <strong>задний USB-порт</strong> компьютера (передние часто не обеспечивают стабильное питание).</li>
+  <li>🖥️ Закройте все программы, потребляющие ресурсы процессора (например, торренты или игры).</li>
+  <li>📱 Если прошиваете через смартфон, используйте OTG-адаптер и приложение <em>Pasito Mobile Tool</em> (доступно только для Android).</li>
+</ul>
+
+<p>Для ручной прошивки через USB понадобится файл с расширением <code>.bin</code> или <code>.smfw</code>. Официальное ПО <em>Pasito Studio</em> автоматически определяет модель устройства, но иногда требуется выбрать её вручную в меню <code>Device → Select Model</code>.</p>
+
+<details class="faq-item"><summary>Что делать, если компьютер не видит Pasito 2?</summary><div class="faq-answer"><p>
+<p>1. Попробуйте другой кабель (не все USB-кабели поддерживают передачу данных).</p>
+<p>2. Установите драйвер <em>Smoant USB Driver</em> с официального сайта.</p>
+<p>3. Переключите устройство в режим <code>Firmware Update Mode</code>: зажмите кнопки <code>+</code> и <code>Fire</code> при подключении к USB.</p>
+<p>4. Отключите другие USB-устройства (веб-камеры, внешние диски), которые могут конфликтовать.</p></div></details></p>
+
+<h2 id="4-пошаговая-инструкция-прошивка-через-pasito-studio">4. Пошаговая инструкция: прошивка через Pasito Studio</h2>
+
+<p>Этот метод рекомендуется для новичков, так как ПО автоматически проверяет совместимость файлов и создаёт резервную копию текущей прошивки.</p>
+
+<ol>
+  <li><p>Установите <em>Pasito Studio</em> с <a href="https://www.smoant.com/download">официального сайта</a> (версия не ниже 2.1.3).</p></li>
+  <li><p>Подключите <em>Pasito 2</em> к компьютеру. В меню устройства выберите <code>Настройки → Обновление ПО → USB Mode</code>.</p></li>
+  <li><p>В <em>Pasito Studio</em> нажмите <code>Connect</code>. Если устройство не определилось, нажмите <code>Retry</code> или переподключите USB.</p></li>
+  <li><p>Нажмите <code>Check for Updates</code>. Если доступна новая версия, появится кнопка <code>Download & Install</code>.</p></li>
+  <li><p>Дождитесь завершения процесса (около 3–5 минут). Не отключайте устройство, даже если экран погас!</p></li>
+  <li><p>После перезагрузки проверьте версию прошивки в меню <code>Настройки → Информация</code>.</p></li>
+</ol>
+
+<p>Если <em>Pasito Studio</em> выдаёт ошибку <code>Device not supported</code>, попробуйте:</p>
+<ul>
+  <li>🔄 Переустановить ПО с правами администратора.</li>
+  <li>📥 Скачать прошивку вручную и выбрать её через <code>Manual Update</code>.</li>
+  <li>🖧 Использовать другой компьютер (иногда конфликтуют драйверы).</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если прошивка прервалась на этапе "Writing flash", не паникуйте. Отключите устройство, зажмите кнопку <code>Fire</code> на 10 секунд, затем повторите процесс.</p></div>
+
+<h2 id="5-ручное-обновление-через-usb-для-опытных-пользователей">5. Ручное обновление через USB (для опытных пользователей)</h2>
+
+<p>Этот способ подходит, если <em>Pasito Studio</em> не работает или вы хотите установить кастомную прошивку. Потребуется:</p>
+<ul>
+  <li>📁 Файл прошивки <code>.bin</code> (например, <code>pasito2_v1.0.7.bin</code>).</li>
+  <li>🖥️ Программа <em>Smoant Flasher Tool</em> или <em>NFE Toolbox</em>.</li>
+  <li>🔌 Кабель USB с поддержкой передачи данных.</li>
+</ul>
+
+<p>Инструкция:</p>
+<ol>
+  <li><p>Переименуйте файл прошивки в <code>firmware.bin</code> и поместите его в корень пустой microSD-карты (FAT32).</p></li>
+  <li><p>Вставьте карту в <em>Pasito 2</em> и перейдите в <code>Настройки → Обновление ПО → Update from SD</code>.</p></li>
+  <li><p>Подтвердите установку кнопкой <code>Fire</code>. На экране появится прогресс-бар.</p></li>
+  <li><p>После завершения удалите файл с карты, чтобы избежать повторного обновления.</p></li>
+</ol>
+
+<p>Для прошивки через <em>NFE Toolbox</em>:</p>
+<pre><code>1. Подключите устройство в режиме <code>Firmware Update Mode</code>.
+<p>2. В программе выберите порт COM и скорость <code>115200</code>.</p>
+<p>3. Нажмите <code>Open File</code> и выберите <code>.bin</code>-файл.</p>
+<p>4. Кликните <code>Start Flashing</code> и дождитесь сообщения <code>Success</code>.</code></pre></p>
+
+<blockquote>⚠️ <strong>Внимание</strong>: При ручной прошивке через <em>NFE Toolbox</em> неверно выбранная скорость передачи (<code>baud rate</code>) может привести к ошибке <code>Timeout</code>. Для <em>Pasito 2</em> используйте только <code>115200</code> или <code>921600</code>.</blockquote>
+
+<h2 id="6-типичные-ошибки-и-их-решения">6. Типичные ошибки и их решения</h2>
+
+<p>Даже при следовании инструкции могут возникать сбои. Рассмотрим самые распространённые:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ошибка</th>
+      <th>Причина</th>
+      <th>Решение</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ERROR 0x404</code></td>
+      <td>Несовместимая прошивка или повреждённый файл.</td>
+      <td>Скачайте файл повторно, проверьте версию устройства.</td>
+    </tr>
+    <tr>
+      <td><code>USB Device Not Recognized</code></td>
+      <td>Отсутствует драйвер или конфликт USB-портов.</td>
+      <td>Установите драйвер вручную через <code>Диспетчер устройств</code>.</td>
+    </tr>
+    <tr>
+      <td><code>Flash Write Failed</code></td>
+      <td>Нестабильное питание или прерванное соединение.</td>
+      <td>Используйте задний USB-порт ПК или ноутбук с заряженной батареей.</td>
+    </tr>
+    <tr>
+      <td>Устройство не включается после прошивки</td>
+      <td>Неправильная версия ПО или сбой при записи.</td>
+      <td>Восстановите через сервисный режим (зажать <code>+</code> и <code>Fire</code> при подключении к USB).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Если после обновления <em>Pasito 2</em> выдаёт ошибку <code>Atomizer Short</code> при установке любого атомайзера, выполните сброс настроек:</p>
+<ol>
+  <li>Зажмите кнопки <code>+</code> и <code>−</code> одновременно.</li>
+  <li>Удерживая их, нажмите <code>Fire</code> 5 раз.</li>
+  <li>В меню выберите <code>Reset Settings</code>.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если после прошивки устройство греется сильнее обычного, проверьте настройки мощности. Новые версии ПО могут сбрасывать ограничения по вату (W) — установите их вручную в меню <code>Power Mode</code>.</p></div>
+
+<h2 id="7-откат-на-предыдущую-версию-прошивки">7. Откат на предыдущую версию прошивки</h2>
+
+<p>Если новая прошивка работает нестабильно, можно вернуть предыдущую версию. Для этого:</p>
+<ol>
+  <li><p>Скачайте архив с нужной версией (например, <code>pasito2_v1.0.3.bin</code>) с форума или официального сайта.</p></li>
+  <li><p>Прошейте устройство через <em>Pasito Studio</em> в режиме <code>Manual Update</code> или через <em>NFE Toolbox</em>.</p></li>
+  <li><p>После отката выполните сброс настроек (см. инструкцию выше).</p></li>
+</ol>
+
+<p>Учтите, что:</p>
+<ul>
+  <li>🔙 Откат на версию старше 1.0.0 может привести к потере поддержки новых атомайзеров.</li>
+  <li>🔒 Некоторые прошивки блокируют даунгрейд (например, с 1.0.6 на 1.0.5). В этом случае потребуется <strong>разблокировка загрузчика</strong> через сервисный режим.</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание</strong>: Прошивки версии 1.0.2 и ниже не поддерживают атомайзеры с сопротивлением ниже <code>0.1 Ом</code>. Если используете субомные испарители, не откатывайтесь ниже 1.0.3.</blockquote>
+
+<h2 id="8-часто-задаваемые-вопросы-faq">8. Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+  <summary>Можно ли прошить Pasito 2 через MacOS?</summary>
+  <p>Официально <em>Pasito Studio</em> поддерживает только Windows. Для MacOS можно использовать <em>NFE Toolbox</em> через <code>Wine</code> или виртуальную машину. Альтернатива — прошивка через microSD-карту.</p>
+</details>
+
+<details>
+  <summary>Что делать, если после прошивки экран показывает "Check Atomizer"?</summary>
+  <p>Эта ошибка возникает из-за сбоя калибровки. Отключите атомайзер, зажмите <code>Fire</code> + <code>−</code> на 5 секунд, затем подключите атомайзер заново. Если не поможет, обновите прошивку повторно.</p>
+</details>
+
+<details>
+  <summary>Как проверить текущую версию прошивки?</summary>
+  <p>Перейдите в меню <code>Настройки → Информация → Firmware Version</code>. Если устройство не включается, версию можно увидеть при подключении к <em>Pasito Studio</em> (вкладка <code>Device Info</code>).</p>
+</details>
+
+<details>
+  <summary>Можно ли прошить Pasito 2 без компьютера?</summary>
+  <p>Да, через microSD-карту (инструкция в разделе 5). Также некоторые пользователи адаптировали прошивку под мобильное приложение <em>EScribe</em> (требуется OTG-адаптер).</p>
+</details>
+
+<details>
+  <summary>Почему после обновления быстро садится батарея?</summary>
+  <p>В новых прошивках может быть включён режим <code>Smart Power</code>, который увеличивает мощность при низком заряде. Отключите его в <code>Настройки → Батарея → Smart Mode</code>.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-зачем-обновлять-прошивку-smoant-pasito-2">1. Зачем обновлять прошивку Smoant Pasito 2?</a></li><li><a href="#2-где-скачать-официальную-прошивку-для-pasito-2">2. Где скачать официальную прошивку для Pasito 2?</a></li><li><a href="#3-подготовка-устройства-к-прошивке">3. Подготовка устройства к прошивке</a></li><li><a href="#4-пошаговая-инструкция-прошивка-через-pasito-studio">4. Пошаговая инструкция: прошивка через Pasito Studio</a></li><li><a href="#5-ручное-обновление-через-usb-для-опытных-пользователей">5. Ручное обновление через USB (для опытных пользователей)</a></li><li><a href="#6-типичные-ошибки-и-их-решения">6. Типичные ошибки и их решения</a></li><li><a href="#7-откат-на-предыдущую-версию-прошивки">7. Откат на предыдущую версию прошивки</a></li><li><a href="#8-часто-задаваемые-вопросы-faq">8. Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/po/pochemu-temneet-zhidkost-v-vejpe.html" class="related-card">Почему темнеет жидкость в вейпе: причины, последствия и решение</a></li><li><a href="/articles/m/mu/musorka-v-vide-minona.html" class="related-card">Мусорка в виде Миньона: лучшие модели и DIY декор</a></li><li><a href="/articles/c/ch/chto-delat-esli-pod-ne-chitaet-kartridzh.html" class="related-card">Принтер не видит картридж: причины и решения проблемы</a></li><li><a href="/articles/k/ka/kak-pomenyat-kartridzh-na-pasito.html" class="related-card">Как заменить картридж на принтере Pantum: полная инструкция</a></li><li><a href="/articles/k/ka/kak-podobrat-zhizhu-pod-isparitel.html" class="related-card">Как подобрать жижу под испаритель: гид по VG/PG и мощности</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/po/pochemu-temneet-zhidkost-v-vejpe.html" class="related-bottom-card"><span class="related-bottom-title">Почему темнеет жидкость в вейпе: причины, последствия и решение</span><span class="related-bottom-desc">Узнайте, почему темнеет жижа в вейпе. Разбор причин окисления, нагара на спирали и правил хранения ж</span></a><a href="/articles/m/mu/musorka-v-vide-minona.html" class="related-bottom-card"><span class="related-bottom-title">Мусорка в виде Миньона: лучшие модели и DIY декор</span><span class="related-bottom-desc">Как выбрать или сделать мусорное ведро Миньон для детской. Обзор моделей, идеи декора, советы по ухо</span></a><a href="/articles/c/ch/chto-delat-esli-pod-ne-chitaet-kartridzh.html" class="related-bottom-card"><span class="related-bottom-title">Принтер не видит картридж: причины и решения проблемы</span><span class="related-bottom-desc">Принтер перестал видеть картридж? Полный гид по диагностике, очистке чипов, сбросу памяти и устранен</span></a><a href="/articles/k/ka/kak-pomenyat-kartridzh-na-pasito.html" class="related-bottom-card"><span class="related-bottom-title">Как заменить картридж на принтере Pantum: полная инструкция</span><span class="related-bottom-desc">Пошаговое руководство по замене картриджа на принтерах Pantum. Как выбрать совместимую модель, запра</span></a><a href="/articles/k/ka/kak-podobrat-zhizhu-pod-isparitel.html" class="related-bottom-card"><span class="related-bottom-title">Как подобрать жижу под испаритель: гид по VG/PG и мощности</span><span class="related-bottom-desc">Узнайте, как выбрать жидкость для вейпа под ваш испаритель. Таблица совместимости VG/PG, мощность, с</span></a><a href="/articles/c/ch/chto-budet-esli-protechet-vodyanoe-okhlazhdenie-protsessora.html" class="related-bottom-card"><span class="related-bottom-title">Что будет если протечет водяное охлаждение: риски и ликвидация</span><span class="related-bottom-desc">Полный разбор последствий протечки СВО. Как спасти компьютер, какие компоненты пострадают, порядок д</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

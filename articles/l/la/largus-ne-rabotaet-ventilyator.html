@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Lada Largus: не работает вентилятор — полный разбор — Рем Набор</title>
+    <meta name="description" content="Почему не включается вентилятор охлаждения на Ларгус? Диагностика датчика, реле, предохранителя и проводки своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/l/la/largus-ne-rabotaet-ventilyator.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Lada Largus: не работает вентилятор — полный разбор">
+    <meta property="og:description" content="Почему не включается вентилятор охлаждения на Ларгус? Диагностика датчика, реле, предохранителя и проводки своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Lada Largus: не работает вентилятор — полный разбор</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему на Lada Largus не работает вентилятор охлаждения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-и-визуальный-осмотр">Первичная диагностика и визуальный осмотр</a></li><li><a href="#проверка-предохранителей-и-реле-управления">Проверка предохранителей и реле управления</a></li><li><a href="#диагностика-датчика-температуры-и-эбу">Диагностика датчика температуры и ЭБУ</a></li><li><a href="#прямая-проверка-электродвигателя-вентилятора">Прямая проверка электродвигателя вентилятора</a></li><li><a href="#поиск-обрывов-и-коротких-замыканий-в-проводке">Поиск обрывов и коротких замыканий в проводке</a></li><li><a href="#временные-меры-и-аварийный-запуск">Временные меры и аварийный запуск</a></li><li><a href="#замена-вентилятора-и-сборка-системы">Замена вентилятора и сборка системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда на <em>Lada Largus</em> не работает вентилятор системы охлаждения, является одной из самых критичных для владельца этого автомобиля. Двигатели K4M и K7M, устанавливаемые на эту модель, конструктивно не имеют запаса прочности при перегреве, и длительное движение с неработающим обдувом радиатора чревато деформацией головки блока цилиндров или прогаром прокладки ГБЦ.</p>
+
+<p>Чаще всего автовладельцы замечают проблему в городских пробках или при движении на малых скоростях, когда естественного набегающего воздуха недостаточно для отвода тепла от антифриза. Стрелка датчика температуры на приборной панели начинает уверенно ползти вверх, а характерного звука работы электромотора под капотом не слышно.</p>
+
+<p>В этой статье мы детально разберем алгоритм поиска неисправности, начиная от простейшей проверки предохранителей и заканчивая сложной диагностикой цепи управления. Вы узнаете, как отличить поломку самого вентилятора от выхода из строя датчика температуры или реле.</p>
+
+<h2 id="первичная-диагностика-и-визуальный-осмотр">Первичная диагностика и визуальный осмотр</h2>
+
+<p>Прежде чем хвататься за мультиметр или искать запчасти, необходимо провести грамотный визуальный осмотр подкапотного пространства. Часто причина банальна: окисление контактов, перетертые провода или механическое повреждение крыльчатки. Включите зажигание, но не запускайте двигатель, и прислушайтесь к работе топливного насоса — это подтвердит наличие питания в бортовой сети.</p>
+
+<p>Откройте капот и осмотрите блок вентиляторов, расположенный перед радиатором. На <em>Lada Largus</em> используется двухскоростной режим работы, поэтому конструктивно там могут быть установлены как два отдельных вентилятора, так и один спаренный блок (в зависимости от комплектации и года выпуска). Проверьте, нет ли посторонних предметов, заклинивающих лопасти.</p>
+
+<p>Обратите особое внимание на разъемы подключения. Вибрация при движении часто приводит к тому, что фишки <strong>окисляются</strong> или теряют контакт. Если вы видите зеленый налет на контактах, их необходимо зачистить контактным спреем или обычной наждачной бумагой, предварительно обесточив автомобиль.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не пытайтесь проверять работу вентилятора, замыкая контакты отверткой при включенном зажигании, если не уверены в целостности проводки — это может привести к короткому замыканию и возгоранию изоляции.</p>
+</blockquote>
+
+<p>Также стоит проверить целостность предохранителей. На Ларгусе цепь вентилятора защищена несколькими элементами защиты в монтажном блоке. Перегоревший плавкий элемент — самая частая и легко устранимая причина отказа системы.</p>
+
+<h2 id="проверка-предохранителей-и-реле-управления">Проверка предохранителей и реле управления</h2>
+
+<p>Монтажный блок предохранителей на Lada Largus расположен в салоне, под панелью приборов с левой стороны, либо в моторном отсеке (в зависимости от модификации). Для доступа к салонному блоку часто требуется снять декоративную крышку торпедо. Схема расположения элементов обычно нанесена на внутреннюю сторону крышки блока.</p>
+
+<p>Вам необходимо найти предохранитель, отвечающий за цепь <strong>электродвигателя</strong> вентилятора. Обычно это элемент большой силы тока (от 30А до 50А), так как мотор потребляет значительную мощность. Также проверьте реле управления, которое подает сигнал на включение при достижении определенной температуры.</p>
+
+<p>Реле вентилятора на Ларгусе часто выходит из строя из-за подгорания внутренних контактов. Простой способ проверки — заменить подозрительное реле на заведомо исправное аналогичного типа (например, реле звукового сигнала или фар, если они имеют одинаковый артикул и распиновку).</p>
+
+<ul>
+<li>🔌 Проверьте предохранитель F01 (или аналогичный по схеме) на предмет разрыва нити накаливания.</li>
+<li>⚡ Извлеките реле вентилятора и потрясите его — если внутри что-то болтается, элемент неисправен.</li>
+<li>🔍 Осмотрите колодку реле на предмет оплавления пластика от перегрева контактов.</li>
+</ul>
+
+<div class="checklist-block"><h4>☑️ Диагностика цепи питания</h4><label class="check-item"><input type="checkbox"><span>Проверить предохранитель вентилятора</span></label><label class="check-item"><input type="checkbox"><span>Заменить реле на заведомо исправное</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть колодки на окисление</span></label><label class="check-item"><input type="checkbox"><span>Прозвонить массу двигателя</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Если замена предохранителя и реле не дала результата, и вентилятор по-прежнему молчит при прогретом двигателе, проблема кроется глубже — в датчиках, проводке или самом моторе.</p>
+
+<h2 id="диагностика-датчика-температуры-и-эбу">Диагностика датчика температуры и ЭБУ</h2>
+
+<p>Электронный блок управления (ЭБУ) принимает решение о включении вентилятора на основе показаний датчика температуры охлаждающей жидкости (ДТОЖ). На двигателях <em>K4M</em> и <em>K7M</em> этот датчик обычно вкручен в термостат или в патрубок системы охлаждения.</p>
+
+<p>Если датчик передает неверные данные (например, показывает постоянно низкую температуру), "мозги" автомобиля просто не дадут команду на включение обдува, считая, что в этом нет необходимости. Проверить работоспособность датчика можно с помощью диагностического сканера ELM327, подключив его к разъему OBD-II.</p>
+
+<pre><code>Подключите сканер к разъему OBD-II (под рулем)
+<p>Запустите двигатель и прогрейте его до рабочей температуры</p>
+<p>Считайте параметр "Temperature Coolant" в реальном времени</code></pre></p>
+
+<p>Если на сканере вы видите температуру 90-95 градусов, а вентилятор не включается при достижении 97-100 градусов (порог срабатывания первой скорости), значит, проблема не в датчике, а в исполнительном механизме. Если же сканер показывает 40 градусов при горячем двигателе — датчик под замену.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Покупайте датчики температуры только оригинального производства или качественные аналоги (Facet, ERA). Дешевые китайские датчики часто имеют нелинейную характеристику сопротивления, что сбивает настройки ЭБУ.</p></div>
+
+<p>Иногда причина кроется в программном сбое самого ЭБУ. В редких случаях помогает сброс адаптаций или перепрошивка блока управления, но это крайняя мера, к которой стоит прибегать только после исключения всех механических неисправностей.</p>
+
+<h2 id="прямая-проверка-электродвигателя-вентилятора">Прямая проверка электродвигателя вентилятора</h2>
+
+<p>Чтобы окончательно убедиться в исправности или неисправности самого вентилятора, его нужно подать питание напрямую, минуя всю штатную проводку и блоки управления. Это самый надежный способ исключить ошибки в логике работы автомобиля.</p>
+
+<p>Отсоедините разъем от вентилятора. Вам понадобится два провода достаточного сечения (не менее 1.5 мм²) и заряженный аккумулятор. Подключите один провод от плюсовой клеммы АКБ к плюсовому контакту разъема вентилятора, а второй — от минуса к минусовому контакту.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При прямом подключении вентилятор может включить сразу на максимальные обороты. Убедитесь, что рядом с крыльчаткой нет рук, инструментов или loose-предметов, которые может засосать вращающимися лопастями.</p>
+</blockquote>
+
+<p>Если при прямой подаче 12 вольт вентилятор молчит или вращается с трудом, издавая гул — мотор неисправен. Чаще всего изнашиваются <strong>графитовые щетки</strong> коллекторного двигателя или заклинивает втулки подшипников из-за высыхания смазки.</p>
+
+<p>В некоторых случаях мотор можно реанимировать, разобрав его и почистив коллектор от нагара, но на практике для Lada Largus дешевле и надежнее купить новый вентилятор в сборе. Ремонт старого часто дает лишь временный эффект.</p>
+
+<h2 id="поиск-обрывов-и-коротких-замыканий-в-проводке">Поиск обрывов и коротких замыканий в проводке</h2>
+
+<p>Если вентилятор исправен, предохранители целы, реле щелкает, но мотор не крутится — значит, где-то в цепи есть обрыв провода или плохой контакт "массы". Проводка на Ларгусе подвержена вибрациям и воздействию температур, изоляция со временем трескается.</p>
+
+<p>Используйте мультиметр в режиме прозвонки. Проверьте целостность проводов от разъема вентилятора до блока предохранителей. Особое внимание уделите местам, где жгут проходит через металлические перегородки кузова — там провода часто перетираются.</p>
+
+<table>
+<thead>
+<tr>
+<th>Элемент цепи</th>
+<th>Нормальное сопротивление</th>
+<th>Возможная неисправность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Цепь питания (+12В)</td>
+<td>0 - 2 Ом</td>
+<td>Обрыв провода, перегорел предохранитель</td>
+</tr>
+<tr>
+<td>Цепь массы (GND)</td>
+<td>0 - 1 Ом</td>
+<td>Окисление контакта, обрыв "массы"</td>
+</tr>
+<tr>
+<td>Сигнальный провод ЭБУ</td>
+<td>Зависит от схемы</td>
+<td>Короткое замыкание на корпус</td>
+</tr>
+<tr>
+<td>Сопротивление мотора</td>
+<td>0.5 - 3 Ом</td>
+<td>Обрыв обмотки (бесконечность)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Частая проблема Ларгусов — плохая масса двигателя или кузова. Проверьте крепление минусового провода от АКБ к кузову и двигателю. Если болт крепления окислен, ток не пройдет, и вентилятор не запустится, даже если все остальные элементы исправны.</p>
+
+<div class="poll-widget" id="poll-3375e1bd"><div class="poll-widget-question">📊 Как часто у вас перегревается двигатель в пробках?</div><div class="poll-widget-option" data-poll="3375e1bd" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда, вентилятор работает</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3375e1bd" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Иногда стрелка ползет вверх</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3375e1bd" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Постоянно, приходится включать печку</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3375e1bd" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">У меня уже закипел двигатель</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="временные-меры-и-аварийный-запуск">Временные меры и аварийный запуск</h2>
+
+<p>Если вентилятор сломался в дороге, а до сервиса еще далеко, можно воспользоваться аварийным методом охлаждения. Включите печку салона на максимальную температуру и максимальную скорость обдува. Это создаст дополнительный контур охлаждения, забирая тепло от двигателя в салон.</p>
+
+<p>Да, в салоне будет жарко, но это позволит дотянуть до гаража без критического перегрева. Двигайтесь с пониженными оборотами, избегая длительной работы на холостом ходу, где теплоотвод минимален.</p>
+
+<p>Некоторые опытные водители устанавливают кнопку принудительного включения вентилятора в салон. Это позволяет включать обдув вручную при приближении к пробкам, не дожидаясь срабатывания автоматики.</p>
+
+<details class="faq-item"><summary>Схема подключения кнопки вентилятора</summary><div class="faq-answer"><p>Для реализации нужно вывести провод от плюсового вывода разъема вентилятора через предохранитель 30А на кнопку в салоне, а с кнопки подать питание на реле, управляющее массой.</p></div></details>
+
+<p>Помните, что эксплуатация автомобиля с неработающей системой охлаждения даже в течение короткого времени сокращает ресурс двигателя и может привести к дорогостоящему капитальному ремонту.</p>
+
+<h2 id="замена-вентилятора-и-сборка-системы">Замена вентилятора и сборка системы</h2>
+
+<p>Процесс замены вентилятора на Lada Largus не требует снятия бампера, что значительно упрощает работу. Доступ осуществляется сверху, из-под капота. Однако для удобства рекомендуется снять воздушный фильтр и его корпус.</p>
+
+<p>Отсоедините клемму аккумулятора для безопасности. Открутите болты крепления рамки вентилятора к радиатору. Аккуратно извлеките блок вентиляторов вверх, стараясь не повредить соты радиатора кондиционера, если он установлен перед основным радиатором.</p>
+
+<p>Установите новый вентилятор, подключите разъемы. Перед окончательной сборкой проверьте работу системы: запустите двигатель, прогрейте его до включения вентилятора. Убедитесь, что крыльчатка вращается свободно и не задевает за защитный кожух.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При установке нового вентилятора обязательно проверьте надежность фиксации всех защелок и болтов. Вибрация на трассе может открутить плохо затянутый крепеж, что приведет к падению вентилятора на ремень генератора.</p>
+</blockquote>
+
+<p>После замены обязательно проверьте уровень антифриза в расширительном бачке и при необходимости долейте его до метки MAX. Воздушные пробки в системе могут исказить показания датчиков температуры.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Качественная замена вентилятора занимает около 40-60 минут и не требует специального инструмента, кроме набора головок и отверток.</p></div>
+
+<p>Регулярно контролируйте работу системы охлаждения, особенно в летний период. Чистка радиаторов от грязи и пуха также помогает снизить нагрузку на вентилятор и продлить его срок службы.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему вентилятор работает только на одной скорости?</summary>
+<p>На Lada Largus часто используется двухскоростной режим. Если работает только первая (медленная) скорость, а вторая (быстрая) не включается при сильном перегреве, скорее всего, неисправно второе реле или сгорел дополнительный резистор в цепи управления. Также возможен обрыв провода, отвечающего за вторую ступень.</p>
+</details>
+
+<details>
+<summary>Можно ли ездить без вентилятора зимой?</summary>
+<p>Технически можно, если температура воздуха ниже нуля и естественного обдува достаточно. Однако термостат может не справляться с поддержанием температуры на трассе, и двигатель будет работать в недогретом режиме, что увеличивает расход топлива и износ ЦПГ. Кроме того, в пробке двигатель все равно может перегреться даже зимой.</p>
+</details>
+
+<details>
+<summary>Какой вентилятор лучше поставить: оригинал или аналог?</summary>
+<p>Оригинальные вентиляторы Renault/Lada служат дольше и имеют правильный баланс. Среди аналогов хорошо зарекомендовали себя бренды Luzar и Behr. Дешевые безымянные китайские варианты часто имеют дисбаланс крыльчатки, что создает сильную вибрацию и шум.</p>
+</details>
+
+<details>
+<summary>Влияет ли кондиционер на работу вентилятора?</summary>
+<p>Да, напрямую. При включенном кондиционере (<em>A/C</em>) вентилятор охлаждения должен работать постоянно или включаться сразу после запуска двигателя, чтобы обеспечивать охлаждение конденсора кондиционера. Если при включении кондиционера вентилятор не стартует — проблема в цепи управления климатической системой или давлении фреона.</p>
+</details>
+
+<details>
+<summary>Что делать, если новый вентилятор не работает?</summary>
+<p>Сначала проверьте, тот ли артикул вы купили (разъемы могут отличаться). Затем убедитесь, что при установке вы не погнули контакты в фишке. Если все подключено верно, возможно, бракован сам новый мотор или проблема не в вентиляторе, а в проводке/реле, которую вы не устранили при замене.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-и-визуальный-осмотр">Первичная диагностика и визуальный осмотр</a></li><li><a href="#проверка-предохранителей-и-реле-управления">Проверка предохранителей и реле управления</a></li><li><a href="#диагностика-датчика-температуры-и-эбу">Диагностика датчика температуры и ЭБУ</a></li><li><a href="#прямая-проверка-электродвигателя-вентилятора">Прямая проверка электродвигателя вентилятора</a></li><li><a href="#поиск-обрывов-и-коротких-замыканий-в-проводке">Поиск обрывов и коротких замыканий в проводке</a></li><li><a href="#временные-меры-и-аварийный-запуск">Временные меры и аварийный запуск</a></li><li><a href="#замена-вентилятора-и-сборка-системы">Замена вентилятора и сборка системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/e/eb/ebu-ne-vklyuchaet-ventilyator-okhlazhdeniya.html" class="related-card">ЭБУ не включает вентилятор охлаждения: причины и ремонт</a></li><li><a href="/articles/t/te/termostat-passat-b3-2e.html" class="related-card">Термостат Пассат Б3 2E: Замена, Температура и Признаки</a></li><li><a href="/articles/p/pa/patrubok-35-mm-vnutrennij-diametr.html" class="related-card">Патрубок 35 мм: размеры, резины и переходные вставки</a></li><li><a href="/articles/c/ch/chto-budet-esli-slomaetsya-pompa.html" class="related-card">Что будет, если сломается помпа в машине: последствия и действия</a></li><li><a href="/articles/t/te/termostat-i-pompa-v-chem-raznitsa.html" class="related-card">Термостат и помпа: в чем разница и что сломалось?</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/e/eb/ebu-ne-vklyuchaet-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">ЭБУ не включает вентилятор охлаждения: причины и ремонт</span><span class="related-bottom-desc">Почему ЭБУ не включает вентилятор? Разбор причин: датчик, реле, проводка. Диагностика и устранение н</span></a><a href="/articles/t/te/termostat-passat-b3-2e.html" class="related-bottom-card"><span class="related-bottom-title">Термостат Пассат Б3 2E: Замена, Температура и Признаки</span><span class="related-bottom-desc">Как заменить термостат на VW Passat B3 с двигателем 2E? Температура открытия, признаки поломки, выбо</span></a><a href="/articles/p/pa/patrubok-35-mm-vnutrennij-diametr.html" class="related-bottom-card"><span class="related-bottom-title">Патрубок 35 мм: размеры, резины и переходные вставки</span><span class="related-bottom-desc">Полный гид по патрубкам 35 мм. Внутренний диаметр, подбор резины, переходники, таблицы размеров и со</span></a><a href="/articles/c/ch/chto-budet-esli-slomaetsya-pompa.html" class="related-bottom-card"><span class="related-bottom-title">Что будет, если сломается помпа в машине: последствия и действия</span><span class="related-bottom-desc">Поломка помпы грозит перегревом двигателя и капитальным ремонтом. Узнайте, как распознать неисправно</span></a><a href="/articles/t/te/termostat-i-pompa-v-chem-raznitsa.html" class="related-bottom-card"><span class="related-bottom-title">Термостат и помпа: в чем разница и что сломалось?</span><span class="related-bottom-desc">Полный разбор отличий термостата и помпы в системе охлаждения. Симптомы поломок, таблица сравнения, </span></a><a href="/articles/o/od/odin-patrubok-goryachij-drugoj-kholodnyj-radiator.html" class="related-bottom-card"><span class="related-bottom-title">Один патрубок радиатора горячий, другой холодный: причины и ремонт</span><span class="related-bottom-desc">Почему один шланг радиатора нагревается, а другой остаётся холодным? Диагностика неисправностей сист</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

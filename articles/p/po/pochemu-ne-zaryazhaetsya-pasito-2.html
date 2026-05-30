@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему не заряжается Пасито 2: диагностика неисправностей — Рем Набор</title>
+    <meta name="description" content="Разбор причин, почему не заряжается электромобиль Пасито 2. Проверка портов, зарядных станций, бортового компьютера и программных сбоев.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/po/pochemu-ne-zaryazhaetsya-pasito-2.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему не заряжается Пасито 2: диагностика неисправностей">
+    <meta property="og:description" content="Разбор причин, почему не заряжается электромобиль Пасито 2. Проверка портов, зарядных станций, бортового компьютера и программных сбоев.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему не заряжается Пасито 2: диагностика неисправностей</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему не заряжается электромобиль Пасито 2: полный разбор неисправностей</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#проверка-внешнего-источника-питания-и-зарядного-устройства">Проверка внешнего источника питания и зарядного устройства</a></li><li><a href="#диагностика-зарядного-порта-и-механических-блокировок">Диагностика зарядного порта и механических блокировок</a></li><li><a href="#сбои-в-работе-бортового-компьютера-и-программные-ошибки">Сбои в работе бортового компьютера и программные ошибки</a></li><li><a href="#неисправности-бортового-зарядного-устройства-obc">Неисправности бортового зарядного устройства (OBC)</a></li><li><a href="#проблемы-с-высоковольтной-батареей-и-bms">Проблемы с высоковольтной батареей и BMS</a></li><li><a href="#влияние-температурных-условий-и-окружающей-среды">Влияние температурных условий и окружающей среды</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Владельцы электромобилей, в частности модели <em>Пасито 2</em>, часто сталкиваются с ситуацией, когда после подключения кабеля индикатор зарядки не загорается или процесс прерывается на начальной стадии. Это вызывает панику, так как транспортное средство становится бесполезным, а поиск причины может затянуться на неопределенный срок. Проблема может крыться как в банальной неисправности розетки, так и в сложных сбоях бортовой электроники или деградации литиевых аккумуляторов.</p>
+
+<p>Чтобы понять, почему конкретный экземпляр <strong>не заряжается</strong>, необходимо провести системную диагностику, исключая причины от самых простых к наиболее сложным. В этой статье мы детально разберем алгоритм действий, который поможет вам самостоятельно выявить узкое место в цепи питания. </p>
+
+<p>Отсутствие реакции на подключение кабеля — это первый тревожный сигнал, который нельзя игнорировать. Иногда проблема решается простым сбросом ошибок через меню системы, но в других случаях требуется глубокое вмешательство в <strong>аккумуляторный блок</strong> или замену контроллера. Давайте последовательно пройдемся по всем возможным сценариям отказа, чтобы вы могли точно определить источник проблемы.</p>
+
+<h2 id="проверка-внешнего-источника-питания-и-зарядного-устройства">Проверка внешнего источника питания и зарядного устройства</h2>
+
+<p>Прежде чем грешить на сложную электронику самого автомобиля, необходимо убедиться в исправности инфраструктуры. Часто владельцы забывают проверить банальные вещи, такие как состояние бытовой розетки или целостность кабеля зарядки. Если вы используете портативное зарядное устройство (EVSE), подключите его к другой, заведомо исправной розетке с заземлением. Отсутствие напряжения на входе автоматически блокирует работу всего контура.</p>
+
+<p>Внимательно осмотрите разъемы на предмет окисления, нагара или механических повреждений. Контакты должны быть чистыми и плотно прилегать друг к другу. Если индикатор на зарядном устройстве горит красным или мигает определенным образом, сверьтесь с инструкцией производителя — это может указывать на ошибку заземления или превышение температуры. Нередко проблема кроется в самом кабеле, который мог быть пережат или поврежден изнутри.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не пытайтесь заряжать автомобиль от удлинителей низкого качества или розеток без заземления. Это может привести к перегреву проводки, возгоранию и необратимому повреждению бортового зарядного устройства <em>Пасито 2</em>.</p>
+</blockquote>
+
+<p>Попробуйте использовать альтернативную зарядную станцию, если такая возможность имеется. Это позволит сразу понять, где именно находится неисправность: в автомобиле или в источнике тока. Если на другой станции зарядка идет нормально, значит, проблема локализована в вашем домашнем оборудовании или кабеле.</p>
+
+<div class="poll-widget" id="poll-2310a8b4"><div class="poll-widget-question">📊 Где вы чаще всего заряжаете Пасито 2?</div><div class="poll-widget-option" data-poll="2310a8b4" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Дома от розетки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2310a8b4" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">На общественной станции</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2310a8b4" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">От портативного зарядного устройства</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2310a8b4" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">На работе в офисе</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-зарядного-порта-и-механических-блокировок">Диагностика зарядного порта и механических блокировок</h2>
+
+<p>Зарядный порт электромобиля — это активный узел, оснащенный множеством датчиков и механических защелок. В модели <em>Пасито 2</em> часто встречается ситуация, когда пин блокировки кабеля не срабатывает корректно, из-за чего система «думает», что кабель не подключен плотно. Визуально осмотрите гнездо порта: внутри не должно быть пыли, грязи, влаги или посторонних предметов, которые мешают полному входу штекера.</p>
+
+<p>Иногда механическая защелка заедает из-за попадания влаги или низких температур. Попробуйте аккуратно покачать подключенный разъем (не вынимая его полностью), чтобы убедиться, что контакт установлен до щелчка. Если порт оснащен автоматической шторкой или крышкой, проверьте, открывается ли она полностью и не блокирует ли путь штекеру. Механическое препятствие — частая причина того, что <strong>сигнал подключения</strong> не поступает на контроллер.</p>
+
+<ul>
+<li>🔌 Проверьте наличие конденсата внутри порта после мойки или дождя — влага может вызывать короткое замыкание датчиков.</li>
+<li>🧹 Очистите контакты сжатым воздухом или сухой ветошью, не используя токопроводящие жидкости.</li>
+<li>🔒 Убедитесь, что центральный locking-пин свободно ходит и не застрял в выдвинутом положении.</li>
+</ul>
+
+<p>Если вы обнаружите следы коррозии на контактах, их необходимо аккуратно зачистить специальным спреем для электроконтактов. Окисление увеличивает сопротивление и может привести к тому, что система управления батареей (BMS) отключит зарядку в целях безопасности. В некоторых случаях требуется замена всего модуля порта, если внутренние контакты выгорели.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Перед подключением кабеля всегда продувайте порт сжатым воздухом, особенно в зимний период, чтобы удалить ледяную крошку, которая может помешать плотному контакту.</p></div>
+
+<h2 id="сбои-в-работе-бортового-компьютера-и-программные-ошибки">Сбои в работе бортового компьютера и программные ошибки</h2>
+
+<p>Современные электромобили, включая <em>Пасито 2</em>, управляются сложным программным обеспечением. Иногда «железо» исправно, но «мозги» автомобиля зависают или выдают ложную ошибку. Это может произойти после обновления прошивки, скачка напряжения в сети или просто из-за программного сбоя. В таком случае система блокирует возможность заряда, считая условия небезопасными.</p>
+
+<p>Первым делом попробуйте выполнить «мягкий сброс» системы. Для этого заглушите автомобиль, закройте все двери и подождите 10-15 минут, пока электроника полностью не перейдет в спящий режим. Затем попробуйте подключиться снова. Если это не помогло, может потребоваться перезагрузка мультимедийной системы или бортового компьютера через скрытое меню или комбинацию кнопок.</p>
+
+<pre><code>Меню → Настройки → Система → Сброс настроек электропитания</code></pre>
+
+<p>В более сложных случаях требуется подключение диагностического сканера OBDII для чтения кодов ошибок. Ошибки типа «Communication Error with BMS» или «Charging Port Lock Failure» укажут на конкретный модуль, который нуждается во внимании. Иногда помогает простой сброс клеммы аккумуляторной батареи 12В на несколько минут, что заставляет все контроллеры перезагрузиться заново.</p>
+
+<details class="faq-item"><summary>Как сбросить ошибку зарядки без сканера?</summary><div class="faq-answer"><p>Отключите минусовую клемму малого аккумулятора (12В) на 10-15 минут. Это обесточит все блоки управления. После подключения клеммы система проведет самопроверку, и временные программные ошибки могут исчезнуть.</p></div></details>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Сброс настроек может привести к потере пользовательских данных и сбросу часов. Убедитесь, что у вас есть доступ к меню восстановления заводских настроек, если простой перезапуск не поможет.</p>
+</blockquote>
+
+<h2 id="неисправности-бортового-зарядного-устройства-obc">Неисправности бортового зарядного устройства (OBC)</h2>
+
+<p>Бортовое зарядное устройство (On-Board Charger или <strong>OBC</strong>) — это ключевой компонент, преобразующий переменный ток из сети в постоянный ток для батареи. Если этот блок выходит из строя, зарядка становится невозможной даже при исправном кабеле и порте. Симптомы неисправности OBC часто включают отсутствие характерного звука работы вентиляторов или реле при подключении кабеля.</p>
+
+<p>Проверить работоспособность OBC в домашних условиях сложно без специального оборудования, но можно обратить внимание на косвенные признаки. Если автомобиль заряжается от быстрых DC-станций (постоянный ток), но не заряжается от обычных AC-розеток, то с вероятностью 90% проблема именно в бортовом зарядном устройстве. Быстрые станции подают ток напрямую в батарею, минуя OBC.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип зарядки</th>
+<th>Проходит через OBC</th>
+<th>Вероятная причина отказа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AC (медленная, от розетки)</td>
+<td>Да</td>
+<td>Неисправен OBC, предохранитель или реле</td>
+</tr>
+<tr>
+<td>DC (быстрая станция)</td>
+<td>Нет</td>
+<td>Проблема в BMS, разъеме CCS или самой батарее</td>
+</tr>
+<tr>
+<td>Оба типа не работают</td>
+<td>Частично</td>
+<td>Глубокий разряд батареи или ошибка главного контроллера</td>
+</tr>
+</tbody>
+</table>
+
+<p>Ремонт OBC часто требует обращения в специализированный сервис, так как внутри находятся высоковольтные конденсаторы и сложные платы управления. Самостоятельное вскрытие блока опасно для жизни и может привести к окончательному выходу узла из строя. В некоторых случаях достаточно заменить сгоревший предохранитель в цепи питания OBC, если он доступен для обслуживания.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если быстрая зарядка (DC) работает, а медленная (AC) нет — неисправно бортовое зарядное устройство или его цепь питания.</p></div>
+
+<h2 id="проблемы-с-высоковольтной-батареей-и-bms">Проблемы с высоковольтной батареей и BMS</h2>
+
+<p>Система управления батареей (Battery Management System или <strong>BMS</strong>) является главным стражем здоровья аккумулятора. Она контролирует температуру, напряжение каждой ячейки и общий баланс. Если BMS обнаруживает критическое отклонение, она немедленно блокирует процесс заряда, чтобы предотвратить возгорание или взрыв. Это самая серьезная категория неисправностей.</p>
+
+<p>Одной из частых причин блокировки является «перекос» ячеек. Если одна или несколько ячеек в pack-е имеют напряжение значительно ниже остальных, BMS не даст зарядить батарею до 100%, а в критических случаях запретит зарядку вообще. Также система может блокировать заряд при экстремально низких или высоких температурах аккумулятора. Зимой, если машина стояла на морозе, батарея может не принимать заряд до тех пор, пока система подогрева не прогреет её до рабочей температуры.</p>
+
+<ul>
+<li>❄️ При низких температурах система может тратить энергию на подогрев, создавая иллюзию отсутствия зарядки.</li>
+<li>🔋 Глубокий разряд ниже критического порога может потребовать «толчка» током малой мощности в сервисе.</li>
+<li>⚖️ Дисбаланс ячеек требует процедуры балансировки, которую проводит только специальное оборудование.</li>
+</ul>
+
+<p>Если на приборной панели горит ошибка «High Voltage System Fault» или аналогичная, эксплуатация автомобиля запрещена. Вмешательство в высоковольтную цепь без соответствующей квалификации и изолированного инструмента смертельно опасно. В таких случаях единственно верное решение — эвакуация в сервисный центр для проведения компьютерной диагностики ячеек.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Высокое напряжение в батарее <em>Пасито 2</em> может достигать 400 Вольт и выше. Не пытайтесь разбирать аккумуляторный отсек или измерять напряжение на шинах обычным мультиметром — это может привести к летальному исходу.</p>
+</blockquote>
+
+<div class="checklist-block"><h4>☑️ Первичная диагностика перед визитом в сервис</h4><label class="check-item"><input type="checkbox"><span>Проверить работу быстрой зарядки</span></label><label class="check-item"><input type="checkbox"><span>Считать коды ошибок OBD2</span></label><label class="check-item"><input type="checkbox"><span>Проверить уровень охлаждающей жидкости батареи</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть предохранители высокого напряжения</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="влияние-температурных-условий-и-окружающей-среды">Влияние температурных условий и окружающей среды</h2>
+
+<p>Электромобили крайне чувствительны к внешним условиям. Температура окружающей среды напрямую влияет на химические процессы внутри аккумулятора. В сильные морозы электролит загустевает, и внутреннее сопротивление батареи растет. Система защиты может просто не разрешить подачу большого тока, чтобы не повредить ячейки. Летом, наоборот, перегрев может вызвать аварийное отключение.</p>
+
+<p>Если <em>Пасито 2</em> не заряжается зимой сразу после постановки на зарядку, дайте ему время. Многие современные системы сначала включают подогрев батареи от сети, и только потом начинают накопление энергии. Этот процесс может занять от 15 до 40 минут в зависимости от степени промерзания. Если вы видите, что потребляется энергия из сети (светится счетчик или индикатор станции), но процент батареи не растет — скорее всего, идет именно процесс термоподготовки.</p>
+
+<p>Также стоит учитывать влажность. В дождливую погоду некоторые зарядные станции могут отключаться из-за срабатывания датчиков утечки тока (УЗО). Проверьте, не попадает ли вода напрямую в разъем или розетку. Иногда достаточно установить дополнительный козырек над местом парковки, чтобы решить проблему сезонных отказов.</p>
+
+<details class="faq-item"><summary>Почему зимой зарядка идет медленно?</summary><div class="faq-answer"><p>Зимой часть энергии тратится на подогрев батареи до оптимальной температуры (обычно +15..+25°C). Пока батарея холодная, контроллер ограничивает ток заряда, чтобы избежать повреждения кристаллической решетки ячеек.</p></div></details>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему индикатор на зарядном устройстве горит зеленым, но машина не заряжается?</summary>
+<p>Зеленый индикатор обычно означает, что зарядное устройство исправно и готово к работе, но не видит подключенного автомобиля. Это говорит о проблеме в цепи коммуникации между машиной и кабелем. Проверьте плотность посадки разъема, состояние пина блокировки и предохранитель в цепи управления зарядкой автомобиля.</p>
+</details>
+
+<details>
+<summary>Можно ли заряжать Пасито 2, если горит ошибка двигателя?</summary>
+<p>Зависит от типа ошибки. Если ошибка касается силового инвертора или высоковольтной батареи, зарядка, скорее всего, будет заблокирована системой безопасности. Если ошибка касается второстепенных систем (например, датчика давления в шинах или фары), зарядка может проходить штатно. Рекомендуется провести компьютерную диагностику перед подключением.</p>
+</details>
+
+<details>
+<summary>Что делать, если зарядка прерывается на 80%?</summary>
+<p>Прерывание на 80% часто является программной настройкой для продления срока службы батареи (режим «повседневной зарядки»). Проверьте настройки в меню автомобиля. Если режим отключен, проблема может быть в перегреве батареи или скачке напряжения в сети, который вызвал срабатывание защиты.</p>
+</details>
+
+<details>
+<summary>Сколько стоит замена бортового зарядного устройства на Пасито 2?</summary>
+<p>Стоимость варьируется в зависимости от региона и наличия запчастей. Ориентировочно цена нового блока может составлять от 300 до 600 долларов, плюс работа по замене. В некоторых случаях возможен ремонт платы OBC, что выйдет дешевле. Точную цену лучше узнавать в официальных или специализированных сервисах.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#проверка-внешнего-источника-питания-и-зарядного-устройства">Проверка внешнего источника питания и зарядного устройства</a></li><li><a href="#диагностика-зарядного-порта-и-механических-блокировок">Диагностика зарядного порта и механических блокировок</a></li><li><a href="#сбои-в-работе-бортового-компьютера-и-программные-ошибки">Сбои в работе бортового компьютера и программные ошибки</a></li><li><a href="#неисправности-бортового-зарядного-устройства-obc">Неисправности бортового зарядного устройства (OBC)</a></li><li><a href="#проблемы-с-высоковольтной-батареей-и-bms">Проблемы с высоковольтной батареей и BMS</a></li><li><a href="#влияние-температурных-условий-и-окружающей-среды">Влияние температурных условий и окружающей среды</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-pochistit-isparitel-v-vejpe.html" class="related-card">Как почистить испаритель в вейпе: пошаговая инструкция 2026</a></li><li><a href="/articles/c/ch/chto-delat-esli-vejp-kharkaetsya.html" class="related-card">Вейп харкается: причины и способы устранения</a></li><li><a href="/articles/s/sa/samoe-moshchnoe-gladkostvolnoe-ruzhe.html" class="related-card">Самое мощное гладкоствольное ружье: обзор и характеристики</a></li><li><a href="/articles/s/sk/skolko-nuzhno-propitatsya-kartridzhu.html" class="related-card">Сколько нужно пропитаться картриджу: время и правила</a></li><li><a href="/articles/c/ch/chto-delat-esli-na-santi-pishet-shorted.html" class="related-card">Sanita пишет Shorted: причины и устранение ошибки</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-pochistit-isparitel-v-vejpe.html" class="related-bottom-card"><span class="related-bottom-title">Как почистить испаритель в вейпе: пошаговая инструкция 2026</span><span class="related-bottom-desc">Узнайте, как правильно очистить испаритель в электронной сигарете без повреждений. Способы для разны</span></a><a href="/articles/c/ch/chto-delat-esli-vejp-kharkaetsya.html" class="related-bottom-card"><span class="related-bottom-title">Вейп харкается: причины и способы устранения</span><span class="related-bottom-desc">Почему вейп плюется жидкостью? Полный гайд по устранению конденсата, подбору мощности и правильной э</span></a><a href="/articles/s/sa/samoe-moshchnoe-gladkostvolnoe-ruzhe.html" class="related-bottom-card"><span class="related-bottom-title">Самое мощное гладкоствольное ружье: обзор и характеристики</span><span class="related-bottom-desc">Обзор самых мощных гладкоствольных ружей. Характеристики, калибры, влияние длины ствола на мощность </span></a><a href="/articles/s/sk/skolko-nuzhno-propitatsya-kartridzhu.html" class="related-bottom-card"><span class="related-bottom-title">Сколько нужно пропитаться картриджу: время и правила</span><span class="related-bottom-desc">Узнайте, сколько времени нужно для пропитки картриджа перед печатью. Инструкция по установке, таблиц</span></a><a href="/articles/c/ch/chto-delat-esli-na-santi-pishet-shorted.html" class="related-bottom-card"><span class="related-bottom-title">Sanita пишет Shorted: причины и устранение ошибки</span><span class="related-bottom-desc">Ошибка Shorted на посудомоечной машине Sanita: расшифровка, причины короткого замыкания, проверка ТЭ</span></a><a href="/articles/s/sm/smoant-knight-80-proshivka.html" class="related-bottom-card"><span class="related-bottom-title">Прошивка Smoant Knight 80: инструкция и советы по обновлению</span><span class="related-bottom-desc">Пошаговое руководство по обновлению прошивки для Smoant Knight 80: где скачать, как установить, ошиб</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как проверить работает ли водяное охлаждение процессора: диагностика — Рем Набор</title>
+    <meta name="description" content="Полная инструкция по диагностике СВО. Узнайте, как проверить помпу, радиатор и уровни температуры. Советы для систем жидкостного охлаждения ПК.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-proverit-rabotaet-li-vodyanoe-okhlazhdenie-protsessora.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как проверить работает ли водяное охлаждение процессора: диагностика">
+    <meta property="og:description" content="Полная инструкция по диагностике СВО. Узнайте, как проверить помпу, радиатор и уровни температуры. Советы для систем жидкостного охлаждения ПК.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как проверить работает ли водяное охлаждение процессора: диагностика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как проверить работает ли водяное охлаждение процессора</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#визуальная-и-тактильная-диагностика-системы">Визуальная и тактильная диагностика системы</a></li><li><a href="#проверка-работы-помпы-и-вращения-ротора">Проверка работы помпы и вращения ротора</a></li><li><a href="#мониторинг-температур-с-помощью-программного-обеспечения">Мониторинг температур с помощью программного обеспечения</a></li><li><a href="#выявление-воздушных-пробок-в-контуре">Выявление воздушных пробок в контуре</a></li><li><a href="#стресс-тестирование-и-анализ-стабильности">Стресс-тестирование и анализ стабильности</a></li><li><a href="#обслуживание-и-профилактика-неисправностей">Обслуживание и профилактика неисправностей</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Системы жидкостного охлаждения (СВО) стали стандартом для производительных игровых станций и рабочих станций, обеспечивая эффективный отвод тепла от центрального процессора. Однако, в отличие от воздушных кулеров, водяное охлаждение представляет собой сложный замкнутый контур, где отказ любого компонента может привести к перегреву оборудования за считанные минуты. Пользователи часто сталкиваются с ситуацией, когда компьютер работает, но температура ядра стремительно растет до критических значений, указывая на проблемы в теплообмене.</p>
+
+<p>Эффективность отвода тепла зависит от слаженной работы трех основных элементов: водоблока, помпы и радиатора с вентиляторами. Даже незначительная воздушная пробка или остановка ротора насоса способны полностью нарушить циркуляцию жидкости. В этой статье мы разберем детальную методику диагностики, которая поможет вам понять, функционирует ли ваша система корректно, или пришло время для обслуживания и ремонта.</p>
+
+<p>Для начала важно усвоить базовый принцип: при включении компьютера вы должны слышать характерный гул работающей помпы и ощущать движение воздуха от вентиляторов радиатора. Если корпус абсолютно тихий, а температуры высоки, это первый сигнал тревоги. Диагностика должна проводиться комплексно, начиная с визуального осмотра и заканчивая стресс-тестами под нагрузкой.</p>
+
+<h2 id="визуальная-и-тактильная-диагностика-системы">Визуальная и тактильная диагностика системы</h2>
+
+<p>Первым этапом проверки является внешний осмотр без использования специализированного программного обеспечения. Вам необходимо открыть боковую крышку системного блока и убедиться, что все кабели подключены корректно. Питание помпы обычно идет от разъема <code>AIO_PUMP</code> или <code>CPU_OPT</code> на материнской плате, а не от стандартного <code>CPU_FAN</code>. Ошибка в подключении может привести к тому, что насос просто не получит напряжение.</p>
+
+<p>Особое внимание следует уделить трубкам, соединяющим водоблок и радиатор. В исправной системе они должны быть теплыми или горячими с обеих сторон после непродолжительной работы ПК. Если одна трубка горячая, а вторая остается холодной, это явный признак того, что <strong>циркуляция жидкости</strong> нарушена. Жидкость не проходит через радиатор, оставаясь запертой в водоблоке, что мгновенно ведет к тепловому дросселированию процессора.</p>
+
+<blockquote>⚠️ Внимание: Никогда не пытайтесь отсоединить трубки или вскрывать водоблок, если система находится под гарантией. Большинство современных СВО являются необслуживаемыми, и нарушение герметичности приведет к вытеканию жидкости и короткому замыканию компонентов.</blockquote>
+
+<p>Также проверьте состояние вентиляторов на радиаторе. Они должны вращаться равномерно, без посторонних звуков и вибраций. Часто бывает так, что помпа работает исправно, но забитый пылью радиатор или остановившиеся вентиляторы не могут рассеять тепло в окружающую среду. В этом случае эффективность <em>теплоотвода</em> падает до нуля, несмотря на исправную работу насоса.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При тактильной проверке будьте осторожны: компоненты внутри корпуса могут быть очень горячими. Используйте тыльную сторону ладони для быстрой оценки температуры трубок.</p></div>
+
+<h2 id="проверка-работы-помпы-и-вращения-ротора">Проверка работы помпы и вращения ротора</h2>
+
+<p>Сердцем любой системы водяного охлаждения является помпа. Именно она создает давление, необходимое для перемещения теплоносителя по контуру. Современные насосы, такие как модели от <em>Asetek</em> или <em>Cooler Master</em>, работают на высоких оборотах, поэтому их звук часто сливается с общим шумом системы. Чтобы убедиться в работоспособности, можно использовать программу для мониторинга оборотов, если материнская плата поддерживает считывание RPM с разъема помпы.</p>
+
+<p>Если программный метод недоступен, прибегните к акустической диагностике. Приложите ухо к водоблоку (аккуратно, не касаясь горячих поверхностей). Вы должны слышать равномерное жужжание или гудение. Полная тишина или прерывистые щелчки указывают на то, что ротор заклинило или двигатель насоса вышел из строя. В некоторых случаях ротор может вращаться с трудом из-за попадания воздуха или механического мусора внутрь канала.</p>
+
+<ul>
+<li>🎧 Прислушайтесь к водоблоку: равномерный гул свидетельствует о работе мотора.</li>
+<li>👆 Аккуратно прикоснитесь к корпусу помпы: легкая вибрация подтверждает вращение ротора.</li>
+<li>🌡️ Сравните температуру входа и выхода: разница должна быть минимальной в простое, но трубки должны греться равномерно.</li>
+<li>💨 Проверьте поток воздуха: убедитесь, что вентиляторы радиатора создают тягу.</li>
+</ul>
+
+<p>Важно отметить, что некоторые помпы имеют регулируемую скорость вращения. Если в BIOS или программном обеспечении (например, <em>Corsair iCUE</em> или <em>ASUS AI Suite</em>) установлен профиль "Silent" или "Zero RPM", насос может работать на минимальных оборотах, которых недостаточно для эффективного охлаждения под нагрузкой. Убедитесь, что профиль работы помпы установлен на <code>Performance</code> или <code>Full Speed</code>.</p>
+
+<div class="poll-widget" id="poll-7b541adc"><div class="poll-widget-question">📊 Как вы проверяете работу помпы?</div><div class="poll-widget-option" data-poll="7b541adc" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">На слух (приложив ухо)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7b541adc" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">По температуре трубок</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7b541adc" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Через программу мониторинга</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7b541adc" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">По вибрации корпуса помпы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="мониторинг-температур-с-помощью-программного-обеспечения">Мониторинг температур с помощью программного обеспечения</h2>
+
+<p>Наиболее объективные данные о состоянии системы охлаждения можно получить с помощью специализированного софта. Программы вроде <em>HWMonitor</em>, <em>AIDA64</em> или <em>Core Temp</em> позволяют отслеживать температуру каждого ядра процессора в реальном времени. Нормальная температура в режиме простоя для современного процессора с водяным охлаждением должна находиться в диапазоне 30-45°C, в зависимости от температуры в помещении.</p>
+
+<p>Критическим показателем является дельта температур между простоем и нагрузкой. При запуске стресс-теста температура не должна взлетать мгновенно до 90-100°C. Плавный рост и последующая стабилизация на отметке 60-80°C говорят о том, что <strong>теплоемкость</strong> системы достаточна, и жидкость циркулирует правильно. Мгновенный скачок указывает на отсутствие контакта между кристаллом процессора и подошвой водоблока или остановку помпы.</p>
+
+<table>
+<thead>
+<tr>
+<th>Режим работы</th>
+<th>Нормальная температура</th>
+<th>Критическая температура</th>
+<th>Возможная причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Простой (Idle)</td>
+<td>30°C – 45°C</td>
+<td>> 60°C</td>
+<td>Неисправность помпы, высохшая термопаста</td>
+</tr>
+<tr>
+<td>Нагрузка (Gaming)</td>
+<td>60°C – 80°C</td>
+<td>> 90°C</td>
+<td>Забит радиатор, слабая циркуляция</td>
+</tr>
+<tr>
+<td>Стресс-тест</td>
+<td>70°C – 85°C</td>
+<td>100°C (Троттлинг)</td>
+<td>Критический отказ системы охлаждения</td>
+</tr>
+<tr>
+<td>Разница трубок</td>
+<td>Одинаковый нагрев</td>
+<td>Одна горячая, одна холодная</td>
+<td>Воздушная пробка или засор</td>
+</tr>
+</tbody>
+</table>
+
+<p>Обратите внимание на разницу температур между ядрами (Core Temp Delta). Если одно ядро значительно горячее остальных (разница более 10-15°C), это может свидетельствовать о неравномерном прижиме водоблока. В таких случаях даже исправная помпа не сможет эффективно отводить тепло от наиболее нагретой зоны кристалла.</p>
+
+<blockquote>⚠️ Внимание: Если температура процессора мгновенно достигает 100°C при запуске любого приложения, немедленно прекратите тесты. Это признак того, что тепло не отводится от кристалла, и дальнейшая работа может привести к деградации процессора.</blockquote>
+
+<h2 id="выявление-воздушных-пробок-в-контуре">Выявление воздушных пробок в контуре</h2>
+
+<p>Воздушные пробки — самая частая проблема в системах жидкостного охлаждения, особенно после транспортировки компьютера или первичной установки. Воздух легче жидкости и скапливается в верхней точке контура. Если эта точка находится внутри водоблока, пузырь воздуха блокирует контакт жидкости с медной подошвой, создавая эффект теплового изолятора.</p>
+
+<p>Для устранения этой проблемы необходимо изменить ориентацию системного блока. Положите корпус на бок так, чтобы радиатор оказался выше процессора, или наклоните его под углом 45 градусов. Включите компьютер и дайте ему поработать в таком положении 15-20 минут. Это позволит пузырькам воздуха подняться в радиатор, где они не будут мешать циркуляции в водоблоке.</p>
+
+<details class="faq-item"><summary>Почему возникают воздушные пробки?</summary><div class="faq-answer"><p>При производстве в контур попадает небольшое количество воздуха. Со временем он может мигрировать. Также пробки образуются при неправильной установке (радиатор ниже процессора) или после длительной стоянки ПК, когда газы выделяются из жидкости.</p></div></details>
+
+<p>Симптомами наличия воздуха в системе часто являются булькающие звуки, доносящиеся из области водоблока или радиатора. Этот звук возникает при прохождении пузырьков через крыльчатку помпы. Хотя кратковременное бульканье допустимо сразу после установки, постоянные звуки указывают на серьезную проблему с заполнением контура или разгерметизацию.</p>
+
+<h2 id="стресс-тестирование-и-анализ-стабильности">Стресс-тестирование и анализ стабильности</h2>
+
+<p>Для окончательной проверки эффективности охлаждения необходимо провести стресс-тестирование. Используйте утилиты <em>Prime95</em>, <em>AIDA64 (Stress CPU)</em> или <em>Cinebench</em>. Запустите тест на 10-15 минут и наблюдайте за графиком температур. В первые минуты температура будет расти быстро, но затем кривая должна выйти на плато.</p>
+
+<p>Если температура продолжает линейно расти даже спустя 10 минут теста, это означает, что радиатор не справляется с рассеиванием тепла или помпа не обеспечивает достаточный поток жидкости для обновления теплоносителя в водоблоке. В исправной системе с водяным охлаждением рост температуры должен остановиться, так как достигается баланс между генерацией тепла процессором и отводом его радиатором.</p>
+
+<div class="checklist-block"><h4>☑️ План стресс-теста</h4><label class="check-item"><input type="checkbox"><span>Закрыть фоновые приложения</span></label><label class="check-item"><input type="checkbox"><span>Запустить мониторинг температур</span></label><label class="check-item"><input type="checkbox"><span>Запустить Prime95 (Small FFTs)</span></label><label class="check-item"><input type="checkbox"><span>Наблюдать 15 минут</span></label><label class="check-item"><input type="checkbox"><span>Зафиксировать максимальную температуру</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Также стоит проверить поведение системы при снятии нагрузки. После завершения стресс-теста температура должна начать снижаться достаточно быстро. Если остывание происходит очень медленно, это может указывать на то, что жидкость в контуре практически не движется и тепло остается локализованным в водоблоке.</p>
+
+<h2 id="обслуживание-и-профилактика-неисправностей">Обслуживание и профилактика неисправностей</h2>
+
+<p>Регулярное обслуживание продлевает жизнь системе водяного охлаждения. Основной враг радиатора — пыль. Она забивает соты теплообменника, превращая его в одеяло, которое удерживает тепло внутри. Чистка радиатора сжатым воздухом или мягкой щеткой должна проводиться каждые 6-12 месяцев в зависимости от запыленности помещения.</p>
+
+<p>Со временем жидкость в необслуживаемых СВО может испаряться через стенки трубок (процесс пермеации), что приводит к падению уровня и образованию воздушной подушки. Если вашей системе более 3-5 лет, и вы наблюдаете постепенное ухудшение температур при неизменных условиях, возможно, объем жидкости критически уменьшился. В таком случае замена термоинтерфейса уже не поможет, потребуется замена всего устройства.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Своевременная чистка радиатора от пыли может снизить температуру процессора под нагрузкой на 5-10 градусов без каких-либо финансовых затрат.</p></div>
+
+<p>Не забывайте менять термопасту между процессором и водоблоком при каждом снятии системы охлаждения. Старая паста высыхает и теряет свои теплопроводящие свойства, создавая дополнительное термическое сопротивление. Используйте качественные составы с высоким коэффициентом теплопроводности, например, <em>Arctic MX-4</em> или <em>Thermal Grizzly Kryonaut</em>.</p>
+
+<blockquote>⚠️ Внимание: Характеристики жидкостей и материалов трубок могут различаться у разных производителей. Всегда сверяйтесь с официальной документацией к вашей модели СВО перед попыткой любого вмешательства, кроме чистки внешних элементов.</blockquote>
+
+<details>
+<summary>Почему температура процессора высокая, хотя помпа работает?</summary>
+<p>Это может быть вызвано несколькими факторами: высохшей термопастой, неправильным прижимом водоблока, защитной пленкой на подошве, которую забыли снять, или забитым пылью радиатором. Также возможно, что помпа работает, но на минимальных оборотах из-за настроек BIOS.</p>
+</details>
+
+<details>
+<summary>Нормально ли, что трубки водяного охлаждения горячие?</summary>
+<p>Да, это абсолютно нормально. Горячие трубки означают, что тепло успешно отводится от процессора и переносится к радиатору. Плохим знаком является ситуация, когда одна трубка горячая, а другая холодная, или когда водоблок раскален, а трубки еле теплые.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять систему водяного охлаждения?</summary>
+<p>Средний срок службы необслуживаемых СВО составляет 5-7 лет. После этого срока возрастает риск протечек из-за старения резины и испарения жидкости. Если температуры начали расти спустя несколько лет стабильной работы, стоит задуматься о замене.</p>
+</details>
+
+<details>
+<summary>Можно ли доливать жидкость в закрытую СВО?</summary>
+<p>В большинстве случаев нет. Такие системы герметично запаяны на заводе. Попытка вскрытия приведет к потере гарантии и высокому риску протечки. Существуют редкие модели с расширительными бачками, но они являются исключением.</p>
+</details>
+
+<details>
+<summary>Что делать, если помпа издает сильный шум?</summary>
+<p>Сильный шум, скрежет или вибрация указывают на износ подшипников помпы или попадание твердых частиц в крыльчатку. В краткосрочной перспективе можно попробовать изменить ориентацию ПК, но наиболее надежным решением будет замена насоса или всей системы охлаждения.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#визуальная-и-тактильная-диагностика-системы">Визуальная и тактильная диагностика системы</a></li><li><a href="#проверка-работы-помпы-и-вращения-ротора">Проверка работы помпы и вращения ротора</a></li><li><a href="#мониторинг-температур-с-помощью-программного-обеспечения">Мониторинг температур с помощью программного обеспечения</a></li><li><a href="#выявление-воздушных-пробок-в-контуре">Выявление воздушных пробок в контуре</a></li><li><a href="#стресс-тестирование-и-анализ-стабильности">Стресс-тестирование и анализ стабильности</a></li><li><a href="#обслуживание-и-профилактика-неисправностей">Обслуживание и профилактика неисправностей</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/v/vn/vnutrennee-soprotivlenie-akkumulyatora-18650-na-chto-vliyaet.html" class="related-card">Внутреннее сопротивление аккумулятора 18650: влияние на работу</a></li><li><a href="/articles/p/pa/pasito-mini-ne-vidit-kartridzh-chto-delat.html" class="related-card">Пасито Мини не видит картридж: 7 причин и как исправить</a></li><li><a href="/articles/r/ru/ruzhe-izh-81-12-kalibr.html" class="related-card">Ружье ИЖ-81 12 калибр: Характеристики, Обзор и Советы</a></li><li><a href="/articles/k/ka/kakie-est-ispariteli-na-knajt-80.html" class="related-card">Какие испарители на Knight 80: совместимость, виды, выбор</a></li><li><a href="/articles/c/ch/chto-delat-esli-pod-ne-chitaet-kartridzh.html" class="related-card">Принтер не видит картридж: причины и решения проблемы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/v/vn/vnutrennee-soprotivlenie-akkumulyatora-18650-na-chto-vliyaet.html" class="related-bottom-card"><span class="related-bottom-title">Внутреннее сопротивление аккумулятора 18650: влияние на работу</span><span class="related-bottom-desc">Как внутреннее сопротивление Li-Ion 18650 влияет на мощность, нагрев и срок службы. Таблица норм, ме</span></a><a href="/articles/p/pa/pasito-mini-ne-vidit-kartridzh-chto-delat.html" class="related-bottom-card"><span class="related-bottom-title">Пасито Мини не видит картридж: 7 причин и как исправить</span><span class="related-bottom-desc">Электронная сигарета Pasito Mini не распознаёт картридж? Разбираем причины: от окисления контактов д</span></a><a href="/articles/r/ru/ruzhe-izh-81-12-kalibr.html" class="related-bottom-card"><span class="related-bottom-title">Ружье ИЖ-81 12 калибр: Характеристики, Обзор и Советы</span><span class="related-bottom-desc">Полный обзор ружья ИЖ-81 12 калибр. Технические характеристики, устройство, плюсы и минусы, советы п</span></a><a href="/articles/k/ka/kakie-est-ispariteli-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Какие испарители на Knight 80: совместимость, виды, выбор</span><span class="related-bottom-desc">Полный гид по испарителям для Knight 80. Обзор типов картриджей, таблица совместимости, рекомендации</span></a><a href="/articles/c/ch/chto-delat-esli-pod-ne-chitaet-kartridzh.html" class="related-bottom-card"><span class="related-bottom-title">Принтер не видит картридж: причины и решения проблемы</span><span class="related-bottom-desc">Принтер перестал видеть картридж? Полный гид по диагностике, очистке чипов, сбросу памяти и устранен</span></a><a href="/articles/p/po/poslednij-den-pompei-kak-eto-bylo.html" class="related-bottom-card"><span class="related-bottom-title">Последний день Помпеи: хроники гибели города</span><span class="related-bottom-desc">Подробный разбор трагедии Помпеи 79 года. Как это было: история извержения, факты, хронология событи</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему не тянется электронка на ЭЦП: причины и решение — Рем Набор</title>
+    <meta name="description" content="Разбираемся, почему не тянется электронка при проверке ЭЦП. Ошибки реестра, сертификатов, драйверов КриптоПро и пути решения проблемы.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/po/pochemu-ne-tyanetsya-elektronka.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему не тянется электронка на ЭЦП: причины и решение">
+    <meta property="og:description" content="Разбираемся, почему не тянется электронка при проверке ЭЦП. Ошибки реестра, сертификатов, драйверов КриптоПро и пути решения проблемы.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему не тянется электронка на ЭЦП: причины и решение</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему не тянется электронка: диагностика и исправление ошибок ЭЦП</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#диагностика-видимости-токена-и-драйверов">Диагностика видимости токена и драйверов</a></li><li><a href="#проверка-работы-криптопро-csp-и-реестра">Проверка работы КриптоПро CSP и реестра</a></li><li><a href="#настройка-браузерных-плагинов-и-расширений">Настройка браузерных плагинов и расширений</a></li><li><a href="#проблемы-с-цепочкой-сертификатов-и-сроками-действия">Проблемы с цепочкой сертификатов и сроками действия</a></li><li><a href="#конфликты-версий-по-и-совместимость">Конфликты версий ПО и совместимость</a></li><li><a href="#специфические-ошибки-при-работе-с-реестром">Специфические ошибки при работе с реестром</a></li><li><a href="#faq-частые-вопросы-по-проблеме">FAQ: Частые вопросы по проблеме</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда на портале или в специальном плагине не отображается ваша электронная подпись, а система выдает сообщение, что «электронка не тянется», встречается довольно часто. Это технический сбой, который может возникнуть как на рабочем компьютере бухгалтера, так и на домашнем ноутбуке предпринимателя. Чаще всего проблема кроется не в самой флешке-токене, а в конфликте программного обеспечения, устаревших сертификатах или некорректных настройках браузера.</p>
+
+<p>Пользователи паникуют, когда видят красную плашку с ошибкой, особенно если сроки сдачи отчетности горят. Однако в 90% случаев <strong>проблема решается программными методами</strong> без обращения в сервисный центр. Необходимо последовательно проверить цепочку: драйверы токена → КриптоПро CSP → сертификаты в реестре → настройки безопасности браузера. Игнорирование любого из звеньев этой цепи приведет к тому, что плагин просто не сможет «увидеть» вашу подпись.</p>
+
+<p>В этой статье мы детально разберем алгоритм действий для восстановления работоспособности ЭЦП. <em>КриптоПро CSP</em> и браузерные расширения требуют особого внимания к версиям и совместимости. Мы не будем использовать сложные термины без объяснений, а разложим процесс починки на понятные шаги, которые сможет выполнить любой уверенный пользователь ПК.</p>
+
+<h2 id="диагностика-видимости-токена-и-драйверов">Диагностика видимости токена и драйверов</h2>
+
+<p>Первое, что нужно сделать, если электронка не тянется — убедиться, что компьютер вообще видит физическое устройство. Если вы используете <em>Rutoken</em> или <em>Jacarta</em>, вставьте носитель в USB-порт и послушайте звук подключения устройства. Часто проблема банальна: порт загрязнен, кабель удлинителя поврежден, или сам токен требует переподключения.</p>
+
+<p>Откройте «Диспетчер устройств» и найдите раздел «Устройства контроля доступа» или «Криптографические устройства». Если устройство отображается с желтым восклицательным знаком, значит, <strong>драйверы установлены некорректно</strong> или произошел конфликт версий. В этом случае необходимо полностью удалить текущие драйверы через «Панель управления» и скачать актуальную версию с официального сайта производителя токена.</p>
+
+<p>Для корректной работы часто требуется установка утилиты управления токеном, например, <em>Рутокен ЭЦП Браузер плагин</em> или аналог от <em>Jacarta</em>. Без этого промежуточного ПО браузер не сможет обратиться к USB-порту из соображений безопасности. Проверьте, запущена ли служба управления токеном в фоне системы.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Некоторые антивирусы блокируют доступ браузеров к USB-портам. Если токен определяется в системе, но не виден в браузере, попробуйте временно отключить антивирус или добавить плагин ЭЦП в исключения.</p>
+</blockquote>
+
+<p>Если устройство отображается нормально, но подпись все равно не подтягивается, переходим к проверке криптографического провайдера. Именно он отвечает за шифрование и взаимодействие с сертификатами.</p>
+
+<div class="poll-widget" id="poll-50b1ce97"><div class="poll-widget-question">📊 Какой токен вы используете?</div><div class="poll-widget-option" data-poll="50b1ce97" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Rutoken</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50b1ce97" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Jacarta</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50b1ce97" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">eToken</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50b1ce97" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Реестр Windows (без флешки)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50b1ce97" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="проверка-работы-криптопро-csp-и-реестра">Проверка работы КриптоПро CSP и реестра</h2>
+
+<p>Основной инструмент работы с ЭЦП в России — это <em>КриптоПро CSP</em>. Если эта программа выдает ошибки при запуске или не видит сертификаты, то ни один сайт не сможет «потянуть» вашу электронку. Зайдите в панель управления КриптоПро через меню Пуск и выберите вкладку «Сервис».</p>
+
+<p>Нажмите кнопку «Просмотреть сертификаты в контейнере». Если список пуст или выдает ошибку «Не найдено», значит, проблема в чтении контейнера закрытого ключа. Попробуйте нажать «Обзор» и вручную выбрать файл сертификата или контейнер на флешке. Успешное отображение данных о владельце означает, что криптопровайдер исправен.</p>
+
+<p>Частая причина сбоя — истекший срок действия лицензии <em>КриптоПро</em>. В бесплатной пробной версии функционал ограничен, и через 90 дней программа перестает корректно формировать подписи. Проверьте вкладку «Общие» в свойствах программы: там указан статус лицензии и дата окончания.</p>
+
+<p>Также стоит проверить наличие сертификатов в личном хранилище Windows. Иногда после переустановки системы сертификаты «теряются» для браузера, хотя физически лежат на диске. Их необходимо импортировать обратно в раздел «Личные» через оснастку <code>certmgr.msc</code>.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Всегда делайте резервную копию контейнера закрытого ключа на отдельный носитель. Это спасет вас, если токен выйдет из строя или потеряется.</p></div>
+
+<h2 id="настройка-браузерных-плагинов-и-расширений">Настройка браузерных плагинов и расширений</h2>
+
+<p>Современные браузеры не имеют встроенной поддержки старых протоколов подписи, поэтому требуют установки специальных расширений. Самые популярные — <em>КриптоПро ЭЦП Browser plug-in</em> и <em>Рутокен Плагин</em>. Если электронка не тянется, первым делом проверьте, включено ли расширение в настройках браузера.</p>
+
+<p>В Google Chrome или Яндекс.Браузере перейдите по адресу <code>chrome://extensions/</code>. Найдите плагин в списке и убедитесь, что переключатель находится в положении «Включено». Если плагин висит в статусе «Отключено» или «Ошибка», попробуйте удалить его и установить заново свежую версию с сайта разработчика.</p>
+
+<p>Особое внимание уделите настройкам безопасности. Плагин должен иметь разрешение на работу с файлами и доступ к локальным ресурсам. В некоторых случаях требуется добавить адрес портала (например, Госуслуги или ФНС) в список доверенных узлов в настройках самого плагина.</p>
+
+<blockquote>
+<p>⚠️ Внимание: После обновления браузера настройки плагинов могут сброситься. Всегда проверяйте работоспособность расширения после апдейта Chrome или Firefox.</p>
+</blockquote>
+
+<p>Если вы используете несколько браузеров, помните, что плагин нужно устанавливать в каждый из них отдельно. Расширение, работающее в Chrome, не будет автоматически функционировать в Firefox или Edge.</p>
+
+<div class="checklist-block"><h4>☑️ Диагностика плагина</h4><label class="check-item"><input type="checkbox"><span>Плагин установлен и включен</span></label><label class="check-item"><input type="checkbox"><span>Версия плагина актуальна</span></label><label class="check-item"><input type="checkbox"><span>Сайт добавлен в доверенные</span></label><label class="check-item"><input type="checkbox"><span>Антивирус не блокирует расширение</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="проблемы-с-цепочкой-сертификатов-и-сроками-действия">Проблемы с цепочкой сертификатов и сроками действия</h2>
+
+<p>Одна из самых коварных причин, почему не тянется электронка — истечение срока действия самого сертификата или промежуточных сертификатов Удостоверяющего Центра (УЦ). Даже если ваша личная подпись действительна до следующего года, отсутствие актуального корневого сертификата УЦ сделает всю цепочку недоверенной.</p>
+
+<p>Система автоматически проверяет всю иерархию: ваш сертификат → сертификат УЦ → корневой сертификат Минцифры. Если хотя бы одно звено просрочено или отозвано, валидация провалится. Зайдите на сайт вашего Удостоверяющего Центра и скачайте актуальные корневые сертификаты.</p>
+
+<p>Установите их в хранилище «Доверенные корневые центры сертификации». Это делается через двойной клик по файлу <code>.cer</code> и выбор пункта «Установить сертификат». Не перепутайте хранилище: установка в «Личные» не даст эффекта для проверки доверия.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип сертификата</th>
+<th>Где хранить</th>
+<th>Срок действия</th>
+<th>Где скачать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Личный сертификат</td>
+<td>Личные</td>
+<td>1 год</td>
+<td>Выдается в УЦ</td>
+</tr>
+<tr>
+<td>Сертификат УЦ</td>
+<td>Промежуточные</td>
+<td>1-3 года</td>
+<td>Сайт УЦ</td>
+</tr>
+<tr>
+<td>Корневой Минцифры</td>
+<td>Доверенные корневые</td>
+<td>10-15 лет</td>
+<td>Госуслуги / Минцифры</td>
+</tr>
+<tr>
+<td>Отзывной список (CRL)</td>
+<td>Не требуется</td>
+<td>Обновляется</td>
+<td>Автоматически</td>
+</tr>
+</tbody>
+</table>
+
+<p>Также проверьте, не был ли ваш сертификат отозван досрочно. Это может случиться при смене паспортных данных или компрометации ключа. Статус отзыва можно проверить на портале <em>Госуслуги</em> или через специальные сервисы проверки валидности.</p>
+
+<details class="faq-item"><summary>Что такое CRL и зачем он нужен?</summary><div class="faq-answer"><p>Список отозванных сертификатов (CRL) — это файл, который содержит номера сертификатов, которые были аннулированы до истечения срока их действия. КриптоПро проверяет этот список при каждой попытке подписания. Если ваш сертификат есть в списке, подпись создать не удастся.</p></div></details>
+
+<h2 id="конфликты-версий-по-и-совместимость">Конфликты версий ПО и совместимость</h2>
+
+<p>Мир криптографии меняется быстро. Старые версии <em>КриптоПро CSP 4.0</em> могут некорректно работать с новыми сертификатами, выпущенными по ГОСТ 2012, или с современными браузерами. Если у вас стоит версия 4.0 R4, а требования портала выросли до 5.0, система будет выдавать ошибки совместимости.</p>
+
+<p>Рекомендуется использовать актуальную версию <em>КриптоПро CSP 5.0</em>. Она обеспечивает лучшую поддержку новых алгоритмов шифрования и стабильную работу с плагинами. Перед обновлением обязательно удалите старую версию, чтобы избежать конфликта библиотек DLL в системе.</p>
+
+<p>Обратите внимание на разрядность системы. Если у вас 64-битная Windows, а установлены 32-битные драйверы токена или компоненты КриптоПро, работа будет нестабильной. Все компоненты должны быть одной разрядности, соответствующей ОС.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Интерфейсы порталов и требования к версиям ПО часто обновляются. Сверяйте минимальные требования на сайте сервиса, где вы работаете, перед установкой драйверов.</p>
+</blockquote>
+
+<p>Иногда проблема возникает из-за наличия нескольких версий одного и того же ПО. Например, остатки от старой версии <em>Рутокен</em> могут мешать работе новой. Используйте утилиты для полной очистки реестра перед чистой установкой.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Несовместимость версий КриптоПро и браузерного плагина — причина 40% всех ошибок подключения. Обновляйте все компоненты синхронно.</p></div>
+
+<h2 id="специфические-ошибки-при-работе-с-реестром">Специфические ошибки при работе с реестром</h2>
+
+<p>Если вы храните ключи не на флешке, а в реестре Windows, риск потери доступа выше. При переустановке Windows или сбоях файловой системы ключи могут повредиться. В этом случае электронка физически не может быть считана, так как данные в реестре некорректны.</p>
+
+<p>Проверьте права доступа к веткам реестра, где хранятся ключи. Иногда антивирусное ПО или политики безопасности организации блокируют чтение этих разделов для текущего пользователя. Попробуйте запустить браузер от имени администратора для диагностики.</p>
+
+<p>Для работы с реестром часто требуется установка дополнительного компонента — <em>КриптоПро HD Storage</em> или настройка прав через оснастку <code>regedit</code>. Без этого система может просто «не пускать» криптопровайдер к закрытому ключу.</p>
+
+<p>Если ключи в реестре повреждены, восстановить их невозможно. Придется обращаться в Удостоверяющий Центр за перевыпуском сертификата. Именно поэтому хранение ключей на токене считается более надежным вариантом.</p>
+
+<details class="faq-item"><summary>Можно ли скопировать ключ из реестра на флешку?</summary><div class="faq-answer"><p>Да, это возможно через интерфейс КриптоПро CSP. Зайдите в раздел «Сервис», выберите «Скопировать», укажите контейнер в реестре и выберите целевым устройством вашу флешку. Это создаст полную резервную копию.</p></div></details>
+
+<h2 id="faq-частые-вопросы-по-проблеме">FAQ: Частые вопросы по проблеме</h2>
+
+<details>
+<summary>Почему браузер пишет «Плагин не обнаружен», хотя он установлен?</summary>
+<p>Чаще всего плагин отключен в настройках браузера или блокируется антивирусом. Проверьте раздел расширений (<code>chrome://extensions/</code>) и убедитесь, что переключатель активен. Также попробуйте перезапустить браузер полностью.</p>
+</details>
+
+<details>
+<summary>Можно ли работать с ЭЦП на Mac или Linux?</summary>
+<p>Да, <em>КриптоПро CSP</em> имеет версии для macOS и Linux. Однако набор поддерживаемых браузеров и плагинов там ограничен. Рекомендуется использовать специализированные сборки браузеров или работать через виртуальную машину с Windows для полной совместимости.</p>
+</details>
+
+<details>
+<summary>Что делать, если срок действия сертификата истек вчера?</summary>
+<p>Подписывать новые документы таким сертификатом нельзя. Вам необходимо немедленно обратиться в Удостоверяющий Центр за перевыпуском. Старые документы, подписанные в период действия, останутся валидными, но для новой отчетности нужен свежий ключ.</p>
+</details>
+
+<details>
+<summary>Поможет ли очистка кэша браузера, если не тянется электронка?</summary>
+<p>В некоторых случаях да. Старые кэшированные скрипты страницы могут конфликтовать с новым плагином. Попробуйте очистить кэш (<code>Ctrl+Shift+Delete</code>) и перезагрузить страницу. Также полезно попробовать режим инкогнито.</p>
+</details>
+
+<details>
+<summary>Почему на одном компьютере подпись работает, а на другом нет?</summary>
+<p>Это указывает на разницу в настройках ПО. Сравните версии <em>КриптоПро CSP</em>, наличие корневых сертификатов и настройки брандмауэра на обоих ПК. Скорее всего, на проблемном компьютере не установлен какой-то обязательный компонент или драйвер токена.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#диагностика-видимости-токена-и-драйверов">Диагностика видимости токена и драйверов</a></li><li><a href="#проверка-работы-криптопро-csp-и-реестра">Проверка работы КриптоПро CSP и реестра</a></li><li><a href="#настройка-браузерных-плагинов-и-расширений">Настройка браузерных плагинов и расширений</a></li><li><a href="#проблемы-с-цепочкой-сертификатов-и-сроками-действия">Проблемы с цепочкой сертификатов и сроками действия</a></li><li><a href="#конфликты-версий-по-и-совместимость">Конфликты версий ПО и совместимость</a></li><li><a href="#специфические-ошибки-при-работе-с-реестром">Специфические ошибки при работе с реестром</a></li><li><a href="#faq-частые-вопросы-по-проблеме">FAQ: Частые вопросы по проблеме</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/s/sm/smoant-santi-instruktsiya-na-russkom.html" class="related-card">Смоант Санти инструкция: настройка и управление пультом</a></li><li><a href="/articles/k/ka/kak-odet-pompu-na-19-litrovuyu-butylku.html" class="related-card">Как одеть помпу на 19-литровую бутылку: пошаговая инструкция</a></li><li><a href="/articles/p/po/poluavtomat-12-kalibra-dlya-okhoty.html" class="related-card">Полуавтомат 12 калибра для охоты: выбор, настройка и эксплуатация</a></li><li><a href="/articles/c/ch/chto-delat-esli-isparitel-plyuetsya.html" class="related-card">Испаритель плюется: причины и способы устранения проблемы</a></li><li><a href="/articles/b/ba/batarejka-na-knajt-80.html" class="related-card">Батарейка на Кнайт 80: как заменить, модели и ошибки</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/s/sm/smoant-santi-instruktsiya-na-russkom.html" class="related-bottom-card"><span class="related-bottom-title">Смоант Санти инструкция: настройка и управление пультом</span><span class="related-bottom-desc">Подробная инструкция на русском для пульта Смоант Санти. Подключение, сброс настроек, коды телевизор</span></a><a href="/articles/k/ka/kak-odet-pompu-na-19-litrovuyu-butylku.html" class="related-bottom-card"><span class="related-bottom-title">Как одеть помпу на 19-литровую бутылку: пошаговая инструкция</span><span class="related-bottom-desc">Подробный гид по установке механической и электрической помпы на бутыль воды. Разбор типов креплений</span></a><a href="/articles/p/po/poluavtomat-12-kalibra-dlya-okhoty.html" class="related-bottom-card"><span class="related-bottom-title">Полуавтомат 12 калибра для охоты: выбор, настройка и эксплуатация</span><span class="related-bottom-desc">Как выбрать и настроить полуавтомат 12 калибра для охоты. Рейтинг моделей, таблица патронов, советы </span></a><a href="/articles/c/ch/chto-delat-esli-isparitel-plyuetsya.html" class="related-bottom-card"><span class="related-bottom-title">Испаритель плюется: причины и способы устранения проблемы</span><span class="related-bottom-desc">Узнайте, почему ваш испаритель плюется горячим маслом. Эффективные методы решения: проверка мощности</span></a><a href="/articles/b/ba/batarejka-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Батарейка на Кнайт 80: как заменить, модели и ошибки</span><span class="related-bottom-desc">Инструкция по замене батарейки на Кнайт 80 (Knight). Какие элементы питания подходят, коды ошибок и </span></a><a href="/articles/k/ka/kak-ubrat-garik-na-isparitele.html" class="related-bottom-card"><span class="related-bottom-title">Как убрать гарь на испарителе вейпа: 5 рабочих способов</span><span class="related-bottom-desc">Подробная инструкция: как удалить гарь с испарителя электронной сигареты. Методы промывки, продувки </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

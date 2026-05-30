@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как должен работать вентилятор охлаждения двигателя: диагностика — Рем Набор</title>
+    <meta name="description" content="Подробное руководство по работе вентилятора радиатора. Схемы включения, проверка датчиков и реле, причины отказа. Диагностика своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-dolzhen-rabotat-ventilyator-okhlazhdeniya-dvigatelya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как должен работать вентилятор охлаждения двигателя: диагностика">
+    <meta property="og:description" content="Подробное руководство по работе вентилятора радиатора. Схемы включения, проверка датчиков и реле, причины отказа. Диагностика своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/ventilyatory-i-datchiki/">Вентиляторы и датчики</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как должен работать вентилятор охлаждения двигателя: диагностика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Принцип работы и диагностика вентилятора охлаждения двигателя</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принципы-термодинамики-и-задачи-системы">Принципы термодинамики и задачи системы</a></li><li><a href="#типы-приводов-вентилятора-охлаждения">Типы приводов вентилятора охлаждения</a></li><li><a href="#алгоритм-включения-и-управления-оборотами">Алгоритм включения и управления оборотами</a></li><li><a href="#диагностика-электрической-цепи-своими-руками">Диагностика электрической цепи своими руками</a></li><li><a href="#типичные-неисправности-и-симптомы">Типичные неисправности и симптомы</a></li><li><a href="#влияние-климатической-системы-на-охлаждение">Влияние климатической системы на охлаждение</a></li><li><a href="#меры-предосторожности-при-ремонте">Меры предосторожности при ремонте</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Система охлаждения современного автомобиля представляет собой сложный инженерный комплекс, где вентилятор радиатора играет роль критически важного элемента безопасности. Его основная задача заключается в принудительном обдуве теплообменника в моменты, когда естественного потока воздуха от движения автомобиля недостаточно для отвода избыточного тепла от <strong>антифриза</strong>. Понимание того, как должен работать этот узел, позволяет водителю избежать перегрева мотора и дорогостоящего ремонта головки блока цилиндров.</p>
+
+<p>В идеальном сценарии эксплуатации вентилятор активируется автоматически, руководствуясь сигналами от электронных блоков управления или простых термических выключателей. Однако на практике владельцы часто сталкиваются с ситуациями, когда крыльчатка вращается постоянно, не включается вовсе или срабатывает с заметной задержкой. Каждая из этих аномалий указывает на конкретную неисправность в электрической цепи или механической части устройства.</p>
+
+<p>Данная статья детально разбирает алгоритмы работы системы охлаждения, методы самостоятельной диагностики компонентов и способы устранения типичных поломок. Мы рассмотрим различия между гидравлической и электрической муфтой, а также особенности управления через <code>ЭБУ</code> двигателя.</p>
+
+<h2 id="принципы-термодинамики-и-задачи-системы">Принципы термодинамики и задачи системы</h2>
+
+<p>Двигатель внутреннего сгорания преобразует лишь часть энергии топлива в полезную механическую работу, остальная же выделяется в виде тепла. Если это тепло не отводить, температура деталей превысит допустимые пределы, что приведет к заклиниванию поршней и деформации металла. Вентилятор охлаждения включается именно тогда, когда температура охлаждающей жидкости достигает определенного порога, обычно составляющего от <code>90°C</code> до <code>105°C</code>.</p>
+
+<p>Эффективность теплоотдачи напрямую зависит от разницы температур между жидкостью в радиаторе и окружающим воздухом. При движении на высоких скоростях набегающий поток воздуха справляется с охлаждением самостоятельно, и вентилятор может не работать длительное время. Это является нормальным явлением для исправной системы.</p>
+
+<p>Однако в режиме пробок или на холостом ходу естественная конвекция отсутствует. Здесь вступает в работу <strong>электродвигатель</strong> с крыльчаткой, создающий направленный поток воздуха через соты радиатора. Важно понимать, что вентилятор работает не непрерывно, а циклично, поддерживая температуру в рабочем диапазоне.</p>
+
+<blockquote>⚠️ Внимание: Постоянная работа вентилятора на максимальных оборотах сразу после холодного запуска свидетельствует о коротком замыкании в цепи управления или неисправности датчика температуры.</blockquote>
+
+<h2 id="типы-приводов-вентилятора-охлаждения">Типы приводов вентилятора охлаждения</h2>
+
+<p>Конструктивно системы принудительного обдува делятся на два основных типа: с электрическим приводом и с вязкостной (гидравлической) муфтой. Выбор типа зависит от компоновки двигателя и года выпуска автомобиля. Электрические системы получили широкое распространение благодаря простоте управления и возможности точной регулировки оборотов.</p>
+
+<p>В системах с <em>вязкостной муфтой</em>, которые чаще встречаются на продольно расположенных двигателях заднеприводных автомобилей, вентилятор приводится в движение ремнем от коленчатого вала. Специальная муфта, заполненная силиконовой жидкостью, меняет свою вязкость в зависимости от температуры, проскальзывая на холодном двигателе и блокируясь при нагреве.</p>
+
+<p>Электрические вентиляторы управляются напрямую бортовым компьютером или отдельным реле. Такая схема позволяет реализовать многоскоростной режим работы и диагностику ошибок. Если мотор вентилятора не запускается при достижении критической температуры, система может перейти в аварийный режим, ограничивая мощность двигателя.</p>
+
+<div class="poll-widget" id="poll-0a1947fc"><div class="poll-widget-question">📊 Как часто вы проверяете работу вентилятора?</div><div class="poll-widget-option" data-poll="0a1947fc" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только при перегреве</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="0a1947fc" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">При каждом ТО</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="0a1947fc" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не проверял</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="0a1947fc" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Слушаю шум при работе</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Диагностика гидравлической муфты требует проверки уровня специальной жидкости внутри корпуса и состояния биметаллической пружины. В электрических схемах первичному осмотру подлежат предохранители, реле и целостность проводки. Механическое повреждение лопастей крыльчатки может привести к дисбалансу и разрушению подшипников электромотора.</p>
+
+<h2 id="алгоритм-включения-и-управления-оборотами">Алгоритм включения и управления оборотами</h2>
+
+<p>Современные автомобили используют сложные алгоритмы для управления системой охлаждения. Блок управления двигателем (<code>ECU</code>) считывает показания с нескольких датчиков температуры, расположенных в разных точках системы. На основе этих данных формируется сигнал для включения реле вентилятора.</p>
+
+<p>Существует несколько сценариев активации обдува. Основной сценарий срабатывает при превышении температурного порога охлаждающей жидкости. Дополнительный сценарий может запускаться при включении кондиционера, так как конденсор климатической системы также требует охлаждения воздушным потоком.</p>
+
+<ul>
+<li>🌡️ <strong>Первая скорость</strong> включается при температуре около 95-98°C для поддержания рабочего режима.</li>
+<li>🔥 <strong>Вторая скорость</strong> (максимальная) активируется при 102-105°C или при резком росте температуры под нагрузкой.</li>
+<li>❄️ <strong>Принудительный запуск</strong> происходит сразу после включения компрессора кондиционера, независимо от температуры антифриза.</li>
+</ul>
+
+<p>В некоторых моделях автомобилей реализована функция послеостановочного продува. Вентилятор продолжает работать несколько минут после выключения зажигания, если температура двигателя остается высокой. Это предотвращает закипание жидкости в остановленном моторе.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вентилятор включается только при нажатии на педаль тормоза или при включении фар, ищите проблему в плохой массе кузова или перепутанных цепях управления.</p></div>
+
+<h2 id="диагностика-электрической-цепи-своими-руками">Диагностика электрической цепи своими руками</h2>
+
+<p>Проверка работоспособности системы начинается с визуального осмотра предохранителей в монтажном блоке. Сгоревший предохранитель — самая частая и легко устранимая причина отказа. Если замена предохранителя не помогает, необходимо проверить реле управления.</p>
+
+<p>Для диагностики электромотора можно подать напряжение напрямую от аккумулятора. Для этого потребуется два провода с крокодилами. Подключение напрямую позволит исключить неисправность датчиков и блоков управления, локализовав проблему в самом вентиляторе или проводке к нему.</p>
+
+<div class="checklist-block"><h4>☑️ Алгоритм проверки цепи</h4><label class="check-item"><input type="checkbox"><span>Проверить предохранитель в блоке</span></label><label class="check-item"><input type="checkbox"><span>Прозвонить реле управления</span></label><label class="check-item"><input type="checkbox"><span>Подать 12В напрямую на мотор</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть разъемы на окисление</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Частой проблемой является окисление контактов в разъеме подключения вентилятора. Высокие токи, проходящие через контакты, вызывают их нагрев и образование нагара, что увеличивает сопротивление цепи. В результате мотор вращается медленно или не запускается вовсе.</p>
+
+<blockquote>⚠️ Внимание: При подаче напряжения напрямую убедитесь, что лопасти вентилятора не касаются проводов радиатора или других элементов подкапотного пространства, чтобы избежать короткого замыкания.</blockquote>
+
+<h2 id="типичные-неисправности-и-симптомы">Типичные неисправности и симптомы</h2>
+
+<p>Неисправности системы охлаждения часто маскируются под другие проблемы. Например, постоянная работа вентилятора может быть вызвана не только коротким замыканием, но и утечкой антифриза или неисправностью термостата. Если термостат заклинил в закрытом положении, жидкость не циркулирует по большому кругу, быстро нагреваясь до точки включения вентилятора.</p>
+
+<p>Шум и вибрация при работе указывают на износ подшипников электродвигателя или дисбаланс крыльчатки. В системах с вискомуфтой характерным признаком неисправности является свободное вращение вентилятора на горячем двигателе при остановленном моторе (в норме он должен проворачиваться с усилием).</p>
+
+<p>Ниже приведена таблица основных симптомов и их вероятных причин:</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Метод проверки</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Вентилятор не включается</td>
+<td>Сгорел предохранитель или реле</td>
+<td>Замена элемента на заведомо исправный</td>
+</tr>
+<tr>
+<td>Работает постоянно</td>
+<td>Замкнуты контакты реле или датчик</td>
+<td>Отключение разъема датчика температуры</td>
+</tr>
+<tr>
+<td>Срабатывает поздно</td>
+<td>Неисправен датчик температуры</td>
+<td>Сравнение показаний сканера и нормы</td>
+</tr>
+<tr>
+<td>Гудит и вибрирует</td>
+<td>Износ подшипников мотора</td>
+<td>Люфт вала при выключенном зажигании</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Почему вентилятор может работать на одной скорости?</summary><div class="faq-answer"><p>В двухскоростных системах за разные скорости отвечают разные резисторы или обмотки. Если одна скорость есть, а другой нет, проблема в дополнительном резисторе или втором контакте реле.</p></div></details>
+
+<h2 id="влияние-климатической-системы-на-охлаждение">Влияние климатической системы на охлаждение</h2>
+
+<p>Кондиционер автомобиля создает дополнительную тепловую нагрузку. Конденсор кондиционера обычно установлен перед радиатором двигателя, поэтому поток воздуха от вентилятора проходит через оба теплообменника. При включении <code>A/C</code> вентилятор обязан запуститься, даже если двигатель холодный.</p>
+
+<p>Если при включении кондиционера вентилятор не реагирует, давление в системе кондиционирования начнет расти, что может привести к аварийному отключению компрессора по давлению. Это частая причина, по которой кондиционер дует теплым воздухом в пробках, но работает нормально на трассе.</p>
+
+<p>В некоторых автомобилях реализована схема, где при включении кондиционера вентилятор работает на низких оборотах постоянно. Это необходимо для поддержания давления фреона в оптимальном диапазоне. Отказ вентилятора в этом режиме часто интерпретируется водителями как поломка кондиционера, хотя корень проблемы лежит в системе охлаждения.</p>
+
+<blockquote>⚠️ Внимание: Перед проверкой цепи вентилятора через разъем кондиционера убедитесь, что в системе есть давление фреона. Датчик давления может блокировать включение вентилятора при низком уровне хладагента.</blockquote>
+
+<h2 id="меры-предосторожности-при-ремонте">Меры предосторожности при ремонте</h2>
+
+<p>Работа с системой охлаждения требует соблюдения техники безопасности. Вращающийся вентилятор представляет серьезную опасность для пальцев и незакрепленной одежды. Лопасти могут иметь острые кромки и вращаться с высокой скоростью.</p>
+
+<p>Никогда не пытайтесь остановить вращающийся вентилятор рукой или инструментом. Даже после выключения зажигания электромотор может запуститься автоматически в любой момент, если температура двигателя остается высокой. Всегда отсоединяйте минусовую клемму аккумулятора перед вмешательством в электрическую цепь.</p>
+
+<p>При проверке уровня антифриза открывайте крышку расширительного бачка только на остывшем двигателе. Резкий сброс давления в горячей системе может привести к ожогам паром и кипящей жидкостью. Используйте плотную ветошь для защиты рук при откручивании крышки.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Своевременная замена антифриза и проверка натяжения ремней продлевают жизнь насосу помпы и обеспечивают эффективную циркуляцию жидкости, снижая нагрузку на вентилятор.</p></div>
+
+<details>
+<summary>Почему вентилятор включается сразу после запуска холодного двигателя?</summary>
+<p>Это указывает на то, что цепь управления замкнута на массу. Чаще всего виновато залипшее реле или замкнутый датчик температуры. Также возможно повреждение изоляции проводов, идущих к мотору вентилятора.</p>
+</details>
+
+<details>
+<summary>Можно ли ездить, если вентилятор не работает?</summary>
+<p>Кратковременное движение возможно, если вы следите за температурой и избегаете пробок. Однако длительная эксплуатация с неработающим вентилятором гарантирует перегрев двигателя и дорогостоящий ремонт.</p>
+</details>
+
+<details>
+<summary>Как проверить датчик включения вентилятора?</summary>
+<p>Датчик можно проверить мультиметром в режиме прозвонки. Опустите его sensing part в горячую воду (температура указана на корпусе датчика) и проверьте замыкание контактов. На холодную контакты должны быть разомкнуты.</p>
+</details>
+
+<details>
+<summary>Влияет ли неисправный термостат на работу вентилятора?</summary>
+<p>Да, косвенно. Если термостат не открывает большой круг, жидкость греется быстрее нормы, заставляя вентилятор работать постоянно на высоких оборотах, пытаясь компенсировать отсутствие циркуляции через радиатор.</p>
+</details>
+
+<details>
+<summary>Почему гудит вентилятор на определенных оборотах?</summary>
+<p>Это может быть признаком резонанса крепления корпуса вентилятора или износа подшипников. Иногда причина в дисбалансе самой крыльчатки из-за налипшей грязи или трещины на лопасти.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принципы-термодинамики-и-задачи-системы">Принципы термодинамики и задачи системы</a></li><li><a href="#типы-приводов-вентилятора-охлаждения">Типы приводов вентилятора охлаждения</a></li><li><a href="#алгоритм-включения-и-управления-оборотами">Алгоритм включения и управления оборотами</a></li><li><a href="#диагностика-электрической-цепи-своими-руками">Диагностика электрической цепи своими руками</a></li><li><a href="#типичные-неисправности-и-симптомы">Типичные неисправности и симптомы</a></li><li><a href="#влияние-климатической-системы-на-охлаждение">Влияние климатической системы на охлаждение</a></li><li><a href="#меры-предосторожности-при-ремонте">Меры предосторожности при ремонте</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/pr/pri-vklyuchenii-zazhiganiya-vklyuchaetsya-ventilyator-okhlazhdeniya-lanser-9.html" class="related-card">Вентилятор охлаждения Лансер 9 включается при зажигании: причины и ремонт</a></li><li><a href="/articles/p/pr/predokhranitel-na-ventilyator-okhlazhdeniya-vesta.html" class="related-card">Предохранитель на вентилятор охлаждения Веста: где находится</a></li><li><a href="/articles/k/ka/kalina-ne-vyklyuchaetsya-ventilyator-okhlazhdeniya.html" class="related-card">Калина: не выключается вентилятор охлаждения — поиск причины</a></li><li><a href="/articles/l/lo/logan-1-ne-vklyuchaetsya-ventilyator.html" class="related-card">Логан 1 не включается вентилятор: причины и ремонт</a></li><li><a href="/articles/2/25/251002b700-i-251002b710-v-chem-raznitsa.html" class="related-card">251002b700 и 251002b710: ключевые отличия и совместимость</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/pr/pri-vklyuchenii-zazhiganiya-vklyuchaetsya-ventilyator-okhlazhdeniya-lanser-9.html" class="related-bottom-card"><span class="related-bottom-title">Вентилятор охлаждения Лансер 9 включается при зажигании: причины и ремонт</span><span class="related-bottom-desc">Почему вентилятор охлаждения Mitsubishi Lancer IX запускается сразу при включении зажигания? Диагнос</span></a><a href="/articles/p/pr/predokhranitel-na-ventilyator-okhlazhdeniya-vesta.html" class="related-bottom-card"><span class="related-bottom-title">Предохранитель на вентилятор охлаждения Веста: где находится</span><span class="related-bottom-desc">Где находится предохранитель вентилятора охлаждения Лада Веста. Схема блока, номиналы, поиск неиспра</span></a><a href="/articles/k/ka/kalina-ne-vyklyuchaetsya-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Калина: не выключается вентилятор охлаждения — поиск причины</span><span class="related-bottom-desc">Вентилятор охлаждения Калина не выключается? Разбираем причины: реле, датчик, проводка. Инструкция п</span></a><a href="/articles/l/lo/logan-1-ne-vklyuchaetsya-ventilyator.html" class="related-bottom-card"><span class="related-bottom-title">Логан 1 не включается вентилятор: причины и ремонт</span><span class="related-bottom-desc">Подробная инструкция по диагностике вентилятора охлаждения Renault Logan 1. Проверяем реле, датчик т</span></a><a href="/articles/2/25/251002b700-i-251002b710-v-chem-raznitsa.html" class="related-bottom-card"><span class="related-bottom-title">251002b700 и 251002b710: ключевые отличия и совместимость</span><span class="related-bottom-desc">Разбираемся, чем отличаются датчики температуры 251002b700 и 251002b710: технические параметры, взаи</span></a><a href="/articles/k/ka/kak-napryamuyu-vklyuchit-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Как напрямую включить вентилятор охлаждения: диагностика и ремонт</span><span class="related-bottom-desc">Подробная инструкция, как замкнуть вентилятор охлаждения напрямую. Проверка мотора, реле, датчиков и</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

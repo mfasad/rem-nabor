@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как работает терморегулятор (термостат): принцип действия и схемы — Рем Набор</title>
+    <meta name="description" content="Подробный разбор устройства термостата: механические, электронные и программируемые модели. Схемы подключения, неисправности и ремонт своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-rabotaet-termoregulyator-termostat.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как работает терморегулятор (термостат): принцип действия и схемы">
+    <meta property="og:description" content="Подробный разбор устройства термостата: механические, электронные и программируемые модели. Схемы подключения, неисправности и ремонт своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как работает терморегулятор (термостат): принцип действия и схемы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Принцип работы терморегулятора (термостата): устройство, виды и схемы подключения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#что-такое-терморегулятор-и-зачем-он-нужен">Что такое терморегулятор и зачем он нужен</a></li><li><a href="#устройство-терморегулятора-основные-элементы">Устройство терморегулятора: основные элементы</a></li><li><a href="#принцип-работы-терморегулятора-пошаговое-объяснение">Принцип работы терморегулятора: пошаговое объяснение</a></li><li><a href="#виды-терморегуляторов-какой-выбрать-для-своих-задач">Виды терморегуляторов: какой выбрать для своих задач</a></li><li><a href="#схемы-подключения-терморегулятора">Схемы подключения терморегулятора</a></li><li><a href="#типичные-неисправности-терморегуляторов-и-их-диагностика">Типичные неисправности терморегуляторов и их диагностика</a></li><li><a href="#ремонт-терморегулятора-своими-руками-что-можно-сделать">Ремонт терморегулятора своими руками: что можно сделать</a></li><li><a href="#faq-частые-вопросы-о-терморегуляторах">FAQ: Частые вопросы о терморегуляторах</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Терморегулятор (или термостат) — это устройство, без которого невозможно представить современные системы отопления, кондиционирования, холодильные установки и даже автомобильные двигатели. Его основная задача — <strong>автоматически поддерживать заданную температуру</strong>, включая или отключая нагревательные/охлаждающие элементы. Но как именно он это делает? Почему в одних случаях используется механический термостат с биметаллической пластиной, а в других — сложный электронный контроллер с датчиками?</p>
+
+<p>В этой статье мы разберём <em>принцип работы терморегуляторов разных типов</em>, от простейших бытовых до промышленных, рассмотрим их внутреннее устройство, схемы подключения и типичные неисправности. Вы узнаете, как термостат "понимает", когда включать котёл, почему он иногда щёлкает, и можно ли отремонтировать его самостоятельно. Материал будет полезен как новичкам, так и тем, кто уже сталкивался с настройкой климатической техники.</p>
+
+<h2 id="что-такое-терморегулятор-и-зачем-он-нужен">Что такое терморегулятор и зачем он нужен</h2>
+
+<p>Терморегулятор — это <strong>устройство автоматического регулирования температуры</strong> в заданном диапазоне. Его главная функция заключается в сравнении текущей температуры (считываемой с датчика) с установленным пользователем значением и управлении исполнительными механизмами: нагревателями, компрессорами, вентиляторами или клапанами.</p>
+
+<p>Без термостата системы отопления или охлаждения работали бы непрерывно, что привело бы к:</p>
+<ul>
+  <li>🔥 <strong>Перегреву</strong> оборудования (например, электрокотла или двигателя автомобиля)</li>
+  <li>❄️ <strong>Избыточному охлаждению</strong> (в холодильниках или кондиционерах)</li>
+  <li>💰 <strong>Нерациональному расходу энергии</strong> (до 30% электроэнергии тратится впустую)</li>
+  <li>⚠️ <strong>Снижению срока службы</strong> техники из-за постоянных нагрузок</li>
+</ul>
+
+<p>Термостаты применяются в:</p>
+<ul>
+  <li>🚗 <em>Автомобильных системах охлаждения</em> (регулировка циркуляции антифриза)</li>
+  <li>🏠 <em>Бытовых котлах и радиаторах отопления</em> (поддержка комфортной температуры в доме)</li>
+  <li>❄️ <em>Холодильниках и морозильных камерах</em> (контроль работы компрессора)</li>
+  <li>🌡️ <em>Теплых полах и электрических обогревателях</em> (защита от перегрева)</li>
+  <li>⚙️ <em>Промышленном оборудовании</em> (печи, сушильные камеры, инкубаторы)</li>
+</ul>
+
+<div class="poll-widget" id="poll-9a3f10ac"><div class="poll-widget-question">📊 Где у вас установлен терморегулятор?</div><div class="poll-widget-option" data-poll="9a3f10ac" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">В системе отопления дома</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a3f10ac" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">В автомобиле</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a3f10ac" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">В холодильнике</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a3f10ac" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">В теплом полу</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="9a3f10ac" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет терморегулятора</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="устройство-терморегулятора-основные-элементы">Устройство терморегулятора: основные элементы</h2>
+
+<p>Несмотря на разнообразие моделей, большинство термостатов состоят из <strong>четырёх ключевых компонентов</strong>:</p>
+
+<ol>
+  <li><strong>Датчик температуры</strong> — измеряет текущую температуру среды (воздуха, жидкости или поверхности). Бывает:
+    <ul>
+      <li>📏 <em>Биметаллический</em> (механические термостаты)</li>
+      <li>🔌 <em>Термистор или термопара</em> (электронные модели)</li>
+      <li>💧 <em>Капиллярный</em> (в системах с жидкостным наполнением)</li>
+    </ul>
+  </li>
+  <li><strong>Задатчик</strong> — устройство для установки желаемой температуры (поворотная ручка, кнопки или сенсорный экран).</li>
+  <li><strong>Контроллер</strong> — "мозг" термостата, сравнивающий показания датчика с заданным значением. В механических моделях эту роль выполняет биметаллическая пластина, в электронных — микропроцессор.</li>
+  <li><strong>Исполнительный механизм</strong> — переключает цепи питания нагревательных/охлаждающих элементов. Это может быть:
+    <ul>
+      <li>🔌 <em>Реле</em> (замыкает/размыкает контакты)</li>
+      <li>🚪 <em>Сервопривод</em> (управляет клапаном или заслонкой)</li>
+      <li>🔄 <em>Триак или симистор</em> (плавное регулирование мощности)</li>
+    </ol>
+  </li>
+</ol>
+
+<p>В <em>механических термостатах</em> все эти элементы часто объединены в одном корпусе (например, в комнатном терморегуляторе для радиатора), тогда как в <em>электронных</em> датчик может быть вынесен на расстояние (как в системах "умный дом").</p>
+
+<details class="faq-item"><summary>Как устроен капиллярный термостат?</summary><div class="faq-answer"><p>Внутри такого термостата находится герметичная трубка (капилляр), заполненная газом или жидкостью с высоким коэффициентом теплового расширения. При нагреве вещество расширяется, давит на мембрану, которая замыкает контакты реле. Такие термостаты часто используются в холодильниках и автомобильных системах охлаждения.</p></div></details>
+
+<h2 id="принцип-работы-терморегулятора-пошаговое-объяснение">Принцип работы терморегулятора: пошаговое объяснение</h2>
+
+<p>Рассмотрим, как термостат поддерживает заданную температуру на примере <em>механического комнатного терморегулятора</em> для электрического котла:</p>
+
+<ol>
+  <li><strong>Установка желаемой температуры</strong>. Пользователь поворачивает ручку термостата, например, на <code>22°C</code>. Внутри устройства сжимается или растягивается пружина, связанная с биметаллической пластиной.</li>
+  <li><strong>Измерение текущей температуры</strong>. Биметаллическая пластина (состоящая из двух металлов с разным коэффициентом расширения) нагревается или охлаждается вместе с воздухом в комнате. При изменении температуры она изгибается.</li>
+  <li><strong>Сравнение и принятие решения</strong>. Когда температура падает ниже <code>22°C</code>, пластина изгибается настолько, что замыкает электрические контакты. Через них подаётся питание на котёл.</li>
+  <li><strong>Активация нагрева</strong>. Котёл включается и начинает нагревать теплоноситель. Температура в комнате постепенно повышается.</li>
+  <li><strong>Отключение при достижении нормы</strong>. Когда воздух нагревается до <code>22°C</code>, биметаллическая пластина возвращается в исходное положение и размыкает контакты. Котёл выключается.</li>
+</ol>
+
+<p>В <em>электронных термостатах</em> процесс аналогичен, но вместо механической пластины используется <strong>термистор</strong> (резистор, сопротивление которого меняется при нагреве). Микроконтроллер постоянно считывает его показания и управляет реле по заданному алгоритму. Такие устройства точнее (погрешность до <code>±0.5°C</code> против <code>±2°C</code> у механических) и поддерживают дополнительные функции:</p>
+<ul>
+  <li>📅 Программирование расписания (например, понижение температуры ночью)</li>
+  <li>📱 Дистанционное управление через Wi-Fi</li>
+  <li>🔄 Adaptive Start (автоматический расчёт времени включения для достижения температуры к заданному часу)</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если ваш механический термостат начал "врать" (включает обогрев при слишком низкой температуре), попробуйте очистить контакты реле от нагара спиртом. Часто это решает проблему без замены устройства.</p></div>
+
+<h2 id="виды-терморегуляторов-какой-выбрать-для-своих-задач">Виды терморегуляторов: какой выбрать для своих задач</h2>
+
+<p>Все термостаты можно классифицировать по <strong>принципу действия</strong>, <strong>типу управления</strong> и <strong>сфере применения</strong>. Ниже — сравнительная таблица основных видов:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Тип термостата</th>
+      <th>Принцип работы</th>
+      <th>Точность, °C</th>
+      <th>Сфера применения</th>
+      <th>Плюсы</th>
+      <th>Минусы</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Механический</strong></td>
+      <td>Биметаллическая пластина или капиллярная трубка</td>
+      <td>±1.5–3</td>
+      <td>Бытовые обогреватели, холодильники, авто</td>
+      <td>Простота, надёжность, низкая цена</td>
+      <td>Низкая точность, нет дополнительных функций</td>
+    </tr>
+    <tr>
+      <td><strong>Электромеханический</strong></td>
+      <td>Термистор + электромагнитное реле</td>
+      <td>±0.5–1</td>
+      <td>Котлы, теплые полы, кондиционеры</td>
+      <td>Высокая точность, долгий срок службы</td>
+      <td>Чувствителен к скачкам напряжения</td>
+    </tr>
+    <tr>
+      <td><strong>Электронный</strong></td>
+      <td>Микропроцессор + датчик (термистор, термопара)</td>
+      <td>±0.1–0.5</td>
+      <td>Системы "умный дом", промышленное оборудование</td>
+      <td>Программируемый, точный, много функций</td>
+      <td>Дорогой, сложный ремонт</td>
+    </tr>
+    <tr>
+      <td><strong>Беспроводной</strong></td>
+      <td>Электронный контроллер + радиочастотная связь</td>
+      <td>±0.3–1</td>
+      <td>Мультизональные системы отопления</td>
+      <td>Удобство монтажа, дистанционное управление</td>
+      <td>Зависимость от батареек, возможны помехи</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Для бытовых задач (например, регулировки температуры в комнате) обычно достаточно <em>электромеханического термостата</em> с погрешностью <code>±1°C</code>. Если же нужна высокая точность (например, для инкубатора или серверной), лучше выбрать <em>электронную модель</em> с возможностью подключения внешних датчиков.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> В системах отопления с циркуляционным насосом нельзя использовать термостаты, не предназначенные для индуктивных нагрузок. Это может привести к <mark>пробою контактов реле из-за скачков тока при запуске насоса</mark>. Всегда проверяйте технические характеристики устройства!</blockquote>
+
+<h2 id="схемы-подключения-терморегулятора">Схемы подключения терморегулятора</h2>
+
+<p>Способ подключения термостата зависит от его типа и управляемого оборудования. Ниже — три наиболее распространённые схемы:</p>
+
+<h3>1. Подключение механического термостата к электрическому обогревателю</h3>
+<p>Самая простая схема, используемая в масляных радиаторах или конвекторах. Термостат разрывает фазный провод, идущий к нагревательному элементу:</p>
+<pre><code>
+<p>Л (фаза) → Термостат → Нагревательный элемент → N (ноль)</p>
+</code></pre>
+<p>Важно: <strong>термостат должен размыкать именно фазу</strong>, а не ноль! В противном случае оборудование останется под напряжением даже в выключенном состоянии.</p>
+
+<h3>2. Подключение электронного термостата к газовому котлу</h3>
+<p> здесь термостат управляет <em>сухим контактом</em> (без гальванической развязки) или низковольтным сигналом (например, <code>24V</code>). Типовая схема для котлов с внешним управлением:</p>
+<pre><code>
+<p>Термостат (контакты COM и NO) → Клеммы котла "Термостат" (обычно обозначены как TH/TW)</p>
+</code></pre>
+<p>Многие современные котлы (например, <em>Baxi</em>, <em>Navien</em>, <em>Ariston</em>) поддерживают подключение термостата через специальный разъём. Перед монтажом проверьте инструкцию к котлу!</p>
+
+<h3>3. Подключение термостата к теплому полу</h3>
+<p>В этом случае термостат управляет нагревом через <strong>симистор или реле</strong>, а также подключается к <em>датчику температуры пола</em> (устанавливается в гофротрубке под стяжкой). Схема:</p>
+<pre><code>
+<p>Л → Термостат (L) → Нагревательный мат/кабель → N</p>
+<p>Датчик пола → Клеммы термостата (Sensor)</p>
+</code></pre>
+
+
+<p>Совместимость термостата с оборудованием (напряжение, ток)</p>
+<p>Правильность выбора датчика (воздушный или для пола)</p>
+<p>Наличие УЗО в цепи (обязательно для теплых полов!)</p>
+<p>Отключение питания перед монтажом</p>
+<p>Проверка изоляции проводов</p>
+<p>--></p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> При подключении термостата к трёхфазным нагревателям (например, промышленным печам) необходимо использовать <em>магнитный пускатель</em>. Прямое управление мощной нагрузкой через контакты термостата приведёт к их обгоранию!</blockquote>
+
+<h2 id="типичные-неисправности-терморегуляторов-и-их-диагностика">Типичные неисправности терморегуляторов и их диагностика</h2>
+
+<p>Даже самые надёжные термостаты со временем выходят из строя. Рассмотрим <strong>наиболее частые поломки</strong> и способы их выявления:</p>
+
+<h3>1. Термостат не включает нагрев/охлаждение</h3>
+<p>Возможные причины:</p>
+<ul>
+  <li>🔌 <strong>Обрыв цепи</strong> — проверьте мультиметром целостность проводов от термостата к оборудованию.</li>
+  <li>🔋 <strong>Неисправность датчика</strong> — измерьте сопротивление термистора: при комнатной температуре оно должно быть в пределах <code>10–100 кОм</code> (точное значение указано в даташите).</li>
+  <li>⚙️ <strong>Заклинивание механизма</strong> — в механических термостатах может залипнуть биметаллическая пластина или контакты реле. Попробуйте аккуратно постучать по корпусу (иногда помогает).</li>
+  <li>📱 <strong>Сбой прошивки</strong> — в электронных моделях может потребоваться сброс настроек (обычно кнопкой <code>Reset</code>).</li>
+</ul>
+
+<h3>2. Термостат работает нестабильно (часто включается/выключается)</h3>
+<p>Эта проблема называется <strong>"тактование"</strong> и обычно вызвана:</p>
+<ul>
+  <li>🌡️ <strong>Неправильным расположением датчика</strong> — если он находится в зоне прямого нагрева (например, над радиатором), термостат будет срабатывать ложно.</li>
+  <li>🔄 <strong>Гистерезисом</strong> — разница между температурой включения и выключения. В механических термостатах она фиксированная (<code>±2°C</code>), в электронных можно настроить (оптимально <code>0.5–1°C</code>).</li>
+  <li>🔌 <strong>Плохим контактом</strong> — окисление клемм приводит к прерывистой работе. Очистите контакты и подтяните соединения.</li>
+</ul>
+
+<h3>3. Термостат "врёт" (показывает неверную температуру)</h3>
+<p>Чаще всего это происходит из-за:</p>
+<ul>
+  <li>📉 <strong>Смещения датчика</strong> — в механических термостатах биметаллическая пластина может со временем "устать" и требовать калибровки (регулируется специальным винтом).</li>
+  <li>🔋 <strong>Разряженных батареек</strong> — в электронных моделях низкое напряжение питания искажает показания датчика.</li>
+  <li>🌡️ <strong>Внешних тепловых помех</strong> — например, если термостат установлен на солнечной стороне или рядом с кухонной плитой.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если термостат перестал работать после скачка напряжения, скорее всего, сгорело реле или микросхема управления. В 80% случаев такой термостат не подлежит ремонту — дешевле купить новый.</p></div>
+
+<h2 id="ремонт-терморегулятора-своими-руками-что-можно-сделать">Ремонт терморегулятора своими руками: что можно сделать</h2>
+
+<p>Не все поломки термостата требуют замены устройства. Рассмотрим <strong>типичные случаи</strong>, когда ремонт возможен в домашних условиях:</p>
+
+<h3>1. Чистка контактов механического термостата</h3>
+<p>Если термостат щёлкает, но нагрев не включается, причина может быть в <strong>обгоревших контактах реле</strong>. Для ремонта:</p>
+<ol>
+  <li>Отключите питание и снимите крышку термостата.</li>
+  <li>Осмотрите контакты — если они почернели, аккуратно зачистите их <em>мелкой наждачной бумагой</em> (зернистость <code>600–1000</code>).</li>
+  <li>Удалите пыль с биметаллической пластины спиртом.</li>
+  <li>Проверьте работу устройства мультиметром в режиме прозвонки: при повороте ручки контакты должны замыкаться/размыкаться.</li>
+</ol>
+
+<h3>2. Замена датчика температуры</h3>
+<p>В электронных термостатах чаще всего выходит из строя <em>термистор</em> (NTC или PTC). Его можно заменить, если найти аналогичный по номиналу. Порядок действий:</p>
+<ol>
+  <li>Измерьте сопротивление неисправного датчика при комнатной температуре.</li>
+  <li>Подберите новый термистор с близкими параметрами (например, <em>NTC 10kΩ</em> для <code>25°C</code>).</li>
+  <li>Выпаяйте старый датчик и установите новый, соблюдая полярность (если есть).</li>
+  <li>Проверьте работу термостата, постепенно нагревая датчик феном.</li>
+</ol>
+
+<h3>3. Калибровка механического термостата</h3>
+<p>Если термостат включает обогрев при слишком низкой температуре, его можно <strong>откалибровать</strong>:</p>
+<ol>
+  <li>Снимите ручку регулировки (обычно она крепится на защёлке или винте).</li>
+  <li>Под ней найдите <em>калибровочный винт</em> (может быть скрыт заглушкой).</li>
+  <li>Поверните винт по часовой стрелке, чтобы увеличить температуру срабатывания, или против — чтобы уменьшить.</li>
+  <li>Проверяйте результат термометром, размещённым рядом с термостатом.</li>
+</ol>
+
+<blockquote>⚠️ <strong>Внимание:</strong> В термостатах с <em>герметичным капиллярным датчиком</em> (например, в автомобильных или холодильных) калибровка невозможна — при повреждении капилляра устройство подлежит замене.</blockquote>
+
+<details class="faq-item"><summary>Как проверить термостат мультиметром?</summary><div class="faq-answer"><p>
+<p>1. Установите мультиметр в режим прозвонки.</p>
+<p>2. Подключите щупы к клеммам термостата (обычно обозначены как L и T).</p>
+<p>3. Плавно поворачивайте ручку регулировки: при достижении пороговой температуры должен раздаться звуковой сигнал (замыкание контактов).</p>
+<p>4. Если контакты не замыкаются — термостат неисправен.</p></div></details></p>
+
+<h2 id="faq-частые-вопросы-о-терморегуляторах">FAQ: Частые вопросы о терморегуляторах</h2>
+
+<details>
+  <summary>Можно ли использовать один термостат для управления и отоплением, и кондиционером?</summary>
+  <p>Технически да, но только если термостат поддерживает <strong>реверсивное управление</strong> (имеет отдельные выходы для нагрева и охлаждения). Примеры таких моделей: <em>Nest Learning Thermostat</em>, <em>Salus RT510RF</em>. В большинстве бытовых термостатов реализована только одна функция — либо нагрев, либо охлаждение.</p>
+</details>
+
+<details>
+  <summary>Почему механический термостат щёлкает, но котёл не включается?</summary>
+  <p>Скорее всего, проблема в <strong>обгоревших контактах реле</strong> или <strong>недостаточном токе</strong>, который может коммутировать термостат. Проверьте:</p>
+  <ol>
+    <li>Целостность проводов от термостата к котлу.</li>
+    <li>Сопротивление нагревательного элемента котла (должно быть в пределах <code>20–100 Ом</code>).</li>
+    <li>Наличие напряжения на выходе термостата в момент щелчка (должно появляться <code>220V</code>).</li>
+  </ol>
+  <p>Если контакты целы, но котёл не реагирует, возможно, неисправен его <em>блок управления</em>.</p>
+</details>
+
+<details>
+  <summary>Какой термостат лучше: механический или электронный?</summary>
+  <p>Выбор зависит от задач:</p>
+  <ul>
+    <li><strong>Механический</strong> подойдёт для простых систем (например, обогревателя в гараже). Плюсы: надёжность, низкая цена, независимость от электроники.</li>
+    <li><strong>Электронный</strong> нужен для точного контроля (теплые полы, инкубаторы) или если требуются дополнительные функции (таймер, Wi-Fi). Минусы: высокая цена, чувствительность к скачкам напряжения.</li>
+  </ul>
+  <p>Для домашнего отопления оптимальный вариант — <em>электромеханический термостат</em> (например, <em>Honeywell T4</em> или <em>Siemens RDE100</em>). Он сочетает точность электронного с надёжностью механического.</p>
+</details>
+
+<details>
+  <summary>Можно ли подключить термостат к инфракрасному обогревателю?</summary>
+  <p>Да, но только если обогреватель поддерживает внешнее управление. Большинство <em>ИК-обогревателей</em> (например, <em>Ballu BIH</em> или <em>NeoClima</em>) имеют клеммы для подключения термостата. Схема стандартная:</p>
+  <pre><code>
+<p>Л → Термостат → ИК-обогреватель → N</p>
+  </code></pre>
+  <p>Важно: мощность обогревателя не должна превышать <strong>максимальную нагрузку термостата</strong> (обычно <code>3–5 кВт</code>). Для более мощных устройств используйте <em>магнитный пускатель</em>.</p>
+</details>
+
+<details>
+  <summary>Почему электронный термостат сбрасывает настройки?</summary>
+  <p>Это типичная проблема при:</p>
+  <ul>
+    <li>🔋 Разряженных батарейках (замените на новые, даже если индикатор ещё горит).</li>
+    <li>🔌 Скачках напряжения в сети (установите стабилизатор или сетевой фильтр).</li>
+    <li>📱 Сбое прошивки (попробуйте сбросить настройки к заводским).</li>
+  </ul>
+  <p>Если сброс происходит регулярно, проверьте <em>конденсаторы</em> на плате термостата — они могут быть вздутыми (требуется замена).</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#что-такое-терморегулятор-и-зачем-он-нужен">Что такое терморегулятор и зачем он нужен</a></li><li><a href="#устройство-терморегулятора-основные-элементы">Устройство терморегулятора: основные элементы</a></li><li><a href="#принцип-работы-терморегулятора-пошаговое-объяснение">Принцип работы терморегулятора: пошаговое объяснение</a></li><li><a href="#виды-терморегуляторов-какой-выбрать-для-своих-задач">Виды терморегуляторов: какой выбрать для своих задач</a></li><li><a href="#схемы-подключения-терморегулятора">Схемы подключения терморегулятора</a></li><li><a href="#типичные-неисправности-терморегуляторов-и-их-диагностика">Типичные неисправности терморегуляторов и их диагностика</a></li><li><a href="#ремонт-терморегулятора-своими-руками-что-можно-сделать">Ремонт терморегулятора своими руками: что можно сделать</a></li><li><a href="#faq-частые-вопросы-о-терморегуляторах">FAQ: Частые вопросы о терморегуляторах</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-opredelit-chto-termostat-vyshel-iz-stroya.html" class="related-card">Как проверить термостат: 7 признаков неисправности и диагностика</a></li><li><a href="/articles/k/ka/kak-vyglyadit-otkrytyj-termostat.html" class="related-card">Как выглядит открытый термостат: фото, признаки и проверка</a></li><li><a href="/articles/p/po/podklyuchenie-termoregulyatora-k-kotlu-otopleniya.html" class="related-card">Подключение терморегулятора к котлу отопления: схема и инструкция</a></li><li><a href="/articles/t/te/termoregulyator-dlya-kotla-otopleniya-elektronnyj-provodnoj.html" class="related-card">Электронный проводной терморегулятор для котла: выбор и монтаж</a></li><li><a href="/articles/p/po/podbor-termostata-po-razmeru.html" class="related-card">Как подобрать термостат по размеру: полное руководство 2026</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-opredelit-chto-termostat-vyshel-iz-stroya.html" class="related-bottom-card"><span class="related-bottom-title">Как проверить термостат: 7 признаков неисправности и диагностика</span><span class="related-bottom-desc">Подробная инструкция по определению поломки термостата в автомобиле или бытовой технике. Признаки, т</span></a><a href="/articles/k/ka/kak-vyglyadit-otkrytyj-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Как выглядит открытый термостат: фото, признаки и проверка</span><span class="related-bottom-desc">Подробное руководство с фото: как определить открытый термостат автомобиля или бытовой техники. Приз</span></a><a href="/articles/p/po/podklyuchenie-termoregulyatora-k-kotlu-otopleniya.html" class="related-bottom-card"><span class="related-bottom-title">Подключение терморегулятора к котлу отопления: схема и инструкция</span><span class="related-bottom-desc">Как подключить терморегулятор к котлу отопления своими руками. Схемы, виды датчиков, ошибки монтажа </span></a><a href="/articles/t/te/termoregulyator-dlya-kotla-otopleniya-elektronnyj-provodnoj.html" class="related-bottom-card"><span class="related-bottom-title">Электронный проводной терморегулятор для котла: выбор и монтаж</span><span class="related-bottom-desc">Установка проводного термостата для котла отопления. Схемы подключения, настройка гистерезиса, эконо</span></a><a href="/articles/p/po/podbor-termostata-po-razmeru.html" class="related-bottom-card"><span class="related-bottom-title">Как подобрать термостат по размеру: полное руководство 2026</span><span class="related-bottom-desc">Пошаговая инструкция по выбору термостата для авто и бытовой техники с учётом габаритов, креплений и</span></a><a href="/articles/t/te/termoregulyator-ballu-skhema-podklyucheniya.html" class="related-bottom-card"><span class="related-bottom-title">Терморегулятор Ballu: схемы подключения и настройка</span><span class="related-bottom-desc">Подробная схема подключения терморегулятора Ballu. Инструкция по монтажу, настройке и устранению неи</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

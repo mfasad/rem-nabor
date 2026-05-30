@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Адаптация климата Пассат Б6: кодировка и сброс ошибок — Рем Набор</title>
+    <meta name="description" content="Полная инструкция по адаптации климат-контроля VW Passat B6. Кодировка блоков, сброс ошибок, настройка заслонок через VAG-COM и VCDS. Решение проблем с кондиционером.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/pa/passat-b6-adaptatsiya-klimata.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Адаптация климата Пассат Б6: кодировка и сброс ошибок">
+    <meta property="og:description" content="Полная инструкция по адаптации климат-контроля VW Passat B6. Кодировка блоков, сброс ошибок, настройка заслонок через VAG-COM и VCDS. Решение проблем с кондиционером.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Адаптация климата Пассат Б6: кодировка и сброс ошибок</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Адаптация климат-контроля Volkswagen Passat B6</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-оборудования-и-проверка-напряжений">Подготовка оборудования и проверка напряжений</a></li><li><a href="#диагностика-и-чтение-ошибок-перед-сбросом">Диагностика и чтение ошибок перед сбросом</a></li><li><a href="#процедура-базовой-адаптации-заслонок">Процедура базовой адаптации заслонок</a></li><li><a href="#кодировка-блока-управления-климатом">Кодировка блока управления климатом</a></li><li><a href="#ручная-калибровка-и-проверка-измеряемых-блоков">Ручная калибровка и проверка измеряемых блоков</a></li><li><a href="#типичные-проблемы-и-методы-их-устранения">Типичные проблемы и методы их устранения</a></li><li><a href="#faq-часто-задаваемые-вопросы-по-адаптации">FAQ: Часто задаваемые вопросы по адаптации</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Владельцы легендарного <em>Volkswagen Passat B6</em> часто сталкиваются с ситуацией, когда климатическая установка начинает работать некорректно после снятия аккумулятора, замены блока управления или вмешательства в электрическую цепь. Система перестает понимать крайние положения заслонок, что приводит к хаотичному переключению температур или отказу в обдуве определенных зон. В таких случаях необходима <strong>базовая адаптация</strong>, которая вернет механизмам их исходные точки отсчета.</p>
+
+<p>Процесс восстановления работоспособности <em>Climatronic</em> не всегда требует посещения дорогостоящего сервиса, если у вас есть доступ к диагностическому оборудованию типа <em>VCDS</em> или <em>ODIS</em>. Однако важно понимать, что простая адаптация заслонок — это лишь часть процедуры. Иногда проблема кроется глубже, например, в рассинхронизации датчиков температуры салона или неисправности сервоприводов, которые невозможно устранить программным путем без предварительной диагностики.</p>
+
+<p>В данной статье мы подробно разберем алгоритм действий для успешной настройки системы, рассмотрим типичные ошибки и предоставим чек-лист для проверки оборудования перед началом работ. Вы узнаете, как правильно интерпретировать значения измеряемых блоков и почему иногда приходится проводить калибровку вручную.</p>
+
+<blockquote>⚠️ Внимание: Перед началом любых работ с электроникой убедитесь, что напряжение в бортовой сети стабильно. Подключите внешний источник питания или зарядное устройство, чтобы избежать сброса адаптаций в процессе из-за просадки напряжения ниже 11.5 Вольт.</blockquote>
+
+<h2 id="подготовка-оборудования-и-проверка-напряжений">Подготовка оборудования и проверка напряжений</h2>
+
+<p>Успех процедуры на 90% зависит от качества связи между диагностическим сканером и блоком управления климатом. Для <em>Passat B6</em> критически важно использовать кабель с чипом <strong>FTDI</strong> или качественное беспроводное решение, поддерживающее протокол <em>K-Line</em> и <em>CAN-bus</em>. Дешевые китайские адаптеры часто теряют связь в момент записи новых параметров, что может привести к повреждению программного обеспечения блока <code>08-Auto HVAC</code>.</p>
+
+<p>Перед подключением сканера необходимо визуально осмотреть предохранители, отвечающие за климатическую установку. В монтажном блоке слева от руля нас интересуют позиции, питающие блок управления и сервоприводы заслонок. Если предохранитель цел, но система не откликается, стоит проверить массу на кузове автомобиля, так как окисление контактов часто имитирует программный сбой.</p>
+
+<p>Также рекомендуется проверить работу самого кондиционера в ручном режиме. Если компрессор не включается или давление фреона критически низкое, адаптация заслонок не решит проблему отсутствия холода. В этом случае сначала устраняются механические неисправности, и только потом выполняется программная инициализация.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте вольтметр для контроля напряжения прямо во время процедуры адаптации. Если батарея старая, скачки тока при движении моторчиков заслонок могут вызвать перезагрузку блока управления.</p></div>
+
+<h2 id="диагностика-и-чтение-ошибок-перед-сбросом">Диагностика и чтение ошибок перед сбросом</h2>
+
+<p>Запуск процедуры адаптации вслепую — грубая ошибка, которая может усугубить ситуацию. Сначала необходимо войти в блок <code>08</code> и считать все сохраненные неисправности. Ошибки типа "Обрыв цепи" или "Неверный сигнал" указывают на физические проблемы, которые софт не исправит. Игнорирование этого этапа часто приводит к тому, что адаптация прерывается на середине.</p>
+
+<p>Особое внимание следует уделить ошибкам, связанным с потенциометрами заслонок. Если блок видит сопротивление вне допустимого диапазона, он заблокирует движение механизмов. В таблице ниже приведены наиболее частые коды неисправностей, встречающиеся на <em>Passat B6</em> при проблемах с климатом.</p>
+
+<table>
+<thead>
+<tr>
+<th>Код ошибки</th>
+<th>Описание неисправности</th>
+<th>Вероятная причина</th>
+<th>Метод решения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00779</td>
+<td>Датчик температуры наружного воздуха G17</td>
+<td>Обрыв цепи или КЗ</td>
+<td>Проверка датчика и проводки</td>
+</tr>
+<tr>
+<td>01273</td>
+<td>Свежий воздух / рециркуляция V154</td>
+<td>Механический стопор</td>
+<td>Смазка или замена моторчика</td>
+</tr>
+<tr>
+<td>01592</td>
+<td>Датчик качества воздуха G238</td>
+<td>Неверный сигнал</td>
+<td>Замена датчика в решетке</td>
+</tr>
+<tr>
+<td>01842</td>
+<td>Потенциометр заслонки температуры V68</td>
+<td>Нижний предел не достигнут</td>
+<td>Адаптация или замена привода</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если в памяти есть ошибки по питанию (например, "Низкое напряжение"), их необходимо стереть и проверить, возвращаются ли они сразу. Статические ошибки требуют устранения до начала калибровки. Динамические ошибки, появляющиеся только в движении, можно пока игнорировать, сосредоточившись на статике.</p>
+
+<details class="faq-item"><summary>Секрет стабильной работы</summary><div class="faq-answer"><p> Часто ошибка по заслонке температуры возникает из-за износа пластиковых шестерен внутри моторчика. При адаптации мотор крутится с усилием, шестерня проскальзывает, и блок видит рассинхрон. В таком случае поможет только замена узла в сборе.</p></div></details>
+
+<h2 id="процедура-базовой-адаптации-заслонок">Процедура базовой адаптации заслонок</h2>
+
+<p>Сам процесс адаптации в <em>VAG-COM</em> или <em>VCDS</em> выглядит стандартно для платформы <em>PQ46</em>. После входа в блок <code>08</code> необходимо перейти в раздел <code>Basic Settings - 04</code>. В выпадающем списке выбирается канал адаптации. Для полной инициализации всех заслонок обычно используется группа <strong>001</strong> или <strong>060</strong>, в зависимости от версии прошивки блока управления.</p>
+
+<p>После выбора канала нажмите кнопку <code>Go!</code> или <code>On</code>. Вы услышите характерный звук работы моторчиков: они начнут двигаться от упора до упора, калибруя свое положение. Этот процесс занимает от 30 до 60 секунд. В это время категорически запрещено трогать кнопки на панели климата или выключать зажигание.</p>
+
+<p>В поле статуса должно появиться сообщение <em>ADP. OK</em> или <em>ADP. RUN</em>, которое сменится на <em>ADP. OK</em> по завершении. Если вы видите <em>ADP. ERROR</em> или <em>ABORT</em>, процедура прервалась. Чаще всего это означает, что одна из заслонок заклинила или датчик положения выдает неверные данные.</p>
+
+<div class="checklist-block"><h4>☑️ Чек-лист успешной адаптации</h4><label class="check-item"><input type="checkbox"><span>Напряжение АКБ выше 12.5В</span></label><label class="check-item"><input type="checkbox"><span>Ошибки "Обрыв" устранены</span></label><label class="check-item"><input type="checkbox"><span>Заслонки двигаются свободно</span></label><label class="check-item"><input type="checkbox"><span>Статус ADP. OK получен</span></label><label class="check-item"><input type="checkbox"><span>Температура выставлена автоматически</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<blockquote>⚠️ Внимание: Если адаптация прерывается постоянно на одном и том же этапе (например, 50%), вероятно, заклинила конкретная заслонка (температуры или распределения воздуха). Не пытайтесь запустить процесс более 3 раз подряд без поиска механической причины.</blockquote>
+
+<h2 id="кодировка-блока-управления-климатом">Кодировка блока управления климатом</h2>
+
+<p>Иногда адаптация не требуется, но система ведет себя странно из-за неверной кодировки. Это актуально при установке блока от другой комплектации или после замены "мозгов". Кодировка определяет наличие двухзонного климата, наличие датчика солнца, тип компрессора и наличие вебасто.</p>
+
+<p>Для изменения параметров зайдите в раздел <code>Coding - 07</code>. Здесь вы увидите длинное число, которое можно менять побайтово или через длинный помощник (Long Coding Helper). Каждый бит отвечает за конкретную опцию. Например, активация двухзонного режима требует изменения определенного бита в первом или втором байте кодировки.</p>
+
+<p>Будьте предельно осторожны при изменении кодировки. Неправильные значения могут привести к тому, что перестанут работать кнопки, дисплей погаснет или вентилятор перестанет реагировать на регулировку. Всегда записывайте исходное значение кодировки перед внесением изменений, чтобы иметь возможность откатиться назад.</p>
+
+<div class="poll-widget" id="poll-2a36b8cd"><div class="poll-widget-question">📊 Сталкивались ли вы с ошибками климата на Passat B6?</div><div class="poll-widget-option" data-poll="2a36b8cd" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, постоянно глючит</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2a36b8cd" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Было разово после АКБ</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2a36b8cd" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не было проблем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2a36b8cd" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только зимой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="ручная-калибровка-и-проверка-измеряемых-блоков">Ручная калибровка и проверка измеряемых блоков</h2>
+
+<p>После успешной адаптации необходимо убедиться, что блок управления корректно считывает данные с датчиков. Для этого перейдите в раздел <code>Measuring Blocks - 08</code>. Здесь в реальном времени отображаются положения заслонок в процентах или градусах, а также температуры.</p>
+
+<p>Проверьте группу, отвечающую за положение заслонки температуры (обычно это поле, где значения меняются от 0% до 100% при вращении регулятора). Если при повороте ручки значения не меняются или скачут хаотично, проблема в самом регуляторе на панели или в проводке. Значения должны изменяться плавно, без провалов.</p>
+
+<p>Также обратите внимание на температуру испарителя. При работающем кондиционере она должна опускаться до +2...+5 градусов Цельсия. Если адаптация пройдена, но холод не идет, проверяйте давление фреона и работу датчика давления. Программная адаптация не создаст холод, если система пуста.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Корректные показания в измеряемых блоках — главный индикатор того, что адаптация прошла успешно и электроника "видит" все механические узлы системы.</p></div>
+
+<h2 id="типичные-проблемы-и-методы-их-устранения">Типичные проблемы и методы их устранения</h2>
+
+<p>Даже после правильной адаптации владельцы <em>Passat B6</em> могут столкнуться с рядом специфических проблем. Одна из самых частых — "плавающая" температура, когда из дефлекторов дует то теплым, то холодным. Это часто свидетельствует о люфте в тягах заслонок или износе моторчика V68.</p>
+
+<p>Другая распространенная беда — отсутствие обдува в ноги при автоматическом режиме. Система может считать, что заслонка распределения воздуха заклинила в положении "на стекло". В этом случае помогает повторная адаптация с предварительной смазкой осей заслонок силиконовой смазкой через технологические отверстия.</p>
+
+<p>Если климат работает некорректно только при заведенном двигателе, а на включенном зажигании все в порядке, стоит проверить работу генератора. Скачки напряжения могут сбивать логику работы блока управления, заставляя его уходить в аварийный режим защиты.</p>
+
+<blockquote>⚠️ Внимание: Технические характеристики и расположение блоков могут незначительно отличаться в зависимости от года выпуска и рынка сбыта автомобиля. Всегда сверяйтесь с электросхемами для конкретного VIN-кода вашего автомобиля.</blockquote>
+
+<h2 id="faq-часто-задаваемые-вопросы-по-адаптации">FAQ: Часто задаваемые вопросы по адаптации</h2>
+
+<details>
+<summary>Можно ли сделать адаптацию без компьютера, просто поворотом ручек?</summary>
+<p>На <em>Passat B6</em> с системой <em>Climatronic</em> полноценную адаптацию заслонок без диагностического сканера сделать невозможно. Некоторые источники советуют зажать комбинацию кнопок, но это лишь сбрасывает пользовательские настройки, а не калибрует приводы. Для инициализации моторчиков требуется команда через диагностический разъем OBDII.</p>
+</details>
+
+<details>
+<summary>Почему после адаптации дует только горячий воздух?</summary>
+<p>Это классический симптом неисправности заслонки температуры или ее привода. Возможно, шестерни внутри моторчика срезало, и он крутится вхолостую, не двигая саму заслонку. Также возможно заклинивание самой заслонки в крайнем положении "тепло". Требуется механическая проверка узла.</p>
+</details>
+
+<details>
+<summary>Сколько по времени длится процесс адаптации?</summary>
+<p>Сама процедура движения заслонок занимает около 40-60 секунд. Однако вместе с подключением сканера, чтением ошибок, их удалением и проверкой измеряемых блоков весь процесс у опытного мастера занимает 15-20 минут. Не торопитесь отключать питание сразу после появления надписи OK.</p>
+</details>
+
+<details>
+<summary>Нужно ли заводить двигатель при адаптации?</summary>
+<p>Нет, для процедуры адаптации заслонок достаточно включенного зажигания. Двигатель должен быть заглушен, чтобы вентилятор радиатора и другие системы не создавали лишних помех и нагрузок на бортовую сеть. Главное требование — стабильное напряжение аккумулятора.</p>
+</details>
+
+<details>
+<summary>Что делать, если адаптация постоянно выдает ошибку?</summary>
+<p>Если ошибка повторяется, необходимо вручную проверить подвижность каждой заслонки. Иногда помогает снятие моторчика и прокручивание оси заслонки рукой для выявления заеданий. Также стоит проверить разъемы на окисление, особенно если автомобиль эксплуатировался в условиях высокой влажности.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-оборудования-и-проверка-напряжений">Подготовка оборудования и проверка напряжений</a></li><li><a href="#диагностика-и-чтение-ошибок-перед-сбросом">Диагностика и чтение ошибок перед сбросом</a></li><li><a href="#процедура-базовой-адаптации-заслонок">Процедура базовой адаптации заслонок</a></li><li><a href="#кодировка-блока-управления-климатом">Кодировка блока управления климатом</a></li><li><a href="#ручная-калибровка-и-проверка-измеряемых-блоков">Ручная калибровка и проверка измеряемых блоков</a></li><li><a href="#типичные-проблемы-и-методы-их-устранения">Типичные проблемы и методы их устранения</a></li><li><a href="#faq-часто-задаваемые-вопросы-по-адаптации">FAQ: Часто задаваемые вопросы по адаптации</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/n/ne/ne-vklyuchaetsya-ventilyator-okhlazhdeniya-fabiya.html" class="related-card">Не включается вентилятор охлаждения на ŠKODA Fabia: причины и ремонт</a></li><li><a href="/articles/k/ka/kak-chasto-nado-menyat-termostat.html" class="related-card">Как часто менять термостат: регламент и признаки износа</a></li><li><a href="/articles/t/te/termostat-2110-8-klapanov-artikul.html" class="related-card">Термостат ВАЗ 2110 8 клапанов: артикулы, выбор и замена</a></li><li><a href="/articles/z/za/zamena-termostata-volga-krajsler.html" class="related-card">Замена термостата на Волге с двигателем Крайслер: пошаговая инструкция</a></li><li><a href="/articles/p/pa/patrubok-rasshiritelnogo-bachka-granta-8-klapannaya.html" class="related-card">Патрубки расширительного бачка на Гранту 8 клапанов: выбор и замена</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/n/ne/ne-vklyuchaetsya-ventilyator-okhlazhdeniya-fabiya.html" class="related-bottom-card"><span class="related-bottom-title">Не включается вентилятор охлаждения на ŠKODA Fabia: причины и ремонт</span><span class="related-bottom-desc">Почему не работает вентилятор охлаждения на Фабии? Диагностика датчика температуры, предохранителей </span></a><a href="/articles/k/ka/kak-chasto-nado-menyat-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Как часто менять термостат: регламент и признаки износа</span><span class="related-bottom-desc">Узнайте, через сколько менять термостат в авто. Ресурс детали, симптомы поломки и последствия несвое</span></a><a href="/articles/t/te/termostat-2110-8-klapanov-artikul.html" class="related-bottom-card"><span class="related-bottom-title">Термостат ВАЗ 2110 8 клапанов: артикулы, выбор и замена</span><span class="related-bottom-desc">Какой артикул термостата на ВАЗ 2110 8 клапанов лучше? Таблица совместимости, признаки неисправности</span></a><a href="/articles/z/za/zamena-termostata-volga-krajsler.html" class="related-bottom-card"><span class="related-bottom-title">Замена термостата на Волге с двигателем Крайслер: пошаговая инструкция</span><span class="related-bottom-desc">Как самостоятельно поменять термостат на Волге с мотором Крайслер: признаки неисправности, выбор зап</span></a><a href="/articles/p/pa/patrubok-rasshiritelnogo-bachka-granta-8-klapannaya.html" class="related-bottom-card"><span class="related-bottom-title">Патрубки расширительного бачка на Гранту 8 клапанов: выбор и замена</span><span class="related-bottom-desc">Замена патрубка расширительного бачка на Лада Гранта 8 клапанов: артикулы, порядок работ, устранение</span></a><a href="/articles/z/za/zamena-pompy-skaniya-5-serii.html" class="related-bottom-card"><span class="related-bottom-title">Замена помпы Scania 5 серии: пошаговая инструкция с фото</span><span class="related-bottom-desc">Как самостоятельно заменить водяной насос (помпу) на грузовике Scania 5 серии: признаки неисправност</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

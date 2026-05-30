@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Термостат и датчик температуры: в чём разница и зачем оба нужны? — Рем Набор</title>
+    <meta name="description" content="Разбираемся, чем отличается термостат от датчика температуры, где они применяются и почему нельзя заменить один другим. Подробно о принципах работы и типичных неисправностях.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termostat-i-datchik-temperatury-eto-odno-i-tozhe.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Термостат и датчик температуры: в чём разница и зачем оба нужны?">
+    <meta property="og:description" content="Разбираемся, чем отличается термостат от датчика температуры, где они применяются и почему нельзя заменить один другим. Подробно о принципах работы и типичных неисправностях.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Термостат и датчик температуры: в чём разница и зачем оба нужны?</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Термостат и датчик температуры — это одно и то же? Разбираемся в деталях</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-термостат-vs-датчик-температуры-основные-отличия">1. Термостат vs датчик температуры: основные отличия</a></li><li><a href="#2-как-работает-термостат-механика-и-электроника">2. Как работает термостат: механика и электроника</a></li><li><a href="#3-принцип-работы-датчика-температуры-сигналы-и-схемы">3. Принцип работы датчика температуры: сигналы и схемы</a></li><li><a href="#4-где-применяются-термостаты-и-датчики-от-автомобилей-до-холодильников">4. Где применяются термостаты и датчики: от автомобилей до холодильников</a></li><li><a href="#5-типичные-неисправности-как-отличить-поломку-термостата-от-датчика">5. Типичные неисправности: как отличить поломку термостата от датчика</a></li><li><a href="#6-можно-ли-заменить-термостат-датчиком-и-наоборот">6. Можно ли заменить термостат датчиком (и наоборот)?</a></li><li><a href="#7-как-выбрать-запчасть-советы-по-покупке">7. Как выбрать запчасть: советы по покупке</a></li><li><a href="#8-частые-вопросы-и-ответы">8. Частые вопросы и ответы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Многие автовладельцы и домашние мастера сталкиваются с путаницей в терминах, когда речь заходит о системах регулирования температуры. Часто можно услышать, как <strong>термостат</strong> и <em>датчик температуры</em> называют одним и тем же устройством — мол, "это же просто разные названия для одной детали". На самом деле это грубая ошибка, которая может привести к неправильной диагностике, покупке ненужных запчастей или даже поломке оборудования.</p>
+
+<p>В этой статье мы детально разберём:</p>
+<ul>
+  <li>🔹 <strong>Фундаментальные различия</strong> между термостатом и датчиком температуры — почему их путают и как это влияет на ремонт.</li>
+  <li>🔹 <strong>Принципы работы</strong> каждого устройства: от физики до электрических сигналов.</li>
+  <li>🔹 <strong>Где и как применяются</strong> оба компонента — от автомобильных систем до бытовой техники.</li>
+  <li>🔹 <strong>Типичные неисправности</strong> и как их отличить без дорогостоящей диагностики.</li>
+</ul>
+
+<p>Если вы когда-нибудь задумывались, почему в машине два датчика температуры (на приборке и для ЭБУ), или почему холодильник не морозит, несмотря на работающий компрессор — эта статья поможет прояснить ситуацию. Мы не будем углубляться в сложные схемы, но дадим чёткое понимание, <mark>какое устройство за что отвечает и почему замена термостата не решит проблему, если виноват датчик — и наоборот</mark>.</p>
+
+<h2 id="1-термостат-vs-датчик-температуры-основные-отличия">1. Термостат vs датчик температуры: основные отличия</h2>
+
+<p>Начнём с главного: <strong>термостат</strong> и <em>датчик температуры</em> — это два принципиально разных устройства, несмотря на то, что оба работают с температурными показателями. Их путают потому, что:</p>
+<ul>
+  <li>🔧 Оба часто устанавливаются в одной системе (например, в системе охлаждения двигателя).</li>
+  <li>📊 Оба так или иначе связаны с регулированием температуры.</li>
+  <li>🛠️ Внешне могут выглядеть похоже (особенно в бытовой технике).</li>
+</ul>
+
+<p><strong>Термостат</strong> — это <em>механическое или электронное устройство</em>, которое <strong>физически регулирует</strong> поток жидкости или газа для поддержания заданной температуры. Проще говоря, он "открывает" или "закрывает" путь для охлаждающей жидкости, фреона или воздуха. Примеры:</p>
+<ul>
+  <li>🚗 Термостат в системе охлаждения автомобиля (открывает большой круг при нагреве антифриза).</li>
+  <li>❄️ Термостат в холодильнике (включает/выключает компрессор).</li>
+  <li>🌡️ Комнатный термостат для котла отопления (управляет горелкой).</li>
+</ul>
+
+<p><strong>Датчик температуры</strong> — это <em>сенсор</em>, который <strong>измеряет</strong> температуру и передаёт данные в электронный блок управления (ЭБУ), контроллер или на приборную панель. Сам по себе он <strong>ничего не регулирует</strong> — только информирует. Примеры:</p>
+<ul>
+  <li>📉 Датчик температуры охлаждающей жидкости (ДТОЖ) в машине.</li>
+  <li>🍳 Датчик в духовке или мультиварке.</li>
+  <li>💻 Датчик на материнской плате компьютера.</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание:</strong> В некоторых системах (например, в современных инверторных кондиционерах) термостат и датчик могут быть объединены в одном корпусе, но при этом остаются <strong>двумя разными функциональными узлами</strong>. Не путайте интеграцию с идентичностью!</blockquote>
+
+<div class="poll-widget" id="poll-3f0e7541"><div class="poll-widget-question">📊 Где вы чаще сталкивались с термостатами и датчиками?</div><div class="poll-widget-option" data-poll="3f0e7541" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">В автомобиле</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f0e7541" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">В бытовой технике</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f0e7541" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">В системах отопления</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f0e7541" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">В электроники (ПК, ноутбуки)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f0e7541" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не задумывался</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="2-как-работает-термостат-механика-и-электроника">2. Как работает термостат: механика и электроника</h2>
+
+<p>Термостаты бывают двух типов: <em>механические</em> и <em>электронные</em>. Рассмотрим каждый подробно.</p>
+
+<h3>Механические термостаты</h3>
+<p>Принцип работы основан на <strong>физическом расширении веществ</strong> при нагреве. Внутри термостата находится:</p>
+<ul>
+  <li>🔘 <strong>Термочувствительный элемент</strong> (обычно воск, биметаллическая пластина или газ).</li>
+  <li>🔘 <strong>Клапан</strong>, который открывается/закрывается под давлением расширяющегося вещества.</li>
+  <li>🔘 <strong>Пружина</strong>, возвращающая клапан в исходное положение при охлаждении.</li>
+</ul>
+
+<p>Пример: в автомобильном термостате при нагреве антифриза до <code>80–90°C</code> воск внутри капсулы плавится, расширяется и толкает шток, открывая клапан. Охлаждающая жидкость начинает циркулировать по большому кругу, предотвращая перегрев двигателя.</p>
+
+<h3>Электронные термостаты</h3>
+<p>Здесь вместо механики используется <strong>электронная схема</strong> с:</p>
+<ul>
+  <li>📱 <strong>Микроконтроллером</strong>, который анализирует данные с датчика.</li>
+  <li>🔌 <strong>Реле или симистором</strong> для управления нагрузкой (например, компрессором холодильника).</li>
+  <li>🎛️ <strong>Панелью управления</strong> с кнопками или сенсором для задания температуры.</li>
+</ul>
+
+<p>Пример: в современных котлах отопления электронный термостат получает данные с датчика температуры воздуха в комнате и включает/выключает горелку, поддерживая заданный режим.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Характеристика</th>
+      <th>Механический термостат</th>
+      <th>Электронный термостат</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Точность регулировки</td>
+      <td>±3–5°C</td>
+      <td>±0.5–1°C</td>
+    </tr>
+    <tr>
+      <td>Срок службы</td>
+      <td>10–15 лет (износ механики)</td>
+      <td>5–10 лет (старение электроники)</td>
+    </tr>
+    <tr>
+      <td>Энергопотребление</td>
+      <td>Отсутствует</td>
+      <td>Минимальное (питание схемы)</td>
+    </tr>
+    <tr>
+      <td>Стоимость</td>
+      <td>Низкая</td>
+      <td>Средняя/высокая</td>
+    </tr>
+    <tr>
+      <td>Примеры применения</td>
+      <td>Автомобили, старые холодильники</td>
+      <td>Инверторные кондиционеры, умные котлы</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если механический термостат в машине заклинило в закрытом положении, двигатель будет перегреваться даже при работающем вентиляторе. Проверьте температуру верхнего и нижнего патрубков радиатора — если оба холодные, термостат не открывается!</p></div>
+
+<h2 id="3-принцип-работы-датчика-температуры-сигналы-и-схемы">3. Принцип работы датчика температуры: сигналы и схемы</h2>
+
+<p>Датчик температуры — это всегда <strong>электронное устройство</strong>, преобразующее температуру в электрический сигнал. Наиболее распространённые типы:</p>
+<ul>
+  <li>🔹 <strong>Термисторы</strong> (NTC или PTC) — меняют сопротивление при нагреве/охлаждении.</li>
+  <li>🔹 <strong>Термопары</strong> — генерируют напряжение на стыке двух металлов.</li>
+  <li>🔹 <strong>Полупроводниковые датчики</strong> (например, <em>DS18B20</em>) — цифровые сенсоры с высокой точностью.</li>
+</ul>
+
+<p>В автомобилях чаще всего используется <strong>ДТОЖ (датчик температуры охлаждающей жидкости)</strong> на основе термистора. Он отправляет сигнал на ЭБУ, который корректирует:</p>
+<ul>
+  <li>⚙️ Состав топливной смеси (обогащает при холодном запуске).</li>
+  <li>🔥 Угол опережения зажигания.</li>
+  <li>🌀 Работу вентилятора охлаждения.</li>
+</ul>
+
+<p>В бытовой технике (например, в стиральных машинах) датчик может быть интегрирован в <em>термостат</em>, но выполняет отдельную функцию — <strong>контроль</strong>, а не регулировку. Например, в холодильнике датчик сообщает плате управления, что температура в камере достигла <code>-18°C</code>, а термостат уже <strong>размыкает цепь</strong> компрессора.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если датчик температуры выходит из строя, ЭБУ автомобиля может "думать", что двигатель холодный, и постоянно обогащать смесь. Это приводит к повышенному расходу топлива и черному дыму из выхлопной трубы!</blockquote>
+
+<details class="faq-item"><summary>Как проверить датчик температуры мультиметром?</summary><div class="faq-answer"><p>
+<p>1. Отсоедините разъём датчика.</p>
+<p>2. Переведите мультиметр в режим измерения сопротивления (20 кОм).</p>
+<p>3. Измерьте сопротивление между выводами датчика при разных температурах:</p>
+<p>- При <code>20°C</code> — ~2–3 кОм (для большинства ДТОЖ).</p>
+<p>- При <code>80°C</code> — ~200–300 Ом.</p>
+<p>4. Если сопротивление не меняется или равно нулю/бесконечности — датчик неисправен.</p>
+<p></p></div></details></p>
+
+<h2 id="4-где-применяются-термостаты-и-датчики-от-автомобилей-до-холодильников">4. Где применяются термостаты и датчики: от автомобилей до холодильников</h2>
+
+<p>Давайте разберём, где и как используются оба устройства в разных системах.</p>
+
+<h3>🚗 Автомобильные системы</h3>
+<p>В машине термостат и датчик температуры <strong>всегда работают вместе</strong>, но выполняют разные задачи:</p>
+<ul>
+  <li>🔹 <strong>Термостат</strong> — регулирует циркуляцию антифриза (малый/большой круг).</li>
+  <li>🔹 <strong>ДТОЖ</strong> — передаёт данные на приборную панель и ЭБУ.</li>
+  <li>🔹 <strong>Датчик температуры воздуха</strong> — корректирует работу климат-контроля.</li>
+</ul>
+
+<p>Интересный факт: в некоторых современных автомобилях (например, <em>BMW N-серии</em>) используется <strong>электронный термостат</strong> с управлением от ЭБУ. Он может открываться постепенно, а не резко, как механический, что улучшает тепловой режим двигателя.</p>
+
+<h3>❄️ Бытовые холодильники и морозильники</h3>
+<p>Здесь схема работы следующая:</p>
+<ol>
+  <li>Датчик температуры измеряет температуру в камере.</li>
+  <li>Термостат (или электронная плата) сравнивает показания с установленным значением.</li>
+  <li>При превышении порога термостат <strong>размыкает цепь</strong> компрессора.</li>
+  <li>При понижении температуры цепь <strong>замыкается</strong> снова.</li>
+</ol>
+
+<p>В старых моделях (например, <em>Атлант или Biryusa</em>) термостат механический и часто выходит из строя из-за окисления контактов. В новых (например, <em>Samsung No Frost</em>) используется электронное управление с несколькими датчиками.</p>
+
+<h3>🏠 Системы отопления и кондиционирования</h3>
+<p>В котлах и кондиционерах термостат и датчик могут быть:</p>
+<ul>
+  <li>🔹 <strong>Раздельными</strong> — датчик на стене, термостат в котле.</li>
+  <li>🔹 <strong>Объединёнными</strong> — например, в <em>умных термостатах Nest</em>.</li>
+</ul>
+
+<p>В сплит-системах датчик температуры воздуха обычно расположен на внутреннем блоке, а термостат (в виде платы управления) регулирует работу компрессора и вентилятора.</p>
+
+
+<p>Компрессор работает без остановки, но не морозит|Проверьте датчик температуры (возможно, он показывает ложное повышение)</p>
+<p>Компрессор не включается совсем|Проверьте термостат на обрыв цепи (мультиметром в режиме прозвонки)</p>
+<p>В камере слишком холодно/тепло|Отрегулируйте механический термостат или проверьте электронную плату</p>
+<p>Слышны щелчки, но компрессор не запускается|Неисправно реле термостата или пусковое реле компрессора--></p>
+
+<h2 id="5-типичные-неисправности-как-отличить-поломку-термостата-от-датчика">5. Типичные неисправности: как отличить поломку термостата от датчика</h2>
+
+<p>Симптомы неисправности термостата и датчика температуры могут быть похожи, но диагностика разная. Рассмотрим основные признаки.</p>
+
+<h3>Признаки неисправного термостата</h3>
+<ul>
+  <li>🔥 <strong>Перегрев двигателя</strong> (стрелка температуры в красной зоне, но вентилятор работает).</li>
+  <li>❄️ <strong>Двигатель не прогревается</strong> до рабочей температуры (стрелка не поднимается выше <code>50–60°C</code>).</li>
+  <li>🚗 <strong>Долгий прогрев салона</strong> зимой (антифриз циркулирует по большому кругу постоянно).</li>
+  <li>🍳 <strong>Холодильник не отключается</strong> или, наоборот, не включается.</li>
+</ul>
+
+<p>В автомобиле простейшая проверка термостата:</p>
+<ol>
+  <li>Запустите двигатель и потрогайте верхний патрубок радиатора.</li>
+  <li>Если он нагревается почти сразу — термостат заклинил в открытом положении.</li>
+  <li>Если остаётся холодным даже после прогрева двигателя — термостат заклинил в закрытом положении.</li>
+</ol>
+
+<h3>Признаки неисправного датчика температуры</h3>
+<ul>
+  <li>📉 <strong>Неправильные показания на приборной панели</strong> (например, <code>-40°C</code> или <code>120°C</code> при нормальной работе).</li>
+  <li>🔥 <strong>Чек Engine</strong> с ошибками <code>P0115–P0119</code> (неисправность цепи ДТОЖ).</li>
+  <li>💨 <strong>Вентилятор охлаждения работает постоянно</strong> или не включается вообще.</li>
+  <li>⚡ <strong>Повышенный расход топлива</strong> (ЭБУ "думает", что двигатель холодный).</li>
+</ul>
+
+<p>В бытовой технике неисправный датчик может привести к:</p>
+<ul>
+  <li>🔹 <strong>Замораживанию продуктов</strong> в холодильнике (ложные показания низкой температуры).</li>
+  <li>🔹 <strong>Отказу отопления</strong> в котле (датчик показывает перегрев, хотя его нет).</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание:</strong> В некоторых автомобилях (например, <em>VW/Audi</em>) при выходе из строя датчика температуры воздуха на впуске ЭБУ может переходить в аварийный режим с ограничением мощности. Не путайте его с ДТОЖ!</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если после замены термостата проблема осталась (например, двигатель греется), проверьте датчик температуры и цепь его подключения. Часто окисление контактов или обрыв провода даёт те же симптомы, что и неисправный термостат.</p></div>
+
+<h2 id="6-можно-ли-заменить-термостат-датчиком-и-наоборот">6. Можно ли заменить термостат датчиком (и наоборот)?</h2>
+
+<p><strong>Нет, заменить одно другим невозможно</strong> — это принципиально разные устройства с разными функциями. Однако есть нюансы:</p>
+
+<p>🔹 <strong>Если сломался термостат</strong>, датчик температуры не сможет его заменить, так как не имеет механизма регулировки. Например, в холодильнике без термостата компрессор будет работать постоянно или не включаться вообще.</p>
+
+<p>🔹 <strong>Если сломался датчик</strong>, термостат может работать "вслепую", но это приведёт к нестабильной температуре. В автомобиле ЭБУ перейдёт на аварийные настройки (например, включит вентилятор на полную мощность постоянно).</p>
+
+<p>🔹 <strong>В электронных системах</strong> (например, в современных котлах) термостат и датчик могут быть объединены в одном модуле, но при поломке одного компонента приходится менять весь блок.</p>
+
+<p>Исключение — <strong>программируемые контроллеры</strong> (например, <em>Arduino</em> с внешними датчиками), где можно эмулировать работу термостата с помощью софта. Но это уже уровень кастомных решений, а не стандартного ремонта.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ситуация</th>
+      <th>Можно ли заменить?</th>
+      <th>Последствия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Замена термостата датчиком</td>
+      <td>❌ Нет</td>
+      <td>Система потеряет регулировку температуры</td>
+    </tr>
+    <tr>
+      <td>Замена датчика термостатом</td>
+      <td>❌ Нет</td>
+      <td>ЭБУ не будет получать данные для корректировки работы</td>
+    </tr>
+    <tr>
+      <td>Объединённый модуль (датчик + термостат)</td>
+      <td>⚠️ Частично</td>
+      <td>При поломке одного элемента меняется весь блок</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="7-как-выбрать-запчасть-советы-по-покупке">7. Как выбрать запчасть: советы по покупке</h2>
+
+<p>При покупке термостата или датчика температуры обращайте внимание на:</p>
+
+<h3>Для термостатов</h3>
+<ul>
+  <li>🔹 <strong>Температуру открытия</strong> (например, <code>82°C</code>, <code>88°C</code>, <code>92°C</code> для автомобилей).</li>
+  <li>🔹 <strong>Тип системы</strong> (для охлаждения двигателя, отопления салона, кондиционера).</li>
+  <li>🔹 <strong>Совместимость с моделью</strong> (например, термостат для <em>VAZ 2110</em> не подойдёт для <em>Toyota Corolla</em>).</li>
+  <li>🔹 <strong>Материал корпуса</strong> (латунь, алюминий, пластик — влияет на долговечность).</li>
+</ul>
+
+<p>Пример: для <em>Ford Focus 2</em> с двигателем <code>1.6 Ti-VCT</code> нужен термостат с температурой открытия <code>89°C</code>, а для <em>Renault Logan</em> — <code>82°C</code>.</p>
+
+<h3>Для датчиков температуры</h3>
+<ul>
+  <li>🔹 <strong>Тип датчика</strong> (термистор NTC/PTC, термопара, цифровой).</li>
+  <li>🔹 <strong>Сопротивление при определённой температуре</strong> (указывается в спецификации).</li>
+  <li>🔹 <strong>Разъём подключения</strong> (должен совпадать с оригинальным).</li>
+  <li>🔹 <strong>Диапазон измерений</strong> (например, <code>-40…+120°C</code> для ДТОЖ).</li>
+</ul>
+
+<p>Важно: в некоторых автомобилях (например, <em>Mercedes-Benz</em>) датчик температуры может иметь <strong>уникальную калибровку</strong>. Установка неоригинального датчика приведёт к ошибкам в работе ЭБУ.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Детали могут отличаться даже в рамках одной модели автомобиля в зависимости от года выпуска и комплектации. Всегда сверяйтесь с <code>VIN-номером</code> или данными на бирке старой детали.</blockquote>
+
+<div class="poll-widget" id="poll-6adb674f"><div class="poll-widget-question">📊 Вы предпочитаете покупать запчасти?</div><div class="poll-widget-option" data-poll="6adb674f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Оригинал (дорого, но надёжно)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="6adb674f" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Аналоги известных брендов (например, Bosch, Hepu)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="6adb674f" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Бюджетные аналоги (китайские, турецкие)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="6adb674f" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Б/у с разборки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="6adb674f" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Не покупаю сам, езжу на СТО</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="8-частые-вопросы-и-ответы">8. Частые вопросы и ответы</h2>
+
+<details>
+  <summary>🔧 Почему в машине два датчика температуры: один на приборке, другой для ЭБУ?</summary>
+  <p>Это сделано для резервирования и точности:</p>
+  <ul>
+    <li>🔹 <strong>Датчик для приборной панели</strong> часто имеет упрощённую конструкцию и показывает температуру с запаздыванием.</li>
+    <li>🔹 <strong>Датчик для ЭБУ</strong> (ДТОЖ) более точный и быстро реагирует на изменения, так как от него зависит работа двигателя.</li>
+  </ul>
+  <p>В некоторых автомобилях (например, <em>Honda</em>) используется один датчик, но сигнал с него идёт и на панель, и в ЭБУ.</p>
+</details>
+
+<details>
+  <summary>❄️ Может ли холодильник работать без термостата?</summary>
+  <p>Технически да, но с серьёзными последствиями:</p>
+  <ul>
+    <li>🔹 Если <strong>замкнуть контакты термостата</strong>, компрессор будет работать постоянно — это приведёт к перемораживанию продуктов и быстрому износу мотора.</li>
+    <li>🔹 Если <strong>разомкнуть цепь</strong>, компрессор не включится вообще — холодильник разморозится.</li>
+  </ul>
+  <p>В современных моделях без термостата не обойтись — электронная плата просто не даст включиться компрессору.</p>
+</details>
+
+<details>
+  <summary>🚗 Как проверить термостат в машине, не снимая его?</summary>
+  <p>Способ 1 (тактильный):</p>
+  <ol>
+    <li>Запустите холодный двигатель.</li>
+    <li>Потрогайте верхний патрубок радиатора — он должен быть холодным.</li>
+    <li>После прогрева (стрелка температуры поднимается) патрубок должен стать горячим.</li>
+    <li>Если он нагревается сразу или остаётся холодным — термостат неисправен.</li>
+  </ol>
+  <p>Способ 2 (по температуре): используйте <em>пирометр</em> или инфракрасный термометр для измерения температуры патрубков.</p>
+</details>
+
+<details>
+  <summary>📊 Почему электронный термостат точнее механического?</summary>
+  <p>Электронные термостаты имеют несколько преимуществ:</p>
+  <ul>
+    <li>🔹 <strong>Плавное регулирование</strong> (например, в инверторных кондиционерах).</li>
+    <li>🔹 <strong>Точность до ±0.5°C</strong> (против ±3–5°C у механики).</li>
+    <li>🔹 <strong>Адаптивные алгоритмы</strong> (например, учёт влажности в системах климат-контроля).</li>
+    <li>🔹 <strong>Дистанционное управление</strong> (через смартфон или пульт).</li>
+  </ul>
+  <p>Однако они дороже и чувствительны к скачкам напряжения.</p>
+</details>
+
+<details>
+  <summary>🛠️ Можно ли отремонтировать термостат или датчик?</summary>
+  <p>🔹 <strong>Механический термостат</strong> обычно не ремонтируется — его меняют целиком. Исключение: очистка от накипи (в системах отопления).</p>
+  <p>🔹 <strong>Электронный термостат</strong> иногда подлежит ремонту (замена реле, пайка контактов), но это требует навыков.</p>
+  <p>🔹 <strong>Датчик температуры</strong> ремонту не подлежит — только замена. Исключение: очистка контактов от окисления.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-термостат-vs-датчик-температуры-основные-отличия">1. Термостат vs датчик температуры: основные отличия</a></li><li><a href="#2-как-работает-термостат-механика-и-электроника">2. Как работает термостат: механика и электроника</a></li><li><a href="#3-принцип-работы-датчика-температуры-сигналы-и-схемы">3. Принцип работы датчика температуры: сигналы и схемы</a></li><li><a href="#4-где-применяются-термостаты-и-датчики-от-автомобилей-до-холодильников">4. Где применяются термостаты и датчики: от автомобилей до холодильников</a></li><li><a href="#5-типичные-неисправности-как-отличить-поломку-термостата-от-датчика">5. Типичные неисправности: как отличить поломку термостата от датчика</a></li><li><a href="#6-можно-ли-заменить-термостат-датчиком-и-наоборот">6. Можно ли заменить термостат датчиком (и наоборот)?</a></li><li><a href="#7-как-выбрать-запчасть-советы-по-покупке">7. Как выбрать запчасть: советы по покупке</a></li><li><a href="#8-частые-вопросы-и-ответы">8. Частые вопросы и ответы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-proverit-termostat-kipyatkom.html" class="related-card">Как проверить термостат кипятком: пошаговая инструкция с фото</a></li><li><a href="/articles/p/po/podklyuchenie-k-59-termostata.html" class="related-card">Подключение термостата 59-й серии: схема, инструкция, ошибки</a></li><li><a href="/articles/k/ka/kakoj-termostat-luchshe-postavit-na-zimu.html" class="related-card">Какой термостат выбрать на зиму 2026: сравнение и советы</a></li><li><a href="/articles/k/ka/kak-podklyuchit-termoregulyator-k-elektrokotlu.html" class="related-card">Как подключить терморегулятор к электрокотлу: схема + инструкция</a></li><li><a href="/articles/n/ne/ne-srabatyvaet-termostat-prichiny.html" class="related-card">Почему не срабатывает термостат: причины поломки и диагностика</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-proverit-termostat-kipyatkom.html" class="related-bottom-card"><span class="related-bottom-title">Как проверить термостат кипятком: пошаговая инструкция с фото</span><span class="related-bottom-desc">Узнайте, как правильно диагностировать термостат автомобиля или бытовой техники с помощью кипятка. П</span></a><a href="/articles/p/po/podklyuchenie-k-59-termostata.html" class="related-bottom-card"><span class="related-bottom-title">Подключение термостата 59-й серии: схема, инструкция, ошибки</span><span class="related-bottom-desc">Пошаговое руководство по подключению термостата 59-й модели к системе отопления: разводка проводов, </span></a><a href="/articles/k/ka/kakoj-termostat-luchshe-postavit-na-zimu.html" class="related-bottom-card"><span class="related-bottom-title">Какой термостат выбрать на зиму 2026: сравнение и советы</span><span class="related-bottom-desc">Экспертный обзор термостатов для зимней эксплуатации: механические, электронные и программируемые мо</span></a><a href="/articles/k/ka/kak-podklyuchit-termoregulyator-k-elektrokotlu.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить терморегулятор к электрокотлу: схема + инструкция</span><span class="related-bottom-desc">Пошаговое руководство по подключению терморегулятора к электрокотлу своими руками: выбор схемы, монт</span></a><a href="/articles/n/ne/ne-srabatyvaet-termostat-prichiny.html" class="related-bottom-card"><span class="related-bottom-title">Почему не срабатывает термостат: причины поломки и диагностика</span><span class="related-bottom-desc">Узнайте, почему не срабатывает термостат в авто или котле. Разбор причин: заклинивание, воздух, неис</span></a><a href="/articles/s/sk/skhema-termoregulyatora-na-lm358.html" class="related-bottom-card"><span class="related-bottom-title">Схема терморегулятора на LM358: пошаговая сборка своими руками</span><span class="related-bottom-desc">Практические схемы терморегулятора с LM358 для систем отопления, охлаждения и климат-контроля. Распи</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

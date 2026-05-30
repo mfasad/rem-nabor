@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Веста НГ: как работает климат-контроль и устранение поломок — Рем Набор</title>
+    <meta name="description" content="Полный разбор работы климат-контроля на Lada Vesta NG. Диагностика неисправностей, замена датчиков и ремонт компрессора своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/v/ve/vesta-ng-klimat-kontrol.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Веста НГ: как работает климат-контроль и устранение поломок">
+    <meta property="og:description" content="Полный разбор работы климат-контроля на Lada Vesta NG. Диагностика неисправностей, замена датчиков и ремонт компрессора своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/avtomobilnyj-konditsioner/">Автомобильный кондиционер</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Веста НГ: как работает климат-контроль и устранение поломок</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Система климат-контроля Lada Vesta NG: устройство и ремонт</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-и-архитектура-системы">Принцип работы и архитектура системы</a></li><li><a href="#типичные-неисправности-и-их-симптомы">Типичные неисправности и их симптомы</a></li><li><a href="#диагностика-ошибок-через-сканер">Диагностика ошибок через сканер</a></li><li><a href="#замена-салонного-фильтра-и-чистка-испарителя">Замена салонного фильтра и чистка испарителя</a></li><li><a href="#регулировка-и-калибровка-заслонок">Регулировка и калибровка заслонок</a></li><li><a href="#дозаправка-кондиционера-и-проверка-давления">Дозаправка кондиционера и проверка давления</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Новое поколение автомобилей Lada Vesta NG принесло не только обновленный дизайн, но и значительные изменения в оснащении салона. Одной из ключевых особенностей стала установка полноценного <strong>автоматического климат-контроля</strong> даже в средних комплектациях, что ранее было привилегией топовых версий. Для многих владельцев переход от механического управления печкой к электронике стал как преимуществом, так и источником новых вопросов по обслуживанию.</p>
+
+<p>Система кондиционирования и отопления в «Веста НГ» построена на современной архитектуре, включающей цифровой блок управления и сеть датчиков. Понимание принципов работы этого узла критически важно для самостоятельной диагностики. Если вы заметили, что температура в салоне не соответствует заданной или система издает посторонние шумы, игнорировать эти симптомы нельзя — это может привести к выходу из строя дорогостоящего компрессора.</p>
+
+<p>В данной статье мы подробно разберем устройство системы, типичные ошибки электроники и методы их устранения. Вы узнаете, как проверить давление фреона, заменить салонный фильтр и провести адаптацию заслонок без обращения в дилерский центр. Грамотное обслуживание позволит сохранить комфорт в автомобиле на долгие годы.</p>
+
+<h2 id="принцип-работы-и-архитектура-системы">Принцип работы и архитектура системы</h2>
+
+<p>Основой комфорта в Lada Vesta NG является интегрированная система управления микроклиматом. В отличие от старых моделей, где водитель вручную крутил ручки, здесь за все отвечает электронный блок <code>EСU Climate</code>. Он получает данные с множества сенсоров и автоматически регулирует положение заслонок, скорость вентилятора и работу компрессора кондиционера.</p>
+
+<p>Центральным элементом контура охлаждения является компрессор с электромагнитной муфтой или переменной производительностью, в зависимости от модификации двигателя. Хладагент циркулирует по системе, проходя через конденсор, ресивер-осушитель и испаритель. Именно на испарителе происходит охлаждение воздуха, который затем смешивается с потоком от отопителя в блоке смешивания.</p>
+
+<p>Точность поддержания температуры зависит от корректной работы датчика солнечной нагрузки и датчика температуры салона. Если эти элементы загрязнены или неисправны, система может ошибочно считать, что на улице жарко, и включать кондиционер на полную мощность даже зимой. Это приводит к запотеванию стекол и дискомфорту пассажиров.</p>
+
+<p>Для управления воздушными потоками используются сервоприводы заслонок. Их количество может варьироваться, но обычно их три: заслонка рециркуляции, заслонка температуры и распределительная заслонка. Каждый моторчик имеет свой потенциометр обратной связи, который сообщает блоку управления текущее положение механизма.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При покупке б/у Весты НГ обязательно проверьте работу всех режимов обдува — часто владельцы не замечают, что одна из заслонок заклинила в одном положении.</p></div>
+
+<h2 id="типичные-неисправности-и-их-симптомы">Типичные неисправности и их симптомы</h2>
+
+<p>Несмотря на надежность современной техники, электроника и механика климат-контроля подвержены износу. Самой распространенной проблемой, с которой сталкиваются владельцы Веста НГ, является некорректная работа температурного режима. Воздух может дуть теплым, когда выставлено «Lo», или холодным при максимальной температуре.</p>
+
+<p>Часто проблема кроется не в утечке фреона, а в сбое калибровки сервоприводов. После снятия аккумулятора или скачков напряжения в бортовой сети блок управления может «потерять» крайние положения заслонок. В этом случае система переходит в аварийный режим или работает некорректно, перемещая заслонку лишь на часть хода.</p>
+
+<p>Еще одна группа проблем связана с шумом при работе. Посторонние звуки могут исходить от вентилятора отопителя (сверчки, гул) или от компрессора кондиционера (металлический лязг, свист). Важно уметь различать эти звуки, так как диагностика и стоимость ремонта будут кардинально отличаться.</p>
+
+<details class="faq-item"><summary>Почему свистит ремень компрессора?</summary><div class="faq-answer"><p>Свист часто возникает из-за проскальзывания приводного ремня при резком включении нагрузки на компрессор. Это может указывать на износ ремня, слабое натяжение ролика или заклинивание подшипника компрессора.</p></div></details>
+
+<blockquote>
+<p>⚠️ Внимание: Если вы слышите громкий металлический стук из-под капота при включении кнопки A/C, немедленно заглушите двигатель. Продолжение работы может привести к разрушению компрессора и попаданию металлической стружки во всю систему, что потребует её полной промывки.</p>
+</blockquote>
+
+<p>Утечки хладагента — неизбежный процесс старения резиновых уплотнителей. На Веста НГ наиболее уязвимыми местами являются соединения трубок радиатора кондиционера и сальник вала компрессора. Определить утечку визуально сложно, поэтому требуется использование течеискателя или ультрафиолетовой добавки в систему.</p>
+
+<h2 id="диагностика-ошибок-через-сканер">Диагностика ошибок через сканер</h2>
+
+<p>Современный автомобиль позволяет проводить глубокую диагностику системы климата с помощью OBDII сканера и специализированного ПО, такого как OpenPort или дилерский сканер. Подключение к разъему <code>Диагностика</code> под рулем дает доступ к чтению кодов неисправностей блока комфорта.</p>
+
+<p>При проведении диагностики важно обращать внимание не только на текущие ошибки, но и на сохраненные (исторические) коды. Часто ошибка может быть временной, вызванной плохим контактом, но она укажет на проблемный узел. Основные коды ошибок обычно касаются обрыва цепи датчиков или выхода из строя моторедукторов.</p>
+
+<p>В режиме реального времени вы можете наблюдать за показаниями всех датчиков температуры. Сравните показания датчика в салоне с реальным термометром. Разница более чем в 2-3 градуса свидетельствует о неисправности сенсора или его неправильной установке.</p>
+
+<div class="poll-widget" id="poll-a7cae2c7"><div class="poll-widget-question">📊 Сталкивались ли вы с проблемами климата на Веста НГ?</div><div class="poll-widget-option" data-poll="a7cae2c7" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет, все работает идеально</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a7cae2c7" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Дует не той температурой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a7cae2c7" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Шумит вентилятор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a7cae2c7" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Кондиционер не холодит</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a7cae2c7" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Ошибка на панели приборов</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Особое внимание следует уделить параметру «Положение заслонки смешивания». При перемещении регулятора температуры от минимума к максимуму значение должно плавно меняться от 0% до 100% (или наоборот, в зависимости от прошивки). Если значение замирает или скачет, проблема в потенциометре моторчика.</p>
+
+<h2 id="замена-салонного-фильтра-и-чистка-испарителя">Замена салонного фильтра и чистка испарителя</h2>
+
+<p>Регулярное обслуживание системы начинается с замены фильтрующего элемента. На Lada Vesta NG салонный фильтр расположен под пластиковой накладкой со стороны пассажира, в ногах. Доступ к нему достаточно прост и не требует специального инструмента, только отвертка или ключ для снятия саморезов.</p>
+
+<p>Игнорирование замены фильтра приводит к зарастанию испарителя пылью и грязью. Это создает идеальную среду для размножения бактерий и плесени, что становится причиной неприятного запаха сырости в салоне при включении обдува. Кроме того, забитый фильтр снижает производительность вентилятора.</p>
+
+<p>Для чистки испарителя рекомендуется использовать специальную пену, которая подается через дренажное отверстие или через отверстия для забора воздуха при снятом фильтре. Пену нужно оставить на 10-15 минут для растворения грязи, а затем включить вентилятор на полную мощность для просушки.</p>
+
+<ul>
+<li>🌬️ Меняйте фильтр каждые 10-15 тысяч км или раз в год перед летним сезоном.</li>
+<li>🦠 Используйте антибактериальные спреи для обработки воздуховодов при появлении запаха.</li>
+<li>💧 Обязательно продувайте систему после чистки, чтобы влага не осталась внутри корпуса печки.</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Замена фильтра — самая простая и дешевая процедура, которая напрямую влияет на здоровье пассажиров и эффективность работы кондиционера.</p></div>
+
+<h2 id="регулировка-и-калибровка-заслонок">Регулировка и калибровка заслонок</h2>
+
+<p>Если система работает некорректно после сброса питания, может потребоваться процедура адаптации (калибровки) заслонок. На Веста НГ эта процедура часто выполняется автоматически при включении зажигания, если блок управления видит, что крайние положения не зафиксированы.</p>
+
+<p>Однако в некоторых случаях требуется принудительная инициализация через диагностическое меню. Для этого необходимо подключить сканер, выбрать блок «Климатическая установка» и запустить функцию «Адаптация приводов». В процессе вы услышите характерные звуки работы моторчиков, перемещающих заслонки из крайнего положения в крайнее.</p>
+
+<p>Если механическая часть заслонок имеет люфт или заедает, электронная калибровка не поможет. В таком случае необходимо разбирать торпедо или частично снимать блок отопителя для осмотра механических тяг и шестерен редукторов. Часто пластик шестерен трескается от мороза.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не пытайтесь принудительно провернуть заслонку руками при включенном питании. Это может привести к поломке шестерен мотор-редуктора или сгоранию его электродвигателя.</p>
+</blockquote>
+
+<p>При установке новых моторчиков обязательно проводите процедуру обучения. Без этого блок управления не будет знать, где находится граница «холодно» и «горячо», и будет работать в хаотичном режиме.</p>
+
+<h2 id="дозаправка-кондиционера-и-проверка-давления">Дозаправка кондиционера и проверка давления</h2>
+
+<p>Эффективность работы кондиционера напрямую зависит от количества хладагента в системе. Для Lada Vesta NG используется фреон типа <code>R134a</code>. Объем заправки составляет около 450-500 грамм (точное значение указано на табличке под капотом).</p>
+
+<p>Перед заправкой необходимо провести вакуумирование системы в течение минимум 15-20 минут. Это удалит влагу и воздух, которые негативно влияют на работу масла компрессора и могут вызвать коррозию изнутри. После вакуумирования система должна держать разрежение, что подтверждает отсутствие утечек.</p>
+
+<p>Контроль давления осуществляется через порты высокого и низкого давления. При работе двигателя на холостых оборотах и включенном кондиционере на максимум, давление в контуре низкого давления должно быть в диапазоне 1.5-2.5 бар, а высокого — 12-16 бар (зависит от температуры окружающей среды).</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Норма (на холостых)</th>
+<th>Норма (на оборотах 2000)</th>
+<th>Критическое значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Давление низкое (Low)</td>
+<td>1.8 - 2.5 бар</td>
+<td>1.5 - 2.0 бар</td>
+<td>Менее 1.0 бар (утечка)</td>
+</tr>
+<tr>
+<td>Давление высокое (High)</td>
+<td>12 - 15 бар</td>
+<td>14 - 18 бар</td>
+<td>Более 25 бар (риск взрыва)</td>
+</tr>
+<tr>
+<td>Температура на выходе</td>
+<td>+5...+8 °C</td>
+<td>+3...+6 °C</td>
+<td>Выше +15 °C</td>
+</tr>
+</tbody>
+</table>
+
+<p>Важно добавлять масло в систему только при обнаружении утечки или замене компонентов. Избыток масла так же вреден, как и его недостаток, так как он ухудшает теплообмен в радиаторах. Используйте масло типа <code>PAG 46</code> или <code>PAG 100</code> в зависимости от требований производителя компрессора.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к дозаправке</h4><label class="check-item"><input type="checkbox"><span>Проверить герметичность системы</span></label><label class="check-item"><input type="checkbox"><span>Заменить ресивер-осушитель (при вскрытии)</span></label><label class="check-item"><input type="checkbox"><span>Подключить манометрическую станцию</span></label><label class="check-item"><input type="checkbox"><span>Вакуумировать систему 20 минут</span></label><label class="check-item"><input type="checkbox"><span>Заправить по весам</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему кондиционер выключается при нажатии на газ?</summary>
+<p>Это штатная функция системы управления двигателем. При резком ускорении или полной нагрузке блок ЭБУ двигателя отключает муфту компрессора на несколько секунд, чтобы отдать всю мощность колесам для безопасного обгона. Если отключение происходит в обычном режиме, возможно, низкий уровень фреона или неисправен датчик давления.</p>
+</details>
+
+<details>
+<summary>Можно ли залить фреон R1234yf вместо R134a на Веста НГ?</summary>
+<p>Нет, это разные типы хладагентов с разными свойствами и типами масла. Система Веста НГ рассчитана строго на <code>R134a</code>. Заливка другого фреона может привести к повреждению уплотнителей и выходу компрессора из строя. Переход на новый стандарт требует замены всех компонентов системы.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять ремень привода кондиционера?</summary>
+<p>Рекомендуемый интервал замены поликлинового ремня составляет каждые 60 000 км или при появлении трещин и свиста. На Веста НГ ремень также приводит в действие генератор и насос ГУР (если есть), поэтому его обрыв оставит автомобиль без зарядки аккумулятора.</p>
+</details>
+
+<details>
+<summary>Почему потеют стекла даже при включенном кондиционере?</summary>
+<p>Вероятнее всего, забит салонный фильтр или закрыт клапан рециркуляции. Также причина может быть в неисправном датчике влажности. Попробуйте переключить режим в забор воздуха с улицы и увеличить скорость вентилятора. Если не помогает — проверьте работу заслонки рециркуляции.</p>
+</details>
+
+<blockquote>
+<p>⚠️ Внимание: Технические характеристики и объемы заправки могут незначительно отличаться в зависимости от конкретной даты выпуска автомобиля и типа установленного компрессора. Всегда сверяйтесь с заводской табличкой в подкапотном пространстве перед проведением работ.</p>
+</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-и-архитектура-системы">Принцип работы и архитектура системы</a></li><li><a href="#типичные-неисправности-и-их-симптомы">Типичные неисправности и их симптомы</a></li><li><a href="#диагностика-ошибок-через-сканер">Диагностика ошибок через сканер</a></li><li><a href="#замена-салонного-фильтра-и-чистка-испарителя">Замена салонного фильтра и чистка испарителя</a></li><li><a href="#регулировка-и-калибровка-заслонок">Регулировка и калибровка заслонок</a></li><li><a href="#дозаправка-кондиционера-и-проверка-давления">Дозаправка кондиционера и проверка давления</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/n/ne/ne-vyklyuchaetsya-konditsioner-v-mashine.html" class="related-card">Не выключается кондиционер в машине: причины и ремонт</a></li><li><a href="/articles/k/kl/klimat-kontrol-passat-b5.html" class="related-card">Климат контроль Пассат Б5: ремонт и диагностика своими руками</a></li><li><a href="/articles/s/si/sistema-klimat-kontrolya-eto.html" class="related-card">Система климат-контроля в авто: устройство, ремонт и настройка</a></li><li><a href="/articles/o/ob/obem-freona-solyaris-2013.html" class="related-card">Объем фреона Солярис 2013: заправка и давление в кондиционере</a></li><li><a href="/articles/o/ob/obem-freona-zaz-shans.html" class="related-card">Объем фреона в ЗАЗ Шанс: таблица заправки и инструкции</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/n/ne/ne-vyklyuchaetsya-konditsioner-v-mashine.html" class="related-bottom-card"><span class="related-bottom-title">Не выключается кондиционер в машине: причины и ремонт</span><span class="related-bottom-desc">Кондиционер не отключается на авто? Разбираем причины: реле, датчики, муфта. Инструкция по диагности</span></a><a href="/articles/k/kl/klimat-kontrol-passat-b5.html" class="related-bottom-card"><span class="related-bottom-title">Климат контроль Пассат Б5: ремонт и диагностика своими руками</span><span class="related-bottom-desc">Полный гид по климат-контролю VW Passat B5. Ошибки, ремонт сервоприводов, замена датчиков и пошагова</span></a><a href="/articles/s/si/sistema-klimat-kontrolya-eto.html" class="related-bottom-card"><span class="related-bottom-title">Система климат-контроля в авто: устройство, ремонт и настройка</span><span class="related-bottom-desc">Как работает климат-контроль в машине? Принцип действия, неисправности, диагностика и ремонт своими </span></a><a href="/articles/o/ob/obem-freona-solyaris-2013.html" class="related-bottom-card"><span class="related-bottom-title">Объем фреона Солярис 2013: заправка и давление в кондиционере</span><span class="related-bottom-desc">Узнайте точный объем и тип фреона для Hyundai Solaris 2013 года. Таблицы давления, инструкция по зап</span></a><a href="/articles/o/ob/obem-freona-zaz-shans.html" class="related-bottom-card"><span class="related-bottom-title">Объем фреона в ЗАЗ Шанс: таблица заправки и инструкции</span><span class="related-bottom-desc">Сколько фреона нужно для кондиционера ЗАЗ Шанс? Точные нормы заправки, типы хладагентов (R134a, R12)</span></a><a href="/articles/l/la/largus-skolko-freona-v-sisteme.html" class="related-bottom-card"><span class="related-bottom-title">Lada Largus: сколько фреона в кондиционере? Нормы и заправка</span><span class="related-bottom-desc">Узнайте точное количество фреона в системе кондиционирования Lada Largus (2012–2026). Нормы для разн</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

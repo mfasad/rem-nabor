@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Что будет если протечет водяное охлаждение: риски и ликвидация — Рем Набор</title>
+    <meta name="description" content="Полный разбор последствий протечки СВО. Как спасти компьютер, какие компоненты пострадают, порядок действий при обнаружении жидкости в корпусе.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/c/ch/chto-budet-esli-protechet-vodyanoe-okhlazhdenie-protsessora.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Что будет если протечет водяное охлаждение: риски и ликвидация">
+    <meta property="og:description" content="Полный разбор последствий протечки СВО. Как спасти компьютер, какие компоненты пострадают, порядок действий при обнаружении жидкости в корпусе.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Что будет если протечет водяное охлаждение: риски и ликвидация</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Что произойдет при протечке системы водяного охлаждения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#физика-процесса-почему-вода-убивает-электронику">Физика процесса: почему вода убивает электронику</a></li><li><a href="#сценарии-попадания-жидкости-и-зоны-риска">Сценарии попадания жидкости и зоны риска</a></li><li><a href="#алгоритм-действий-при-обнаружении-протечки">Алгоритм действий при обнаружении протечки</a></li><li><a href="#диагностика-повреждений-после-просушки">Диагностика повреждений после просушки</a></li><li><a href="#профилактика-как-избежать-потопа-в-будущем">Профилактика: как избежать потопа в будущем</a></li><li><a href="#экономическая-целесообразность-ремонта">Экономическая целесообразность ремонта</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда из корпуса компьютера на пол начинает капать жидкость, вызывает у любого владельца ПК панический ужас. Водяное охлаждение, будь то кастомная петля или необслуживаемая <em>СВО</em> (система водяного охлаждения), несет в себе не только эстетику и низкие температуры, но и потенциальную угрозу для всех компонентов системы. Вода и электрическое напряжение — это смертельная комбинация, способная мгновенно вывести из строя дорогостоящее оборудование. Однако, не всякая протечка означает конец для вашего «железа», и понимание физики процесса поможет действовать рационально, а не хаотично.</p>
+
+<p>Риск возникновения инцидента напрямую связан с типом используемой системы. В заводских необслуживаемых решениях вероятность прорыва трубок или радиатора крайне мала, так как они проходят строгие тесты на герметичность на заводе. Иное дело — кастомные петли, где пользователь самостоятельно собирает контур из помпы, водоблоков, фитингов и шлангов. Именно здесь человеческий фактор, усталость материалов или некачественная сборка становятся триггерами для аварии. Важно осознавать, что жидкость внутри контура редко бывает чистой водой; чаще всего это дистиллят с добавлением биоцидов и красителей, что меняет характер воздействия на электронику.</p>
+
+<p>Если вы заметили влагу внутри корпуса или капли на столе, скорость вашей реакции определяет судьбу компьютера. Мгновенное обесточивание системы — это первый и самый критичный шаг, который может спасти материнскую плату и видеокарту от короткого замыкания. Дальнейшие действия зависят от того, куда именно попала жидкость и насколько быстро вы успели среагировать. В этой статье мы детально разберем сценарии развития событий, методы спасения компонентов и превентивные меры, которые сведут риск потопа к нулю.</p>
+
+<h2 id="физика-процесса-почему-вода-убивает-электронику">Физика процесса: почему вода убивает электронику</h2>
+
+<p>Многие ошибочно полагают, что именно вода вызывает окисление и замыкание, но чистый <strong>дистиллят</strong> сам по себе является диэлектриком и не проводит электрический ток. Опасность представляет смесь воды с примесями: пылью, флюсом, остатками термопасты или специальными присадками-красителями, которые добавляют в контур для красоты. Как только такая смесь попадает на контакты под напряжением, сопротивление падает, и происходит <strong>короткое замыкание</strong> (КЗ).</p>
+
+<p>В момент замыкания ток устремляется по пути наименьшего сопротивления, минуя штатные цепи микросхем. Это приводит к мгновенному перегреву токоведущих дорожек на печатной плате. Тончайшие медные проводники испаряются или перегорают, разрушая структуру <em>PCB</em> (печатной платы). Если в этот момент блок питания не успел сработать на защиту, выгорание может затронуть не только сгоревший участок, но и смежные компоненты.</p>
+
+<p>Даже если компьютер удалось выключить до появления дыма, процесс коррозии уже запущен. Остатки влаги между контактами создают гальваническую пару, запуская электрохимическую реакцию. Со временем, в течение дней или недель, это приводит к появлению зеленого налета окислов, которые начинают разъедать контакты. Именно поэтому важно не просто высушить систему, но и провести химическую очистку.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не пытайтесь включить компьютер, чтобы «проверить, работает ли он», если есть малейшие следы влаги внутри. Повторное включение влажной платы под напряжением гарантированно добьет компоненты, которые еще можно было спасти.</p>
+</blockquote>
+
+<h2 id="сценарии-попадания-жидкости-и-зоны-риска">Сценарии попадания жидкости и зоны риска</h2>
+
+<p>Последствия протечки напрямую зависят от того, какой компонент оказался под ударом и в какой именно точке произошло нарушение герметичности. Наиболее уязвимым элементом в связке обычно является <strong>видеокарта</strong>, так как водоблок накрывает не только графический чип, но и цепи питания (VRM) с конденсаторами. Попадание жидкости в зону VRM практически всегда ведет к мгновенному выходу из строя силовых элементов.</p>
+
+<p>Материнская плата также находится в зоне высокого риска, особенно область сокета процессора и разъемы питания <code>ATX 12V</code>. Если жидкость затекает под сокет, спасти процессор и саму плату становится практически невозможной задачей без профессионального оборудования для пайки и отмывки. Однако, если капля упала на текстолит вдали от активных компонентов, шансы на полное восстановление очень высоки.</p>
+
+<p>Блок питания (БП) обладает определенной степенью защиты, так как его электроника обычно залита лаком или находится в закрытом кожухе. Тем не менее, попадание воды внутрь вентилятора БП или на входные конденсаторы может вызвать взрыв или возгорание. Оперативная память менее чувствительна, если вода не попала непосредственно в слот <code>DIMM</code>, но окисление контактов золотого напыления может привести к нестабильной работе системы в будущем.</p>
+
+<ul>
+<li>💧 Высокий риск: Зона VRM видеокарты и процессора, разъемы питания материнской платы.</li>
+<li>⚡ Средний риск: Текстильная оплетка шлангов, впитывающая влагу и передающая ее на другие компоненты.</li>
+<li>🛡️ Низкий риск: Радиатор, установленный в верхней части корпуса (при условии, что помпа ниже уровня жидкости).</li>
+</ul>
+
+<div class="poll-widget" id="poll-5cd7b90a"><div class="poll-widget-question">📊 Какой тип охлаждения у вас сейчас установлен?</div><div class="poll-widget-option" data-poll="5cd7b90a" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Заводская СВО (AIO)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5cd7b90a" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Кастомная водяная петля</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5cd7b90a" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Воздушное охлаждение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5cd7b90a" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Планирую сборку СВО</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="алгоритм-действий-при-обнаружении-протечки">Алгоритм действий при обнаружении протечки</h2>
+
+<p>Действовать нужно быстро, но без суеты. Первым делом необходимо полностью обесточить систему. Не ограничивайтесь нажатием кнопки на корпусе — выдерните шнур питания из розетки или щелкните тумблером на блоке питания. Это разорвет цепь и исключит вероятность короткого замыкания от остаточного напряжения в конденсаторах.</p>
+
+<p>После обесточивания приступайте к демонтажу. Аккуратно снимите боковую крышку корпуса и оцените масштаб бедствия. Если жидкость еще течет, подставьте емкость или положите впитывающие салфетки. Начните отсоединять трубки или шланги от компонентов, стараясь не разбрызгивать остатки теплоносителя. Лучше всего снимать компоненты по одному, начиная с самых верхних точек контура.</p>
+
+<p>Все снятые детали, на которые попала жидкость, необходимо тщательно промыть. Для этих целей идеально подходит изопропиловый спирт концентрацией 90% и выше или специальный очиститель контактов. Не используйте обычную воду или бытовую химию — они могут оставить токопроводящий налет. Промывку следует проводить мягкой кистью, аккуратно удаляя загрязнения из труднодоступных мест.</p>
+
+<div class="checklist-block"><h4>☑️ Экстренная ликвидация протечки</h4><label class="check-item"><input type="checkbox"><span>Обесточить ПК (вынуть шнур из розетки)</span></label><label class="check-item"><input type="checkbox"><span>Снять компоненты с каплями воды</span></label><label class="check-item"><input type="checkbox"><span>Промыть платы изопропиловым спиртом</span></label><label class="check-item"><input type="checkbox"><span>Просушить компоненты не менее 24-48 часов</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>Сушка — критический этап. Даже если визуально плата кажется сухой, микроскопические капли могут скрываться под чипами или в многослойной структуре текстолита. Оставьте компоненты в теплом, сухом и хорошо проветриваемом месте минимум на 24 часа. Использование фена допустимо только в режиме холодного воздуха; горячий поток может деформировать пластик или отпаять мелкие элементы.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не используйте рис для сушки электроники! Рисовая пыль забивает разъемы и не обладает достаточной гигроскопичностью для быстрого удаления влаги из многослойных плат. Это миф, который может навредить.</p>
+</blockquote>
+
+<h2 id="диагностика-повреждений-после-просушки">Диагностика повреждений после просушки</h2>
+
+<p>Спустя положенное время сушки можно приступать к визуальной инспекции. Внимательно осмотрите печатные платы под ярким светом, желательно с использованием лупы. Ищите следы окисления: зеленоватый или белесый налет на контактах, потемнение текстолита или вздувшиеся конденсаторы. Любые изменения цвета металла указывают на то, что коррозия уже начала свою работу.</p>
+
+<p>Если визуальных дефектов не обнаружено, можно попробовать провести первичный тест. Соберите стенд вне корпуса («на столе»), подключив только необходимые минимум: процессор, одну планку памяти, видеокарту и блок питания. Замкните контакты включения отверткой. Если система запустилась и изображение появилось на мониторе — это отличный знак.</p>
+
+<p>Однако отсутствие явных признаков поломки не гарантирует долговечность. Скрытые повреждения могут проявиться позже в виде артефактов на экране, синих экранов смерти (<em>BSOD</em>) или самопроизвольных перезагрузок. В таких случаях требуется более глубокая диагностика с помощью мультиметра для проверки цепей питания на предмет короткого замыкания или обрыва.</p>
+
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Вероятность спасения</th>
+<th>Типичные симптомы поломки</th>
+<th>Метод восстановления</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Видеокарта</td>
+<td>Низкая (при попадании на VRM)</td>
+<td>Артефакты, черный экран, запах гари</td>
+<td>Замена силовых элементов, чистка ультразвуком</td>
+</tr>
+<tr>
+<td>Материнская плата</td>
+<td>Средняя</td>
+<td>Не включается, не видит память, циклический рестарт</td>
+<td>Ремонт цепей питания, замена сокета</td>
+</tr>
+<tr>
+<td>Оперативная память</td>
+<td>Высокая</td>
+<td>Синие экраны, ошибки при загрузке</td>
+<td>Чистка контактов спиртом</td>
+</tr>
+<tr>
+<td>Блок питания</td>
+<td>Средняя</td>
+<td>Не выдает напряжения, срабатывает защита</td>
+<td>Замена предохранителей, чистка плат</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="профилактика-как-избежать-потопа-в-будущем">Профилактика: как избежать потопа в будущем</h2>
+
+<p>Лучшее лечение — это профилактика. Если вы используете кастомную систему охлаждения, регулярное обслуживание является обязательным условием безопасности. Раз в 6-12 месяцев необходимо проводить визуальный осмотр фитингов и шлангов на предмет появления микро-трещин или изменения цвета. Помутнение жидкости часто сигнализирует о начале биологического загрязнения или деградации материалов.</p>
+
+<p>При сборке петли критически важно соблюдать момент затяжки фитингов. Использование динамометрического ключа или просто чувство меры поможет избежать как недотяга (протечка), так и перетяга (трещина в резьбе). Всегда используйте качественные уплотнительные кольца (O-rings) и меняйте их при каждой разборке системы. Резина со временем дубеет и теряет эластичность.</p>
+
+<details class="faq-item"><summary>Тестирование давлением перед установкой</summary><div class="faq-answer"><p>Перед тем как подключать помпу к сети, соберите контур без электроники. Подключите только помпу к внешнему источнику 12В (например, от старого БП через скрепку) и запустите циркуляцию на 30-60 минут. Положите под все соединения бумажные салфетки — они мгновенно покажут даже самую мелкую влагу.</p></div></details>
+
+<p>Существуют специальные устройства для мониторинга протечек, которые устанавливаются в нижнюю часть корпуса. Они представляют собой датчики, которые при контакте с жидкостью подают сигнал на материнскую плату или издают звуковой сигнал, позволяя среагировать до того, как вода доберется до критических узлов. Это недорогая страховка для дорогостоящей системы.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте прозрачные шланги даже если вы хотите темную эстетику. В прозрачной трубке легче заметить пузырьки воздуха, осадок или изменение цвета жидкости, что является ранним признаком проблем с контуром.</p></div>
+
+<h2 id="экономическая-целесообразность-ремонта">Экономическая целесообразность ремонта</h2>
+
+<p>При оценке ущерба часто возникает вопрос: стоит ли реанимировать залитые компоненты или проще купить новые? Ответ зависит от стоимости оборудования и степени повреждений. Ремонт современной видеокарты топ-уровня с выгоревшей зоной питания может стоить 50-70% от цены новой модели, при этом гарантия на восстановленное устройство будет отсутствовать.</p>
+
+<p>В случае с материнскими платами ситуация еще сложнее. Если пострадал многослойный текстолит в районе сокета, восстановление часто экономически нецелесообразно. Проще продать плату на запчасти (если жив контроллер памяти или сетевой порт) и приобрести замену. Однако, простые случаи окисления контактов легко устраняются чисткой, что делает ремонт выгодным.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Цены на услуги сервисных центров и стоимость компонентов постоянно меняются. Перед началом ремонта обязательно запросите предварительную смету в авторизованном сервисе и сравните её с актуальными ценами в розничных магазинах.</p>
+</blockquote>
+
+<p>Не забывайте про психологический фактор. Компьютер, переживший «водную процедуру», может работать нестабильно в самый ответственный момент. Если вы используете ПК для критически важных задач или профессиональной деятельности, замена поврежденных узлов на новые часто является более надежным решением, чем попытка воскресить «раненого зверя».</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Стоимость профилактики (качественные фитинги, датчики протечки) всегда на порядки ниже стоимости замены сгоревшей видеокарты и материнской платы. Экономия на мелочах при сборке СВО недопустима.</p></div>
+
+<details>
+<summary>Можно ли использовать обычную водопроводную воду в контуре?</summary>
+<p>Категорически нет. В водопроводной воде содержится множество минеральных солей, хлора и микроорганизмов. Соли делают воду токопроводящей, что превращает любую протечку в гарантированное короткое замыкание. Микроорганизмы развиваются в «тину», забивая микроканалы водоблоков. Используйте только дистиллят со специальными присадками.</p>
+</details>
+
+<details>
+<summary>Сработает ли блок питания при коротком замыкании?</summary>
+<p>Современные блоки питания имеют защиту от короткого замыкания (SCP), но она срабатывает за миллисекунды. За это время ток может уже успеть прожечь тонкие дорожки на материнской плате или видеокарте. Защита БП спасает сам блок и, возможно, часть системы, но не дает 100% гарантии сохранности всех компонентов при прямом попадании воды.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять жидкость в системе охлаждения?</summary>
+<p>В кастомных петлях полную замену жидкости рекомендуется проводить раз в год. За это время присадки (биоциды и антикоррозийные агенты) теряют свои свойства, а в системе накапливаются микрочастицы износа. В заводских СВО (AIO) замена не предусмотрена, срок их службы обычно составляет 3-5 лет до высыхания или потери эффективности.</p>
+</details>
+
+<details>
+<summary>Опасен ли цветной теплоноситель для электроники?</summary>
+<p>Да, цветные жидкости (особенно непрозрачные, пастельные тона) часто содержат твердые частицы пигмента. При протечке эти частицы оседают на контактах и создают токопроводящие мостики даже после высыхания воды. Прозрачные жидкости с красителями менее опасны, но всё равно требуют тщательной отмывки спиртом.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#физика-процесса-почему-вода-убивает-электронику">Физика процесса: почему вода убивает электронику</a></li><li><a href="#сценарии-попадания-жидкости-и-зоны-риска">Сценарии попадания жидкости и зоны риска</a></li><li><a href="#алгоритм-действий-при-обнаружении-протечки">Алгоритм действий при обнаружении протечки</a></li><li><a href="#диагностика-повреждений-после-просушки">Диагностика повреждений после просушки</a></li><li><a href="#профилактика-как-избежать-потопа-в-будущем">Профилактика: как избежать потопа в будущем</a></li><li><a href="#экономическая-целесообразность-ремонта">Экономическая целесообразность ремонта</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kartridzh-chitaetsya-no-ne-tyanetsya.html" class="related-card">Почему картридж читается но не тянется: причины и решение</a></li><li><a href="/articles/c/ch/chto-takoe-gar-v-vejpe.html" class="related-card">Гарь в вейпе: причины, устранение и профилактика</a></li><li><a href="/articles/r/ra/raspylitel-dlya-agressivnykh-zhidkostej.html" class="related-card">Распылитель для агрессивных жидкостей: выбор и ремонт</a></li><li><a href="/articles/p/po/pochemu-santi-ne-rabotaet.html" class="related-card">Почему не работает Санти: диагностика и устранение проблем</a></li><li><a href="/articles/p/pi/pink-flojd-ekho-pompei-video.html" class="related-card">Пинк Флойд Эхо Помпеи: история легендарного видео</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kartridzh-chitaetsya-no-ne-tyanetsya.html" class="related-bottom-card"><span class="related-bottom-title">Почему картридж читается но не тянется: причины и решение</span><span class="related-bottom-desc">Принтер видит картридж, но не печатает? Разбор причин: чипы, фотобарабан, софт. Пошаговая инструкция</span></a><a href="/articles/c/ch/chto-takoe-gar-v-vejpe.html" class="related-bottom-card"><span class="related-bottom-title">Гарь в вейпе: причины, устранение и профилактика</span><span class="related-bottom-desc">Почему в вейпе появляется гарь? Полный гид по причинам привкуса, замене испарителей, обслуживанию ба</span></a><a href="/articles/r/ra/raspylitel-dlya-agressivnykh-zhidkostej.html" class="related-bottom-card"><span class="related-bottom-title">Распылитель для агрессивных жидкостей: выбор и ремонт</span><span class="related-bottom-desc">Как выбрать и обслуживать распылитель для кислот и щелочей. Обзор материалов, конструкции и правила </span></a><a href="/articles/p/po/pochemu-santi-ne-rabotaet.html" class="related-bottom-card"><span class="related-bottom-title">Почему не работает Санти: диагностика и устранение проблем</span><span class="related-bottom-desc">Подробный разбор причин неисправности системы Санти. Ошибки, методы диагностики, ремонт своими рукам</span></a><a href="/articles/p/pi/pink-flojd-ekho-pompei-video.html" class="related-bottom-card"><span class="related-bottom-title">Пинк Флойд Эхо Помпеи: история легендарного видео</span><span class="related-bottom-desc">Полный обзор фильма Pink Floyd Live at Pompeii. История съемок, технические детали, различия версий </span></a><a href="/articles/m/mo/mozhno-li-myt-bak-ot-vejpa.html" class="related-bottom-card"><span class="related-bottom-title">Можно ли мыть бак от вейпа: безопасные методы и риски</span><span class="related-bottom-desc">Узнайте, как правильно чистить бак вейпа без повреждений: разборка, моющие средства, сушка и ошибки,</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

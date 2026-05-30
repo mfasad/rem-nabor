@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Обслуживание базы Pasito 2: пошаговая инструкция и советы — Рем Набор</title>
+    <meta name="description" content="Как правильно обслуживать базу Pasito 2: заправка фреона, чистка, диагностика неисправностей. Детальное руководство с советами экспертов.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/o/ob/obsluzhivaemaya-baza-pasito-2.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Обслуживание базы Pasito 2: пошаговая инструкция и советы">
+    <meta property="og:description" content="Как правильно обслуживать базу Pasito 2: заправка фреона, чистка, диагностика неисправностей. Детальное руководство с советами экспертов.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/avtomobilnyj-konditsioner/">Автомобильный кондиционер</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Обслуживание базы Pasito 2: пошаговая инструкция и советы</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Обслуживаемая база Pasito 2: полное руководство по ремонту и ТО</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-технические-характеристики-базы-pasito-2-что-нужно-знать-перед-обслуживанием">1. Технические характеристики базы Pasito 2: что нужно знать перед обслуживанием</a></li><li><a href="#2-подготовка-к-обслуживанию-инструменты-и-расходные-материалы">2. Подготовка к обслуживанию: инструменты и расходные материалы</a></li><li><a href="#3-пошаговая-инструкция-по-калибровке-весового-блока">3. Пошаговая инструкция по калибровке весового блока</a></li><li><a href="#4-чистка-фильтров-и-масляной-системы">4. Чистка фильтров и масляной системы</a></li><li><a href="#5-диагностика-и-устранение-неисправностей">5. Диагностика и устранение неисправностей</a></li><li><a href="#6-обновление-прошивки-когда-это-необходимо">6. Обновление прошивки: когда это необходимо?</a></li><li><a href="#7-советы-по-продлению-срока-службы-базы-pasito-2">7. Советы по продлению срока службы базы Pasito 2</a></li><li><a href="#faq-частые-вопросы-по-обслуживанию-pasito-2">FAQ: Частые вопросы по обслуживанию Pasito 2</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>База <em>Pasito 2</em> — одно из самых популярных решений для обслуживания автомобильных кондиционеров, совмещающее в себе функциональность профессионального оборудования и относительную простоту использования. Этот аппарат позволяет выполнять вакуумирование, заправку фреона, проверку на утечки и диагностику системы климат-контроля без обращения в сервисный центр. Однако даже самое надёжное оборудование требует регулярного обслуживания, чтобы сохранять точность показаний и продлить срок службы.</p>
+
+<p>В этой статье мы разберём, как правильно обслуживать базу <em>Pasito 2</em>, какие расходные материалы потребуются, а также типичные ошибки, которые допускают владельцы при самостоятельном ТО. Особое внимание уделим <strong>калибровке датчиков</strong>, <strong>чистке фильтров</strong> и <strong>проверке герметичности соединений</strong> — эти процедуры чаще всего игнорируются, но напрямую влияют на качество работы устройства. Если вы используете <em>Pasito 2</em> для коммерческих целей (например, в автосервисе), рекомендуем добавить статью в закладки — здесь собраны все критичные нюансы, которые производитель не всегда указывает в инструкции.</p>
+
+<h2 id="1-технические-характеристики-базы-pasito-2-что-нужно-знать-перед-обслуживанием">1. Технические характеристики базы <em>Pasito 2</em>: что нужно знать перед обслуживанием</h2>
+
+<p>Прежде чем приступать к обслуживанию, важно понимать возможности и ограничения вашего оборудования. База <em>Pasito 2</em> поддерживает работу с большинством современных хладагентов, но имеет ряд особенностей:</p>
+
+<ul>
+ <li>🔧 Совместимость с фреонами: <strong>R134a</strong>, <strong>R1234yf</strong>, <strong>R404A</strong>, <strong>R410A</strong> (требуется адаптер).</li>
+ <li>📏 Максимальное рабочее давление: до <code>35 бар</code> (для R134a) и <code>52 бар</code> (для R1234yf).</li>
+ <li>⚖️ Точность весового блока: ±<code>5 грамм</code> (при калибровке!).</li>
+ <li>🔋 Питание: <code>220В/50Гц</code>, потребляемая мощность — <code>180 Вт</code>.</li>
+ <li>🛠️ Встроенные функции: вакуумирование, тест на утечки, регенерация масла.</li>
+</ul>
+
+<p>Один из ключевых моментов — <strong>автоматическая корректировка показаний</strong> в зависимости от температуры окружающей среды. Если база используется в неотапливаемом гараже зимой, погрешность может достигать <code>10-15%</code>. Производитель рекомендует проводить обслуживание при температуре <code>+18…+25°C</code>, иначе требуется ручная калибровка датчиков (об этом подробнее в следующем разделе).</p>
+
+<table>
+ <thead>
+ <tr>
+ <th>Параметр</th>
+ <th>Значение для <em>Pasito 2</em></th>
+ <th>Примечания</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Минимальный вес заправки</td>
+ <td><code>20 грамм</code></td>
+ <td>При меньшем объёме фреона погрешность увеличивается до ±<code>10 грамм</code>.</td>
+ </tr>
+ <tr>
+ <td>Время вакуумирования</td>
+ <td><code>10-30 минут</code></td>
+ <td>Зависит от объёма системы и мощности вакуумного насоса.</td>
+ </tr>
+ <tr>
+ <td>Давление теста на утечки</td>
+ <td><code>1,5 бар</code></td>
+ <td>Рекомендуется выдерживать не менее <code>5 минут</code>.</td>
+ </tr>
+ <tr>
+ <td>Объём масляного резервуара</td>
+ <td><code>500 мл</code></td>
+ <td>Требует замены масла каждые <code>50 заправок</code>.</td>
+ </tr>
+ </tbody>
+</table>
+
+<p><mark>Критическая особенность <em>Pasito 2</em>: база не поддерживает смешивание разных типов фреона в одном баллоне. Если вы ранее заправляли <strong>R134a</strong>, а теперь хотите перейти на <strong>R1234yf</strong>, необходимо полностью слить остатки хладагента и промыть систему.</mark> Игнорирование этого правила приводит к выходу из строя компрессора автомобильного кондиционера!</p>
+
+<div class="poll-widget" id="poll-f1689b2c"><div class="poll-widget-question">📊 Как часто вы обслуживаете свою базу Pasito 2?</div><div class="poll-widget-option" data-poll="f1689b2c" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в месяц</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f1689b2c" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в 3 месяца</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f1689b2c" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в полгода</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f1689b2c" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только при поломках</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="f1689b2c" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Не обслуживаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="2-подготовка-к-обслуживанию-инструменты-и-расходные-материалы">2. Подготовка к обслуживанию: инструменты и расходные материалы</h2>
+
+<p>Для полноценного ТО базы <em>Pasito 2</em> вам потребуется:</p>
+
+<ul>
+ <li>🔧 Набор шестигранных ключей (размеры <code>3 мм</code>, <code>4 мм</code>, <code>5 мм</code>).</li>
+ <li>🧴 Специальное масло для кондиционеров (<strong>PAG-46</strong> или <strong>POE</strong>, в зависимости от типа фреона).</li>
+ <li>🧽 Средство для очистки системы (например, <em>UV Dye Leak Detector</em> для обнаружения утечек).</li>
+ <li>📊 Калибровочные гири (весом <code>50 г</code>, <code>100 г</code>, <code>500 г</code> для проверки весового блока).</li>
+ <li>🔌 Тестер давления (манометр с диапазоном до <code>60 бар</code>).</li>
+</ul>
+
+<p>Особое внимание уделите <strong>маслу для кондиционера</strong>. В <em>Pasito 2</em> используется два типа масел:
+<strong>PAG-46</strong> — для систем с <strong>R134a</strong>, и <strong>POE</strong> — для <strong>R1234yf</strong>. Смешивание масел недопустимо! Если вы не уверены, какое масло залито в базу, рекомендуем слить его полностью и заправить новое.</p>
+
+<blockquote>⚠️ Внимание: При покупке расходных материалов проверяйте совместимость с вашей версией <em>Pasito 2</em>. Некоторые модели, выпущенные до 2022 года, не поддерживают масло <strong>POE</strong> — в этом случае потребуется апгрейд прошивки.</blockquote>
+
+<p>Также подготовьте рабочее место:
+<strong>база должна стоять на ровной поверхности</strong> (вибрации при вакуумировании могут сбить калибровку весов), а рядом должен быть доступ к розетке <code>220В</code> с заземлением. Если вы работаете в гараже, убедитесь, что нет сквозняков — это может повлиять на показания датчиков температуры.</p>
+
+
+<p>Отключить базу от сети|Проверить наличие всех инструментов|Убедиться в совместимости масла и фреона|Очистить рабочую поверхность от пыли|Подготовить ёмкость для слива старого масла--></p>
+
+<h2 id="3-пошаговая-инструкция-по-калибровке-весового-блока">3. Пошаговая инструкция по калибровке весового блока</h2>
+
+<p>Весовой блок — самый уязвимый элемент базы <em>Pasito 2</em>. Даже незначительные вибрации или перепады температуры могут сбить настройки, что приведёт к неточной заправке фреона. Калибровку рекомендуется проводить <strong>каждые 3 месяца</strong> или после перемещения базы.</p>
+
+<p>Алгоритм калибровки:
+<ol>
+ <li>Включите базу и дождитесь самотестирования (на экране появится надпись <code>READY</code>).</li>
+ <li>Нажмите и удерживайте кнопку <code>CAL</code> в течение <code>5 секунд</code>, пока не замигает индикатор <code>WEIGHT</code>.</li>
+ <li>Поместите на весовую платформу калибровочную гирю <code>500 г</code> (идет в комплекте).</li>
+ <li>Нажмите <code>ENTER</code> — на экране должно появиться значение <code>500.0</code>.</li>
+ <li>Снимите гирю и дождитесь обнуления. Калибровка завершена.</li>
+</ol>
+</p>
+
+<p>Если после калибровки показания всё равно"плавают" (±<code>10 грамм</code> и более), проблема может быть в:
+<ul>
+ <li>🔋 Разряженных батареях (в некоторых моделях весовой блок имеет резервное питание).</li>
+ <li>🧲 Загрязнении датчиков (пыль или масло попали на чувствительные элементы).</li>
+ <li>🔌 Неисправности платы управления (требуется диагностика в сервисном центре).</li>
+</ul>
+</p>
+
+<blockquote>⚠️ Внимание: Никогда не калибруйте весовой блок при температуре ниже <code>+15°C</code> или выше <code>+30°C</code>. Это может привести к сбою микропроцессора и необходимости полного сброса настроек.</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если у вас нет калибровочных гирь, можно использовать бутылку с водой известного объёма (1 литр = 1 кг). Однако точность такого метода ниже, и его можно применять только для экспресс-проверки.</p></div>
+
+<h2 id="4-чистка-фильтров-и-масляной-системы">4. Чистка фильтров и масляной системы</h2>
+
+<p>Фильтры в базе <em>Pasito 2</em> отвечают за очистку фреона от влаги и механических примесей. Их загрязнение приводит к:</p>
+<ul>
+ <li>⚠️ Увеличению времени вакуумирования.</li>
+ <li>⚠️ Ложным срабатываниям датчика утечек.</li>
+ <li>⚠️ Попаданию грязи в компрессор автомобиля (риск выхода из строя!).</li>
+</ul>
+
+<p>Чистку фильтров рекомендуется проводить каждые <code>20 заправок</code> или раз в полгода. Алгоритм:
+<ol>
+ <li>Отключите базу от сети и стравите остаточное давление (нажмите <code>RELEASE</code> на панели).</li>
+ <li>Снимите крышку фильтра (она находится сзади базы, крепится на <code>4 винта</code>).</li>
+ <li>Извлеките фильтрующий элемент и промойте его в растворителе (например, <em>WD-40 Specialist Cleaner</em>).</li>
+ <li>Продуйте фильтр сжатым воздухом (давление не более <code>2 бар</code>!).</li>
+ <li>Замените уплотнительное кольцо (артикул <code>PS-2-RING-03</code>) и соберите блок обратно.</li>
+</ol>
+</p>
+
+<p>Масляная система требует отдельного внимания. В резервуаре со временем накапливаются продукты износа и влага. <strong>Полную замену масла</strong> нужно проводить каждые <code>50 заправок</code> или раз в год. Для этого:
+<ol>
+ <li>Слейте старое масло через клапан <code>OIL DRAIN</code> (находится в нижней части базы).</li>
+ <li>Промойте резервуар <code>100 мл</code> нового масла, затем слейте его.</li>
+ <li>Залейте свежее масло до отметки <code>MAX</code> на мерном окошке.</li>
+</ol>
+</p>
+
+<table>
+ <thead>
+ <tr>
+ <th>Тип масла</th>
+ <th>Объём для замены</th>
+ <th>Срок службы</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><strong>PAG-46</strong></td>
+ <td><code>450 мл</code></td>
+ <td><code>1 год / 50 заправок</code></td>
+ </tr>
+ <tr>
+ <td><strong>POE</strong></td>
+ <td><code>400 мл</code></td>
+ <td><code>9 месяцев / 40 заправок</code></td>
+ </tr>
+ </tbody>
+</table>
+
+<details class="faq-item"><summary>Что будет если не менять масло?</summary><div class="faq-answer"><p>
+<p>При игнорировании замены масла в системе накапливается влага, которая при взаимодействии с фреоном образует кислоту. Это приводит к коррозии металлических деталей компрессора и сокращает его ресурс на 30-40%. Кроме того, старое масло теряет смазывающие свойства, что увеличивает износ подшипников и сальников.</p></div></details></p>
+
+<h2 id="5-диагностика-и-устранение-неисправностей">5. Диагностика и устранение неисправностей</h2>
+
+<p>Даже при регулярном обслуживании база <em>Pasito 2</em> может выдавать ошибки. Рассмотрим самые распространённые проблемы и способы их устранения:</p>
+
+<table>
+ <thead>
+ <tr>
+ <th>Код ошибки</th>
+ <th>Причина</th>
+ <th>Решение</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td><code>E01</code></td>
+ <td>Нет связи с весовым блоком</td>
+ <td>Проверить кабели, перезагрузить базу, повторить калибровку</td>
+ </tr>
+ <tr>
+ <td><code>E03</code></td>
+ <td>Превышено максимальное давление</td>
+ <td>Стравить фреон, проверить манометр на засорение</td>
+ </tr>
+ <tr>
+ <td><code>E05</code></td>
+ <td>Низкий уровень масла</td>
+ <td>Долить масло до отметки <code>MAX</code></td>
+ </tr>
+ <tr>
+ <td><code>E08</code></td>
+ <td>Утечка в системе</td>
+ <td>Проверить герметичность шлангов и соединений с помощью <em>UV-красителя</em></td>
+ </tr>
+ </tbody>
+</table>
+
+<p>Если база не включается вообще, проверьте:
+<ul>
+ <li>🔌 Наличие питания в розетке (индикатор на блоке питания должен гореть зелёным).</li>
+ <li>🔋 Состояние предохранителя (находится на задней панели, номинал <code>2А</code>).</li>
+ <li>🖥️ Дисплей на наличие физических повреждений (трещины, подтёки).</li>
+</ul>
+</p>
+
+<p>Ошибка <code>E08</code> (утечка) часто возникает из-за износа уплотнительных колец на шлангах. Их нужно менять каждые <code>6 месяцев</code> или после <code>30 циклов заправки</code>. Артикулы оригинальных колец:
+<ul>
+ <li><code>PS-2-RING-01</code> — для шланга высокого давления.</li>
+ <li><code>PS-2-RING-02</code> — для шланга низкого давления.</li>
+ <li><code>PS-2-RING-03</code> — для масляного резервуара.</li>
+</ul>
+</p>
+
+<blockquote>⚠️ Внимание: Если после замены колец ошибка <code>E08</code> сохраняется, не исключена утечка в самом автомобильном кондиционере. В этом случае требуется диагностика с помощью <em>электронного течеискателя</em>.</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Большинство ошибок <em>Pasito 2</em> связаны с неправильной калибровкой или износом расходников. Прежде чем везти базу в сервис, проверьте уплотнители, уровень масла и точность весового блока.</p></div>
+
+<h2 id="6-обновление-прошивки-когда-это-необходимо">6. Обновление прошивки: когда это необходимо?</h2>
+
+<p>Производитель регулярно выпускает обновления прошивки для <em>Pasito 2</em>, которые исправляют ошибки и добавляют поддержку новых хладагентов. Обновление требуется, если:
+<ul>
+ <li>🔄 База не распознаёт новый тип фреона (например, <strong>R1234yf</strong> в старых версиях).</li>
+ <li>📉 Часто возникают ошибки <code>E01</code> или <code>E03</code> без видимой причины.</li>
+ <li>🔧 Нужна поддержка новых функций (например, автоматический тест на утечки).</li>
+</ul>
+</p>
+
+<p>Для обновления прошивки:
+<ol>
+ <li>Скачайте последнюю версию с <a href="#" onclick="return false;">официального сайта</a> (файл будет в формате <code>.bin</code>).</li>
+ <li>Скопируйте его на USB-накопитель (формат <code>FAT32</code>, объём не более <code>8 Гб</code>).</li>
+ <li>Вставьте флешку в порт базы (находится сбоку) и нажмите <code>Menu → System → Update</code>.</li>
+ <li>Дождитесь завершения процесса (около <code>5-7 минут</code>). Не выключайте базу!</li>
+</ol>
+</p>
+
+<p>После обновления обязательно:
+<ul>
+ <li>🔄 Перезагрузите базу (отключите питание на <code>30 секунд</code>).</li>
+ <li>📊 Повторите калибровку весового блока.</li>
+ <li>🔧 Проведите тестовую заправку (например, <code>50 грамм</code> фреона) для проверки работоспособности.</li>
+</ul>
+</p>
+
+<blockquote>⚠️ Внимание: Если во время обновления произойдёт сбой (например, отключится электричество), база может перестать включаться. В этом случае потребуется перепрошивка через сервисный центр.</blockquote>
+
+<h2 id="7-советы-по-продлению-срока-службы-базы-pasito-2">7. Советы по продлению срока службы базы <em>Pasito 2</em></h2>
+
+<p>Чтобы база прослужила дольше, следуйте этим рекомендациям:</p>
+
+<ul>
+ <li>🌡️ Храните оборудование при температуре <code>+5…+30°C</code>. При длительном простое (более <code>1 месяца</code>) сливайте фреон и масло.</li>
+ <li>🔌 Используйте стабилизатор напряжения — скачки в сети могут вывести из строя плату управления.</li>
+ <li>🧴 Регулярно проверяйте уровень масла (оптимально — перед каждой заправкой).</li>
+ <li>🔧 После каждого использования протирайте шланги и соединения сухой тряпкой, чтобы избежать коррозии.</li>
+ <li>📅 Ведите журнал обслуживания, где фиксируйте даты калибровки, замены масла и расходников.</li>
+</ul>
+
+<p>Если вы используете базу в коммерческих целях (например, в автосервисе), рекомендуем раз в год проводить <strong>профилактическую диагностику</strong> в авторизованном сервисном центре. Это поможет выявить износ деталей, которые сложно проверить самостоятельно (например, клапаны высокого давления или датчик влажности).</p>
+
+<p>Также обратите внимание на <strong>гарантийные условия</strong>. Производитель предоставляет гарантию на <em>Pasito 2</em> сроком <code>2 года</code>, но она действует только при соблюдении регламента обслуживания (в том числе регулярной калибровки и замены масла).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вы часто работаете с разными типами фреона, заведите отдельные наборы шлангов и адаптеров для каждого хладагента. Это предотвратит перекрёстное загрязнение и продлит жизнь оборудованию.</p></div>
+
+<h2 id="faq-частые-вопросы-по-обслуживанию-pasito-2">FAQ: Частые вопросы по обслуживанию <em>Pasito 2</em></h2>
+
+<details>
+ <summary>Можно ли использовать базу <em>Pasito 2</em> для заправки бытовых кондиционеров?</summary>
+ <p>Технически да, но есть нюансы:
+ <ul>
+ <li>🔧 Потребуется адаптер для подключения к сплит-системе (артикул <code>PS-2-ADAPT-01</code>).</li>
+ <li>⚠️ Максимальный объём фреона для бытовых кондиционеров обычно превышает возможности базы (<code>1,5 кг</code> против <code>500 г</code> в <em>Pasito 2</em>).</li>
+ <li>📉 Точность заправки может снизиться из-за большой длины трассы.</li>
+ </ul>
+<p>Для бытовых систем лучше использовать специализированное оборудование, например, <em>Pasito 3 Pro</em>.</p></p>
+</details>
+
+<details>
+ <summary>Как часто нужно менять фильтр-осушитель в базе?</summary>
+ <p>Фильтр-осушитель в <em>Pasito 2</em> рассчитан на <code>50 циклов заправки</code> или <code>1 год работы</code>. Признаки того, что его пора менять:
+ <ul>
+ <li>🔹 Увеличение времени вакуумирования более чем на <code>30%</code>.</li>
+ <li>🔹 Появление конденсата на шлангах.</li>
+ <li>🔹 Частые ложные срабатывания датчика влажности.</li>
+ </ul>
+<p>Артикул оригинального фильтра: <code>PS-2-DRYER-01</code>.</p></p>
+</details>
+
+<details>
+ <summary>Что делать, если база показывает ошибку <code>E04</code> (низкое давление)?</summary>
+ <p>Ошибка <code>E04</code> означает, что давление в системе ниже допустимого (<code>0,5 бар</code>). Возможные причины:
+ <ul>
+ <li>🔸 Утечка фреона в автомобильном кондиционере (проверьте с помощью <em>UV-лампы</em>).</li>
+ <li>🔸 Засорение фильтра-осушителя (требуется замена).</li>
+ <li>🔸 Неисправность вакуумного насоса (проверьте, издаёт ли он характерный гул при включении).</li>
+ </ul>
+<p>Для устранения:</p>
+ <ol>
+ <li>Отключите базу и стравите остаточное давление.</li>
+ <li>Проверьте герметичность шлангов мыльным раствором.</li>
+ <li>Если проблема в автомобиле — устраните утечку и повторите вакуумирование.</li>
+ </ol></p>
+</details>
+
+<details>
+ <summary>Можно ли самостоятельно отремонтировать плату управления?</summary>
+ <p>Ремонт платы управления в домашних условиях возможен, но <strong>не рекомендуется</strong> без специальных навыков. Типичные поломки:
+ <ul>
+ <li>🔥 Перегорание предохранителя <code>F1</code> (номинал <code>2А</code>).</li>
+ <li>🔌 Отслоение дорожек из-за перегрева (часто бывает при скачках напряжения).</li>
+ <li>🖥️ Сбой микроконтроллера (требуется перепрошивка через JTAG).</li>
+ </ul>
+<p>Если вы не уверены в своих силах, лучше обратиться в сервис. Стоимость ремонта платы в среднем составляет <code>3 000–5 000 рублей</code>.</p></p>
+</details>
+
+<details>
+ <summary>Где купить оригинальные расходники для <em>Pasito 2</em>?</summary>
+ <p>Оригинальные расходники можно приобрести:
+ <ul>
+ <li>🛒 На <a href="#" onclick="return false;">официальном сайте производителя</a> (доставка 3-5 дней).</li>
+ <li>🏬 В специализированных магазинах автоинструмента (например, <em>АвтоПрофи</em>, <em>ToolMaster</em>).</li>
+ <li>📦 Через дилеров (список есть в гарантийном талоне).</li>
+ </ul>
+<p>Будьте осторожны с аналогами — неоригинальные уплотнители и фильтры могут не выдерживать высокого давления и привести к утечкам.</p></p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-технические-характеристики-базы-pasito-2-что-нужно-знать-перед-обслуживанием">1. Технические характеристики базы Pasito 2: что нужно знать перед обслуживанием</a></li><li><a href="#2-подготовка-к-обслуживанию-инструменты-и-расходные-материалы">2. Подготовка к обслуживанию: инструменты и расходные материалы</a></li><li><a href="#3-пошаговая-инструкция-по-калибровке-весового-блока">3. Пошаговая инструкция по калибровке весового блока</a></li><li><a href="#4-чистка-фильтров-и-масляной-системы">4. Чистка фильтров и масляной системы</a></li><li><a href="#5-диагностика-и-устранение-неисправностей">5. Диагностика и устранение неисправностей</a></li><li><a href="#6-обновление-прошивки-когда-это-необходимо">6. Обновление прошивки: когда это необходимо?</a></li><li><a href="#7-советы-по-продлению-срока-службы-базы-pasito-2">7. Советы по продлению срока службы базы Pasito 2</a></li><li><a href="#faq-частые-вопросы-по-обслуживанию-pasito-2">FAQ: Частые вопросы по обслуживанию Pasito 2</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ko/kompressor-konditsionera-1nz-fe.html" class="related-card">Компрессор кондиционера 1NZ-FE: выбор, замена и диагностика</a></li><li><a href="/articles/k/ka/kak-sdelat-klimat-kontrol-v-avtomobile-svoimi-rukami.html" class="related-card">Установка климат-контроля в авто: пошаговое руководство своими руками</a></li><li><a href="/articles/k/kl/klimat-kontrol-v-avtomobile-printsip-raboty.html" class="related-card">Климат контроль в авто: принцип работы и отличия от кондиционера</a></li><li><a href="/articles/k/ka/kamri-40-skolko-freona.html" class="related-card">Сколько фреона в Toyota Camry 40: норма заправки и таблица</a></li><li><a href="/articles/o/ok/oktaviya-a7-skolko-freona.html" class="related-card">Октавия А7: сколько фреона заправлять и какой хладагент</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ko/kompressor-konditsionera-1nz-fe.html" class="related-bottom-card"><span class="related-bottom-title">Компрессор кондиционера 1NZ-FE: выбор, замена и диагностика</span><span class="related-bottom-desc">Полный гид по замене компрессора кондиционера на Toyota с двигателем 1NZ-FE. Ошибки, подбор запчасте</span></a><a href="/articles/k/ka/kak-sdelat-klimat-kontrol-v-avtomobile-svoimi-rukami.html" class="related-bottom-card"><span class="related-bottom-title">Установка климат-контроля в авто: пошаговое руководство своими руками</span><span class="related-bottom-desc">Как самостоятельно установить климат-контроль в автомобиль. Замена кондиционера, подключение датчико</span></a><a href="/articles/k/kl/klimat-kontrol-v-avtomobile-printsip-raboty.html" class="related-bottom-card"><span class="related-bottom-title">Климат контроль в авто: принцип работы и отличия от кондиционера</span><span class="related-bottom-desc">Как работает климат контроль в автомобиле? Разбор устройства, датчиков, режимов работы и отличий от </span></a><a href="/articles/k/ka/kamri-40-skolko-freona.html" class="related-bottom-card"><span class="related-bottom-title">Сколько фреона в Toyota Camry 40: норма заправки и таблица</span><span class="related-bottom-desc">Узнайте, сколько фреона нужно для заправки кондиционера Тойота Камри 40. Объем хладагента R134a, тип</span></a><a href="/articles/o/ok/oktaviya-a7-skolko-freona.html" class="related-bottom-card"><span class="related-bottom-title">Октавия А7: сколько фреона заправлять и какой хладагент</span><span class="related-bottom-desc">Точный объем фреона для Skoda Octavia A7. Тип хладагента R134a, таблица с данными по годам и двигате</span></a><a href="/articles/z/za/zamena-konditsionera-v-avtomobile.html" class="related-bottom-card"><span class="related-bottom-title">Замена кондиционера в машине: пошаговая инструкция 2026</span><span class="related-bottom-desc">Как самостоятельно поменять автокондиционер: выбор компрессора, заправка фреона, типичные ошибки и с</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

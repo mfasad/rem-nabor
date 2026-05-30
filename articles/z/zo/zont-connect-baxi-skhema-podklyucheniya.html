@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Zont Connect Baxi: схема подключения и настройка — Рем Набор</title>
+    <meta name="description" content="Подробная инструкция по подключению модуля Zont Connect к котлам Baxi. Схемы, распиновка, настройка через приложение и устранение неполадок.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/z/zo/zont-connect-baxi-skhema-podklyucheniya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Zont Connect Baxi: схема подключения и настройка">
+    <meta property="og:description" content="Подробная инструкция по подключению модуля Zont Connect к котлам Baxi. Схемы, распиновка, настройка через приложение и устранение неполадок.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/vodonagrevateli-i-kotly/">Водонагреватели и котлы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Zont Connect Baxi: схема подключения и настройка</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как подключить Zont Connect к котлу Baxi: схема и инструкция</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-оборудования-и-требования-безопасности">Подготовка оборудования и требования безопасности</a></li><li><a href="#поиск-интерфейса-подключения-на-плате-котла-baxi">Поиск интерфейса подключения на плате котла Baxi</a></li><li><a href="#схема-подключения-распиновка-и-монтаж-проводов">Схема подключения: распиновка и монтаж проводов</a></li><li><a href="#настройка-устройства-через-приложение-zont">Настройка устройства через приложение Zont</a></li><li><a href="#диагностика-и-устранение-неполадок">Диагностика и устранение неполадок</a></li><li><a href="#расширенные-возможности-и-интеграция">Расширенные возможности и интеграция</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Интеграция современных систем умного дома с классическим отопительным оборудованием становится стандартом безопасности и комфорта. Владельцы газовых котлов Baxi часто сталкиваются с необходимостью удаленного контроля, который штатная панель управления обеспечить не может. Модуль <em>Zont Connect</em> решает эту задачу, превращая обычный котел в управляемый через смартфон агрегат. Однако процесс установки требует внимательности к деталям электрической схемы.</p>
+
+<p>Неправильное соединение контактов может не только вывести из строя дорогостоящую плату управления котла, но и нарушить работу системы безопасности. В этой статье мы детально разберем физические аспекты подключения, настройки программного обеспечения и типичные ошибки, возникающие при монтаже. Вы получите исчерпывающее руководство, которое позволит выполнить установку самостоятельно, сэкономив на вызове сервисного инженера.</p>
+
+<h2 id="подготовка-оборудования-и-требования-безопасности">Подготовка оборудования и требования безопасности</h2>
+
+<p>Перед началом любых работ с электрооборудованием необходимо полностью обесточить систему. Это касается не только самого котла, но и циркуляционных насосов, если они подключены к той же линии. Работа под напряжением с открытой крышкой котла категорически запрещена правилами эксплуатации газового оборудования.</p>
+
+<p>Вам потребуются базовые инструменты: отвертки с изолированными рукоятками, бокорезы для зачистки проводов и, возможно, мультиметр для проверки цепей. Убедитесь, что у вас под рукой есть паспорт устройства <em>Zont Connect</em>, где указаны актуальные характеристики напряжения. Хотя стандартные схемы универсальны, ревизии плат могут отличаться.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Газовые котлы Baxi чувствительны к фазировке сети. Перед подключением любых внешних модулей проверьте правильность подключения фазы и нуля в розетке или клеммной колодке котла. Инверсия фазы может привести к ошибкам в работе ионизационного контроля пламени.</p>
+</blockquote>
+
+<p>Комплект <strong>Zont Connect</strong> обычно включает сам контроллер, антенну (если модель внешняя), клеммную колодку и крепежные элементы. Проверьте целостность изоляции проводов. Если вы используете кабель собственной длины, убедитесь, что его сечение соответствует току нагрузки, хотя для сигнальных цепей управления это редко бывает критичным фактором.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед монтажом</h4><label class="check-item"><input type="checkbox"><span>Полное отключение питания котла</span></label><label class="check-item"><input type="checkbox"><span>Наличие схемы подключения в инструкции</span></label><label class="check-item"><input type="checkbox"><span>Проверка фазировки сети 220В</span></label><label class="check-item"><input type="checkbox"><span>Подготовка инструмента с изоляцией</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="поиск-интерфейса-подключения-на-плате-котла-baxi">Поиск интерфейса подключения на плате котла Baxi</h2>
+
+<p>Котлы марки <em>Baxi</em> (серии Main Four, Eco Four, Luna и другие) имеют стандартизированную архитектуру платы управления. Для подключения комнатных термостатов и внешних контроллеров, таких как <strong>Zont</strong>, предназначена отдельная группа контактов. Обычно она находится в нижней части платы или сбоку, рядом с основным сетевым фильтром.</p>
+
+<p>Вам необходимо найти клеммную колодку, обозначенную на схеме внутри крышки котла как "Room Thermostat" или имеющую маркировку контактов 1-2-3. В большинстве моделей Baxi это трехконтактная колодка. Важно не перепутать её с клеммами питания насоса или датчика температуры ГВС, так как подача напряжения 220В на сигнальные входы контроллера мгновенно выведет его из строя.</p>
+
+<p>На некоторых новых моделях может использоваться специальный разъем eBUS. В этом случае подключение выполняется через адаптер или напрямую, если модуль поддерживает цифровой протокол. Однако аналоговое подключение через сухой контакт остается самым надежным и универсальным вариантом для серии <em>Main 5</em> и предыдущих поколений.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Сфотографируйте заводскую маркировку на плате котла перед снятием проводов. Это поможет быстро восстановить исходную конфигурацию в случае неудачной попытки подключения.</p></div>
+
+<p>Если у вас модель с открытой камерой сгорания, доступ к плате может быть ограничен защитным кожухом. Аккуратно снимите переднюю панель, открутив фиксирующие винты. Не прилагайте чрезмерных усилий к пластиковым защелкам, они становятся хрупкими со временем от перепадов температур.</p>
+
+<h2 id="схема-подключения-распиновка-и-монтаж-проводов">Схема подключения: распиновка и монтаж проводов</h2>
+
+<p>Основной принцип работы <strong>Zont Connect</strong> в связке с котлом Baxi — это размыкание и замыкание цепи управления горелкой. Контроллер выступает в роли выключателя, который дает команду котлу включить или выключить огонь в зависимости от температуры в помещении. Для этого используется режим "сухого контакта".</p>
+
+<p>Стандартная схема подключения выглядит следующим образом: контакты 1 и 2 на клеммной колодке котла Baxi предназначены для термостата. На заводе-изготовителе между ними часто установлена перемычка. Эту перемычку необходимо извлечь. Вместо неё подключаются провода от модуля <em>Zont</em>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Контакт на Baxi</th>
+<th>Назначение</th>
+<th>Подключение Zont</th>
+<th>Тип сигнала</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Вход термостата</td>
+<td>Клемма NO (Нормально открытый)</td>
+<td>Сухой контакт</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Общий (Common)</td>
+<td>Клемма COM (Общий)</td>
+<td>Замыкание цепи</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Не используется</td>
+<td>Оставить свободным</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Питание</td>
+<td>220В (L, N)</td>
+<td>Клеммы L, N на Zont</td>
+<td>Сетевое напряжение</td>
+</tr>
+</tbody>
+</table>
+
+<p>Подключите фазный и нулевой провод сети 220В к соответствующим клеммам питания самого устройства <strong>Zont Connect</strong>. Оно должно иметь собственное постоянное питание для работы GSM/Wi-Fi модуля и процессора. Не пытайтесь запитать контроллер от низковольтных выходов котла — это приведет к нестабильной работе.</p>
+
+<details class="faq-item"><summary>Особенности подключения к eBUS</summary><div class="faq-answer"><p>Некоторые продвинутые модели Zont поддерживают подключение по шине eBUS. В этом случае провода подключаются к клеммам eBUS на котле, а в настройках выбирается протокол Baxi. Это позволяет считывать не только статус горелки, но и температуру теплоносителя, давление и коды ошибок напрямую.</p></div></details>
+
+<p>После соединения проводов тщательно проверьте затяжку винтов в клеммной колодке. Плохой контакт может вызвать искрение и нагрев, что опасно вблизи газового оборудования. Уложите провода так, чтобы они не касались горячих частей теплообменника или горелки.</p>
+
+<h2 id="настройка-устройства-через-приложение-zont">Настройка устройства через приложение Zont</h2>
+
+<p>Физическое подключение — это только половина дела. Для корректной работы необходимо настроить логику управления через мобильное приложение или веб-интерфейс. Скачайте приложение <em>Zont Home</em> на свой смартфон и зарегистрируйте устройство по серийному номеру.</p>
+
+<p>В разделе настроек оборудования выберите тип подключенного котла. Для серии Baxi часто подходит универсальный шаблон "Газовый котел (сухой контакт)", но если ваша модель поддерживается официально, выберите её из списка. Это активирует специфические алгоритмы опроса статуса.</p>
+
+<ul>
+<li>📱 Установите желаемую температуру в помещении: система будет поддерживать её, включая и выключая котел.</li>
+<li>🌡️ Настройте гистерезис (разницу температур включения и выключения): оптимальное значение 0.5–1.0 градуса предотвратит частые такты работы горелки.</li>
+<li>📶 Проверьте уровень сигнала сотовой сети: при слабом сигнале рассмотрите возможность выноса внешней антенны.</li>
+</ul>
+
+<p>Особое внимание уделите настройке сценариев. Вы можете задать различные температурные режимы для дня и ночи, а также на время вашего отсутствия. Это позволяет существенно экономить газ, не жертвуя комфортом по возвращении домой.</p>
+
+<div class="poll-widget" id="poll-987eed1c"><div class="poll-widget-question">📊 Какой способ управления вам удобнее?</div><div class="poll-widget-option" data-poll="987eed1c" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только через приложение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="987eed1c" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Автоматика по расписанию</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="987eed1c" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Датчики температуры в комнатах</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="987eed1c" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Голосовое управление</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="диагностика-и-устранение-неполадок">Диагностика и устранение неполадок</h2>
+
+<p>После первого включения система может не сразу заработать корректно. Распространенной проблемой является ситуация, когда котел не видит команду на включение, хотя в приложении статус активен. В первую очередь проверьте индикаторы на самом модуле <strong>Zont</strong>.</p>
+
+<p>Если реле щелкает, но котел не запускается, проблема может быть в настройках самого котла. Убедитесь, что в меню котла не активирован режим "Только ГВС" или летний режим, при котором отопление отключено программно. Также проверьте, не заблокирован ли котел из-за отсутствия тяги или давления.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Если котел Baxi выдает ошибку, связанную с перегревом или отсутствием пламени, сбрасывайте её только после выяснения причины. Частые перезапуски без устранения неисправности могут привести к блокировке платы управления.</p>
+</blockquote>
+
+<p>Используйте функцию тестирования реле в приложении. Принудительно включите и выключите отопление. Если котел реагирует с задержкой более 1-2 минут, возможно, в системе есть воздушные пробки или неисправен циркуляционный насос, который не успевает разогнать теплоноситель.</p>
+
+<h2 id="расширенные-возможности-и-интеграция">Расширенные возможности и интеграция</h2>
+
+<p>Система <em>Zont</em> позволяет подключить дополнительные датчики температуры, которые можно разместить в разных комнатах. Это реализует функцию климат-контроля, когда котел работает по средней температуре или по самому холодному помещению. Для этого датчики подключаются к соответствующим входам на корпусе устройства.</p>
+
+<p>Для владельцев систем "Умный дом" важна возможность интеграции по протоколам MQTT или через облачные API. Это позволяет связать отопление с системой безопасности, открыванием ворот или умными розетками. Например, при срабатывании датчика протечки воды можно автоматически отключить котел и перекрыть электроклапаны.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Использование нескольких датчиков температуры позволяет избежать перегрева одних комнат и недотопа других, выравнивая тепловой баланс во всем доме.</p></div>
+
+<p>Регулярно обновляйте прошивку устройства. Разработчики часто выпускают обновления, улучшающие стабильность связи и добавляющие поддержку нового оборудования. Проверку версии ПО можно выполнить прямо в меню настроек устройства в личном кабинете.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли подключить Zont к котлу Baxi без снятия перемычки?</summary>
+<p>Нет, перемычку между контактами 1 и 2 обязательно нужно снять. Если её оставить, цепь будет постоянно замкнута, и котел будет работать непрерывно, игнорируя команды термостата, что приведет к перегреву помещения.</p>
+</details>
+
+<details>
+<summary>Что делать, если пропала связь с устройством?</summary>
+<p>Проверьте баланс SIM-карты, установленной в модуле. Убедитесь, что антенна надежно прикручена. Если используется Wi-Fi, проверьте стабильность домашней сети и пароль. В редких случаях помогает перезагрузка устройства отключением питания на 10 секунд.</p>
+</details>
+
+<details>
+<summary>Влияет ли установка Zont на гарантию котла Baxi?</summary>
+<p>Установка стороннего термостата через штатные клеммы не аннулирует гарантию на котел, так как это предусмотрено инструкцией производителя. Однако любые повреждения платы, возникшие из-за неправильного монтажа (например, попадание 220В на низковольтную часть), гарантийным случаем не являются.</p>
+</details>
+
+<details>
+<summary>Какой расход электроэнергии у самого модуля Zont?</summary>
+<p>Потребление модуля минимально и составляет менее 2-3 Вт в час. Это сопоставимо с работой светодиодной лампочки и не окажет заметного влияния на счета за электричество, даже при круглосуточной работе.</p>
+</details>
+
+<details>
+<summary>Нужно ли заземлять устройство?</summary>
+<p>Да, подключение заземления к корпусу котла и системе электроснабжения обязательно для безопасной работы любого электрооборудования. Это защищает от накопления статического заряда и поражения током в случае пробоя изоляции.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-оборудования-и-требования-безопасности">Подготовка оборудования и требования безопасности</a></li><li><a href="#поиск-интерфейса-подключения-на-плате-котла-baxi">Поиск интерфейса подключения на плате котла Baxi</a></li><li><a href="#схема-подключения-распиновка-и-монтаж-проводов">Схема подключения: распиновка и монтаж проводов</a></li><li><a href="#настройка-устройства-через-приложение-zont">Настройка устройства через приложение Zont</a></li><li><a href="#диагностика-и-устранение-неполадок">Диагностика и устранение неполадок</a></li><li><a href="#расширенные-возможности-и-интеграция">Расширенные возможности и интеграция</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/s/si/sistema-zont-dlya-kotla-baksi.html" class="related-card">Система зонт для котла Baxi: монтаж, ошибки и обслуживание</a></li><li><a href="/articles/p/po/podklyuchenie-zont-k-kotlu-baxi-slim.html" class="related-card">Подключение ZONT к котлу Baxi Slim: схема и настройка</a></li><li><a href="/articles/t/te/termostat-na-kotel-otopleniya.html" class="related-card">Термостат для котла отопления: выбор, подключение, настройка 2026</a></li><li><a href="/articles/s/sk/skhema-podklyucheniya-odnokonturnogo-kotla-baksi.html" class="related-card">Схема подключения котла Baxi одноконтурного: пошаговая инструкция</a></li><li><a href="/articles/k/ka/kak-snyat-termoregulyator-s-bojlera.html" class="related-card">Как снять терморегулятор с бойлера: пошаговая инструкция</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/s/si/sistema-zont-dlya-kotla-baksi.html" class="related-bottom-card"><span class="related-bottom-title">Система зонт для котла Baxi: монтаж, ошибки и обслуживание</span><span class="related-bottom-desc">Как правильно установить и обслуживать зонт для котла Baxi: схемы, типичные ошибки, требования СНиП </span></a><a href="/articles/p/po/podklyuchenie-zont-k-kotlu-baxi-slim.html" class="related-bottom-card"><span class="related-bottom-title">Подключение ZONT к котлу Baxi Slim: схема и настройка</span><span class="related-bottom-desc">Подробная инструкция по подключению модуля ZONT к котлу Baxi Slim. Схемы, настройки протоколов, ошиб</span></a><a href="/articles/t/te/termostat-na-kotel-otopleniya.html" class="related-bottom-card"><span class="related-bottom-title">Термостат для котла отопления: выбор, подключение, настройка 2026</span><span class="related-bottom-desc">Как выбрать и установить термостат на котел отопления: виды, схемы подключения, настройка температур</span></a><a href="/articles/s/sk/skhema-podklyucheniya-odnokonturnogo-kotla-baksi.html" class="related-bottom-card"><span class="related-bottom-title">Схема подключения котла Baxi одноконтурного: пошаговая инструкция</span><span class="related-bottom-desc">Как правильно подключить одноконтурный газовый котел Baxi: схемы обвязки, ошибки монтажа, требования</span></a><a href="/articles/k/ka/kak-snyat-termoregulyator-s-bojlera.html" class="related-bottom-card"><span class="related-bottom-title">Как снять терморегулятор с бойлера: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по демонтажу термостата с водонагревателя: инструменты, схемы подключения, тип</span></a><a href="/articles/t/te/ten-s-anodom-dlya-vodonagrevatelya.html" class="related-bottom-card"><span class="related-bottom-title">Тэн с анодом для водонагревателя: выбор, замена, виды</span><span class="related-bottom-desc">Полное руководство по магниевому аноду для водонагревателя. Как работает защита, признаки износа, за</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

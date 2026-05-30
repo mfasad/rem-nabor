@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему от горячего идёт пар — физика и практика (объяснение) — Рем Набор</title>
+    <meta name="description" content="Разбираемся, почему при нагреве появляется пар: фазовые переходы воды, температура кипения, конденсация и примеры из быта и автотехники. Подробно с формулами и советами.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/po/pochemu-ot-goryachego-idet-par.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему от горячего идёт пар — физика и практика (объяснение)">
+    <meta property="og:description" content="Разбираемся, почему при нагреве появляется пар: фазовые переходы воды, температура кипения, конденсация и примеры из быта и автотехники. Подробно с формулами и советами.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/freon-i-khladagenty/">Фреон и хладагенты</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему от горячего идёт пар — физика и практика (объяснение)</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему от горячего идёт пар: научное объяснение и практические примеры</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#что-такое-пар-с-научной-точки-зрения">Что такое пар с научной точки зрения?</a></li><li><a href="#температура-кипения-vs-температура-испарения-в-чём-разница">Температура кипения vs. температура испарения: в чём разница?</a></li><li><a href="#почему-пар-виден-зимой-а-летом-нет">Почему пар виден зимой, а летом — нет?</a></li><li><a href="#пар-в-технике-как-это-используется-на-практике">Пар в технике: как это используется на практике</a></li><li><a href="#мифы-и-заблуждения-о-паре">Мифы и заблуждения о паре</a></li><li><a href="#эксперимент-как-увидеть-невидимый-пар">Эксперимент: как увидеть невидимый пар</a></li><li><a href="#когда-пар-становится-опасным">Когда пар становится опасным</a></li><li><a href="#faq-частые-вопросы-о-паре">FAQ: Частые вопросы о паре</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вы когда-нибудь задумывались, почему над чашкой горячего чая поднимается лёгкий дымок, а из-под капота перегретого двигателя валит густой белый пар? Или почему зимой изо рта идёт "дым", хотя на улице нет огня? Это явление настолько привычно, что мы редко обращаем на него внимание. Но за простым вопросом <strong>"почему от горячего идёт пар"</strong> скрываются фундаментальные законы физики, которые управляют всем — от работы автомобильного радиатора до бытового увлажнителя воздуха.</p>
+
+<p>В этой статье мы разберёмся, что на самом деле представляет собой этот "пар" (спойлер: это не всегда водяной пар в газообразном состоянии!), как температура и влажность влияют на его появление, и почему иногда он виден, а иногда — нет. Также вы узнаете, как это явление используется в технике — от систем охлаждения двигателей до климатических установок. И да, мы развенчаем пару популярных мифов: например, тот, что <strong>"пар идёт только от кипящей воды"</strong> (это не так!).</p>
+
+<p>Если вы хотите не просто получить ответ, но и понять механизм процесса — добро пожаловать под кат. Мы будем использовать минимум формул, но с максимальной наглядностью: с примерами из жизни, таблицами и даже небольшим экспериментом, который можно повторить дома.</p>
+
+<h2 id="что-такое-пар-с-научной-точки-зрения">Что такое пар с научной точки зрения?</h2>
+
+<p>Начнём с главного: <strong>пар, который мы видим, — это не газ, а мельчайшие капельки жидкости</strong>. Да, это звучит противоречиво, но так устроена физика. Когда мы говорим о "паре" в быту, мы обычно подразумеваем <strong>туман</strong> — взвесь крошечных водяных капель в воздухе. А настоящий водяной пар (газообразное состояние воды) невидим для человеческого глаза!</p>
+
+<p>Вот как это работает:</p>
+<ol>
+  <li><strong>Испарение</strong>: при нагреве воды её молекулы получают энергию и переходят из жидкого состояния в газообразное (пар). Этот процесс происходит <em>даже при комнатной температуре</em> — просто медленнее.</li>
+  <li><strong>Конденсация</strong>: когда невидимый пар попадает в более холодный воздух, он охлаждается и снова превращается в жидкость — но уже в виде микроскопических капель, которые рассеивают свет и становятся видимыми.</li>
+</ol>
+
+<p>Именно поэтому над горячей водой мы видим "пар" только на некотором расстоянии от поверхности — там, где температура воздуха ниже, и происходит конденсация. А вот в сауне, где воздух горячий и влажный, пар может быть почти невидимым, пока не столкнётся с холодной поверхностью (например, со стеклом двери).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Чтобы убедиться, что "пар" — это капельки, а не газ, поднесите к нему холодный предмет (например, ложку). На нём сразу появится конденсат!</p></div>
+
+<h2 id="температура-кипения-vs-температура-испарения-в-чём-разница">Температура кипения vs. температура испарения: в чём разница?</h2>
+
+<p>Многие путают эти два понятия, но они принципиально разные:</p>
+<ul>
+  <li>🔥 <strong>Кипение</strong> — это интенсивное испарение <em>по всему объёму жидкости</em>, которое происходит при <mark>определённой температуре (100°C для воды при нормальном давлении)</mark>. В этот момент образуются пузырьки пара внутри жидкости.</li>
+  <li>💧 <strong>Испарение</strong> — это переход молекул с поверхности жидкости в газ при <em>любой температуре</em>. Например, лужи высыхают даже в прохладную погоду.</li>
+</ul>
+
+<p>Поэтому пар идёт не только от кипящей воды, но и от горячей чашки кофе (60–80°C), мокрой одежды на батарее (40–50°C), или даже от человеческого тела после душа. Главное условие — разница температур между источником влаги и окружающим воздухом.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Источник тепла</th>
+      <th>Температура, °C</th>
+      <th>Причина появления пара</th>
+      <th>Видимость пара</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Кипящий чайник</td>
+      <td>100</td>
+      <td>Интенсивное испарение + конденсация в холодном воздухе</td>
+      <td>Очень плотный, белый</td>
+    </tr>
+    <tr>
+      <td>Горячий суп (60°C)</td>
+      <td>60–70</td>
+      <td>Умеренное испарение, конденсация при охлаждении</td>
+      <td>Лёгкий дымок</td>
+    </tr>
+    <tr>
+      <td>Радиатор автомобиля (зимой)</td>
+      <td>80–90</td>
+      <td>Конденсация влаги из воздуха на холодных деталях</td>
+      <td>Густой белый пар</td>
+    </tr>
+    <tr>
+      <td>Человек после сауны</td>
+      <td>37–40</td>
+      <td>Испарение пота + конденсация в прохладном воздухе</td>
+      <td>Слабый, быстро исчезает</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Интересно, что в горных районах вода кипит при температуре ниже 100°C из-за пониженного давления. Там "пар" от кипятка будет менее заметен, потому что разница температур с воздухом меньше.</p>
+
+<div class="poll-widget" id="poll-8fecce2e"><div class="poll-widget-question">📊 Где вы чаще всего наблюдаете пар?</div><div class="poll-widget-option" data-poll="8fecce2e" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">На кухне (чай, суп)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8fecce2e" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">В ванной (горячий душ)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8fecce2e" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">На улице зимой (дыхание)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8fecce2e" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Под капотом автомобиля</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8fecce2e" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="почему-пар-виден-зимой-а-летом-нет">Почему пар виден зимой, а летом — нет?</h2>
+
+<p>Всё дело в <strong>влажности воздуха и температурном контрасте</strong>. Зимой воздух холодный и обычно сухой. Когда мы выдыхаем тёплый влажный воздух (температура ~37°C, влажность почти 100%), он моментально охлаждается, и водяной пар конденсируется в мельчайшие капельки — тот самый "дым" изо рта.</p>
+
+<p>Летом же воздух сам по себе тёплый и часто влажный. Разница температур между выдыхаемым воздухом и окружающей средой минимальна, поэтому конденсация происходит слабо или вообще не происходит. Вот почему летом "пара" изо рта не видно, даже если на улице +10°C.</p>
+
+<p>То же самое происходит с автомобилем:</p>
+<ul>
+  <li>❄️ <strong>Зимой</strong>: из выхлопной трубы идёт густой белый пар — это конденсат от сгорания топлива, который моментально замерзает в холодном воздухе.</li>
+  <li>☀️ <strong>Летом</strong>: пар почти не виден, потому что разница температур мала, и влага остаётся в газообразном состоянии.</li>
+</ul>
+
+<details class="faq-item"><summary>А что насчёт "пара" из выхлопной трубы в мороз?</summary><div class="faq-answer"><p>Это не просто водяной пар, а смесь воды, углекислого газа и несгоревших частиц топлива. При температуре ниже -10°C он может даже образовывать миниатюрные ледяные кристаллы, создавая эффект "дымности".</p></div></details>
+
+<h2 id="пар-в-технике-как-это-используется-на-практике">Пар в технике: как это используется на практике</h2>
+
+<p>Явление конденсации и испарения активно применяется в различных устройствах. Вот несколько примеров:</p>
+
+<h3>1. Системы охлаждения автомобилей</h3>
+<p>В радиаторе двигателя циркулирует горячая жидкость (тосол или антифриз). Когда она попадает в радиатор, часть тепла передаётся воздуху, и если влажность высокая, над радиатором может образовываться пар. Это нормально, но если пар идёт <strong>из-под крышки расширительного бачка</strong> — это признак перегрева или неисправности термостата!</p>
+
+<h3>2. Бытовые увлажнители воздуха</h3>
+<p>Приборы с <em>ультразвуковым распылением</em> или <em>горячим испарением</em> создают мелкодисперсный туман, который увеличивает влажность в помещении. Здесь используется тот же принцип: вода нагревается (или дробится на капли), а затем испаряется в воздухе.</p>
+
+<h3>3. Кондиционеры и тепловые насосы</h3>
+<p>В сплит-системах фреон конденсируется и испаряется в замкнутом цикле, перенося тепло из помещения на улицу (или наоборот, в режиме обогрева). Видимый "пар" из наружного блока зимой — это конденсат, который замерзает и испаряется при работе компрессора.</p>
+
+
+<p>Пар из-под капота при работающем двигателе|Белый дым из выхлопной трубы <em>после прогрева</em>|Конденсат на стёклах салона без причины|Постоянная влага под радиатором--></p>
+
+<h2 id="мифы-и-заблуждения-о-паре">Мифы и заблуждения о паре</h2>
+
+<p>Вокруг этого явления ходит множество мифов. Разберём самые популярные:</p>
+
+<h3>Миф 1: "Пар идёт только от кипящей воды"</h3>
+<p>Как мы уже выяснили, испарение происходит при любой температуре. Даже лужа на асфальте "испаряется" — просто это происходит медленно и незаметно для глаза. А вот при нагреве процесс ускоряется, и пар становится видимым.</p>
+
+<h3>Миф 2: "Пар из выхлопной трубы — это признак неисправности"</h3>
+<p>Это верно <em>только для прогретого двигателя</em>. В мороз белый пар (конденсат) — это нормально. А вот если он идёт летом или после 10–15 минут работы мотора, это может указывать на попадание охлаждающей жидкости в цилиндры (пробитая прокладка ГБЦ).</p>
+
+<h3>Миф 3: "Пар и туман — это одно и то же"</h3>
+<p>По сути, да, но туман образуется при <strong>охлаждении влажного воздуха</strong> (например, утренний туман над рекой), а пар — при <strong>нагреве источника влаги</strong>. Механизм конденсации одинаковый, но причины разные.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если пар из выхлопной трубы имеет сизый или голубоватый оттенок — это не конденсат, а признак сгорания масла. Требуется диагностика двигателя!</p></div>
+
+<h2 id="эксперимент-как-увидеть-невидимый-пар">Эксперимент: как увидеть невидимый пар</h2>
+
+<p>Вы можете легко продемонстрировать разницу между газообразным паром и видимым туманом дома. Вам понадобится:</p>
+<ul>
+  <li>🔥 Чайник с водой</li>
+  <li>🧊 Холодная металлическая ложка (можно предварительно подержать в морозилке)</li>
+  <li>📸 Фонарик (опционально, для лучшей визуализации)</li>
+</ul>
+
+<p><strong>Ход эксперимента:</strong></p>
+<ol>
+  <li>Вскипятите воду в чайнике. Не наклоняйтесь близко — <mark>пар при 100°C может обжечь слизистые!</mark></li>
+  <li>Поднесите холодную ложку к струе пара на расстоянии 10–15 см от носика чайника. На ложке сразу появится конденсат.</li>
+  <li>Теперь поднесите ложку <em>прямо к носику</em>, где пар только выходит. Конденсата будет меньше — потому что там пар ещё не успевает охладиться.</li>
+</ol>
+
+<p>Этот эксперимент наглядно показывает, что "видимый пар" образуется не у источника тепла, а на некотором расстоянии от него, где происходит конденсация.</p>
+
+<h2 id="когда-пар-становится-опасным">Когда пар становится опасным</h2>
+
+<p>В большинстве случаев пар безвреден, но есть ситуации, когда он сигнализирует о проблемах:</p>
+
+<blockquote>⚠️ <strong>Внимание</strong>: Если из-под капота автомобиля идёт густой белый пар <em>в тёплую погоду</em>, это может быть признаком:</blockquote>
+<ul>
+  <li>🚗 Пробитой прокладки головки блока цилиндров (антифриз попадает в масло или камеры сгорания).</li>
+  <li>🔥 Перегрева двигателя (риск деформации блока цилиндров).</li>
+  <li>💦 Утечки охлаждающей жидкости на горячие детали (например, коллектор).</li>
+</ul>
+
+<p>В быту опасен пар от <strong>перегретых электроприборов</strong> (утюг, чайник, обогреватель). Если он идёт не из предназначенного для этого места (например, из корпуса, а не из носика чайника), это может указывать на:</p>
+<ul>
+  <li>🔌 Короткое замыкание (нагрев внутренних деталей).</li>
+  <li>💧 Попадание воды на нагревательные элементы.</li>
+  <li>🔥 Риск возгорания (если прибор продолжает работать с паром из корпуса, его нужно немедленно отключить!).</li>
+</ul>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вы заметили необычный пар от техники, сначала отключите её от сети, затем проверьте на наличие воды внутри или повреждений корпуса. Не включайте прибор, пока не найдёте причину!</p></div>
+
+<h2 id="faq-частые-вопросы-о-паре">FAQ: Частые вопросы о паре</h2>
+
+<details>
+  <summary>Почему пар от кипятка поднимается вверх, а не опускается вниз?</summary>
+  <p>Пар (точнее, тёплый влажный воздух с капельками воды) поднимается из-за <strong>конвекции</strong>: нагретый воздух менее плотный, чем холодный, поэтому он стремится вверх. Этот же принцип используется в воздушных шарах и системах отопления.</p>
+</details>
+
+<details>
+  <summary>Можно ли пить конденсат, который образуется на крышке кастрюли?</summary>
+  <p>Технически да, это дистиллированная вода. Но если крышка грязная или в пище были соль/специи, конденсат может иметь неприятный вкус. В экстренных ситуациях (например, в походе) такой конденсат можно собирать как источник чистой воды.</p>
+</details>
+
+<details>
+  <summary>Почему в сауне пар невидимый, а в бане — виден?</summary>
+  <p>В финской сауне воздух горячий (80–100°C) и <em>сухой</em> (влажность 10–20%), поэтому пар (водяной газ) остаётся невидимым. В русской бане влажность высокая (40–60%), и при поливе камней вода испаряется интенсивно, образуя видимый туман при охлаждении.</p>
+</details>
+
+<details>
+  <summary>Правда ли, что пар может обжечь сильнее, чем кипяток?</summary>
+  <p>Да, это так. Пар при 100°C содержит <strong>в 5–6 раз больше энергии</strong>, чем кипяток той же температуры (из-за скрытой теплоты парообразования). Поэтому ожоги паром часто глубже и болезненнее. Будьте осторожны при открытии крышек горячих ёмкостей!</p>
+</details>
+
+<details>
+  <summary>Почему зимой окна в машине запотевают, а летом — нет?</summary>
+  <p>Зимой разница температур между салоном (тёплый воздух от печки) и стёклами (холодные) приводит к конденсации влаги на стекле. Летом стёкла нагреваются солнцем, и конденсат не образуется. Чтобы убрать запотевание, нужно или прогреть стёкла (обдув тёплым воздухом), или уменьшить влажность в салоне (включить кондиционер).</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#что-такое-пар-с-научной-точки-зрения">Что такое пар с научной точки зрения?</a></li><li><a href="#температура-кипения-vs-температура-испарения-в-чём-разница">Температура кипения vs. температура испарения: в чём разница?</a></li><li><a href="#почему-пар-виден-зимой-а-летом-нет">Почему пар виден зимой, а летом — нет?</a></li><li><a href="#пар-в-технике-как-это-используется-на-практике">Пар в технике: как это используется на практике</a></li><li><a href="#мифы-и-заблуждения-о-паре">Мифы и заблуждения о паре</a></li><li><a href="#эксперимент-как-увидеть-невидимый-пар">Эксперимент: как увидеть невидимый пар</a></li><li><a href="#когда-пар-становится-опасным">Когда пар становится опасным</a></li><li><a href="#faq-частые-вопросы-о-паре">FAQ: Частые вопросы о паре</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/g/go/gorit-li-freon-iz-konditsionera.html" class="related-card">Горит ли фреон из кондиционера? Мифы и реальные опасности</a></li><li><a href="/articles/k/ka/kakoj-freon-luchshe-dlya-kholodilnika.html" class="related-card">Какой фреон лучше для холодильника: выбор хладагента 2026</a></li><li><a href="/articles/d/di/diametr-ballona-ot-freona.html" class="related-card">Диаметр баллона с фреоном: таблица размеров и совместимость</a></li><li><a href="/articles/f/fr/freon-vzryvoopasen-ili-net.html" class="related-card">Фреон взрывоопасен или нет: полная оценка рисков</a></li><li><a href="/articles/r/ra/rabochee-davlenie-290-freona.html" class="related-card">Рабочее давление фреона R290: нормы, проверка и корректировка</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/g/go/gorit-li-freon-iz-konditsionera.html" class="related-bottom-card"><span class="related-bottom-title">Горит ли фреон из кондиционера? Мифы и реальные опасности</span><span class="related-bottom-desc">Разбираемся, может ли фреон загореться в кондиционере, какие хладагенты опасны и что делать при утеч</span></a><a href="/articles/k/ka/kakoj-freon-luchshe-dlya-kholodilnika.html" class="related-bottom-card"><span class="related-bottom-title">Какой фреон лучше для холодильника: выбор хладагента 2026</span><span class="related-bottom-desc">Сравнение фреонов R134a, R600a, R290 для холодильников: плюсы, минусы, совместимость. Какой хладаген</span></a><a href="/articles/d/di/diametr-ballona-ot-freona.html" class="related-bottom-card"><span class="related-bottom-title">Диаметр баллона с фреоном: таблица размеров и совместимость</span><span class="related-bottom-desc">Какие бывают диаметры баллонов с фреоном для автокондиционеров и холодильников? Стандарты R134a, R12</span></a><a href="/articles/f/fr/freon-vzryvoopasen-ili-net.html" class="related-bottom-card"><span class="related-bottom-title">Фреон взрывоопасен или нет: полная оценка рисков</span><span class="related-bottom-desc">Разбираем, взрывоопасен ли фреон в холодильнике и кондиционере. Классы безопасности, марки R410A и R</span></a><a href="/articles/r/ra/rabochee-davlenie-290-freona.html" class="related-bottom-card"><span class="related-bottom-title">Рабочее давление фреона R290: нормы, проверка и корректировка</span><span class="related-bottom-desc">Какое должно быть давление R290 в автокондиционере и холодильниках? Таблицы значений, признаки неисп</span></a><a href="/articles/o/ob/obmerzanie-gajki-na-vkhode-freona-v-trv-vozmozhno-v-sledstvii.html" class="related-bottom-card"><span class="related-bottom-title">Обмерзание гайки на входе фреона в ТРВ: причины и решения</span><span class="related-bottom-desc">Почему обмерзает гайка на входе фреона в терморегулирующий вентиль (ТРВ)? Разбираем 7 основных причи</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

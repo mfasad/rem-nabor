@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Принцип работы термостата АКПП: устройство и диагностика — Рем Набор</title>
+    <meta name="description" content="Подробный разбор принципа работы термостата коробки автомат. Как он регулирует температуру масла, признаки неисправности и последствия перегрева трансмиссии.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/pr/printsip-raboty-termostata-akpp.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Принцип работы термостата АКПП: устройство и диагностика">
+    <meta property="og:description" content="Подробный разбор принципа работы термостата коробки автомат. Как он регулирует температуру масла, признаки неисправности и последствия перегрева трансмиссии.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Принцип работы термостата АКПП: устройство и диагностика</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Принцип работы термостата АКПП и его влияние на ресурс коробки</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#физические-основы-терморегуляции-в-трансмиссии">Физические основы терморегуляции в трансмиссии</a></li><li><a href="#конструктивные-особенности-и-типы-устройств">Конструктивные особенности и типы устройств</a></li><li><a href="#алгоритм-циркуляции-atf-жидкости">Алгоритм циркуляции ATF жидкости</a></li><li><a href="#признаки-неисправности-терморегулятора">Признаки неисправности терморегулятора</a></li><li><a href="#влияние-перегрева-на-ресурс-агрегата">Влияние перегрева на ресурс агрегата</a></li><li><a href="#методы-восстановления-и-модернизации">Методы восстановления и модернизации</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Коробка автоматическая переключения передач представляет собой сложный гидромеханический агрегат, чувствительность которого к температурному режиму часто недооценивают автовладельцы. Ключевым элементом, отвечающим за поддержание оптимального теплового баланса, является <strong>термостат АКПП</strong>. Многие водители полагают, что система охлаждения работает линейно, однако наличие терморегулирующего клапана создает специфический алгоритм циркуляции жидкости, игнорирование которого может привести к дорогостоящему ремонту.</p>
+
+<p>В отличие от двигателя внутреннего сгорания, где перегрев виден сразу по датчикам на приборной панели, трансмиссия часто «варится» в собственном соку незаметно для водителя до момента критического отказа. Понимание того, как именно функционирует этот узел, позволяет диагностировать проблемы на ранней стадии и продлить жизнь дорогостоящим фрикционам и гидроблоку.</p>
+
+<p>Современные автоматические трансмиссии требуют строго определенного диапазона температур для корректной работы соленоидов и поддержания вязкости ATF жидкости. Если температура слишком низкая, коробка работает в аварийном режиме или с повышенным износом, если слишком высокая — начинается деградация масла. Разберем детально физическую суть процесса терморегуляции.</p>
+
+<h2 id="физические-основы-терморегуляции-в-трансмиссии">Физические основы терморегуляции в трансмиссии</h2>
+
+<p>Основная задача системы охлаждения заключается не просто в отводе тепла, а в быстром выходе на рабочий режим и последующем его удержании. <strong>Принцип работы термостата АКПП</strong> базируется на изменении агрегатного состояния или объема специального вещества внутри чувствительного элемента. В холодном состоянии клапан перекрывает путь жидкости к основному радиатору, заставляя её циркулировать по малому кругу внутри картера или через теплообменник, встроенный в радиатор двигателя.</p>
+
+<p>Этот процесс необходим для того, чтобы вязкая на морозе жидкость быстрее прогрелась. Густое масло плохо проходит через узкие каналы гидроблока и не обеспечивает должного давления в пакетах фрикционов. Как только температура достигает расчетного значения, обычно в диапазоне от 60 до 80 градусов Цельсия, термочувствительный элемент расширяется.</p>
+
+<p>В этот момент открывается магистраль большого круга, и горячее масло направляется в отдельный радиатор <em>ATF</em> или в нижнюю часть основного радиатора системы охлаждения двигателя. Здесь происходит интенсивный теплообмен с окружающей средой. Важно понимать, что термостат работает не как выключатель «вкл/выкл», а как дроссель, плавно регулирующий поток в зависимости от текущей температуры.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Установка нештатного термостата с более низкой температурой открытия может привести к тому, что коробка никогда не выйдет на полноценный рабочий режим зимой, что вызовет повышенный расход топлива и износ деталей.</p>
+</blockquote>
+
+<p>Конструктивно устройство может быть вынесено в отдельный корпус на патрубке или интегрировано непосредственно в теплообменник. В первом случае замена элемента проще и дешевле, во втором — часто требуется замена всего узла или сложная дефектовка. Нарушение цикла циркуляции из-за заклинивания клапана в закрытом положении является одной из самых частых причин перегрева.</p>
+
+<h2 id="конструктивные-особенности-и-типы-устройств">Конструктивные особенности и типы устройств</h2>
+
+<p>Инженерные решения в области терморегуляции трансмиссии разнообразны и зависят от производителя автомобиля. Классический <strong>механический термостат</strong> использует капсулу с восковым наполнителем, который при нагревании превращается в жидкость и выталкивает шток, открывающий заслонку. Это надежная и проверенная временем технология, применяемая на большинстве автомобилей прошлого десятилетия.</p>
+
+<p>Однако современные модели, такие как <em>ZF 8HP</em> или <em>Aisin Warner</em> новых поколений, часто оснащаются электронно-управляемыми системами. Здесь механический клапан дополняется или заменяется соленоидом, который получает команды от блока управления трансмиссией (<em>TCM</em>). Это позволяет реализовать сложные алгоритмы прогрева, учитывая не только температуру масла, но и нагрузку на двигатель, скорость автомобиля и стиль вождения.</p>
+
+<ul>
+<li>🌡️ Восковые термоэлементы — классика, не требующая питания, но имеющая инерцию срабатывания.</li>
+<li>⚡ Электромагнитные клапаны — обеспечивают точное управление потоком по командам «мозгов» коробки.</li>
+<li>🔄 Биметаллические пластины — используются реже, работают за счет разного коэффициента расширения металлов.</li>
+</ul>
+
+<p>В системах с жидкостным теплообменником («масло в воду») термостат часто выполняет роль переключателя между контурами. Летом он может направлять поток через отдельный радиатор для максимального охлаждения, а зимой — использовать тепло антифриза двигателя для ускоренного прогрева трансмиссии. Такая схема требует идеальной герметичности перегородок внутри теплообменника.</p>
+
+<div class="poll-widget" id="poll-b71bc9ab"><div class="poll-widget-question">📊 Сталкивались ли вы с перегревом АКПП в пробках?</div><div class="poll-widget-option" data-poll="b71bc9ab" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Да, загорался аварийный режим</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b71bc9ab" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Нет, но масло темнеет быстро</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b71bc9ab" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Установил дополнительный радиатор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b71bc9ab" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не проверял температуру</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Сложность диагностики электронных термостатов заключается в том, что механическая часть может быть исправна, но из-за ошибки в программном обеспечении или неисправности датчика температуры клапан не откроется в нужный момент. Поэтому при ремонте важно проверять не только сам узел, но и электрическую цепь управления.</p>
+
+<h2 id="алгоритм-циркуляции-atf-жидкости">Алгоритм циркуляции ATF жидкости</h2>
+
+<p>Чтобы наглядно представить процесс, рассмотрим путь жидкости в типовой автоматической коробке. Сразу после запуска холодного двигателя насос начинает качать масло, но термостат удерживает его внутри картера или направляет через узкий канал теплообменника, не пуская в основной радиатор. Это и есть <strong>малый круг циркуляции</strong>.</p>
+
+<p>По мере роста температуры гидравлической жидкости и механического трения в пакетах фрикционов, теплонагруженность растет. Термочувствительный элемент начинает реагировать. В определенный момент, который называется температурой начала открытия, шток начинает движение. Поток разделяется: часть идет по малому кругу, часть — по большому.</p>
+
+<pre><code>Алгоритм работы:
+<p>1. T < 60°C: Клапан закрыт на 100%, циркуляция внутри корпуса.</p>
+<p>2. T = 60-80°C: Плавное открытие канала большого круга.</p>
+<p>3. T > 80°C: Клапан полностью открыт, основной поток через радиатор.</code></pre></p>
+
+<p>Когда автомобиль движется с высокой нагрузкой, например, буксирует прицеп или едет по горной местности, температура может превысить 100 градусов. В этот момент эффективность радиатора становится критической. Если термостат заклинил в закрытом положении, горячее масло просто гоняется по кругу внутри коробки, не охлаждаясь, что ведет к быстрому вскипанию и потере смазывающих свойств.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для проверки работы термостата на слух (на некоторых моделях) можно в момент прогрева послушать шумы перетекания жидкости в районе радиатора АКПП — изменение тональности может указывать на открытие клапана.</p></div>
+
+<p>Обратная ситуация, когда клапан заклинил в открытом положении, также опасна, особенно в зимний период. Масло не может нагреться до рабочей температуры, оставаясь слишком густым. Это приводит к тому, что давление в системе падает, фрикционы пробуксовывают при переключении, а продукты износа активно загрязняют гидроблок.</p>
+
+<h2 id="признаки-неисправности-терморегулятора">Признаки неисправности терморегулятора</h2>
+
+<p>Диагностика проблем с системой охлаждения трансмиссии часто осложняется отсутствием прямого датчика температуры масла на приборной панели большинства гражданских автомобилей. Однако косвенные признаки позволяют опытному мастеру или внимательному водителю заподозрить неладное. Первым звоночком могут стать некорректные переключения передач.</p>
+
+<p>Если <strong>термостат АКПП</strong> не открывается, коробка начинает «пинаться» при переключении с первой на вторую передачу после прогрева. Это связано с тем, что горячее масло меняет свою вязкость и давление, а блок управления, не получая должного охлаждения, пытается компенсировать это изменением времени наполнения пакетов, что не всегда удается.</p>
+
+<ul>
+<li>📉 Задержка включения передач («думает» перед стартом) — признак слишком густого или перегретого масла.</li>
+<li>🔥 Появление запаха гари из подкапотного пространства — следствие критического перегрева ATF.</li>
+<li>🎛️ Уход коробки в аварийный режим (только 3-я передача) при длительной езде по трассе.</li>
+</ul>
+
+<p>Еще одним симптомом является нехарактерное поведение стрелки температуры двигателя, если используется общий радиатор. При неисправном термостате АКПП или пробое теплообменника антифриз может закипать быстрее обычного, так как он получает избыточное тепло от трансмиссионного масла.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Темное масло с запахом гари не всегда означает смерть самой коробки. Часто причина банальна — термостат не пустил масло на охлаждение, и оно сгорело от перегрева. Замена масла без ремонта системы охлаждения даст лишь временный эффект.</p>
+</blockquote>
+
+<p>Для точной диагностики необходимо подключение сканера, способного считывать параметры в реальном времени. Сравнение показаний датчика температуры двигателя и расчетной температуры трансмиссии (или прямого датчика, если он есть) позволяет выявить расхождения. Если датчик показывает 110°C, а машина едет спокойно, скорее всего, циркуляция нарушена.</p>
+
+<h2 id="влияние-перегрева-на-ресурс-агрегата">Влияние перегрева на ресурс агрегата</h2>
+
+<p>Автоматическая коробка передач — это устройство, где допуски между деталями исчисляются микронами. Любое изменение физических свойств рабочей жидкости сказывается на этих зазорах. <strong>Перегрев масла</strong> приводит к необратимым химическим изменениям: окислению, потере смазывающей способности и образованию лаковых отложений.</p>
+
+<p>При температурах выше 120 градусов Цельсия начинается деградация фрикционных накладок. Они становятся хрупкими, крошатся и забивают собой сетку фильтра и каналы гидроблока. Соленоиды, управляющие потоками, начинают подклинивать из-за нагара, что ведет к рывкам и ударам при переключении.</p>
+
+<table>
+<thead>
+<tr>
+<th>Температура ATF (°C)</th>
+<th>Состояние жидкости</th>
+<th>Влияние на ресурс</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80 - 90</td>
+<td>Оптимальный режим</td>
+<td>Штатный износ, максимальный ресурс</td>
+</tr>
+<tr>
+<td>100 - 110</td>
+<td>Начало окисления</td>
+<td>Снижение ресурса на 30-40%</td>
+</tr>
+<tr>
+<td>120 - 130</td>
+<td>Активная деградация</td>
+<td>Разрушение фрикционов, риск задиров</td>
+</tr>
+<tr>
+<td>> 140</td>
+<td>Критический перегрев</td>
+<td>Мгновенный выход из строя уплотнений</td>
+</tr>
+</tbody>
+</table>
+
+<p>Особую опасность представляет эффект «лакирования» внутренних поверхностей. Тонкая пленка окисленного масла покрывает стенки каналов, что меняет их пропускную способность. Даже после замены масла и фильтра восстановить первоначальную гидравлику бывает сложно без полной разборки и химической мойки гидроблока.</p>
+
+<details class="faq-item"><summary>Миф о вечном масле</summary><div class="faq-answer"><p>Существует мнение, что в некоторых АКПП масло залито на весь срок службы. Это верно только при идеальных температурных условиях. В реальности, при частых пробках и перегревах из-за плохого термостата, такое масло теряет свойства к 60-80 тысячам км пробега.</p></div></details>
+
+<p>Также страдают резиновые уплотнения и сальники. Под воздействием высоких температур резина дубеет и трескается, что приводит к утечкам давления. Коробка начинает «плыть», передачи включаются с пробуксовкой, что в свою очередь генерирует еще больше тепла — возникает замкнутый круг разрушения.</p>
+
+<h2 id="методы-восстановления-и-модернизации">Методы восстановления и модернизации</h2>
+
+<p>При выявлении проблем с терморегуляцией существует несколько путей решения. Самый простой и правильный — замена неисправного узла на оригинальный или качественный аналог. Однако в некоторых случаях владельцы прибегают к модернизации системы охлаждения, особенно если автомобиль эксплуатируется в тяжелых условиях.</p>
+
+<p>Популярным решением является установка дополнительного внешнего радиатора <em>ATF</em>. Это позволяет разгрузить основной теплообменник и обеспечить более эффективное охлаждение в летний период. При такой доработке часто исключают штатный термостат из цепи или заменяют его на более низкотемпературный, чтобы масло сразу шло на охлаждение.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка системы охлаждения АКПП</h4><label class="check-item"><input type="checkbox"><span>Визуальный осмотр патрубков на трещины</span></label><label class="check-item"><input type="checkbox"><span>Проверка уровня и состояния масла</span></label><label class="check-item"><input type="checkbox"><span>Замер температуры сканером</span></label><label class="check-item"><input type="checkbox"><span>Тест на заклинивание клапана</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p> Слишком сильное охлаждение зимой так же вредно, как и перегрев летом. Поэтому при установке дополнительных радиаторов часто используют термостаты с более низкой температурой открытия (например, 65°C вместо 80°C), чтобы сохранить возможность прогрева.</p>
+
+<p>Если причина неисправности кроется в загрязнении самого клапана продуктами износа, в некоторых случаях помогает промывка системы специальной химией. Однако механическое заклинивание или выработка штока требуют исключительно механического ремонта или замены. Экономия на этом узле может стоить цены всей коробки в сборе.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Регулярная замена масла и контроль работы термостата — самые дешевые способы предотвратить капитальный ремонт АКПП. Перегрев убивает коробку быстрее, чем агрессивная езда.</p></div>
+
+<details>
+<summary>Можно ли ездить с неисправным термостатом АКПП?</summary>
+<p>Кратковременная езда возможна, но крайне не рекомендуется. Если клапан закрыт, вы рискуете перегреть коробку в первой же пробке. Если открыт — зимой масло не прогреется, что приведет к повышенному износу. В обоих случаях ресурс агрегата сокращается в разы.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять термостат?</summary>
+<p>Регламент замены зависит от модели авто. Обычно его меняют вместе с маслом каждые 60 000 км, если он выносной. Встроенные в радиатор термостаты служат дольше, но их проверка должна проводиться при каждой диагностике системы охлаждения.</p>
+</details>
+
+<details>
+<summary>Почему после замены масла АКПП начала пинаться?</summary>
+<p>Возможно, было залито масло с другой вязкостью, либо старый термостат, работавший некорректно, был случайно задет или забит еще больше свежим маслом, поднявшим грязь со дна. Требуется адаптация и проверка температурного режима.</p>
+</details>
+
+<details>
+<summary>Влияет ли загрязнение основного радиатора двигателя на АКПП?</summary>
+<p>Да, напрямую. Если используется теплообменник «масло-вода», то забитые соты радиатора двигателя не дадут остыть антифризу, который, в свою очередь, не сможет охладить трансмиссионное масло. Чистка радиаторов обязательна раз в 2-3 года.</p>
+</details>
+
+<details>
+<summary>Какая температура АКПП считается нормальной в пробке?</summary>
+<p>В летней пробке температура может подниматься до 100-110 градусов, это допустимо при условии, что после выезда на трассу она быстро падает. Если она держится выше 115°C длительное время — система охлаждения не справляется.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#физические-основы-терморегуляции-в-трансмиссии">Физические основы терморегуляции в трансмиссии</a></li><li><a href="#конструктивные-особенности-и-типы-устройств">Конструктивные особенности и типы устройств</a></li><li><a href="#алгоритм-циркуляции-atf-жидкости">Алгоритм циркуляции ATF жидкости</a></li><li><a href="#признаки-неисправности-терморегулятора">Признаки неисправности терморегулятора</a></li><li><a href="#влияние-перегрева-на-ресурс-агрегата">Влияние перегрева на ресурс агрегата</a></li><li><a href="#методы-восстановления-и-модернизации">Методы восстановления и модернизации</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/r/ra/razdulo-verkhnij-patrubok-radiatora-prichiny.html" class="related-card">Раздуло верхний патрубок радиатора: причины и устранение</a></li><li><a href="/articles/z/za/zamena-termostata-lanser-9.html" class="related-card">Замена термостата Лансер 9: инструкция, симптомы, выбор</a></li><li><a href="/articles/k/ka/kak-pomenyat-pompu-na-bukhanke.html" class="related-card">Замена помпы на УАЗ Буханка: пошаговая инструкция с фото</a></li><li><a href="/articles/p/pe/pereborka-vodyanogo-nasosa-yamz-236.html" class="related-card">Переборка водяного насоса ЯМЗ-236: пошаговая инструкция и дефектовка</a></li><li><a href="/articles/r/ra/radiator-okhlazhdeniya-lanser-10.html" class="related-card">Радиатор охлаждения Лансер 10: выбор, замена и ремонт</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/r/ra/razdulo-verkhnij-patrubok-radiatora-prichiny.html" class="related-bottom-card"><span class="related-bottom-title">Раздуло верхний патрубок радиатора: причины и устранение</span><span class="related-bottom-desc">Раздуло верхний патрубок радиатора? Узнайте основные причины: пробка, клапан, прокладка ГБЦ. Диагнос</span></a><a href="/articles/z/za/zamena-termostata-lanser-9.html" class="related-bottom-card"><span class="related-bottom-title">Замена термостата Лансер 9: инструкция, симптомы, выбор</span><span class="related-bottom-desc">Подробное руководство по замене термостата Mitsubishi Lancer 9. Диагностика неисправности, выбор ори</span></a><a href="/articles/k/ka/kak-pomenyat-pompu-na-bukhanke.html" class="related-bottom-card"><span class="related-bottom-title">Замена помпы на УАЗ Буханка: пошаговая инструкция с фото</span><span class="related-bottom-desc">Как самостоятельно поменять водяной насос на УАЗ-452/3741 (Буханка)? Признаки неисправности, выбор з</span></a><a href="/articles/p/pe/pereborka-vodyanogo-nasosa-yamz-236.html" class="related-bottom-card"><span class="related-bottom-title">Переборка водяного насоса ЯМЗ-236: пошаговая инструкция и дефектовка</span><span class="related-bottom-desc">Детальное руководство по ремонту водяного насоса ЯМЗ-236. Замена подшипников, сальника, дефектовка к</span></a><a href="/articles/r/ra/radiator-okhlazhdeniya-lanser-10.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор охлаждения Лансер 10: выбор, замена и ремонт</span><span class="related-bottom-desc">Как выбрать и заменить радиатор на Mitsubishi Lancer 10. Признаки неисправности, советы по установке</span></a><a href="/articles/r/ra/radiator-okhlazhdeniya-padzhero-sport-2.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор охлаждения Mitsubishi Pajero Sport 2: замена и ремонт</span><span class="related-bottom-desc">Подробное руководство по выбору, замене и ремонту радиатора охлаждения Mitsubishi Pajero Sport 2. Пр</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

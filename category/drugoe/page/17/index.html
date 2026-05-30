@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Другое — страница 17 — Рем Набор</title>
+    <meta name="description" content="Различные самоделки из баллонов, советы по обслуживанию техники и прочие технические вопросы.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+        .cat-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e3a5f 100%);
+            border-bottom: none;
+            padding: 48px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cat-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(37,99,235,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(139,92,246,0.1) 0%, transparent 50%);
+            animation: heroShimmer 8s ease-in-out infinite alternate;
+        }
+        @keyframes heroShimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(3deg); }
+        }
+        .cat-hero .container { position: relative; z-index: 1; }
+        .cat-hero-icon {
+            font-size: 3.5rem; display: block; margin-bottom: 16px;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+        }
+        .cat-hero h1 {
+            font-size: 2rem; font-weight: 800; color: #f1f5f9;
+            margin-bottom: 10px; letter-spacing: -0.02em;
+        }
+        .cat-hero p {
+            color: #94a3b8; font-size: 1.05rem; max-width: 600px;
+            margin: 0 auto; line-height: 1.6;
+        }
+        .cat-benefits {
+            display: flex; justify-content: center; gap: 12px;
+            margin-top: 24px; flex-wrap: wrap;
+        }
+        .cat-benefit {
+            display: flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.08); backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px; padding: 8px 18px;
+            font-size: 0.88rem; color: #e2e8f0; font-weight: 500;
+            transition: all 0.25s;
+        }
+        .cat-benefit:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+        }
+        .benefit-icon { font-size: 1.15em; }
+
+        .cat-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 16px; padding: 32px 0 24px;
+        }
+        .article-home-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 0; text-decoration: none; color: #1e293b;
+            transition: all 0.25s ease; display: flex; flex-direction: column;
+            overflow: hidden; position: relative;
+        }
+        .article-home-card:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 8px 24px rgba(37,99,235,0.1);
+            transform: translateY(-4px);
+        }
+        .card-top {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 20px 0;
+        }
+        .card-icon {
+            font-size: 1.4em;
+            background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 6px rgba(37,99,235,0.1);
+        }
+        .card-read-time {
+            font-size: 0.78rem; color: #94a3b8; font-weight: 500;
+        }
+        .article-home-title {
+            font-weight: 600; font-size: 0.97rem; line-height: 1.4;
+            padding: 12px 20px 0; transition: color 0.2s;
+        }
+        .article-home-card:hover .article-home-title { color: #2563eb; }
+        .article-home-desc {
+            font-size: 0.84rem; color: #64748b; line-height: 1.5;
+            padding: 6px 20px 0; flex: 1;
+        }
+        .card-footer {
+            display: flex; justify-content: flex-end; align-items: center;
+            padding: 12px 20px; margin-top: auto;
+            border-top: 1px solid #f1f5f9;
+        }
+        .card-read-more {
+            font-size: 0.82rem; font-weight: 600; color: #94a3b8;
+            transition: all 0.2s;
+        }
+        .article-home-card:hover .card-read-more {
+            color: #2563eb; letter-spacing: 0.02em;
+        }
+
+        .pagination {
+            display: flex; justify-content: center; gap: 6px;
+            padding: 8px 0 48px; flex-wrap: wrap; align-items: center;
+        }
+        .pag-link {
+            padding: 10px 16px; border-radius: 10px; border: 1px solid #e2e8f0;
+            color: #64748b; font-size: 0.9rem; text-decoration: none;
+            transition: all 0.2s; font-weight: 500;
+        }
+        .pag-link:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+        .pag-active {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: #fff !important; border-color: #2563eb;
+            box-shadow: 0 3px 10px rgba(37,99,235,0.3);
+        }
+        .pag-edge { font-size: 1rem; font-weight: 700; }
+        .pag-dots { color: #94a3b8; padding: 0 4px; }
+
+        
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+
+        @media (max-width: 640px) {
+            .cat-grid { grid-template-columns: 1fr; }
+            .cat-hero h1 { font-size: 1.5rem; }
+        }
+    </style>
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container">
+            <a href="/">Главная</a>
+            <span class="breadcrumb-sep">›</span>
+            <span class="breadcrumb-current">Другое</span>
+        </div>
+    </nav>
+
+    <section class="cat-hero">
+        <div class="container">
+            <span class="cat-hero-icon">📁</span>
+            <h1>Другое</h1>
+            <p>Различные самоделки из баллонов, советы по обслуживанию техники и прочие технические вопросы. · страница 17 из 23</p>
+            <div class="cat-benefits"><div class="cat-benefit"><span class="benefit-icon">📖</span><span>Понятные инструкции</span></div><div class="cat-benefit"><span class="benefit-icon">✅</span><span>Проверенные решения</span></div><div class="cat-benefit"><span class="benefit-icon">⚡</span><span>Без лишних слов</span></div></div>
+        </div>
+    </section>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="cat-grid">
+            <a href="/articles/0/0-/0-4-isparitel-na-skolko-vatt.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">0.4 Ом испаритель: на сколько ватт ставить и какой пар</div>
+                <div class="article-home-desc">Подробный гайд по мощности для испарителей 0.4 Ом. Таблица ватт, вкусовые качества, ресурс и советы по заправке жидкость</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/0/0-/0-7-om-eto-skolko-vatt.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 8 мин</span>
+                </div>
+                <div class="article-home-title">0.7 Ом — сколько Ватт? Расчет мощности и нагрев</div>
+                <div class="article-home-desc">Узнайте, сколько ватт выделяется на сопротивлении 0.7 Ом при разных токах. Расчет по формулам, таблица мощности и риски </div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-vstavit-isparitel-v-pasito-2.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 8 мин</span>
+                </div>
+                <div class="article-home-title">Как вставить испаритель в Pasito 2: полная инструкция</div>
+                <div class="article-home-desc">Пошаговое руководство по замене испарителя в электронке Pasito 2. Как правильно установить картридж, избежать протечек и</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/m/mo/mozhno-li-kipyatit-isparitel.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Можно ли кипятить испаритель вейпа: и методы очистки</div>
+                <div class="article-home-desc">Узнайте, можно ли кипятить испаритель для очистки. Риски, эффективность, альтернативные методы и влияние на вкус пара. Э</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-odnorazka-plokho-tyanetsya.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Почему одноразка плохо тянется: разбор причин и ремонт</div>
+                <div class="article-home-desc">Одноразовая электронная сигарета не тянется? Разбираем причины: забитый испаритель, густая жижа, брак. Диагностика, ремо</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-razobrat-knight-80.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Как разобрать Knight 80: полная инструкция и советы</div>
+                <div class="article-home-desc">Подробное руководство по разборке механической клавиатуры Knight 80. Замена переключателей, смазка и чистка без поврежде</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kakoe-ruzhe-luchshe-kupit-dlya-okhoty-12-kalibr-gladkostvolnoe-vertikalnoe.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Какое вертикальное ружье 12 калибра лучше: выбор охотничьего оружия</div>
+                <div class="article-home-desc">Подробный гид по выбору вертикального двуствольного ружья 12 калибра. Сравнение моделей, советы экспертов и критерии пок</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/m/mu/musorka-iz-ballona-ot-freona.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Мусорка из баллона от фреона: переделка своими руками</div>
+                <div class="article-home-desc">Как сделать стильную мусорку из баллона от фреона: пошаговая инструкция, выбор краски, инструменты и техника безопасност</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/c/ch/chto-znachit-no-atomizer-na-vejpe.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">No Atomizer на вейпе: причины и устранение ошибки</div>
+                <div class="article-home-desc">Разбираем, почему парогенератор пишет No Atomizer. Как проверить спираль, починить коннектор и избежать замыкания бака.</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-snyat-blok-s-pasito-2.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Как снять блок с Пасито 2: решение проблем с ограничением скорости</div>
+                <div class="article-home-desc">Узнайте, как снять блок скорости с самоката Pasito 2. Программные и аппаратные методы, настройки контроллера и меры безо</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kakie-ispary-podkhodyat-na-knajt-80.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Какие испарители подходят на Knight 80: обзор и совместимость</div>
+                <div class="article-home-desc">Подбор испарителей для Knight 80. Совместимость картриджей, параметры резьбы и напряжения. Инструкция по замене и советы</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/pe/perestal-chuvstvovat-vkus-zhizhi.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Почему пропал вкус жижи: причины и методы восстановления</div>
+                <div class="article-home-desc">Узнайте, почему перестал чувствовать вкус жижи. Разбор причин: нагар, износ вейпа и рецепторы. Эффективные способы верну</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-isparitel-ne-propityvaetsya.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Почему испаритель не пропитывается: 5 причин и решения</div>
+                <div class="article-home-desc">Испаритель не пропитывается жижей? Разбираем причины сухих затяжек, нагар и протечки. Пошаговая инструкция по замене кар</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-mozhet-dymit-pechka.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Почему дымит печка: причины и способы устранения</div>
+                <div class="article-home-desc">Разбираем причины задымления печи. Плохая тяга, трещины, конструкция. Инструкция по диагностике и ремонту своими руками.</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-vejp-perestal-rabotat.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Почему вейп перестал работать: диагностика и ремонт</div>
+                <div class="article-home-desc">Разбираем причины отказа электронной сигареты. Очистка контактов, замена испарителя, настройка мощности и ремонт платы с</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/poslednij-den-pompei-chto-proizoshlo.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Последний день Помпеи: что произошло в 79 году н.э.</div>
+                <div class="article-home-desc">Хронология катастрофы, причины гибели города и новые научные данные. Узнайте, как произошло извержение Везувия и какова </div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-bystro-vysushit-isparitel-ot-vody.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Как быстро высушить испаритель от воды: 5 проверенных способов</div>
+                <div class="article-home-desc">Пошаговая инструкция по просушке испарителя электронных сигарет. Методы сушки феном, рисом, спиртом. Что делать если поп</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-vybrat-soprotivlenie-isparitelya.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 13 мин</span>
+                </div>
+                <div class="article-home-title">Как выбрать сопротивление испарителя для вейпа: гайд по Омам</div>
+                <div class="article-home-desc">Подробное руководство: как выбрать сопротивление испарителя. Влияние Омов на вкус, пар и расход жидкости. Таблица сопрот</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-knajt-80-ne-vidit-kartridzh.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Принтер Кнайт 80 не видит картридж: диагностика и ремонт</div>
+                <div class="article-home-desc">Почему принтер Knight 80 не видит картридж? Полный гайд по устранению ошибок чипа, очистке контактов и сбросу счетчиков </div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pochemu-ne-rabotaet-vejp.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Почему не работает вейп: 7 главных причин и ремонт</div>
+                <div class="article-home-desc">Вейп не тянет, не греет или не включается? Разбираем причины поломки: от аккумулятора до испарителя. Инструкция по устра</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/postoyanno-rabotayut-ventilyatory-okhlazhdeniya-na-noutbuke.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 11 мин</span>
+                </div>
+                <div class="article-home-title">Постоянно работают вентиляторы охлаждения на ноутбуке: ремонт</div>
+                <div class="article-home-desc">Шумят кулеры в ноутбуке? Узнайте причины перегрева и как починить систему охлаждения своими руками. Чистка, замена термо</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/r/re/rezhimy-na-manto-ajo.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 12 мин</span>
+                </div>
+                <div class="article-home-title">Режимы на манто айо: обзор функционала и настройки</div>
+                <div class="article-home-desc">Подробный обзор режимов работы на манто айо: автоматический, ручной, паровой. Настройка таймеров и советы по эксплуатаци</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/s/sm/smoant-santi-instruktsiya-na-russkom.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Смоант Санти инструкция: настройка и управление пультом</div>
+                <div class="article-home-desc">Подробная инструкция на русском для пульта Смоант Санти. Подключение, сброс настроек, коды телевизоров и устранение неис</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/v/vn/vnutrennee-soprotivlenie-akkumulyatora-18650-na-chto-vliyaet.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Внутреннее сопротивление аккумулятора 18650: влияние на работу</div>
+                <div class="article-home-desc">Как внутреннее сопротивление Li-Ion 18650 влияет на мощность, нагрев и срок службы. Таблица норм, методы измерения и кри</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-izbavitsya-ot-garika-v-odnorazke-ne-razbiraya.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Как избавиться от гари в одноразке: способы без разборки</div>
+                <div class="article-home-desc">Узнайте, как убрать вкус гари и нагара в одноразовых вейпах без разбора корпуса. Эффективные методы восстановления жидко</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kak-pomenyat-kartridzh-na-pasito.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 12 мин</span>
+                </div>
+                <div class="article-home-title">Как заменить картридж на принтере Pantum: полная инструкция</div>
+                <div class="article-home-desc">Пошаговое руководство по замене картриджа на принтерах Pantum. Как выбрать совместимую модель, заправить тонер и сбросит</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/kh/khlebopechka-gudit-no-ne-krutit.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Хлебопечка гудит но не крутит: причины и ремонт своими руками</div>
+                <div class="article-home-desc">Почему хлебопечка гудит, но не замешивает тесто? Разбор поломок: ремень, двигатель, шестерни. Пошаговая инструкция по ре</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/l/lo/lozhka-za-mamu-kafe-otzyvy.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 9 мин</span>
+                </div>
+                <div class="article-home-title">Ложка за маму кафе отзывы: разбор меню и сервиса</div>
+                <div class="article-home-desc">Честные отзывы о кафе Ложка за маму. Анализируем меню, цены, качество блюд и сервис. Ответы на частые вопросы посетителе</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/p/po/pod-vidit-kartridzh-no-ne-tyanetsya.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Под видит картридж но не тянется: ремонт принтера</div>
+                <div class="article-home-desc">Принтер видит картридж, но не тянет бумагу? Разбираем причины: износ роликов, ошибки ПО, загрязнение датчиков. Инструкци</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a>
+            <a href="/articles/k/ka/kafe-na-trasse-m4-don.html" class="article-home-card">
+                <div class="card-top">
+                    <span class="card-icon">📁</span>
+                    <span class="card-read-time">⏱ 10 мин</span>
+                </div>
+                <div class="article-home-title">Кафе на трассе М4 Дон: лучшие остановки, цены и отзывы</div>
+                <div class="article-home-desc">Полный гид по кафе на трассе М4 Дон. Где вкусно поесть, цены на еду, чистые туалеты и отзывы водителей. Рейтинг лучших п</div>
+                <div class="card-footer">
+                    <span class="card-read-more">Читать →</span>
+                </div>
+            </a></div>
+            <nav class="pagination" aria-label="Страницы"><a href="/category/drugoe/" class="pag-link pag-edge" title="В начало">«</a><a href="/category/drugoe/page/16/" class="pag-link">← Назад</a><a href="/category/drugoe/" class="pag-link">1</a><span class="pag-dots">…</span><a href="/category/drugoe/page/14/" class="pag-link">14</a><a href="/category/drugoe/page/15/" class="pag-link">15</a><a href="/category/drugoe/page/16/" class="pag-link">16</a><a href="/category/drugoe/page/17/" class="pag-link pag-active">17</a><a href="/category/drugoe/page/18/" class="pag-link">18</a><a href="/category/drugoe/page/19/" class="pag-link">19</a><a href="/category/drugoe/page/20/" class="pag-link">20</a><span class="pag-dots">…</span><a href="/category/drugoe/page/23/" class="pag-link">23</a><a href="/category/drugoe/page/18/" class="pag-link">Далее →</a><a href="/category/drugoe/page/23/" class="pag-link pag-edge" title="В конец">»</a></nav>
+        </div>
+    </main>
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script>
+    document.getElementById('menuBtn')?.addEventListener('click', () => {
+        document.getElementById('mainNav')?.classList.toggle('open');
+    });
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

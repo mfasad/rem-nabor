@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Zont H-1: Инструкция по установке, настройке и управлению — Рем Набор</title>
+    <meta name="description" content="Подробный обзор термостата Zont H-1. Как подключить, настроить зоны отопления и управлять котлом через приложение со смартфона. Решение проблем.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termostat-zont-h-1.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Zont H-1: Инструкция по установке, настройке и управлению">
+    <meta property="og:description" content="Подробный обзор термостата Zont H-1. Как подключить, настроить зоны отопления и управлять котлом через приложение со смартфона. Решение проблем.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Zont H-1: Инструкция по установке, настройке и управлению</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Умный термостат Zont H-1: полное руководство по эксплуатации</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#технические-характеристики-и-конструктивные-особенности">Технические характеристики и конструктивные особенности</a></li><li><a href="#правильный-выбор-места-и-схема-подключения">Правильный выбор места и схема подключения</a></li><li><a href="#настройка-устройства-и-регистрация-в-системе">Настройка устройства и регистрация в системе</a></li><li><a href="#управление-отоплением-через-мобильное-приложение">Управление отоплением через мобильное приложение</a></li><li><a href="#расширение-функционала-выносные-датчики-и-зоны">Расширение функционала: выносные датчики и зоны</a></li><li><a href="#диагностика-неисправностей-и-типичные-ошибки">Диагностика неисправностей и типичные ошибки</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Современные системы отопления требуют не просто надежного котла, но и интеллектуального управления, способного адаптироваться под ритм жизни владельца. Устройство <strong>Zont H-1</strong> представляет собой яркий пример такого подхода, объединяя функции программируемого термостата и модуля удаленного доступа. Это компактное решение позволяет превратить обычный газовый или электрический котел в часть системы «умный дом», обеспечивая существенную экономию энергоносителей.</p>
+
+<p>Главная особенность данной модели заключается в ее универсальности и простоте интеграции. Вам не нужно быть инженером-теплотехником, чтобы настроить базовые сценарии работы. Достаточно подключить устройство к сети и воспользоваться мобильным приложением, которое берет на себя всю сложность логики управления температурой в помещениях. Прибор постоянно анализирует данные с датчиков и корректирует работу горелки или ТЭНов.</p>
+
+<p>Однако, несмотря на кажущуюся простоту, корректный монтаж и первичная конфигурация играют решающую роль в стабильности всей системы. Ошибки на этапе подключения могут привести к некорректному считыванию температур или потере связи с сервером. В этом материале мы детально разберем все аспекты эксплуатации <em>Zont H-1</em>, от выбора места установки до тонкой настройки гистерезиса и работы с выносными датчиками.</p>
+
+<h2 id="технические-характеристики-и-конструктивные-особенности">Технические характеристики и конструктивные особенности</h2>
+
+<p>В основе устройства лежит надежный микроконтроллер, обеспечивающий бесперебойную работу даже при кратковременных скачках напряжения в сети. Корпус выполнен из негорючего пластика и предназначен для монтажа на DIN-рейку или непосредственно на стену, что делает его незаметным в интерьере котельной. Внутри находится плата с реле, способная коммутировать нагрузку до 16 Ампер, чего достаточно для управления большинством бытовых циркуляционных насосов и клапанов.</p>
+
+<p>Ключевым элементом системы является встроенный модуль связи. В зависимости от конкретной ревизии, это может быть GSM-модем или комбинированный модуль GSM+Wi-Fi. Именно этот компонент позволяет отправлять уведомления о неисправностях и принимать команды от пользователя из любой точки мира. Для корректной работы антенны необходимо учитывать уровень сигнала в месте установки прибора.</p>
+
+<p>Устройство поддерживает подключение различных типов датчиков температуры. Базовая комплектация обычно включает один датчик, но функционал позволяет расширить систему до нескольких зон контроля. Это особенно актуально для домов со сложной системой отопления, где разные комнаты требуют разного теплового режима. Точность измерений составляет ±0.5°C, что является отличным показателем для бытового класса оборудования.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При выборе места установки избегайте зон прямой инсоляции и близости к радиаторам отопления, так как это исказит показания встроенного датчика температуры воздуха.</p></div>
+
+<p>Питание устройства осуществляется от сети 220В, но важно помнить о наличии резервного аккумулятора. Встроенная батарея предназначена не для длительной работы котла при отключении электричества, а для отправки критических уведомлений и сохранения настроек в памяти. Это гарантирует, что вы узнаете о пропаже сети или аварийной остановке котла даже в глубокой ночью.</p>
+
+<h2 id="правильный-выбор-места-и-схема-подключения">Правильный выбор места и схема подключения</h2>
+
+<p>Эффективность работы <strong>терморегулятора</strong> напрямую зависит от того, где он установлен. Идеальное место — это коридор или центральная комната на высоте около 1.5 метра от пола. Не рекомендуется монтировать прибор в нишах, за шторами или вблизи источников тепла, таких как телевизоры или лампы накаливания. Локальный перегрев корпуса заставит систему думать, что в доме жарко, и она отключит отопление преждевременно.</p>
+
+<p>Процесс подключения начинается с обесточивания котла и всей электросети. Это правило техники безопасности нарушать нельзя. Снимите переднюю крышку устройства, чтобы получить доступ к клеммной колодке. Стандартная схема предполагает разрыв фазного провода, идущего к котлу, и подключение его через сухие контакты реле.</p>
+
+<ul>
+<li>🔌 <strong>Клеммы L и N</strong>: сюда подается питание 220В от домашней сети. Важно соблюдать полярность, хотя для многих блоков питания это не критично, заземление обязательно.</li>
+<li>🔥 <strong>Контакты реле (NO/COM)</strong>: используются для включения и выключения котла по команде термостата. Это нормально-разомкнутый контакт, который замыкается при требовании тепла.</li>
+<li>🌡️ <strong>Разъем для датчика</strong>: подключается выносной датчик температуры, если вы планируете управлять отоплением не по температуре воздуха в комнате, а по температуре теплоносителя или внешней погоде.</li>
+</ul>
+
+<p>Если ваш котел требует подключения насоса отдельно от основной автоматики, <em>Zont H-1</em> предоставляет такую возможность через дополнительный канал управления. В этом случае необходимо внимательно изучить паспорт конкретного котла, так как схемы могут отличаться для разных производителей, таких как Baxi, Protherm или Vaillant. Неправильное подключение может вывести плату котла из строя.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед включением</h4><label class="check-item"><input type="checkbox"><span>Отключено ли напряжение в щитке?:Затянуты ли винты клемм?:Правильно ли выбран режим работы реле?:Установлена ли SIM-карта (если есть GSM)?:Проверена ли полярность подключения датчиков?</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 1</div></div>
+
+<blockquote>
+<p>⚠️ Внимание: При подключении мощных электрических котлов или насосных групп убедитесь, что ток нагрузки не превышает 16А. В противном случае обязательно используйте промежуточное контактное реле, иначе контакты термостата могут привариться.</p>
+</blockquote>
+
+<h2 id="настройка-устройства-и-регистрация-в-системе">Настройка устройства и регистрация в системе</h2>
+
+<p>После физического подключения наступает этап программной настройки. Первым шагом является активация SIM-карты, если ваша модель оснащена GSM-модулем. Карта должна быть установлена в слот до подачи питания, а также на ней должен быть отключен запрос PIN-кода. Сделать это можно, вставив симку в обычный телефон. Баланс счета должен быть положительным, тариф — предпочтительно с оплатой за мегабайты, а не за минуты.</p>
+
+<p>Далее необходимо зарегистрировать устройство в личном кабинете на сервере производителя. Для этого вам потребуется уникальный серийный номер, указанный на наклейке корпуса или в паспорте изделия. Процесс регистрации проходит через веб-интерфейс или мобильное приложение <em>Zont Home</em>. После ввода данных устройство появится в вашем списке оборудования и начнет передавать телеметрию.</p>
+
+<p>В настройках профиля важно правильно указать тип топлива и модель котла. Это позволит алгоритмам системы точнее прогнозировать время выхода на режим и инерционность системы. Также здесь настраиваются права доступа для других пользователей, например, членов семьи или сервисных инженеров, что удобно для коллективного управления.</p>
+
+<pre><code>Последовательность активации:
+<p>1. Вставить SIM (без PIN).</p>
+<p>2. Подать питание 220В.</p>
+<p>3. Дождаться мигания индикатора сети.</p>
+<p>4. Зарегистрировать серийный номер в приложении.</code></pre></p>
+
+<p>Отдельное внимание стоит уделить настройке температурных порогов. По умолчанию устройство поддерживает комфортный и экономичный режимы. Вы можете задать расписание, по которому температура будет снижаться в ночное время или когда никого нет дома. Гибкость настроек позволяет адаптировать работу системы под любой график жизни.</p>
+
+<div class="poll-widget" id="poll-08059798"><div class="poll-widget-question">📊 Как вы планируете управлять Zont H-1?</div><div class="poll-widget-option" data-poll="08059798" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Только через мобильное приложение:Через веб-интерфейс с ПК:Через голосовые команды:Автоматически по расписанию</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="управление-отоплением-через-мобильное-приложение">Управление отоплением через мобильное приложение</h2>
+
+<p>Интерфейс приложения <strong>Zont Home</strong> разработан с учетом эргономики и предоставляет пользователю полный контроль над системой. На главном экране отображается текущая температура в помещении, статус котла (включен/выключен/ошибка) и уровень сигнала. Интуитивно понятные графики позволяют отслеживать динамику изменения температуры за последние часы, дни или месяцы.</p>
+
+<p>Одной из самых полезных функций является возможность создания сценариев. Например, вы можете настроить автоматическое включение отопления за час до вашего возвращения с работы или отключение системы при открытии окон (при наличии дополнительных датчиков). Управление осуществляется в один тап, что особенно ценно в экстренных ситуациях.</p>
+
+<p>Система уведомлений работает безупречно. Вы получите push-сообщение или SMS не только при аварийном отключении котла, но и при падении температуры ниже критического уровня, разряде батареи или пропаже связи с устройством. Это дает чувство безопасности, особенно владельцам загородных домов, которые посещают их нерегулярно.</p>
+
+<details class="faq-item"><summary>Что делать, если приложение не видит устройство?</summary><div class="faq-answer"><p>Убедитесь, что телефон подключен к интернету. Проверьте баланс SIM-карты в термостате. Попробуйте перезагрузить устройство, отключив питание на 10 секунд. Если проблема сохраняется, проверьте настройки брандмауэра на роутере (для Wi-Fi версий).</p></div></details>
+
+<p>Для продвинутых пользователей доступна функция интеграции с другими системами умного дома. Через API или готовые интеграции (например, с Яндекс.Дом или Алисой) можно управлять температурой голосом. Это добавляет дополнительный уровень комфорта и современности в эксплуатацию отопительного оборудования.</p>
+
+<h2 id="расширение-функционала-выносные-датчики-и-зоны">Расширение функционала: выносные датчики и зоны</h2>
+
+<p>Штатного датчика воздуха внутри корпуса часто бывает недостаточно для равномерного прогрева большого дома. Подключение выносных датчиков позволяет перенести точку контроля в самую холодную комнату или измерять температуру уличного воздуха для реализации погодозависимой автоматики. Это значительно повышает энергоэффективность системы.</p>
+
+<p>При использовании нескольких датчиков термостат может работать в режиме выбора по минимальному или среднему значению. Например, если в детской комнате холодно, а в гостиной жарко, система приоритизирует обогрев детской. Настройка логики работы с несколькими источниками данных осуществляется в расширенных настройках личного кабинета.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип датчика</th>
+<th>Место установки</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Встроенный</td>
+<td>Корпус термостата</td>
+<td>Базовый контроль температуры воздуха</td>
+</tr>
+<tr>
+<td>Выносной (воздух)</td>
+<td>Жилая комната</td>
+<td>Точный контроль микроклимата в конкретной зоне</td>
+</tr>
+<tr>
+<td>Выносной (погружной)</td>
+<td>Труба подачи/обратки</td>
+<td>Защита от перегрева или замерзания теплоносителя</td>
+</tr>
+<tr>
+<td>Уличный</td>
+<td>Северная стена дома</td>
+<td>Коррекция мощности котла в зависимости от погоды</td>
+</tr>
+</tbody>
+</table>
+
+<p>Важно использовать только совместимые датчики, рекомендованные производителем. Использование сторонних терморезисторов с другим сопротивлением приведет к неверным показаниям температуры. Калибровка датчиков также доступна в меню настроек, что позволяет компенсировать небольшую погрешность измерений.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Длина провода выносного датчика не должна превышать рекомендованные производителем значения (обычно до 50-100 метров), иначе сопротивление линии внесет существенную погрешность в измерения.</p>
+</blockquote>
+
+<h2 id="диагностика-неисправностей-и-типичные-ошибки">Диагностика неисправностей и типичные ошибки</h2>
+
+<p>В процессе эксплуатации могут возникнуть ситуации, когда устройство ведет себя некорректно. Чаще всего проблемы связаны не с поломкой самого термостата, а с внешними факторами: плохим сигналом сотовой сети, севшей батарейкой в датчике или сбоями в работе котла. система самодиагностики <em>Zont H-1</em> помогает локализовать проблему.</p>
+
+<p>Если вы видите статус «Нет связи», первым делом проверьте индикаторы на корпусе. Мигающий индикатор сети обычно указывает на проблемы с GSM-модулем. Попробуйте переставить SIM-карту в другой слот или заменить оператора связи. Для версий с Wi-Fi проверьте настройки роутера и пароль от сети.</p>
+
+<p>Частой ошибкой является ситуация, когда термостат требует тепла, но котел не запускается. В этом случае необходимо проверить состояние сухих контактов реле. Если реле щелкает, но котел молчит, проблема в проводке между термостатом и котлом или в самой автоматике котла. Если реле молчит, проверьте настройки гистерезиса и текущую температуру.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Большинство ошибок связи решаются простой перезагрузкой устройства или заменой SIM-карты на тариф с лучшим покрытием в вашей местности.</p></div>
+
+<p>В логах событий приложения сохраняется история всех действий и срабатываний тревог. Анализ этих записей помогает понять причину частых включений и выключений котла (тактовки), что часто свидетельствует о неправильно подобранной мощности оборудования или отсутствии буферной емкости в системе.</p>
+
+<details>
+<summary>Почему термостат показывает неверную температуру?</summary>
+<p>Причина может быть в прямых солнечных лучах, падающих на корпус, или в наличии рядом работающей бытовой техники, выделяющей тепло. Также проверьте, не отошел ли контакт выносного датчика.</p>
+</details>
+
+<details>
+<summary>Можно ли использовать Zont H-1 с твердотопливным котлом?</summary>
+<p>Да, но с ограничениями. Термостат может управлять только циркуляционным насосом. Полноценное управление подачей воздуха или шнеком возможно только при наличии специализированных контроллеров на самом котле, к которым подключается Zont.</p>
+</details>
+
+<details>
+<summary>Как часто нужно менять батарейку в датчиках?</summary>
+<p>В зависимости от модели датчика и частоты опроса, срок службы элемента питания составляет от 1 до 2 лет. Приложение заранее предупредит о низком заряде батареи.</p>
+</details>
+
+<details>
+<summary>Что произойдет при отключении интернета?</summary>
+<p>Термостат продолжит работать по последним загруженным настройкам и расписанию. Удаленное управление и уведомления будут недоступны до восстановления соединения.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#технические-характеристики-и-конструктивные-особенности">Технические характеристики и конструктивные особенности</a></li><li><a href="#правильный-выбор-места-и-схема-подключения">Правильный выбор места и схема подключения</a></li><li><a href="#настройка-устройства-и-регистрация-в-системе">Настройка устройства и регистрация в системе</a></li><li><a href="#управление-отоплением-через-мобильное-приложение">Управление отоплением через мобильное приложение</a></li><li><a href="#расширение-функционала-выносные-датчики-и-зоны">Расширение функционала: выносные датчики и зоны</a></li><li><a href="#диагностика-неисправностей-и-типичные-ошибки">Диагностика неисправностей и типичные ошибки</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-proverit-kapillyarnyj-termostat.html" class="related-card">Как проверить капиллярный термостат: пошаговая инструкция</a></li><li><a href="/articles/k/ka/kak-soedinit-termoregulyator-s-obogrevatelem.html" class="related-card">Как подключить терморегулятор к обогревателю: пошаговая инструкция</a></li><li><a href="/articles/p/po/podklyuchenie-termoregulyatora-k-elektricheskomu-kotlu.html" class="related-card">Подключение терморегулятора к электрокотлу: схема и инструкция</a></li><li><a href="/articles/v/vy/vynosnoj-termostat-dlya-avto.html" class="related-card">Выносной термостат для авто: выбор, установка и настройка</a></li><li><a href="/articles/o/ot/otkrytie-termostata-pri-kakoj-temperature.html" class="related-card">При какой температуре открывается термостат: таблица и советы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-proverit-kapillyarnyj-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Как проверить капиллярный термостат: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по диагностике капиллярного термостата холодильника или кондиционера: мультиме</span></a><a href="/articles/k/ka/kak-soedinit-termoregulyator-s-obogrevatelem.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить терморегулятор к обогревателю: пошаговая инструкция</span><span class="related-bottom-desc">Схемы подключения терморегулятора к инфракрасному обогревателю и конвектору. Выбор датчика, монтаж п</span></a><a href="/articles/p/po/podklyuchenie-termoregulyatora-k-elektricheskomu-kotlu.html" class="related-bottom-card"><span class="related-bottom-title">Подключение терморегулятора к электрокотлу: схема и инструкция</span><span class="related-bottom-desc">Пошаговое руководство по подключению терморегулятора к электрическому котлу отопления. Схемы, инстру</span></a><a href="/articles/v/vy/vynosnoj-termostat-dlya-avto.html" class="related-bottom-card"><span class="related-bottom-title">Выносной термостат для авто: выбор, установка и настройка</span><span class="related-bottom-desc">Полное руководство по выбору и монтажу выносного термостата в автомобиль. Настройка режимов, схемы п</span></a><a href="/articles/o/ot/otkrytie-termostata-pri-kakoj-temperature.html" class="related-bottom-card"><span class="related-bottom-title">При какой температуре открывается термостат: таблица и советы</span><span class="related-bottom-desc">Узнайте, при какой температуре срабатывает термостат в автомобиле, котле или холодильнике. Подробные</span></a><a href="/articles/z/za/zamena-termoregulyatora-kholodilnika-indezit.html" class="related-bottom-card"><span class="related-bottom-title">Замена терморегулятора в холодильнике Indesit: пошаговая инструкция</span><span class="related-bottom-desc">Как самостоятельно заменить термостат в холодильнике Индезит: признаки неисправности, выбор детали, </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

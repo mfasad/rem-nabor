@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Не срабатывает вентилятор охлаждения Ока: причины и ремонт — Рем Набор</title>
+    <meta name="description" content="Подробный гайд: почему не работает вентилятор на Ока. Диагностика датчика, реле, мотора и проводки. Проверка схемы и замена деталей своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/n/ne/ne-srabatyvaet-ventilyator-okhlazhdeniya-oka.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Не срабатывает вентилятор охлаждения Ока: причины и ремонт">
+    <meta property="og:description" content="Подробный гайд: почему не работает вентилятор на Ока. Диагностика датчика, реле, мотора и проводки. Проверка схемы и замена деталей своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Не срабатывает вентилятор охлаждения Ока: причины и ремонт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Ремонт системы охлаждения Ока: если не включается вентилятор</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-и-проверка-предохранителей">Первичная диагностика и проверка предохранителей</a></li><li><a href="#тестирование-датчика-включения-вентилятора">Тестирование датчика включения вентилятора</a></li><li><a href="#проверка-электродвигателя-вентилятора">Проверка электродвигателя вентилятора</a></li><li><a href="#диагностика-реле-и-проводки">Диагностика реле и проводки</a></li><li><a href="#воздушные-пробки-и-уровень-антифриза">Воздушные пробки и уровень антифриза</a></li><li><a href="#альтернативные-решения-и-модернизация">Альтернативные решения и модернизация</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда на <em>ВАЗ-1111 Ока</em> перестает срабатывать электровентилятор радиатора, является одной из самых критических для этого автомобиля. Учитывая малый объем двигателя и компактность моторного отсека, перегрев происходит стремительно, что может привести к деформации головки блока цилиндров или прогоранию прокладки ГБЦ. Владельцы часто сталкиваются с тем, что стрелка температурного датчика уверенно ползет в красную зону, а лопасти остаются неподвижными.</p>
+
+<p>Игнорирование этой проблемы недопустимо, так как система охлаждения «Оки» не имеет достаточного запаса прочности для работы в экстремальных режимах без принудительного обдува. В отличие от более современных моделей, здесь используется простая, но капризная электрическая схема, зависящая от качества контактов и исправности нескольких ключевых элементов. Ниже мы разберем пошаговый алгоритм поиска неисправности и методы её устранения.</p>
+
+<p>Первое, что необходимо сделать при обнаружении перегрева — немедленно остановиться и заглушить двигатель, не открывая сразу крышку расширительного бачка, чтобы избежать ожогов паром. Дальнейшая диагностика требует наличия минимального набора инструментов: мультиметра, контрольной лампы или просто отрезка провода с зачищенными концами для проверки цепей. <strong>Безопасность</strong> при работе с электропроводкой и горячим антифризом должна быть на первом месте.</p>
+
+<h2 id="первичная-диагностика-и-проверка-предохранителей">Первичная диагностика и проверка предохранителей</h2>
+
+<p>Любой ремонт электрики начинается с проверки самых простых и доступных элементов. В случае с <em>Окой</em>, цепь питания вентилятора защищена предохранителем, который часто перегорает при коротком замыкании или пусковых токах изношенного мотора. Блок предохранителей расположен в салоне или под капотом (в зависимости от года выпуска и модификации), поэтому сверьтесь с крышкой блока или инструкцией по эксплуатации вашего экземпляра.</p>
+
+<p>Если визуальный осмотр целостности плавкой вставки не дал результатов, используйте мультиметр в режиме прозвонки. Часто бывает так, что предохранитель выглядит целым, но контакт внутри нарушен. Также стоит проверить состояние самого патрона предохранителя: окисленные контакты могут создавать высокое переходное сопротивление, из-за чего напряжения не хватает для запуска <strong>электродвигателя</strong>.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не устанавливайте предохранитель большего номинала («жучки» из проволоки). Это может привести к возгоранию проводки, так как кабель рассчитан на определенную силу тока, и при коротком замыкании он расплавится раньше, чем сработает защита.</p>
+</blockquote>
+
+<p>После замены предохранителя попробуйте запустить двигатель и дождаться включения вентилятора. Если он снова сгорает мгновенно, значит, в цепи присутствует короткое замыкание, и искать проблему нужно в проводке или самом моторе, прежде чем ставить новую защиту.</p>
+
+<div class="checklist-block"><h4>☑️ Быстрая проверка цепи питания</h4><label class="check-item"><input type="checkbox"><span>Проверить предохранитель вентилятора</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть колодку предохранителя на окислы</span></label><label class="check-item"><input type="checkbox"><span>Замерить напряжение на контактах предохранителя</span></label><label class="check-item"><input type="checkbox"><span>Проверить массу кузова</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="тестирование-датчика-включения-вентилятора">Тестирование датчика включения вентилятора</h2>
+
+<p>На большинстве модификаций <em>ВАЗ-1111</em> датчик температуры охлаждающей жидкости (ДТОЖ), отвечающий за включение вентилятора, вкручен непосредственно в нижний бачок радиатора. Именно он замыкает цепь при достижении критической температуры (обычно около 92–97°C). Если датчик вышел из строя и не замыкает контакты, сигнал на реле или мотор не поступит.</p>
+
+<p>Самый быстрый способ проверить работоспособность датчика без снятия — метод перемыкания. При включенном зажигании (двигатель можно не заводить, но лучше прогреть его до рабочей температуры) аккуратно снимите фишку с датчика и замкните два контакта разъема проводом или отверткой. Если вентилятор сразу заработал на полную мощность, значит, сам мотор и цепь до датчика исправны, а проблема именно в <strong>термовыключателе</strong>.</p>
+
+<p>В некоторых версиях схемы управление идет через электронный блок или дополнительное реле, тогда логика проверки может незначительно отличаться. Однако принцип "замыкания на массу" или "прямой подачи плюса" остается базовым для понимания логики работы системы. Если при замыкании контактов тишина — проблема глубже, возможно, в проводке или самом вентиляторе.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При замене датчика обязательно используйте новую медную шайбу и наносите герметик на резьбу, чтобы избежать течи антифриза под давлением.</p></div>
+
+<p>Если датчик подтвердил свою неисправность, его необходимо выкрутить, предварительно слив часть антифриза ниже уровня установки датчика. При установке нового элемента не перетягивайте его, так как материал бачка радиатора может треснуть от избыточного усилия.</p>
+
+<h2 id="проверка-электродвигателя-вентилятора">Проверка электродвигателя вентилятора</h2>
+
+<p>Если датчик исправен или был исключен из цепи перемычкой, а вентилятор молчит, следующим подозреваемым становится сам <strong>электромотор</strong>. Со временем щетки внутри двигателя стираются, коллектор загрязняется, а подшипники высыхают, создавая огромное сопротивление вращению. Визуально это часто проявляется как тяжелый проворот лопастей рукой при заглушенном двигателе.</p>
+
+<p>Для точной диагностики необходимо подать напряжение напрямую с аккумулятора. Отсоедините фишку от вентилятора и двумя проводами подключите контакты мотора к клеммам АКБ. Соблюдайте полярность: обычно красный провод — это плюс, черный — минус, но лучше проверить маркировку на корпусе. Исправный мотор должен легко набрать обороты и создавать мощный поток воздуха.</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом при прямой подаче 12В</th>
+<th>Вероятная причина</th>
+<th>Метод решения</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Вентилятор не крутится, ток потребления 0А</td>
+<td>Обрыв обмотки или щеток</td>
+<td>Замена мотора или ремонт якоря</td>
+</tr>
+<tr>
+<td>Гудит, но не вращается, ток высокий</td>
+<td>Заклинивание подшипников</td>
+<td>Смазка или замена втулок</td>
+</tr>
+<tr>
+<td>Крутится медленно и с искрением</td>
+<td>Износ щеток коллектора</td>
+<td>Замена щеточного узла</td>
+</tr>
+<tr>
+<td>Работает нормально</td>
+<td>Проблема в цепи управления</td>
+<td>Диагностика реле и проводки</td>
+</tr>
+</tbody>
+</table>
+
+<p>Частой проблемой на старых экземплярах является окисление контактов внутри разъема, подключаемого к мотору. Даже если двигатель исправен, отсутствие контакта в фишке не даст ему запуститься. Осмотрите клеммы на предмет зеленого налета и при необходимости зачистите их мелкозернистой наждачной бумагой или специальным спреем для контактов.</p>
+
+<details class="faq-item"><summary>Ресурс штатного вентилятора Ока</summary><div class="faq-answer"><p>Штатные двигатели вентиляторов на Оке часто не отличаются долговечностью и могут выходить из строя каждые 3-5 лет активной эксплуатации. Многие владельцы рекомендуют сразу устанавливать усиленные варианты от других моделей ВАЗ или аналоги с металлическими крыльчатками, которые менее подвержены деформации от жары.</p></div></details>
+
+<h2 id="диагностика-реле-и-проводки">Диагностика реле и проводки</h2>
+
+<p>Схема включения вентилятора на <em>Оке</em> может предусматривать использование промежуточного реле. Этот элемент берет на себя силовую нагрузку, защищая контакты датчика и проводку. Если реле неисправно (подгорели контакты, сгорела катушка), цепь не замкнется даже при исправном датчике и моторе.</p>
+
+<p>Проверить реле можно, подав напряжение на управляющие контакты (обычно это тонкие провода) и проверив замыкание силовой пары мультиметром. Характерный щелчок при подаче питания не всегда гарантирует работоспособность силовых контактов внутри — они могут быть покрыты слоем нагара, который не проводит ток под нагрузкой. В таком случае реле подлежит замене.</p>
+
+<ul>
+<li>🔌 <strong>Окисление массы</strong>: Проверьте крепление минусового провода от двигателя к кузову. Плохой контакт массы — бич автомобилей этого класса, приводящий к нестабильной работе всей электроники.</li>
+<li>🔥 <strong>Перетирание проводов</strong>: Вибрации двигателя со временем перетирают изоляцию проводов в жгуте. Осмотрите проводку в местах соприкосновения с металлическими элементами кузова.</li>
+<li>🔋 <strong>Просадка напряжения</strong>: При старте вентилятора напряжение в бортовой сети не должно падать ниже 10-11 Вольт. Слабый аккумулятор или генератор могут не обеспечить нужный ток.</li>
+</ul>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При проверке проводки под капотом будьте предельно осторожны с вращающимся ремнем генератора и горячими частями двигателя. Всегда фиксируйте капот надежным упором перед началом работ.</p>
+</blockquote>
+
+<p>Если вы обнаружили перетертый провод, не просто замотайте его изолентой. Лучшим решением будет пропаять соединение и использовать термоусадочную трубку для надежной изоляции. Проводка в подкапотном пространстве подвергается агрессивному воздействию температур и влаги, поэтому качество изоляции критически важно.</p>
+
+<div class="poll-widget" id="poll-50e83bd2"><div class="poll-widget-question">📊 Как часто вы сталкиваетесь с перегревом Оки?</div><div class="poll-widget-option" data-poll="50e83bd2" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Ежедневно в пробках</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50e83bd2" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Только в жару летом</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50e83bd2" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Редко, при поломках</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="50e83bd2" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда, система идеальна</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="воздушные-пробки-и-уровень-антифриза">Воздушные пробки и уровень антифриза</h2>
+
+<p>Иногда причина кажущейся неисправности вентилятора кроется не в электрике, а в самой системе охлаждения. Если в системе образовалась <strong>воздушная пробка</strong>, датчик температуры, установленный в радиаторе, может не омываться горячим антифризом. В результате он фиксирует низкую температуру и не дает команду на включение, хотя двигатель уже кипит.</p>
+
+<p>Проверьте уровень охлаждающей жидкости в расширительном бачке. На холодном двигателе он должен быть между отметками MIN и MAX. Если уровень критически низок, долейте антифриз той же марки, что уже залит, или дистиллированную воду в качестве временной меры. После долива необходимо удалить воздух из системы, прогрев двигатель с открытой крышкой бачка (аккуратно!) или заехав передними колесами на возвышенность.</p>
+
+<p>Также осмотрите сам радиатор. Если соты забиты пухом, грязью или насекомыми, теплообмен нарушается. Вентилятор может работать исправно, но прогонять воздух сквозь плотную грязевую корку бесполезно. Промывка радиатора снаружи водой под давлением (но осторожно, чтобы не погнуть соты) часто решает проблему перегрева без замены деталей.</p>
+
+<h2 id="альтернативные-решения-и-модернизация">Альтернативные решения и модернизация</h2>
+
+<p>Многие владельцы <em>Оки</em>, устав от ненадежности штатной системы, прибегают к конструктивным изменениям. Популярным решением является установка более производительного вентилятора от <em>ВАЗ-2108</em> или <em>ВАЗ-2110</em>, который требует доработки крепления, но обеспечивает лучший обдув. Также практикуется установка дополнительного датчика в салон для ручного принудительного включения вентилятора кнопкой.</p>
+
+<p>Еще один вариант — перенос датчика включения в головку блока цилиндров (если конструкция позволяет) или использование универсального термореле с выносным датчиком, который можно установить в любую точку патрубка. Это позволяет более точно контролировать температурный режим и исключить зависимость от одного штатного элемента.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Модернизация системы охлаждения часто оправдана, так как штатные компоненты Оки рассчитаны на щадящие режимы эксплуатации, не всегда соответствующие современным условиям трафика.</p></div>
+
+<p>При любой модернизации помните, что увеличение мощности вентилятора требует проверки сечения проводов и номинала предохранителей. Штатная проводка может не выдержать ток более мощного мотора, что приведет к оплавлению изоляции и пожару. Всегда рассчитывайте нагрузку и усиливайте силовые цепи при необходимости.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли ездить с неработающим вентилятором зимой?</summary>
+<p>Зимой риск перегрева минимален из-за низкой температуры окружающего воздуха, но не исключен полностью, особенно в глухих пробках. Кроме того, неисправность может усугубиться (например, сгореть обмотка мотора), и весной вы останете без охлаждения. Лучше устранить проблему сразу.</p>
+</details>
+
+<details>
+<summary>Какая температура включения вентилятора на Ока считается нормальной?</summary>
+<p>Штатные датчики обычно срабатывают в диапазоне 92–97°C. Если вентилятор включается позже (ближе к 100-105°C), это указывает на неисправность датчика или наличие воздушной пробки, что опасно для двигателя.</p>
+</details>
+
+<details>
+<summary>Почему вентилятор работает постоянно, не выключаясь?</summary>
+<p>Это может быть вызвано коротким замыканием в проводке (плюс замкнут на массу до датчика), залипанием контактов реле в замкнутом положении или неисправностью самого датчика, который постоянно замкнут.</p>
+</details>
+
+<details>
+<summary>Можно ли временно замкнуть провода, чтобы доехать до сервиса?</summary>
+<p>Да, можно замкнуть цепь принудительно через кнопку в салоне или просто соединить провода на датчике. Но помните, что вентилятор будет работать постоянно, расходуя заряд АКБ и создавая шум. Следите за температурой и зарядом батареи.</p>
+</details>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Эксплуатация автомобиля с постоянно работающим вентилятором через перемычку допустима только в аварийном режиме на короткие расстояния. Длительная работа мотора обдува на максимальных оборотах может привести к его преждевременному износу.</p>
+</blockquote></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-и-проверка-предохранителей">Первичная диагностика и проверка предохранителей</a></li><li><a href="#тестирование-датчика-включения-вентилятора">Тестирование датчика включения вентилятора</a></li><li><a href="#проверка-электродвигателя-вентилятора">Проверка электродвигателя вентилятора</a></li><li><a href="#диагностика-реле-и-проводки">Диагностика реле и проводки</a></li><li><a href="#воздушные-пробки-и-уровень-антифриза">Воздушные пробки и уровень антифриза</a></li><li><a href="#альтернативные-решения-и-модернизация">Альтернативные решения и модернизация</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/r/ra/radiator-kalina-2-s-konditsionerom-artikul.html" class="related-card">Радиатор Лада Калина 2 с кондиционером: артикулы, выбор, замена</a></li><li><a href="/articles/k/ka/kak-ponyat-chto-ne-otkryvaetsya-termostat.html" class="related-card">Как понять что не открывается термостат: симптомы и проверка</a></li><li><a href="/articles/r/ra/rabochaya-temperatura-zmz-409.html" class="related-card">Рабочая температура ЗМЗ 409: нормы, датчики и причины перегрева</a></li><li><a href="/articles/k/ka/kalina-1-zamena-pompy-8-klapannaya.html" class="related-card">Замена помпы на Лада Калина 1 (8кл): пошаговая инструкция 2026</a></li><li><a href="/articles/s/si/silikonovye-patrubki-sistemy-okhlazhdeniya-otzyvy-vladeltsev.html" class="related-card">Силиконовые патрубки системы охлаждения: отзывы, плюсы и минусы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/r/ra/radiator-kalina-2-s-konditsionerom-artikul.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор Лада Калина 2 с кондиционером: артикулы, выбор, замена</span><span class="related-bottom-desc">Подробный гайд по выбору и замене радиатора охлаждения на Lada Kalina 2 с кондиционером: оригинальны</span></a><a href="/articles/k/ka/kak-ponyat-chto-ne-otkryvaetsya-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Как понять что не открывается термостат: симптомы и проверка</span><span class="related-bottom-desc">Признаки заклинившего термостата: перегрев, холодный мотор, ошибки. Как проверить термостат на автом</span></a><a href="/articles/r/ra/rabochaya-temperatura-zmz-409.html" class="related-bottom-card"><span class="related-bottom-title">Рабочая температура ЗМЗ 409: нормы, датчики и причины перегрева</span><span class="related-bottom-desc">Какая рабочая температура двигателя ЗМЗ 409 считается нормальной? Разбор термостатов 80 и 88 градусо</span></a><a href="/articles/k/ka/kalina-1-zamena-pompy-8-klapannaya.html" class="related-bottom-card"><span class="related-bottom-title">Замена помпы на Лада Калина 1 (8кл): пошаговая инструкция 2026</span><span class="related-bottom-desc">Как самостоятельно заменить помпу на Калине 1 с 8-клапанным двигателем: признаки неисправности, выбо</span></a><a href="/articles/s/si/silikonovye-patrubki-sistemy-okhlazhdeniya-otzyvy-vladeltsev.html" class="related-bottom-card"><span class="related-bottom-title">Силиконовые патрубки системы охлаждения: отзывы, плюсы и минусы</span><span class="related-bottom-desc">Честные отзывы о силиконовых патрубках системы охлаждения. Сравнение с резиной, влияние на температу</span></a><a href="/articles/t/te/termostat-zmz-406-zamena.html" class="related-bottom-card"><span class="related-bottom-title">Замена термостата ЗМЗ 406: пошаговая инструкция с фото</span><span class="related-bottom-desc">Как самостоятельно поменять термостат на двигателе ЗМЗ 406: признаки неисправности, выбор запчасти, </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

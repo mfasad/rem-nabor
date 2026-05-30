@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как прозвонить компрессор кондиционера мультиметром — Рем Набор</title>
+    <meta name="description" content="Пошаговая инструкция по диагностике компрессора сплит-системы мультиметром. Проверка обмоток, прозвонка на корпус и поиск межвитковых замыканий.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-prozvonit-kompressor-konditsionera-multimetrom.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как прозвонить компрессор кондиционера мультиметром">
+    <meta property="og:description" content="Пошаговая инструкция по диагностике компрессора сплит-системы мультиметром. Проверка обмоток, прозвонка на корпус и поиск межвитковых замыканий.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/domashnie-konditsionery/">Домашние кондиционеры</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как прозвонить компрессор кондиционера мультиметром</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как прозвонить компрессор кондиционера мультиметром</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подготовка-к-диагностике-и-меры-безопасности">Подготовка к диагностике и меры безопасности</a></li><li><a href="#поиск-контактной-группы-компрессора">Поиск контактной группы компрессора</a></li><li><a href="#методика-замера-сопротивления-обмоток">Методика замера сопротивления обмоток</a></li><li><a href="#проверка-на-пробой-изоляции-корпус">Проверка на пробой изоляции (корпус)</a></li><li><a href="#диагностика-межвиткового-замыкания">Диагностика межвиткового замыкания</a></li><li><a href="#анализ-результатов-и-принятие-решений">Анализ результатов и принятие решений</a></li><li><a href="#часто-задаваемые-вопросы">Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Внешний блок сплит-системы перестал запускаться или выбивает автомат защиты сразу после включения? В 80% случаев виновником такого поведения является неисправный компрессор. Это сердце всей системы циркуляции хладагента, и его отказ часто путают с проблемами платы управления или конденсаторов. Прежде чем вызывать дорогостоящего мастера или покупать новый агрегат, необходимо провести базовую диагностику электрической части.</p>
+
+<p>Для выполнения проверки вам потребуется обычный цифровой мультиметр и базовые навыки работы с электрооборудованием. Процесс диагностики заключается в измерении сопротивлений обмоток двигателя и проверке их изоляции относительно корпуса. Если вы никогда не держали в руках тестер, будьте предельно внимательны: работа с высоким напряжением требует строгого соблюдения правил электробезопасности.</p>
+
+<h2 id="подготовка-к-диагностике-и-меры-безопасности">Подготовка к диагностике и меры безопасности</h2>
+
+<p>Первым и самым критичным шагом является полное обесточивание оборудования. Просто выключить кондиционер пультом недостаточно — необходимо отключить автомат в электрощитке, который питает внешний блок. <strong>Напряжение 220 Вольт</strong> представляет смертельную опасность, поэтому убедитесь, что индикаторная отвертка не показывает наличие фазы на клеммной колодке внешнего модуля.</p>
+
+<p>После снятия крышки корпуса внешнего блока необходимо получить доступ к контактам самого компрессора. В некоторых моделях для этого требуется демонтировать верхнюю часть корпуса или снять защитный кожух, закрывающий электрическую коробку. Будьте осторожны с острыми краями металла и не повредите медные трубки теплообменника.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Даже после отключения питания в конденсаторах может оставаться остаточный заряд. Перед касанием любых контактов рекомендуется замкнуть выводы конденсатора изолированной отверткой или использовать разрядный резистор, чтобы избежать удара током.</p>
+</blockquote>
+
+<p>Подготовьте ваш измерительный прибор. Переключите мультиметр в режим измерения сопротивления (Ом), обычно обозначаемый символом <code>Ω</code>. Если ваш прибор имеет функцию автоматического выбора диапазона, просто установите переключатель в положение прозвонки или измерения сопротивления. Для проверки изоляции на пробой потребуется диапазон в мегаомах (Мом), если такая функция доступна, либо максимальный диапазон сопротивления.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к проверке</h4><label class="check-item"><input type="checkbox"><span>Отключить автомат в щитке</span></label><label class="check-item"><input type="checkbox"><span>Снять крышку внешнего блока</span></label><label class="check-item"><input type="checkbox"><span>Разрядить конденсаторы</span></label><label class="check-item"><input type="checkbox"><span>Настроить мультиметр на режим Ω</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="поиск-контактной-группы-компрессора">Поиск контактной группы компрессора</h2>
+
+<p>Компрессоры в бытовых кондиционерах обычно имеют три вывода, расположенные треугольником под защитной крышкой на торце агрегата. Эти контакты герметично впаяны в корпус и изолированы от него керамическими втулками. Над каждым контактом часто нанесена маркировка, обозначающая назначение обмотки.</p>
+
+<p>Стандартная маркировка выглядит следующим образом: <em>C</em> (Common) — общий вывод, <em>R</em> (Run) — рабочая обмотка и <em>S</em> (Start) — пусковая обмотка. В некоторых азиатских моделях можно встретить обозначения <em>M</em> вместо <em>R</em>. Если маркировка стерлась или отсутствует, определить выводы можно только путем замеров сопротивлений между ними.</p>
+
+<p>Для доступа к контактам аккуратно отсоедините провода, идущие от конденсатора и платы управления. Желательно сфотографировать схему подключения перед демонтажем, чтобы не запутаться при сборке. Очистите контакты от окислов и грязи, так как это может исказить результаты измерений.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если маркировка на контактах не читается, не пытайтесь угадать назначение. Определите общий провод методом замера: сумма сопротивлений между двумя другими контактами должна равняться сопротивлению между ними напрямую.</p></div>
+
+<h2 id="методика-замера-сопротивления-обмоток">Методика замера сопротивления обмоток</h2>
+
+<p>Суть проверки заключается в измерении электрического сопротивления между каждой парой контактов. Теоретически, сумма сопротивлений пусковой и рабочей обмоток должна быть равна сопротивлению между выводами <em>R</em> и <em>S</em>. Это фундаментальное правило электротехники для однофазных двигателей.</p>
+
+<p>Приложите щупы мультиметра к контактам <em>C</em> и <em>R</em>. Запишите полученное значение. Обычно сопротивление рабочей обмотки составляет от 1 до 5 Ом, в зависимости от мощности компрессора. Затем измерьте сопротивление между <em>C</em> и <em>S</em>. Пусковая обмотка всегда имеет большее сопротивление, часто в 2-3 раза превышающее сопротивление рабочей.</p>
+
+<p>Последним этапом является замер между выводами <em>R</em> и <em>S</em>. Полученное значение должно быть математической суммой двух предыдущих замеров. Если вы видите значительное расхождение, это может указывать на нарушение контактов внутри герметичного корпуса или межвитковое замыкание.</p>
+
+<table>
+<thead>
+<tr>
+<th>Пара контактов</th>
+<th>Тип обмотки</th>
+<th>Ожидаемое сопротивление (Ом)</th>
+<th>Диагноз при отклонении</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C — R</td>
+<td>Рабочая (Run)</td>
+<td>1.0 – 4.0</td>
+<td>Обрыв или КЗ</td>
+</tr>
+<tr>
+<td>C — S</td>
+<td>Пусковая (Start)</td>
+<td>3.0 – 10.0</td>
+<td>Обрыв или КЗ</td>
+</tr>
+<tr>
+<td>R — S</td>
+<td>Суммарное</td>
+<td>Сумма (C-R) + (C-S)</td>
+<td>Нарушение баланса</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Золотое правило диагностики: Сопротивление между выводами R и S всегда равно сумме сопротивлений C-R и C-S. Любое отклонение свидетельствует о неисправности двигателя.</p></div>
+
+<h2 id="проверка-на-пробой-изоляции-корпус">Проверка на пробой изоляции (корпус)</h2>
+
+<p>Одной из самых опасных неисправностей является пробой изоляции обмоток на металлический корпус компрессора. В этом случае фаза попадает на корпус внешнего блока, что может привести к срабатыванию УЗО или поражению током при касании. Проверить это состояние можно с помощью мультиметра, хотя профессиональные мастера используют мегаомметр.</p>
+
+<p>Переключите мультиметр на максимальный предел измерения сопротивления (обычно 20 МОм или 200 МОм). Один щуп плотно прижмите к любому из трех контактов компрессора, а второй — к зачищенному от краски месту на медной трубке или металлическому корпусу самого агрегата.</p>
+
+<p>Исправный компрессор должен показывать бесконечное сопротивление (на экране единица или символ перегрузки). Если прибор показывает какие-либо значения, даже несколько мегаом, изоляция нарушена. Такой компрессор эксплуатировать запрещено, так как риск пробоя под нагрузкой крайне высок.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При наличии сопротивления между обмоткой и корпусом менее 2-5 МОм компрессор считается неисправным. В условиях повышенной влажности значение сопротивления может падать, вызывая ложные срабатывания защиты.</p>
+</blockquote>
+
+<p>Иногда пробой проявляется только при нагревании или вибрации. Если "холодный" замер показывает норму, но автомат выбивает через несколько минут работы, проблема может быть в термической деградации лаковой изоляции проводов внутри статора.</p>
+
+<details class="faq-item"><summary>Почему мультиметр может не увидеть пробой?</summary><div class="faq-answer"><p>Стандартный мультиметр использует низкое напряжение (3-9В) для замеров. Пробой изоляции часто происходит при высоких напряжениях (220В и выше). Поэтому показания мультиметра в несколько МОм могут быть ложно-положительными. Для точной диагностики нужен мегаомметр с напряжением 500В.</p></div></details>
+
+<h2 id="диагностика-межвиткового-замыкания">Диагностика межвиткового замыкания</h2>
+
+<p>Самая коварная неисправность, которую трудно выявить обычным тестером — это межвитковое замыкание. В этом случае витки обмотки замыкаются между собой, уменьшая общее сопротивление и вызывая перегрев двигателя. Мультиметр покажет сопротивление, но оно будет ниже номинального значения.</p>
+
+<p>Чтобы заподозрить эту проблему, нужно знать эталонные значения сопротивлений для конкретной модели компрессора. Если у вас нет технической документации, сравните показания с аналогичными исправными компрессорами той же мощности. Разница более чем в 10-15% должна насторожить.</p>
+
+<p>Косвенным признаком межвиткового замыкания является повышенный ток потребления. Если у вас есть токовые клещи, измерьте силу тока при запуске и работе. Если ток значительно превышает номинал, указанный на шильдике, а сопротивления обмоток в пределах нормы (но занижены), скорее всего, имеет место короткое замыкание витков.</p>
+
+<p>В таких случаях компрессор может гудеть, перегреваться и отключаться по термозащите, но формально "звониться" как исправный. Ремонт таких двигателей в бытовых условиях невозможен, требуется замена агрегата.</p>
+
+<div class="poll-widget" id="poll-7d5b2534"><div class="poll-widget-question">📊 С какой проблемой вы столкнулись чаще всего?</div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Компрессор не запускается</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Выбивает автомат</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Гудит но не крутит</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Работает но не холодит</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="анализ-результатов-и-принятие-решений">Анализ результатов и принятие решений</h2>
+
+<p>После проведения всех замеров необходимо систематизировать полученные данные. Если сопротивление между любыми контактами равно нулю — это явное короткое замыкание. Если сопротивление бесконечно велико (обрыв) — сгорела обмотка или отошел внутренний контакт.</p>
+
+<p>В случае, когда все сопротивления в норме и пробоя на корпус нет, но кондиционер не работает, проблема может быть не в компрессоре. Стоит проверить пусковой конденсатор, который часто теряет емкость, или реле запуска на плате управления внешнего блока.</p>
+
+<p><strong>Термореле</strong>, встроенное в компрессор, также может разорвать цепь при перегреве. Дайте агрегату остыть в течение нескольких часов и повторите замеры. Если контакт восстановился, значит, срабатывала тепловая защита, и причину нужно искать в системе охлаждения или вентиляции внешнего блока.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не пытайтесь запустить компрессор с явными признаками КЗ или пробоя на корпус подачей напряжения "для проверки". Это гарантированно приведет к полному выгоранию обмоток и пожароопасной ситуации.</p>
+</blockquote>
+
+<p>Если диагностика показала неисправность компрессора, дальнейшие действия зависят от ваших навыков. Замена компрессора требует вакуумирования системы, заправки фреоном и специального инструмента. Для большинства пользователей целесообразнее заменить внешний блок целиком или вызвать сертифицированную бригаду.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При замене компрессора обязательно установите новый фильтр-осушитель в жидкостную магистраль. Старый фильтр мог накопить влагу и продукты горения масла, что убьет новый мотор за несколько месяцев.</p></div>
+
+<h2 id="часто-задаваемые-вопросы">Часто задаваемые вопросы</h2>
+
+<details>
+<summary>Можно ли проверить компрессор без снятия клемм?</summary>
+<p>Технически можно измерить сопротивление через подключенные провода, но результат будет недостоверным. Вы будете измерять параллельное соединение обмоток компрессора, конденсатора и элементов платы управления. Для точной диагностики необходимо отключить все внешние цепи от выводов компрессора.</p>
+</details>
+
+<details>
+<summary>Какое сопротивление считается нормой для инверторного компрессора?</summary>
+<p>В инверторных системах используются трехфазные компрессоры. У них три вывода обмоток (U, V, W), и сопротивление между любой парой должно быть одинаковым (симметричным). Значения обычно очень низкие, в пределах 1-3 Ом. Отсутствие симметрии указывает на неисправность.</p>
+</details>
+
+<details>
+<summary>Почему мультиметр показывает 0.5 Ом, хотя должно быть больше?</summary>
+<p>Значение 0.5 Ом может быть нормой для мощных компрессоров (от 18000 BTU и выше). Также учтите погрешность щупов самого мультиметра. Замкните щупы друг на друга и посмотрите, сколько показывает прибор (обычно 0.1-0.3 Ом), затем вычтите это значение из результата замера.</p>
+</details>
+
+<details>
+<summary>Можно ли реанимировать компрессор с пробоем на корпус?</summary>
+<p>Нет. Поскольку обмотки находятся внутри герметичного стального стакана, заполненного маслом и фреоном, добраться до них для восстановления изоляции невозможно без разрушения корпуса. Такой компрессор подлежит только утилизации.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подготовка-к-диагностике-и-меры-безопасности">Подготовка к диагностике и меры безопасности</a></li><li><a href="#поиск-контактной-группы-компрессора">Поиск контактной группы компрессора</a></li><li><a href="#методика-замера-сопротивления-обмоток">Методика замера сопротивления обмоток</a></li><li><a href="#проверка-на-пробой-изоляции-корпус">Проверка на пробой изоляции (корпус)</a></li><li><a href="#диагностика-межвиткового-замыкания">Диагностика межвиткового замыкания</a></li><li><a href="#анализ-результатов-и-принятие-решений">Анализ результатов и принятие решений</a></li><li><a href="#часто-задаваемые-вопросы">Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/v/v-/v-kakom-godu-vyshel-knajt-80.html" class="related-card">Кнайт 80: год выпуска, история модели и особенности</a></li><li><a href="/articles/n/ne/net-tsirkulyatsii-freona-v-konditsionere.html" class="related-card">Нет циркуляции фреона в кондиционере: причины и как найти</a></li><li><a href="/articles/r/ra/rabochee-davlenie-410-freona-v-konditsionere.html" class="related-card">Рабочее давление фреона R410A: таблица и нормы</a></li><li><a href="/articles/c/ch/chto-takoe-kompressor-v-konditsionere.html" class="related-card">Компрессор в кондиционере: устройство, принцип работы и неисправности</a></li><li><a href="/articles/k/ka/kak-sokhranit-freon-v-konditsionere-pri-demontazhe.html" class="related-card">Как сохранить фреон в кондиционере при демонтаже: пошаговое руководство</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/v/v-/v-kakom-godu-vyshel-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Кнайт 80: год выпуска, история модели и особенности</span><span class="related-bottom-desc">Узнайте, в каком году вышел кондиционер Knight 80: технические характеристики, отличия от других сер</span></a><a href="/articles/n/ne/net-tsirkulyatsii-freona-v-konditsionere.html" class="related-bottom-card"><span class="related-bottom-title">Нет циркуляции фреона в кондиционере: причины и как найти</span><span class="related-bottom-desc">Почему фреон не циркулирует в кондиционере? Разбор причин: засор капиллярки, поломка компрессора, ут</span></a><a href="/articles/r/ra/rabochee-davlenie-410-freona-v-konditsionere.html" class="related-bottom-card"><span class="related-bottom-title">Рабочее давление фреона R410A: таблица и нормы</span><span class="related-bottom-desc">Какое давление должно быть в кондиционере на фреоне 410? Таблица показателей, нормы заправки, влияни</span></a><a href="/articles/c/ch/chto-takoe-kompressor-v-konditsionere.html" class="related-bottom-card"><span class="related-bottom-title">Компрессор в кондиционере: устройство, принцип работы и неисправности</span><span class="related-bottom-desc">Что такое компрессор в кондиционере, как он работает, какие бывают типы и как распознать поломку. По</span></a><a href="/articles/k/ka/kak-sokhranit-freon-v-konditsionere-pri-demontazhe.html" class="related-bottom-card"><span class="related-bottom-title">Как сохранить фреон в кондиционере при демонтаже: пошаговое руководство</span><span class="related-bottom-desc">Узнайте, как правильно демонтировать кондиционер без потери фреона: подготовка, инструменты, техника</span></a><a href="/articles/k/ka/kak-proverit-rabotosposobnost-konditsionera.html" class="related-bottom-card"><span class="related-bottom-title">Как проверить кондиционер дома: 7 шагов для диагностики</span><span class="related-bottom-desc">Пошаговая инструкция по проверке работоспособности кондиционера: от визуального осмотра до тестирова</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

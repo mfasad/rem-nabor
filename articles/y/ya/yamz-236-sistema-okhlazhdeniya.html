@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>ЯМЗ-236: схема и ремонт системы охлаждения своими руками — Рем Набор</title>
+    <meta name="description" content="Подробное руководство по устройству, диагностике и ремонту системы охлаждения двигателя ЯМЗ-236. Схемы, неисправности, советы по обслуживанию и выбору запчастей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/y/ya/yamz-236-sistema-okhlazhdeniya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="ЯМЗ-236: схема и ремонт системы охлаждения своими руками">
+    <meta property="og:description" content="Подробное руководство по устройству, диагностике и ремонту системы охлаждения двигателя ЯМЗ-236. Схемы, неисправности, советы по обслуживанию и выбору запчастей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">ЯМЗ-236: схема и ремонт системы охлаждения своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Система охлаждения ЯМЗ-236: устройство, неисправности и ремонт</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#устройство-системы-охлаждения-ямз-236-схема-и-принцип-работы">Устройство системы охлаждения ЯМЗ-236: схема и принцип работы</a></li><li><a href="#схема-системы-охлаждения-ямз-236-с-описанием-узлов">Схема системы охлаждения ЯМЗ-236 с описанием узлов</a></li><li><a href="#типичные-неисправности-системы-охлаждения-ямз-236-и-их-признаки">Типичные неисправности системы охлаждения ЯМЗ-236 и их признаки</a></li><li><a href="#диагностика-неисправностей-как-найти-причину-перегрева">Диагностика неисправностей: как найти причину перегрева</a></li><li><a href="#ремонт-системы-охлаждения-ямз-236-своими-руками">Ремонт системы охлаждения ЯМЗ-236 своими руками</a></li><li><a href="#выбор-охлаждающей-жидкости-для-ямз-236-что-заливать">Выбор охлаждающей жидкости для ЯМЗ-236: что заливать?</a></li><li><a href="#профилактика-и-обслуживание-системы-охлаждения">Профилактика и обслуживание системы охлаждения</a></li><li><a href="#faq-частые-вопросы-по-системе-охлаждения-ямз-236">FAQ: Частые вопросы по системе охлаждения ЯМЗ-236</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Двигатели <em>ЯМЗ-236</em> — легендарные дизельные агрегаты, которые десятилетиями устанавливаются на грузовые автомобили <em>МАЗ</em>, <em>КрАЗ</em>, <em>Урал</em> и спецтехнику. Их надёжность во многом зависит от правильной работы системы охлаждения, которая предотвращает перегрев, поддерживает оптимальную температуру и защищает металл от коррозии. Однако со временем даже самая прочная система требует внимания: текут патрубки, забивается радиатор, выходит из строя термостат или помпа.</p>
+
+<p>В этой статье вы найдёте <strong>подробную схему системы охлаждения ЯМЗ-236</strong>, разберётесь с принципами её работы, научитесь диагностировать типичные неисправности и устранять их своими руками. Мы также расскажем, какие <strong>запчасти и расходники</strong> лучше выбирать для ремонта, как правильно сливать и заливать охлаждающую жидкость, и дадим советы по профилактике поломок. Если ваш двигатель перегревается, а стрелка температуры ползёт в красную зону — здесь вы найдёте решение.</p>
+
+<h2 id="устройство-системы-охлаждения-ямз-236-схема-и-принцип-работы">Устройство системы охлаждения ЯМЗ-236: схема и принцип работы</h2>
+
+<p>Система охлаждения <em>ЯМЗ-236</em> — <strong>жидкостная, закрытого типа, с принудительной циркуляцией</strong>. Она состоит из двух контуров: <strong>малого</strong> (для быстрого прогрева двигателя) и <strong>большого</strong> (для основного охлаждения). Переключение между ними осуществляет <strong>термостат</strong>, а за циркуляцию жидкости отвечает <strong>центробежный насос (помпа)</strong>.</p>
+
+<p>Основные элементы системы:</p>
+<ul>
+  <li>🔥 <strong>Радиатор</strong> — основной теплообменник, охлаждаемый потоком воздуха от вентилятора.</li>
+  <li>🌀 <strong>Водяной насос (помпа)</strong> — обеспечивает принудительную циркуляцию охлаждающей жидкости (ОЖ).</li>
+  <li>🌡️ <strong>Термостат</strong> — клапан, который открывает большой круг при нагреве ОЖ до <code>70–75°C</code>.</li>
+  <li>🚗 <strong>Расширительный бачок</strong> — компенсирует изменение объёма жидкости при нагреве.</li>
+  <li>🌀 <strong>Вентилятор с муфтой</strong> — создаёт поток воздуха для охлаждения радиатора (на некоторых модификациях — с гидромуфтой).</li>
+  <li>🔧 <strong>Датчик температуры</strong> — передаёт данные на приборную панель и в систему управления.</li>
+  <li>🛠️ <strong>Патрубки и шланги</strong> — соединяют все элементы системы.</li>
+</ul>
+
+<p>При запуске двигателя жидкость циркулирует по <strong>малому кругу</strong> (блок цилиндров → головка блока → термостат → помпа), что позволяет быстро прогреть мотор. При достижении температуры <code>70–75°C</code> термостат открывается, и ОЖ начинает двигаться по <strong>большому кругу</strong>, проходя через радиатор. Если охлаждения недостаточно, срабатывает <strong>вентилятор</strong>, который принудительно обдувает радиатор.</p>
+
+<div class="poll-widget" id="poll-833c9fa5"><div class="poll-widget-question">📊 Какой элемент системы охлаждения ЯМЗ-236 ломается у вас чаще всего?</div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Термостат</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Помпа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Радиатор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Патрубки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Вентилятор</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="833c9fa5" data-idx="5" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="схема-системы-охлаждения-ямз-236-с-описанием-узлов">Схема системы охлаждения ЯМЗ-236 с описанием узлов</h2>
+
+<p>Ниже представлена упрощённая схема системы охлаждения <em>ЯМЗ-236</em> с указанием ключевых элементов и направления движения жидкости. Обратите внимание, что на разных модификациях двигателя (например, <em>ЯМЗ-236НЕ2</em> или <em>ЯМЗ-236БЕ2</em>) могут встречаться незначительные отличия в конструкции радиатора или муфты вентилятора, но общий принцип остаётся неизменным.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Элемент системы</th>
+      <th>Назначение</th>
+      <th>Типичные неисправности</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Радиатор</strong></td>
+      <td>Охлаждение ОЖ потоком воздуха</td>
+      <td>Засорение сот, течь, коррозия</td>
+    </tr>
+    <tr>
+      <td><strong>Помпа (водяной насос)</strong></td>
+      <td>Циркуляция жидкости по системе</td>
+      <td>Износ подшипника, течь через сальник, разрушение крыльчатки</td>
+    </tr>
+    <tr>
+      <td><strong>Термостат</strong></td>
+      <td>Регулировка направления потока ОЖ (малый/большой круг)</td>
+      <td>Заклинивание в открытом/закрытом положении, негерметичность</td>
+    </tr>
+    <tr>
+      <td><strong>Вентилятор с муфтой</strong></td>
+      <td>Принудительный обдув радиатора</td>
+      <td>Износ муфты, обрыв лопастей, неисправность датчика включения</td>
+    </tr>
+    <tr>
+      <td><strong>Расширительный бачок</strong></td>
+      <td>Компенсация изменения объёма ОЖ</td>
+      <td>Трещины, течь, загрязнение</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><mark>Важно: На двигателях ЯМЗ-236 с турбонаддувом (например, ЯМЗ-236Т) в системе охлаждения предусмотрен дополнительный теплообменник для охлаждения наддувочного воздуха (интеркулер). Его неисправность может приводить к перегреву турбины и потере мощности.</mark></p>
+
+<h2 id="типичные-неисправности-системы-охлаждения-ямз-236-и-их-признаки">Типичные неисправности системы охлаждения ЯМЗ-236 и их признаки</h2>
+
+<p>Перегрев двигателя — самая очевидная проблема, но далеко не единственная. Неисправности системы охлаждения <em>ЯМЗ-236</em> могут проявляться по-разному, и важно вовремя распознать их причину. Ниже приведены <strong>основные симптомы</strong> и возможные поломки.</p>
+
+<ul>
+  <li>🔥 <strong>Стрелка температуры в красной зоне</strong> — перегрев из-за неисправного термостата, забитого радиатора, поломки помпы или воздуха в системе.</li>
+  <li>💧 <strong>Течь охлаждающей жидкости</strong> — повреждение патрубков, радиатора, помпы или расширительного бачка.</li>
+  <li>🌀 <strong>Холодный воздух из печки</strong> — неисправность термостата (заклинил в открытом положении) или воздушная пробка.</li>
+  <li>🚗 <strong>Постоянная работа вентилятора</strong> — неисправность муфты вентилятора, датчика температуры или засорение радиатора.</li>
+  <li>🔧 <strong>Шум или вибрация</strong> — износ подшипника помпы или вентилятора.</li>
+</ul>
+
+<p>Одна из самых коварных неисправностей — <strong>воздушная пробка</strong>. Она может образоваться после замены ОЖ или при подсосе воздуха через негерметичные соединения. Признаки: печка дует холодным, а двигатель перегревается, хотя радиатор холодный. Чтобы удалить пробку, нужно <code>ослабить верхний патрубок радиатора</code> при работающем двигателе и дождаться, пока из него пойдёт жидкость без пузырьков.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если двигатель перегрелся (стрелка зашла в красную зону), немедленно остановите автомобиль и заглушите мотор. Дальнейшая работа в таком режиме приводит к <strong>деформации головки блока</strong>, прогару прокладки или даже заклиниванию поршней.</blockquote>
+
+<h2 id="диагностика-неисправностей-как-найти-причину-перегрева">Диагностика неисправностей: как найти причину перегрева</h2>
+
+<p>Если система охлаждения <em>ЯМЗ-236</em> даёт сбой, первым делом нужно определить, какой именно элемент виноват. Ниже — <strong>пошаговый алгоритм диагностики</strong>, который поможет сузить круг поиска.</p>
+
+
+<p>Убедиться в достаточном уровне ОЖ в расширительном бачке|Проверить герметичность патрубков и радиатора|Оценить работу термостата (нагрев верхнего и нижнего патрубков)|Проконтролировать включение вентилятора|Прослушать помпу на предмет посторонних шумов|Проверить давление в системе (при необходимости)--></p>
+
+<p><strong>1. Проверка уровня и состояния ОЖ</strong></p>
+<p>Откройте крышку расширительного бачка (только на остывшем двигателе!). Уровень жидкости должен быть между отметками <code>MIN</code> и <code>MAX</code>. Если ОЖ мутная, с хлопьями или ржавчиной — её нужно срочно заменить. Также обратите внимание на цвет: если жидкость стала коричневой, это признак коррозии или смешивания разных типов антифриза.</p>
+
+<p><strong>2. Диагностика термостата</strong></p>
+<p>Заведите двигатель и потрогайте рукой верхний и нижний патрубки радиатора:
+<ul>
+  <li>Если <strong>оба патрубка холодные</strong> — термостат заклинил в закрытом положении (жидкость не идёт в радиатор).</li>
+  <li>Если <strong>оба патрубка горячие</strong> — термостат заклинил в открытом положении (двигатель долго прогревается).</li>
+  <li>Если <strong>верхний горячий, нижний холодный</strong> — термостат работает нормально (малый круг).</li>
+  <li>Если <strong>верхний горячий, нижний тёплый</strong> — термостат открыт, большой круг работает.</li>
+</ul>
+</p>
+
+<p><strong>3. Проверка помпы</strong></p>
+<p>При работающем двигателе снимите крышку расширительного бачка и посмотрите на жидкость: если она циркулирует (видны потоки) — помпа исправна. Также прислушайтесь к посторонним шумам (скрип, гул) — они указывают на износ подшипника. Если при работе двигателя из дренажного отверстия помпы течёт жидкость — сальник требует замены.</p>
+
+<p><strong>4. Контроль работы вентилятора</strong></p>
+<p>На большинстве <em>ЯМЗ-236</em> вентилятор включается автоматически при температуре <code>90–95°C</code>. Если он не срабатывает:
+<ul>
+  <li>Проверьте <strong>предохранитель</strong> и реле вентилятора.</li>
+  <li>Убедитесь в исправности <strong>датчика температуры</strong> (находится на радиаторе или блоке цилиндров).</li>
+  <li>Если вентилятор с <strong>гидромуфтой</strong>, проверьте уровень масла в ней.</li>
+</ul>
+</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если термостат заклинил в закрытом положении, а ехать нужно срочно — можно временно удалить его, чтобы жидкость циркулировала по большому кругу. Но не забывайте, что двигатель будет дольше прогреваться, а в морозы может не достичь рабочей температуры.</p></div>
+
+<h2 id="ремонт-системы-охлаждения-ямз-236-своими-руками">Ремонт системы охлаждения ЯМЗ-236 своими руками</h2>
+
+<p>Многие неисправности системы охлаждения <em>ЯМЗ-236</em> можно устранить самостоятельно, не прибегая к помощи СТО. Ниже — <strong>пошаговые инструкции</strong> по ремонту наиболее распространённых поломок.</p>
+
+<h3>1. Замена термостата</h3>
+<p>Термостат на <em>ЯМЗ-236</em> расположен в верхней части блока цилиндров, рядом с помпой. Для замены потребуется:
+<ul>
+  <li>Слить часть охлаждающей жидкости (или полностью, если планируется замена).</li>
+  <li>Ослабить хомуты и снять патрубки.</li>
+  <li>Открутить болты крепления корпуса термостата.</li>
+  <li>Извлечь старый термостат и установить новый (например, <strong>Ween 180-1012008</strong> или <strong>LUZAR LT 0188</strong>).</li>
+  <li>Собрать всё в обратной последовательности, залить ОЖ и удалить воздушные пробки.</li>
+</ul>
+</p>
+
+<h3>2. Ремонт или замена помпы</h3>
+<p>Помпа <em>ЯМЗ-236</em> — один из самых нагруженных узлов. Признаки неисправности: течь через дренажное отверстие, люфт шкива, шум при работе. Для замены:
+<ul>
+  <li>Слить охлаждающую жидкость.</li>
+  <li>Ослабить ремень привода помпы и снять его.</li>
+  <li>Открутить болты крепления помпы (обычно 4 штуки).</li>
+  <li>Снять старую помпу и очистить посадочное место от остатков прокладки.</li>
+  <li>Установить новую помпу (например, <strong>ТЗА 236-1307010</strong> или <strong>Fenox WP1010P1</strong>) с новой прокладкой.</li>
+</ul>
+</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> При замене помпы обязательно проверьте состояние <strong>приводного ремня</strong>. Если он изношен или имеет трещины, замените его вместе с помпой. Обрыв ремня приведёт к остановке помпы и мгновенному перегреву двигателя.</blockquote>
+
+<h3>3. Устранение течи радиатора</h3>
+<p>Если радиатор подтёк, его можно отремонтировать или заменить. Небольшие повреждения (трещины, пробоины) устраняются с помощью <strong>холодной сварки</strong> (например, <em>ABRO ES-668</em>) или пайки. Для серьёзных повреждений лучше установить новый радиатор (например, <strong>Лузар LRc 0118</strong> или <strong>Ween 180-1011010</strong>).</p>
+
+<p>Порядок действий при замене:
+<ul>
+  <li>Слить ОЖ.</li>
+  <li>Отсоединить патрубки и электропроводку вентилятора.</li>
+  <li>Открутить болты крепления радиатора к раме.</li>
+  <li>Извлечь старый радиатор и установить новый.</li>
+  <li>Подключить всё в обратном порядке, залить жидкость и проверить герметичность.</li>
+</ul>
+</p>
+
+<h3>4. Замена патрубков и шлангов</h3>
+<p>Патрубки системы охлаждения <em>ЯМЗ-236</em> со временем теряют эластичность, трескаются или рассыхаются. Для замены:
+<ul>
+  <li>Ослабить хомуты на старом патрубке.</li>
+  <li>Снять его, аккуратно покачивая из стороны в сторону.</li>
+  <li>Очистить посадочные места от грязи и остатков резины.</li>
+  <li>Установить новый патрубок (например, <strong>Балаково 236-1303020</strong>) и затянуть хомуты.</li>
+</ul>
+</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>При замене патрубков всегда используйте новые хомуты. Старые могут не обеспечить достаточной герметичности, что приведёт к подсосу воздуха или течи.</p></div>
+
+<h2 id="выбор-охлаждающей-жидкости-для-ямз-236-что-заливать">Выбор охлаждающей жидкости для ЯМЗ-236: что заливать?</h2>
+
+<p>От качества охлаждающей жидкости зависит не только эффективность охлаждения, но и ресурс всей системы. Для <em>ЯМЗ-236</em> подходят <strong>низкозамерзающие жидкости (антифризы)</strong> на основе этиленгликоля, соответствующие стандарту <code>ГОСТ 28084-89</code> или <code>G12/G12+</code>.</p>
+
+<p>Рекомендуемые марки:
+<ul>
+  <li>🔹 <strong>Тосол-А40М</strong> — классический отечественный антифриз, подходит для умеренного климата.</li>
+  <li>🔹 <strong>CoolStream Premium</strong> — современный антифриз на основе карбоксилатной технологии (G12+).</li>
+  <li>🔹 <strong>Sintec Lux G12</strong> — надёжная защита от коррозии и перегрева.</li>
+  <li>🔹 <strong>Felix Carbox G12+</strong> — долгий срок службы (до 5 лет).</li>
+</ul>
+</p>
+
+<p>Объём системы охлаждения <em>ЯМЗ-236</em> — <strong>около 25 литров</strong>. При полной замене потребуется примерно <code>22–24 л</code> антифриза (часть остаётся в блоке). Не смешивайте разные типы жидкостей — это может привести к образованию осадка и засорению системы.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если вы доливаете антифриз, используйте только ту же марку, что и залита в систему. В крайнем случае — дистиллированную воду (но не более 1 л, иначе снизится температура замерзания).</blockquote>
+
+<p>Периодичность замены ОЖ:
+<ul>
+  <li>Для <strong>Тосола</strong> — каждые <code>2 года</code> или <code>60 000 км</code>.</li>
+  <li>Для <strong>антифризов G12/G12+</strong> — каждые <code>5 лет</code> или <code>150 000 км</code>.</li>
+</ul>
+</p>
+
+<h2 id="профилактика-и-обслуживание-системы-охлаждения">Профилактика и обслуживание системы охлаждения</h2>
+
+<p>Чтобы система охлаждения <em>ЯМЗ-236</em> работала без сбоев, достаточно следовать нескольким простым правилам:</p>
+
+<ul>
+  <li>📅 <strong>Регулярно проверяйте уровень ОЖ</strong> (каждые 500–1000 км).</li>
+  <li>🔧 <strong>Меняйте антифриз вовремя</strong> — не дожидайтесь, пока он потеряет свойства.</li>
+  <li>🧹 <strong>Промывайте систему</strong> при замене жидкости (используйте специальные промывки, например, <em>LAVR Radiator Flush Classic</em>).</li>
+  <li>🌀 <strong>Контролируйте натяжение ремня помпы</strong> — провисание приводит к снижению производительности насоса.</li>
+  <li>🌡️ <strong>Следите за работой термостата</strong> — если двигатель долго прогревается или перегревается, проверьте его.</li>
+  <li>🚗 <strong>Чистите радиатор</strong> от грязи и насекомых (особенно важно для машин, работающих в тяжёлых условиях).</li>
+</ul>
+
+<p>Один из самых эффективных способов профилактики — <strong>промывка системы охлаждения</strong>. Она удаляет накипь, ржавчину и отложения, которые ухудшают теплообмен. Промывку можно выполнить:
+<ul>
+  <li><strong>Дистиллированной водой</strong> (самый щадящий, но малоэффективный способ).</li>
+  <li><strong>Специальными промывками</strong> (например, <em>Hi-Gear Radiator Flush</em> или <em>LIQUI MOLY Kuhler-Reiniger</em>).</li>
+  <li><strong>Лимонной кислотой</strong> (100 г на 10 л воды) — хорошо растворяет накипь.</li>
+</ul>
+</p>
+
+<p>Порядок промывки:
+<ol>
+  <li>Слить старую ОЖ.</li>
+  <li>Залить промывочный раствор.</li>
+  <li>Завести двигатель и дать поработать <code>10–15 минут</code>.</li>
+  <li>Слить раствор и промыть систему водой.</li>
+  <li>Залить новый антифриз.</li>
+</ol>
+</p>
+
+<details class="faq-item"><summary>Что будет, если не промывать систему охлаждения?</summary><div class="faq-answer"><p>
+<p>Со временем в радиаторе и патрубках накапливаются отложения, которые сужают каналы и ухудшают теплообмен. Это приводит к:</p>
+<ul>
+  <li>Повышенному износу помпы (крыльчатка работает с увеличенной нагрузкой).</li>
+  <li>Перегреву двигателя даже при исправном термостате.</li>
+  <li>Коррозии металлических деталей (блока, головки, радиатора).</li>
+  <li>Засорению печки, из-за чего в салон идёт холодный воздух.</li>
+</ul>
+<p>В запущенных случаях может потребоваться замена радиатора или даже ремонт блока цилиндров.</p></div></details></p>
+
+<h2 id="faq-частые-вопросы-по-системе-охлаждения-ямз-236">FAQ: Частые вопросы по системе охлаждения ЯМЗ-236</h2>
+
+<details>
+  <summary>Можно ли заливать воду вместо антифриза летом?</summary>
+  <p>Технически можно, но не рекомендуется. Вода вызывает коррозию, не защищает от накипи и имеет низкую температуру кипения (<code>100°C</code>). Если всё же приходится использовать воду, берите <strong>дистиллированную</strong> и добавляйте присадки (например, <em>LAVR LN1103</em> для защиты от коррозии).</p>
+</details>
+
+<details>
+  <summary>Какой термостат лучше ставить на ЯМЗ-236?</summary>
+  <p>Оптимальный вариант — термостат с температурой начала открытия <code>70–75°C</code>. Хорошо зарекомендовали себя:
+  <ul>
+    <li><strong>Ween 180-1012008</strong> — надёжный, долговечный.</li>
+    <li><strong>LUZAR LT 0188</strong> — бюджетный, но качественный.</li>
+    <li><strong>ТЗА 236-1306010</strong> — оригинальный, но дороже аналогов.</li>
+  </ul>
+<p>Избегайте дешёвых китайских термостатов — они часто клинят.</p></p>
+</details>
+
+<details>
+  <summary>Почему печка дует холодным воздухом, а двигатель не перегревается?</summary>
+  <p>Скорее всего, проблема в <strong>воздушной пробке</strong> или неисправном <strong>кране отопителя</strong>. Попробуйте:
+  <ol>
+    <li>Прогреть двигатель до рабочей температуры.</li>
+    <li>Открыть кран печки (если он есть).</li>
+    <li>Погазовать на холостых оборотах — это поможет выгнать воздух.</li>
+    <li>Если не помогает — проверить термостат и патрубки на предмет засоров.</li>
+  </ol>
+  </p>
+</details>
+
+<details>
+  <summary>Как часто нужно менять помпу на ЯМЗ-236?</summary>
+  <p>Ресурс помпы зависит от условий эксплуатации, но в среднем она служит <code>80 000–100 000 км</code>. Признаки износа:
+  <ul>
+    <li>Течь через дренажное отверстие.</li>
+    <li>Люфт шкива.</li>
+    <li>Шум или скрип при работе.</li>
+  </ul>
+<p>Если помпа начала «подтекать», её нужно срочно заменить — иначе можно остаться без охлаждения в пути.</p></p>
+</details>
+
+<details>
+  <summary>Что делать, если лопнул радиатор в пути?</summary>
+  <p>Временное решение:
+  <ol>
+    <li>Остановиться и заглушить двигатель.</li>
+    <li>Если течь небольшая — использовать <strong>герметик для радиатора</strong> (например, <em>BBF Супер</em> или <em>Liqui Moly Kuhler-Dichter</em>).</li>
+    <li>Залить герметик в расширительный бачок и дать поработать двигателю <code>5–10 минут</code>.</li>
+    <li>Долить воды или антифриза и доехать до места ремонта.</li>
+  </ol>
+  <p>⚠️ Герметик — временная мера! После этого радиатор нужно промыть и отремонтировать или заменить.</p>
+  </p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#устройство-системы-охлаждения-ямз-236-схема-и-принцип-работы">Устройство системы охлаждения ЯМЗ-236: схема и принцип работы</a></li><li><a href="#схема-системы-охлаждения-ямз-236-с-описанием-узлов">Схема системы охлаждения ЯМЗ-236 с описанием узлов</a></li><li><a href="#типичные-неисправности-системы-охлаждения-ямз-236-и-их-признаки">Типичные неисправности системы охлаждения ЯМЗ-236 и их признаки</a></li><li><a href="#диагностика-неисправностей-как-найти-причину-перегрева">Диагностика неисправностей: как найти причину перегрева</a></li><li><a href="#ремонт-системы-охлаждения-ямз-236-своими-руками">Ремонт системы охлаждения ЯМЗ-236 своими руками</a></li><li><a href="#выбор-охлаждающей-жидкости-для-ямз-236-что-заливать">Выбор охлаждающей жидкости для ЯМЗ-236: что заливать?</a></li><li><a href="#профилактика-и-обслуживание-системы-охлаждения">Профилактика и обслуживание системы охлаждения</a></li><li><a href="#faq-частые-вопросы-по-системе-охлаждения-ямз-236">FAQ: Частые вопросы по системе охлаждения ЯМЗ-236</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/o/od/odnozonnyj-klimat-kontrol-chto-takoe.html" class="related-card">Однозонный климат-контроль: устройство, принцип работы и отличия</a></li><li><a href="/articles/g/gd/gde-nakhoditsya-rele-ventilyatora-okhlazhdeniya-na-kaline-8-klapanov-i-predokhranitel.html" class="related-card">Реле вентилятора охлаждения Лада Калина 8 клапанов: где находится и как проверить</a></li><li><a href="/articles/p/po/polomka-termostata-v-mashine-priznaki.html" class="related-card">Признаки поломки термостата двигателя: симптомы и проверка</a></li><li><a href="/articles/m/mn/mnogozonnyj-klimat-kontrol-eto.html" class="related-card">Многозонный климат-контроль: что это, как работает и устройство</a></li><li><a href="/articles/r/re/remont-pompy-moskvich-2141.html" class="related-card">Ремонт помпы Москвич 2141: пошаговая инструкция с фото</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/o/od/odnozonnyj-klimat-kontrol-chto-takoe.html" class="related-bottom-card"><span class="related-bottom-title">Однозонный климат-контроль: устройство, принцип работы и отличия</span><span class="related-bottom-desc">Что такое однозонный климат-контроль в автомобиле? Принцип работы, устройство системы, отличия от ко</span></a><a href="/articles/g/gd/gde-nakhoditsya-rele-ventilyatora-okhlazhdeniya-na-kaline-8-klapanov-i-predokhranitel.html" class="related-bottom-card"><span class="related-bottom-title">Реле вентилятора охлаждения Лада Калина 8 клапанов: где находится и как проверить</span><span class="related-bottom-desc">Пошаговая инструкция с фото: расположение реле и предохранителя вентилятора охлаждения на Калине 8кл</span></a><a href="/articles/p/po/polomka-termostata-v-mashine-priznaki.html" class="related-bottom-card"><span class="related-bottom-title">Признаки поломки термостата двигателя: симптомы и проверка</span><span class="related-bottom-desc">Узнайте, как определить неисправность термостата автомобиля. Основные признаки поломки: перегрев, до</span></a><a href="/articles/m/mn/mnogozonnyj-klimat-kontrol-eto.html" class="related-bottom-card"><span class="related-bottom-title">Многозонный климат-контроль: что это, как работает и устройство</span><span class="related-bottom-desc">Разбираем многозонный климат-контроль: принцип работы, отличия от кондиционера, виды систем и советы</span></a><a href="/articles/r/re/remont-pompy-moskvich-2141.html" class="related-bottom-card"><span class="related-bottom-title">Ремонт помпы Москвич 2141: пошаговая инструкция с фото</span><span class="related-bottom-desc">Как самостоятельно диагностировать и отремонтировать помпу Москвич 2141: признаки неисправности, раз</span></a><a href="/articles/k/ka/kak-chasto-menyat-pompu-v-avto.html" class="related-bottom-card"><span class="related-bottom-title">Через сколько км и лет менять помпу в машине: сроки и признаки износа</span><span class="related-bottom-desc">Когда и как часто менять помпу в автомобиле: рекомендации производителей, признаки неисправности, по</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

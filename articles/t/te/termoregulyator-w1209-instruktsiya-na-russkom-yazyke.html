@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Терморегулятор W1209: подробная инструкция на русском языке — Рем Набор</title>
+    <meta name="description" content="Полное руководство по подключению, настройке и калибровке термостата W1209. Расшифровка меню, схемы подключения реле и устранение неисправностей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termoregulyator-w1209-instruktsiya-na-russkom-yazyke.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Терморегулятор W1209: подробная инструкция на русском языке">
+    <meta property="og:description" content="Полное руководство по подключению, настройке и калибровке термостата W1209. Расшифровка меню, схемы подключения реле и устранение неисправностей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Терморегулятор W1209: подробная инструкция на русском языке</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Инструкция терморегулятора W1209 на русском языке</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#подключение-модуля-и-проверка-работоспособности">Подключение модуля и проверка работоспособности</a></li><li><a href="#настройка-основных-параметров-работы-меню-p0-p2">Настройка основных параметров работы (Меню P0-P2)</a></li><li><a href="#калибровка-датчика-и-коррекция-показаний-меню-p3">Калибровка датчика и коррекция показаний (Меню P3)</a></li><li><a href="#задержка-включения-и-защита-компрессора-меню-p4-p6">Задержка включения и защита компрессора (Меню P4-P6)</a></li><li><a href="#расшифровка-индикации-и-кодов-ошибок">Расшифровка индикации и кодов ошибок</a></li><li><a href="#модификация-и-расширение-функционала">Модификация и расширение функционала</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Цифровой термостат <em>W1209</em> стал настоящим хитом среди любителей электроники и домашних мастеров, желающих автоматизировать процессы обогрева или охлаждения. Этот компактный модуль, оснащенный трехразрядным светодиодным дисплеем, способен управлять нагрузкой до 5 ампер при напряжении 12 вольт. Его универсальность позволяет использовать устройство в инкубаторах, аквариумах, системах вентиляции и даже для управления подогревом сидений в автомобиле. Однако, несмотря на простоту конструкции, заводская документация часто отсутствует или выполнена исключительно на китайском языке, что создает трудности при первичной настройке.</p>
+
+<p>В этом материале мы детально разберем алгоритм работы с модулем, расшифруем скрытые пункты сервисного меню <code>P0-P6</code> и рассмотрим типичные ошибки монтажа. Понимание логики работы контроллера позволит вам избежать перегрева оборудования или ложных срабатываний реле. Мы не будем просто перечислять кнопки, а объясним физический смысл каждого параметра, чтобы вы могли адаптировать устройство под свои уникальные задачи.</p>
+
+<p>Прежде чем приступать к пайке проводов, важно убедиться в исправности самого модуля и наличии подходящего блока питания. Нестабильное напряжение — главная причина хаотичного поведения дисплея и самопроизвольного включения нагрузки. Давайте начнем с базового знакомства с интерфейсом и физическим подключением датчика температуры.</p>
+
+<h2 id="подключение-модуля-и-проверка-работоспособности">Подключение модуля и проверка работоспособности</h2>
+
+<p>Первым этапом является правильное подключение цепей питания и нагрузки. На плате <em>W1209</em> четко выделены контактные площадки для подключения источника постоянного тока <code>DC 12V</code>. Полярность имеет критическое значение: подключение питания в обратной полярности может мгновенно вывести из строя стабилизатор напряжения или микроконтроллер. Рядом с клеммами питания расположены выводы для подключения реле, которое коммутирует вашу нагрузку.</p>
+
+<p>Датчик температуры, представляющий собой терморезистор <em>NTC 10K</em>, подключается к специальному двухконтактному разъему. Длина штатного провода обычно составляет около 30-50 см, чего достаточно для большинства бытовых задач. Если вам требуется удлинить линию, используйте экранированный кабель, чтобы избежать наводок от силовых проводов, идущих к реле. Помните, что сопротивление датчика нелинейно зависит от температуры, и использование неоригинального сенсора потребует повторной калибровки.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Реле модуля рассчитано на ток до 5А. При подключении мощных нагревателей (например, ТЭНов мощностью более 60 Вт) обязательно используйте внешнее силовое реле или твердотельное реле (SSR), иначе контакты внутри <em>W1209</em> могут привариться друг к другу.</p>
+</blockquote>
+
+<p>После подачи питания дисплей должен отобразить текущую температуру окружающей среды. Если на экране видны символы <code>LLL</code> или <code>HHH</code>, это сигнализирует об ошибке датчика: либо он отключен, либо имеет критическое сопротивление (обрыв или короткое замыкание). В нормальном режиме работы мигающий светодиод рядом с надписью <code>Relay</code> или <code>Heat/Cool</code> указывает на текущее состояние коммутации.</p>
+
+<div class="checklist-block"><h4>☑️ Первичная диагностика модуля</h4><label class="check-item"><input type="checkbox"><span>Проверить полярность подключения питания 12В</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в плотном контакте датчика NTC</span></label><label class="check-item"><input type="checkbox"><span>Замерить напряжение на входе (должно быть 12-14В)</span></label><label class="check-item"><input type="checkbox"><span>Проверить отсутствие короткого замыкания на выходе реле</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="настройка-основных-параметров-работы-меню-p0-p2">Настройка основных параметров работы (Меню P0-P2)</h2>
+
+<p>Для входа в режим программирования необходимо удерживать кнопку <code>SET</code> в течение 5 секунд. После этого на дисплее начнет мигать первый параметр <code>P0</code>. Короткими нажатиями на <code>SET</code> вы переключаетесь между пунктами меню, а кнопками <code>+</code> и <code>-</code> изменяете их значения. Выход из режима настройки происходит автоматически, если не нажимать кнопки в течение 10 секунд, либо принудительно долгим нажатием <code>SET</code>.</p>
+
+<p>Параметр <code>P0</code> отвечает за режим работы устройства: нагрев или охлаждение. Это фундаментальная настройка, определяющая логику срабатывания реле. Если вы делаете инкубатор или обогреватель для террариума, выбирайте режим нагрева. Для холодильника, кулера или кондиционера необходим режим охлаждения. Ошибка в этом пункте приведет к тому, что устройство будет работать инверсно: охлаждать, когда нужно греть, и наоборот.</p>
+
+<p>Следующий параметр <code>P1</code> задает допустимый диапазон регулирования температуры. Заводское ограничение обычно составляет от -50 до +110 градусов Цельсия. Однако пользователь может сузить этот диапазон, чтобы предотвратить случайную установку экстремальных значений. Например, для аквариума с тропическими рыбами нет смысла разрешать установку температуры выше +40°C.</p>
+
+<div class="poll-widget" id="poll-900cc1dd"><div class="poll-widget-question">📊 Для какой цели вы используете терморегулятор W1209?</div><div class="poll-widget-option" data-poll="900cc1dd" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Инкубатор для яиц</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="900cc1dd" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Охлаждение компьютера/аквариума</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="900cc1dd" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Обогрев помещения/террариума</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="900cc1dd" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое (паяльник, сушилка)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="900cc1dd" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока только изучаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>Параметр <code>P2</code> устанавливает гистерезис, или зону нечувствительности реле. Это значение определяет разницу между температурой включения и выключения нагрузки. Если вы установите температуру срабатывания 25°C, а гистерезис 2°C, то в режиме охлаждения реле выключится при 25°C, а включится снова только при 27°C. Грамотная настройка гистерезиса предотвращает частое щелканье реле, продлевая его ресурс.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Слишком маленький гистерезис (менее 0.5°C) может привести к высокочастотному срабатыванию реле, что вызовет электрические помехи и быстрый износ механических контактов.</p>
+</blockquote>
+
+<h2 id="калибровка-датчика-и-коррекция-показаний-меню-p3">Калибровка датчика и коррекция показаний (Меню P3)</h2>
+
+<p>Дешевые терморезисторы часто имеют погрешность измерений, которая может достигать нескольких градусов. Параметр <code>P3</code> предназначен для программной коррекции этих отклонений без необходимости паять дополнительные резисторы. Чтобы настроить этот параметр, вам потребуется эталонный термометр с высокой точностью.</p>
+
+<p>Поместите датчик <em>W1209</em> и эталонный термометр в одинаковые условия (например, в стакан с водой комнатной температуры) и дождитесь стабилизации показаний. Если модуль показывает 24°C, а эталон — 25°C, вам необходимо ввести поправку +1.0 в меню <code>P3</code>. Диапазон корректировки обычно составляет от -7.0 до +7.0 градусов.</p>
+
+<p>Важно понимать, что калибровка действует линейно только в определенном диапазоне. Если вы откалибруете датчик при +20°C, погрешность при +80°C может измениться из-за нелинейности характеристики терморезистора <em>NTC</em>. Поэтому выбирайте точку калибровки близкую к вашей рабочей температуре.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для точной калибровки используйте смесь воды и льда (0°C) или кипящую воду (100°C с поправкой на атмосферное давление) как реперные точки, если ваш диапазон работ выходит за пределы комнатной температуры.</p></div>
+
+<h2 id="задержка-включения-и-защита-компрессора-меню-p4-p6">Задержка включения и защита компрессора (Меню P4-P6)</h2>
+
+<p>В меню <code>P4</code> настраивается задержка включения реле после подачи питания на модуль. По умолчанию это значение часто установлено на 0 секунд. Однако для устройств с компрессорами (холодильники, кондиционеры) критически важно установить задержку минимум 3-5 минут. Это защищает компрессор от запуска под высоким давлением, если питание было кратковременно прервано.</p>
+
+<p>Параметр <code>P5</code> отвечает за верхний предел температурной сигнализации. Если температура превысит установленное значение, дисплей начнет мигать, привлекая внимание пользователя, но реле может не сработать, если это не настроено отдельно. Это полезно для систем, где перегрев является аварийной ситуацией, требующей вмешательства человека.</p>
+
+<p>Пункт <code>P6</code> устанавливает нижний предел температурной сигнализации. Аналогично верхнему пределу, он информирует о критическом охлаждении. Эти функции полезны в системах мониторинга, где важно знать не только факт включения/выключения, но и выход температуры за безопасные рамки.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Функция</th>
+<th>Диапазон значений</th>
+<th>Заводское значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>P0</code></td>
+<td>Режим работы (Нагрев/Охлаждение)</td>
+<td>0 (Нагрев) / 1 (Охлаждение)</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>P1</code></td>
+<td>Диапазон регулировки</td>
+<td>-50 ... 110 °C</td>
+<td>-50 ... 110</td>
+</tr>
+<tr>
+<td><code>P2</code></td>
+<td>Гистерезис (разница вкл/выкл)</td>
+<td>0.1 ... 15.0 °C</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td><code>P3</code></td>
+<td>Коррекция показаний датчика</td>
+<td>-7.0 ... +7.0 °C</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td><code>P4</code></td>
+<td>Задержка запуска реле</td>
+<td>0 ... 10 мин (или сек)</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Особенности задержки P4</summary><div class="faq-answer"><p>В некоторых ревизиях плат W1209 параметр P4 измеряется в секундах, а в других — в минутах. Проверьте документацию к вашей конкретной версии или экспериментально засеките время задержки при значении 1.</p></div></details>
+
+<h2 id="расшифровка-индикации-и-кодов-ошибок">Расшифровка индикации и кодов ошибок</h2>
+
+<p>Трехразрядный дисплей <em>W1209</em> использует стандартные буквенные коды для информирования о состоянии системы. Понимание этих символов помогает быстро диагностировать проблему без подключения мультиметра. Самый частый код — <code>HHH</code>, который появляется при обрыве цепи датчика температуры. Сопротивление становится бесконечным, и контроллер интерпретирует это как экстремально высокую температуру.</p>
+
+<p>Код <code>LLL</code> свидетельствует о коротком замыкании в цепи датчика. В этом случае сопротивление стремится к нулю, что соответствует очень низкой температуре. Обе ситуации требуют проверки целостности проводов, идущих к терморезистору, и качества пайки контактов на плате.</p>
+
+<p>Иногда пользователи сталкиваются с ситуацией, когда дисплей показывает нормальную температуру, но реле не срабатывает при достижении уставки. В этом случае проверьте индикатор режима: если горит светодиод <code>Cool</code>, а вы настроили нагрев, значит, параметр <code>P0</code> установлен неверно. Также стоит проверить, не активирована ли задержка <code>P4</code>, которая блокирует включение нагрузки сразу после подачи питания.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Коды HHH и LLL указывают исключительно на проблемы с цепью датчика NTC, а не на неисправность самого контроллера или реле.</p></div>
+
+<h2 id="модификация-и-расширение-функционала">Модификация и расширение функционала</h2>
+
+<p>Штатные возможности <em>W1209</em> ограничены, но радиолюбители часто модифицируют этот модуль. Одна из популярных доработок — замена реле на более мощное или установка твердотельного реле для бесшумной работы. При замене electromechanical реле на SSR необходимо учесть, что для управления симистором может потребоваться изменение схемы управления ключом, так как токи управления различаются.</p>
+
+<p>Другой вариант улучшения — вынос дисплея и кнопок управления на отдельную панель, оставив саму плату с реле в силовом шкафу. Для этого используются шлейфы из тонких проводов. Однако при удлинении линий кнопок и дисплея возможно появление помех, поэтому экранирование становится обязательным.</p>
+
+<p>Существуют также прошивки с расширенным функционалом, которые можно загрузить в микроконтроллер через программатор, если выпаять чип или подпаяться к контактам <code>TX/RX</code>. Такие прошивки могут добавить поддержку двух датчиков, суточные таймеры или управление через Bluetooth. Однако перепрошивка требует навыков работы с микроэлектроникой и несет риск полного вывода устройства из строя.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Любая модификация печатной платы или перепрошивка микроконтроллера аннулирует гарантию (если она была) и требует глубоких знаний в электронике. Неопытным пользователям рекомендуется использовать устройство в штатной конфигурации.</p>
+</blockquote>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли запитать W1209 от 220В напрямую?</summary>
+<p>Нет, категорически нельзя. Модуль рассчитан на питание постоянным током <code>DC 12V</code>. Подключение к сети 220В мгновенно сожжет плату. Для работы от сети необходим отдельный блок питания 220В -> 12В.</p>
+</details>
+
+<details>
+<summary>Почему реле щелкает очень часто?</summary>
+<p>Слишком малый гистерезис (параметр <code>P2</code>). Увеличьте значение гистерезиса до 1-2 градусов, чтобы реле включалось и выключалось реже, что продлит его срок службы.</p>
+</details>
+
+<details>
+<summary>Как изменить температуру срабатывания?</summary>
+<p>В обычном режиме (не меню настроек) кратковременно нажмите кнопку <code>SET</code>. Начнут мигать цифры текущей уставки. Кнопками <code>+</code> и <code>-</code> установите нужное значение и снова нажмите <code>SET</code> для сохранения.</p>
+</details>
+
+<details>
+<summary>Подойдет ли этот терморегулятор для теплого пола?</summary>
+<p>Только как управляющий элемент. Реле W1209 не выдержит ток, потребляемый кабелем теплого пола. Необходимо подключить выход реле к контактору или мощному твердотельному реле, которое уже будет коммутировать нагрузку теплого пола.</p>
+</details>
+
+<details>
+<summary>Что делать, если дисплей показывает неверную температуру?</summary>
+<p>Используйте функцию калибровки в меню <code>P3</code>. Сравните показания с точным термометром и внесите поправку. Если разброс показаний слишком велик или нестабилен, возможно, датчик неисправен.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#подключение-модуля-и-проверка-работоспособности">Подключение модуля и проверка работоспособности</a></li><li><a href="#настройка-основных-параметров-работы-меню-p0-p2">Настройка основных параметров работы (Меню P0-P2)</a></li><li><a href="#калибровка-датчика-и-коррекция-показаний-меню-p3">Калибровка датчика и коррекция показаний (Меню P3)</a></li><li><a href="#задержка-включения-и-защита-компрессора-меню-p4-p6">Задержка включения и защита компрессора (Меню P4-P6)</a></li><li><a href="#расшифровка-индикации-и-кодов-ошибок">Расшифровка индикации и кодов ошибок</a></li><li><a href="#модификация-и-расширение-функционала">Модификация и расширение функционала</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-podklyuchit-termoregulyator-mekhanicheskij.html" class="related-card">Как подключить механический терморегулятор: пошаговая схема</a></li><li><a href="/articles/t/te/termostat-eto-prostymi-slovami.html" class="related-card">Термостат — что это такое простыми словами и как он работает</a></li><li><a href="/articles/k/kl/klimat-kontrol-na-arduino.html" class="related-card">Климат-контроль на Ардуино: сборка и настройка своими руками</a></li><li><a href="/articles/t/te/termostat-zont-h-1.html" class="related-card">Zont H-1: Инструкция по установке, настройке и управлению</a></li><li><a href="/articles/u/us/ustanovka-termoregulyatora-na-elektricheskij-kotel.html" class="related-card">Как подключить терморегулятор к электрическому котлу: схема и инструкция</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-podklyuchit-termoregulyator-mekhanicheskij.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить механический терморегулятор: пошаговая схема</span><span class="related-bottom-desc">Подробная инструкция по монтажу механического термостата. Схемы подключения, выбор места установки и</span></a><a href="/articles/t/te/termostat-eto-prostymi-slovami.html" class="related-bottom-card"><span class="related-bottom-title">Термостат — что это такое простыми словами и как он работает</span><span class="related-bottom-desc">Простое объяснение термостата: устройство, принцип работы, типы и где применяется. Разбираемся без с</span></a><a href="/articles/k/kl/klimat-kontrol-na-arduino.html" class="related-bottom-card"><span class="related-bottom-title">Климат-контроль на Ардуино: сборка и настройка своими руками</span><span class="related-bottom-desc">Пошаговая инструкция по созданию системы климат-контроля на базе Arduino. Выбор датчиков, подключени</span></a><a href="/articles/t/te/termostat-zont-h-1.html" class="related-bottom-card"><span class="related-bottom-title">Zont H-1: Инструкция по установке, настройке и управлению</span><span class="related-bottom-desc">Подробный обзор термостата Zont H-1. Как подключить, настроить зоны отопления и управлять котлом чер</span></a><a href="/articles/u/us/ustanovka-termoregulyatora-na-elektricheskij-kotel.html" class="related-bottom-card"><span class="related-bottom-title">Как подключить терморегулятор к электрическому котлу: схема и инструкция</span><span class="related-bottom-desc">Пошаговое руководство по установке терморегулятора на электрокотел своими руками. Схемы подключения,</span></a><a href="/articles/p/po/podklyuchenie-k-59-termostata.html" class="related-bottom-card"><span class="related-bottom-title">Подключение термостата 59-й серии: схема, инструкция, ошибки</span><span class="related-bottom-desc">Пошаговое руководство по подключению термостата 59-й модели к системе отопления: разводка проводов, </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Схема терморегулятора на LM358: пошаговая сборка своими руками — Рем Набор</title>
+    <meta name="description" content="Практические схемы терморегулятора с LM358 для систем отопления, охлаждения и климат-контроля. Распиновка, расчёт компонентов, типичные ошибки и тестирование.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/s/sk/skhema-termoregulyatora-na-lm358.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Схема терморегулятора на LM358: пошаговая сборка своими руками">
+    <meta property="og:description" content="Практические схемы терморегулятора с LM358 для систем отопления, охлаждения и климат-контроля. Распиновка, расчёт компонентов, типичные ошибки и тестирование.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Схема терморегулятора на LM358: пошаговая сборка своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Терморегулятор на LM358: схема, принцип работы и сборка своими руками</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-принцип-работы-терморегулятора-на-lm358">1. Принцип работы терморегулятора на LM358</a></li><li><a href="#2-схема-терморегулятора-с-датчиком-lm35">2. Схема терморегулятора с датчиком LM35</a></li><li><a href="#3-расчёт-резисторов-для-заданного-порога-срабатывания">3. Расчёт резисторов для заданного порога срабатывания</a></li><li><a href="#4-альтернативные-схемы-термистор-и-ds18b20">4. Альтернативные схемы: термистор и DS18B20</a></li><li><a href="#5-типичные-ошибки-и-их-устранение">5. Типичные ошибки и их устранение</a></li><li><a href="#6-тестирование-и-калибровка-терморегулятора">6. Тестирование и калибровка терморегулятора</a></li><li><a href="#7-модификации-схемы-для-специфических-задач">7. Модификации схемы для специфических задач</a></li><li><a href="#faq-частые-вопросы-по-терморегулятору-на-lm358">FAQ: Частые вопросы по терморегулятору на LM358</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Терморегуляторы на базе операционного усилителя <em>LM358</em> — одно из самых доступных и надёжных решений для автоматизации климатических систем. Эта микросхема позволяет создавать устройства с гистерезисом, точной настройкой порогов срабатывания и совместимостью с большинством исполнительных механизмов: реле, транзисторами или симисторами. В отличие от цифровых термостатов, аналоговая схема на <em>LM358</em> не требует программирования, устойчива к помехам и легко модифицируется под конкретные задачи — от управления вентилятором в компьютере до поддержания температуры в инкубаторе или теплице.</p>
+
+<p>Главное преимущество <strong>LM358</strong> — наличие двух независимых операционных усилителей в одном корпусе. Это позволяет реализовать <strong>компаратор с гистерезисом</strong> (для исключения дребезга реле) или даже двухканальный терморегулятор с раздельными порогами включения/выключения. В статье разберём <strong>3 рабочие схемы</strong> (с датчиками <em>LM35</em>, <em>DS18B20</em> и термистором), рассчитаем номиналы резисторов, а также проанализируем типичные ошибки, из-за которых схема работает нестабильно или ложно срабатывает.</p>
+
+<p>⚠️ <strong>Важно:</strong> Если вы планируете использовать терморегулятор для управления нагревателями мощностью свыше 500 Вт, обязательно добавьте в схему <strong>опторазвязку</strong> или симисторный драйвер (например, <em>MOC3041</em>). Прямое подключение реле к выходу <em>LM358</em> без буферного каскада может привести к пробою микросхемы при индуктивных нагрузках.
+
+<h2 id="1-принцип-работы-терморегулятора-на-lm358">1. Принцип работы терморегулятора на LM358</h2>
+
+<p>Операционный усилитель <em>LM358</em> в схеме терморегулятора выполняет роль <strong>компаратора</strong> — сравнивает напряжение с датчика температуры с опорным значением, заданным делителем на резисторах. Когда температура превышает установленный порог, выход усилителя переключается, активируя исполнительное устройство (реле, транзистор или симистор).
+
+<p>Ключевые элементы схемы:
+<ul>
+  <li>🔹 <strong>Датчик температуры</strong> — преобразует температуру в напряжение (<em>LM35</em>, термистор <em>NTC/PTC</em> или цифровой <em>DS18B20</em> с АЦП).</li>
+  <li>🔹 <strong>Опорный делитель</strong> — задаёт порог срабатывания (резисторы <code>R1</code> и <code>R2</code>).</li>
+  <li>🔹 <strong>Гистерезис</strong> — предотвращает частые включения/выключения при пограничных температурах (реализуется положительной обратной связью через <code>R3</code>).</li>
+  <li>🔹 <strong>Исполнительный каскад</strong> — реле, транзистор или оптосимистор для управления нагрузкой.</li>
+</ul>
+
+<p>Особенность <em>LM358</em> — возможность работы от однополярного питания (5–30 В), что упрощает интеграцию в системы с напряжением 12 В или 24 В. Однако при питании менее 5 В точность схемы падает из-за ограниченного размаха выходного сигнала.
+
+<p>⚠️ <strong>Внимание:</strong> Если датчик температуры (<em>LM35</em>) подключён к инвертирующему входу (<code>–IN</code>), а опорное напряжение — к неинвертирующему (<code>+IN</code>), реле будет <strong>включаться при понижении температуры</strong> (обратная логика). Для прямого управления (включение при нагреве) поменяйте входы местами.
+
+<div class="poll-widget" id="poll-670713d6"><div class="poll-widget-question">📊 Какой датчик температуры вы планируете использовать?</div><div class="poll-widget-option" data-poll="670713d6" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">LM35</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="670713d6" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">DS18B20</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="670713d6" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Термистор NTC</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="670713d6" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Термистор PTC</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="670713d6" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="2-схема-терморегулятора-с-датчиком-lm35">2. Схема терморегулятора с датчиком LM35</h2>
+
+<p>Классическая схема с <em>LM35</em> и <em>LM358</em> подходит для диапазона температур от 0 до 100°C. Датчик <em>LM35</em> выдаёт <code>10 мВ/°C</code>, что упрощает расчёт порогов. Ниже приведена схема с гистерезисом и управлением реле через транзистор <em>BC547</em>:
+
+<p><strong>Компоненты:</strong>
+<ul>
+  <li>🔹 <em>LM358</em> — операционный усилитель.</li>
+  <li>🔹 <em>LM35</em> — датчик температуры.</li>
+  <li>🔹 Резисторы: <code>R1=10 кОм</code> (потенциометр для настройки порога), <code>R2=1 кОм</code>, <code>R3=100 кОм</code> (гистерезис).</li>
+  <li>🔹 Транзистор <em>BC547</em> — для управления реле.</li>
+  <li>🔹 Реле 12 В — коммутация нагрузки до 10 А.</li>
+  <li>🔹 Диод <em>1N4007</em> — защита от обратного напряжения реле.</li>
+</ul>
+
+<p><strong>Распиновка LM358:</strong>
+<table>
+  <thead>
+    <tr><th>Ножка</th><th>Назначение</th><th>Подключение</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Выход усилителя 1</td><td>К базе транзистора <em>BC547</em></td></tr>
+    <tr><td>2</td><td>Инвертирующий вход 1 (<code>–IN</code>)</td><td>К средней точке делителя <code>R1–R2</code></td></tr>
+    <tr><td>3</td><td>Неинвертирующий вход 1 (<code>+IN</code>)</td><td>К выходу <em>LM35</em></td></tr>
+    <tr><td>4</td><td><code>GND</code></td><td>Общий минус</td></tr>
+    <tr><td>8</td><td><code>VCC</code></td><td>Питание +5–12 В</td></tr>
+  </tbody>
+</table>
+
+<p>⚠️ <strong>Внимание:</strong> Если температура окружающей среды превышает 70°C, разместите <em>LM358</em> на небольшом радиаторе или используйте микросхему в корпусе <code>SOIC-8</code> с лучшим теплоотводом. Перегрев усилителя приводит к дрейфу порогов срабатывания.
+
+
+<p>Полярность питания LM358 (ножка 4 — GND, 8 — +VCC)|</p>
+<p>Подключение LM35 (выход к +IN, GND к общему минусу)|</p>
+<p>Номиналы резисторов R1–R3 (проверьте цветовую маркировку)|</p>
+<p>Подключение диода 1N4007 (катод к плюсу реле)|</p>
+<p>Изоляция силовых цепей от сигнальных (исключите наводки)</p>
+<p>--></p>
+
+<h2 id="3-расчёт-резисторов-для-заданного-порога-срабатывания">3. Расчёт резисторов для заданного порога срабатывания</h2>
+
+<p>Порог срабатывания терморегулятора определяется соотношением резисторов <code>R1</code> и <code>R2</code> в делителе опорного напряжения. Формула для расчёта:
+<pre><code>V_ref = VCC * (R2 / (R1 + R2))</code></pre>
+<p>где <code>V_ref</code> — опорное напряжение (в вольтах), при котором срабатывает компаратор.</p>
+
+<p>Для датчика <em>LM35</em> (выход <code>10 мВ/°C</code>) пороговая температура рассчитывается как:
+<pre><code>T_порог = V_ref / 0.01</code></pre>
+<strong>Пример:</strong> При <code>VCC = 12 В</code>, <code>R1 = 10 кОм</code> (потенциометр), <code>R2 = 2 кОм</code>:
+<pre><code>V_ref = 12 * (2000 / (10000 + 2000)) ≈ 2 В → T_порог = 200°C</code></pre>
+<mark>Это ошибка! Реальный порог составит 20°C (2 В / 0.01 В/°C). Для порога 50°C нужно <code>V_ref = 0.5 В</code>, что достигается <code>R2 ≈ 450 Ом</code> при <code>R1 = 10 кОм</code>.</mark>
+
+<p><strong>Гистерезис</strong> (разница между температурами включения и выключения) задаётся резистором <code>R3</code>, подключённым к выходу усилителя. Оптимальное значение:
+<pre><code>R3 = R1 * (ΔT / T_порог)</code></pre>
+<p>где <code>ΔT</code> — желаемый гистерезис (например, 5°C).</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для точной настройки порога используйте потенциометр <code>R1</code> на 20 кОм. После калибровки замените его на постоянный резистор близкого номинала, чтобы исключить дрейф при вибрациях или изменении влажности.</p></div>
+
+<h2 id="4-альтернативные-схемы-термистор-и-ds18b20">4. Альтернативные схемы: термистор и DS18B20</h2>
+
+<p>Если <em>LM35</em> недоступен, его можно заменить термистором или цифровым датчиком <em>DS18B20</em>. Каждый вариант имеет особенности:
+
+<p><strong>Схема с термистором <em>NTC 10k</strong>:</em>
+<ul>
+  <li>🔹 Термистор включается в делитель напряжения с резистором <code>10 кОм</code>.</li>
+  <li>🔹 На <code>+IN</code> <em>LM358</em> подаётся напряжение с делителя, на <code>–IN</code> — опорное.</li>
+  <li>🔹 Нелинейная характеристика <em>NTC</em> требует подбора резисторов под конкретный диапазон температур.</li>
+</ul>
+
+<p><strong>Схема с <em>DS18B20</strong>:</em>
+<ul>
+  <li>🔹 Требует внешнего АЦП (например, <em>ADC0804</em>) или микроконтроллера для оцифровки сигнала.</li>
+  <li>🔹 Точность ±0.5°C, но схема усложняется.</li>
+  <li>🔹 Подходит для систем с цифровой индикацией (например, на <em>TM1637</em>).</li>
+</ul>
+
+<p>⚠️ <strong>Внимание:</strong> При использовании термистора <em>PTC</em> (с положительным ТКС) подключайте его к <code>–IN</code> <em>LM358</em>, иначе схема будет работать в обратной логике. Для <em>NTC</em> (отрицательный ТКС) — к <code>+IN</code>.
+
+<details class="faq-item"><summary>Почему схема с DS18B20 сложнее?</summary><div class="faq-answer"><p>
+<p>Цифровой датчик <em>DS18B20</em> передаёт данные по протоколу <em>1-Wire</em>, который нельзя напрямую подключить к аналоговому входу <em>LM358</em>. Потребуется:</p>
+<p>1. Микроконтроллер (например, <em>Arduino Nano</em>) для считывания температуры.</p>
+<p>2. ЦАП (например, <em>PWM→RC-фильтр</em>) для преобразования цифрового сигнала в аналоговый уровень для <em>LM358</em>.</p>
+<p>3. Или полный отказ от <em>LM358</em> в пользу программной логики на МК.</p>
+<p></p></div></details></p>
+
+<h2 id="5-типичные-ошибки-и-их-устранение">5. Типичные ошибки и их устранение</h2>
+
+<p>Даже правильно собранная схема может работать некорректно. Рассмотрим наиболее распространённые проблемы:
+
+<p><strong>Проблема 1: Реле щёлкает хаотично</strong>
+<ul>
+  <li>🔹 <strong>Причина:</strong> Отсутствует гистерезис (<code>R3</code> не подключён или слишком мал).</li>
+  <li>🔹 <strong>Решение:</strong> Добавьте резистор <code>R3 = 100–500 кОм</code> между выходом усилителя и <code>+IN</code>.</li>
+</ul>
+
+<p><strong>Проблема 2: Терморегулятор не включает нагрузку</strong>
+<ul>
+  <li>🔹 <strong>Причина 1:</strong> Неправильная полярность датчика (<em>LM35</em> подключён в обратной полярности).</li>
+  <li>🔹 <strong>Причина 2:</strong> Слишком низкое опорное напряжение (проверьте расчёт <code>R1/R2</code>).</li>
+  <li>🔹 <strong>Причина 3:</strong> Пробой транзистора <em>BC547</em> (замените и проверьте ток базы).</li>
+</ul>
+
+<p><strong>Проблема 3: Ложные срабатывания при включении питания</strong>
+<ul>
+  <li>🔹 <strong>Причина:</strong> Броски напряжения при старте. В схеме отсутствует конденсатор фильтра.</li>
+  <li>🔹 <strong>Решение:</strong> Установите керамический конденсатор <code>0.1 мкФ</code> между <code>VCC</code> и <code>GND</code> <em>LM358</em>.</li>
+</ul>
+
+<p>⚠️ <strong>Внимание:</strong> Если терморегулятор управляет <strong>индуктивной нагрузкой</strong> (нагреватель, компрессор), обязательно используйте <strong>снабберную цепь</strong> (резистор <code>100 Ом</code> + конденсатор <code>0.1 мкФ</code>) параллельно контактам реле. Иначе импульсные помехи выведут из строя <em>LM358</em>.
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Гистерезис — критичный параметр! Без него реле будет "дребезжать" при пограничной температуре, что приведёт к преждевременному износу контактов и нестабильной работе системы.</p></div>
+
+<h2 id="6-тестирование-и-калибровка-терморегулятора">6. Тестирование и калибровка терморегулятора</h2>
+
+<p>Перед подключением к реальной нагрузке проверьте схему в следующем порядке:
+
+<ol>
+  <li>🔹 <strong>Проверка питания:</strong> Измерьте напряжение на ножке 8 <em>LM358</em> (должно быть <code>5–12 В</code>).</li>
+  <li>🔹 <strong>Калибровка порога:</strong>
+    <ul>
+      <li>Погрузите датчик в воду с известной температурой (например, 40°C).</li>
+      <li>Вращайте потенциометр <code>R1</code>, пока реле не сработает.</li>
+      <li>Зафиксируйте положение потенциометра или замените его на постоянный резистор.</li>
+    </ol>
+  </li>
+  <li>🔹 <strong>Проверка гистерезиса:</strong> Нагрейте датчик до срабатывания, затем охладите. Разница температур включения/выключения должна составлять <code>3–10°C</code>.</li>
+  <li>🔹 <strong>Тест под нагрузкой:</strong> Подключите маломощную лампу (25–60 Вт) вместо основной нагрузки и проверьте стабильность работы в течение 30 минут.</li>
+</ol>
+
+<p>⚠️ <strong>Внимание:</strong> При тестировании с нагревателями мощностью свыше 1 кВт используйте <strong>раздельные источники питания</strong> для схемы управления и силовой части. Наводки от нагревательного элемента могут вызвать ложные срабатывания.
+
+<p><strong>Инструменты для калибровки:</strong>
+<ul>
+  <li>🔹 Мультиметр (для измерения <code>V_ref</code> и напряжения на датчике).</li>
+  <li>🔹 Термометр с внешним щупом (погрешность не более ±0.5°C).</li>
+  <li>🔹 Источник стабильного напряжения (например, лабораторный блок питания).</li>
+</ul>
+
+<h2 id="7-модификации-схемы-для-специфических-задач">7. Модификации схемы для специфических задач</h2>
+
+<p>Базовую схему на <em>LM358</em> можно адаптировать под различные применения:
+
+<p><strong>1. Двухканальный терморегулятор</strong>
+<ul>
+  <li>🔹 Используйте оба усилителя в <em>LM358</em>: один для верхнего порога (например, 30°C), второй — для нижнего (20°C).</li>
+  <li>🔹 Подключите выходы к разным реле для управления нагревом и охлаждением.</li>
+</ul>
+
+<p><strong>2. Управление вентилятором с ШИМ</strong>
+<ul>
+  <li>🔹 Замените реле на транзистор <em>IRFZ44N</em> и добавьте ШИМ-генератор на <em>NE555</em>.</li>
+  <li>🔹 Скорость вентилятора будет плавно регулироваться в зависимости от температуры.</li>
+</ul>
+
+<p><strong>3. Защита от перегрева</strong>
+<ul>
+  <li>🔹 Добавьте второй компаратор с порогом <code>90–100°C</code> для аварийного отключения нагрузки.</li>
+  <li>🔹 Используйте реле с нормально замкнутыми контактами дляfail-safe логики.</li>
+</ul>
+
+<p>⚠️ <strong>Внимание:</strong> При модификации схемы для работы с <strong>трехфазными нагрузками</strong> (например, электрокотлами) используйте <strong>трехфазное твердотельное реле</strong> (например, <em>Crouzet SSR-40DA</em>) и обеспечьте гальваническую развязку управляющих цепей.
+
+<h2 id="faq-частые-вопросы-по-терморегулятору-на-lm358">FAQ: Частые вопросы по терморегулятору на LM358</h2>
+
+<details>
+  <summary>❓ Можно ли использовать LM358N вместо LM358?</summary>
+  <p><strong>Да.</strong> <em>LM358N</em> — это тот же усилитель, но в пластиковом корпусе <code>DIP-8</code>. Электрические характеристики идентичны. Единственное отличие — диапазон рабочих температур: у <em>LM358N</em> он уже (<code>0…+70°C</code> против <code>–40…+105°C</code> у промышленных версий). Для бытовых терморегуляторов разницы нет.</p>
+</details>
+
+<details>
+  <summary>❓ Почему схема работает нестабильно при питании от 5 В?</summary>
+  <p>При низком напряжении питания (<code>&lt;6 В</code>) <em>LM358</em> не может обеспечить полный размах выходного сигнала. В результате:</p>
+  <ul>
+    <li>🔹 Реле может не срабатывать из-за недостаточного тока на базе транзистора.</li>
+    <li>🔹 Пороги срабатывания "плывут" при изменении температуры микросхемы.</li>
+  </ul>
+  <p><strong>Решение:</strong> Используйте питание <code>9–12 В</code> или замените <em>LM358</em> на <em>rail-to-rail</em> усилитель (например, <em>MCP6002</em>).</p>
+</details>
+
+<details>
+  <summary>❓ Как подключить терморегулятор к Arduino?</summary>
+  <p>Для интеграции с <em>Arduino</em>:</p>
+  <ol>
+    <li>Подключите выход <em>LM358</em> к цифровому входу <em>Arduino</em> (например, <code>D2</code>).</li>
+    <li>Настройте внутренний подтягивающий резистор: <code>pinMode(2, INPUT_PULLUP);</code></li>
+    <li>Используйте прерывания для обработки сигнала: <code>attachInterrupt(digitalPinToInterrupt(2), handleTemp, CHANGE);</code></li>
+  </ol>
+  <p>⚠️ Не подключайте выход <em>LM358</em> напрямую к <code>5V</code> или <code>GND</code> <em>Arduino</em> — это может повредить порт МК. Используйте резистор <code>1 кОм</code> в цепи.</p>
+</details>
+
+<details>
+  <summary>❓ Можно ли управлять нагрузкой 220 В через эту схему?</summary>
+  <p><strong>Да, но с обязательной гальванической развязкой!</strong> Схема подключения:</p>
+  <ol>
+    <li>Выход <em>LM358</em> → транзистор <em>BC547</em> → оптосимистор <em>MOC3041</em>.</li>
+    <li>Выход <em>MOC3041</em> → симистор <em>BTA16</em> (для нагрузок до 16 А).</li>
+    <li>Добавьте снабберную цепь (<code>R=100 Ом</code>, <code>C=0.1 мкФ</code>) параллельно симистору.</li>
+  </ol>
+  <p><strong>Запрещено:</strong> Подключать 220 В напрямую к реле или транзисторам без развязки!</p>
+</details>
+
+<details>
+  <summary>❓ Как уменьшить потребление схемы в режиме ожидания?</summary>
+  <p>Базовая схема потребляет <code>3–5 мА</code> за счёт <em>LM358</em> и делителя <code>R1–R2</code>. Чтобы снизить ток:</p>
+  <ul>
+    <li>🔹 Замените <em>LM358</em> на <em>MIC841</em> (потребление <code>1 мкА</code> в режиме ожидания).</li>
+    <li>🔹 Увеличьте номиналы <code>R1</code> и <code>R2</code> до <code>100 кОм</code> (но учтите рост чувствительности к наводкам).</li>
+    <li>🔹 Используйте <strong>импульсный режим</strong>: периодически включайте питание схемы через транзисторный ключ (например, на <em>BC557</em>), управляемый таймером <em>NE555</em>.</li>
+  </ul>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-принцип-работы-терморегулятора-на-lm358">1. Принцип работы терморегулятора на LM358</a></li><li><a href="#2-схема-терморегулятора-с-датчиком-lm35">2. Схема терморегулятора с датчиком LM35</a></li><li><a href="#3-расчёт-резисторов-для-заданного-порога-срабатывания">3. Расчёт резисторов для заданного порога срабатывания</a></li><li><a href="#4-альтернативные-схемы-термистор-и-ds18b20">4. Альтернативные схемы: термистор и DS18B20</a></li><li><a href="#5-типичные-ошибки-и-их-устранение">5. Типичные ошибки и их устранение</a></li><li><a href="#6-тестирование-и-калибровка-терморегулятора">6. Тестирование и калибровка терморегулятора</a></li><li><a href="#7-модификации-схемы-для-специфических-задач">7. Модификации схемы для специфических задач</a></li><li><a href="#faq-частые-вопросы-по-терморегулятору-на-lm358">FAQ: Частые вопросы по терморегулятору на LM358</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-snyat-korpus-termostata.html" class="related-card">Как снять корпус термостата: пошаговая инструкция для авто</a></li><li><a href="/articles/t/te/termostat-s-vynosnym-datchikom-temperatury-vozdukha-s-vklyucheniem-i-vyklyucheniem.html" class="related-card">Термостат с выносным датчиком: настройка и монтаж своими руками</a></li><li><a href="/articles/w/wy/wy-s95d1-kak-proverit-termostat.html" class="related-card">Термостат WY S95D1: Как проверить и заменить своими руками</a></li><li><a href="/articles/p/pr/printsip-raboty-elektronnogo-termostata.html" class="related-card">Принцип работы электронного термостата: устройство и настройка</a></li><li><a href="/articles/o/ot/otzyvy-o-termostatakh-luzar.html" class="related-card">Отзывы о термостатах Лузар: плюсы, минусы и реальный опыт владельцев</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-snyat-korpus-termostata.html" class="related-bottom-card"><span class="related-bottom-title">Как снять корпус термостата: пошаговая инструкция для авто</span><span class="related-bottom-desc">Полное руководство по демонтажу корпуса термостата. Как слить антифриз, открутить болты и заменить п</span></a><a href="/articles/t/te/termostat-s-vynosnym-datchikom-temperatury-vozdukha-s-vklyucheniem-i-vyklyucheniem.html" class="related-bottom-card"><span class="related-bottom-title">Термостат с выносным датчиком: настройка и монтаж своими руками</span><span class="related-bottom-desc">Как подключить термостат с выносным датчиком температуры воздуха. Схемы, калибровка, настройка гисте</span></a><a href="/articles/w/wy/wy-s95d1-kak-proverit-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Термостат WY S95D1: Как проверить и заменить своими руками</span><span class="related-bottom-desc">Полная инструкция по диагностике термостата WY S95D1. Как проверить работоспособность, симптомы поло</span></a><a href="/articles/p/pr/printsip-raboty-elektronnogo-termostata.html" class="related-bottom-card"><span class="related-bottom-title">Принцип работы электронного термостата: устройство и настройка</span><span class="related-bottom-desc">Детальный разбор принципа работы электронного термостата. Устройство датчиков, схемы управления и от</span></a><a href="/articles/o/ot/otzyvy-o-termostatakh-luzar.html" class="related-bottom-card"><span class="related-bottom-title">Отзывы о термостатах Лузар: плюсы, минусы и реальный опыт владельцев</span><span class="related-bottom-desc">Анализ отзывов о термостатах Luzar 2023-2026 гг.: сравнение моделей, типичные проблемы, советы по вы</span></a><a href="/articles/t/te/termostat-kapillyarnyj-printsip-raboty.html" class="related-bottom-card"><span class="related-bottom-title">Термостат капиллярный: принцип работы и настройка</span><span class="related-bottom-desc">Подробный разбор устройства, как работает капиллярный термостат, способы регулировки и замены датчик</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

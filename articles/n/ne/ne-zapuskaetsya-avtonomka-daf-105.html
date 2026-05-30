@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Почему не запускается автономка DAF 105: диагностика и ремонт — Рем Набор</title>
+    <meta name="description" content="Подробный разбор причин отказа автономного отопителя DAF 105. Диагностика Eberspacher, ошибки насоса, свечи и блока управления.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/n/ne/ne-zapuskaetsya-avtonomka-daf-105.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Почему не запускается автономка DAF 105: диагностика и ремонт">
+    <meta property="og:description" content="Подробный разбор причин отказа автономного отопителя DAF 105. Диагностика Eberspacher, ошибки насоса, свечи и блока управления.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Почему не запускается автономка DAF 105: диагностика и ремонт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Не запускается автономка DAF 105: причины и методы устранения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-и-проверка-электропитания">Первичная диагностика и проверка электропитания</a></li><li><a href="#проблемы-с-подачей-топлива-и-насосом-дозатором">Проблемы с подачей топлива и насосом-дозатором</a></li><li><a href="#неисправности-свечи-накаливания-и-камеры-сгорания">Неисправности свечи накаливания и камеры сгорания</a></li><li><a href="#датчики-и-система-безопасности-eberspacher">Датчики и система безопасности Eberspacher</a></li><li><a href="#блок-управления-и-электронные-ошибки">Блок управления и электронные ошибки</a></li><li><a href="#влияние-внешних-факторов-и-выхлопной-системы">Влияние внешних факторов и выхлопной системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Ситуация, когда в холодное время года <strong>автономный отопитель</strong> DAF 105 отказывается запускаться, является одной из самых критичных для водителя дальнобойщика. Это не просто вопрос комфорта, а проблема безопасности и работоспособности техники, так как без прогрева двигатель может не завестись утром, а кабина останется ледяной. Чаще всего владельцы сталкиваются с тем, что устройство либо вообще не реагирует на включение, либо запускается, но тут же глохнет с ошибкой.</p>
+
+<p>Основная масса проблем кроется в системе подачи топлива, состоянии <em>свечи накаливания</em> или неисправности блока управления <em>Eberspacher</em>. Игнорирование первичных симптомов, таких как гудение насоса без розжига или частые попытки старта, может привести к полному выходу узла из строя. В этой статье мы детально разберем алгоритм поиска неисправностей, от простой проверки предохранителей до сложной диагностики через диагностический разъем.</p>
+
+<p>Прежде чем приступать к глубокому ремонту, необходимо исключить банальные причины, связанные с качеством топлива или разрядом аккумулятора. Часто водители ищут поломку в электронике, тогда как проблема решается заменой фильтра или чисткой воздухозаборника. Давайте последовательно пройдемся по всем узлам системы, чтобы вы могли локализовать проблему своими силами.</p>
+
+<h2 id="первичная-диагностика-и-проверка-электропитания">Первичная диагностика и проверка электропитания</h2>
+
+<p>Любая диагностика начинается с проверки наличия напряжения в бортовой сети. Если <strong>аккумулятор</strong> разряжен ниже критического уровня, блок управления просто не даст команду на запуск, чтобы сохранить заряд для старта двигателя. На грузовиках <em>DAF XF 105</em> штатная автономка подключена через отдельный предохранитель, который часто перегорает при скачках напряжения или коротком замыкании в проводке.</p>
+
+<p>Проверьте целостность предохранителей в соответствующем блоке, расположенном обычно в кабине или под капотом. Даже если визуально нить цела, лучше прозвонить их мультиметром или заменить на заведомо исправные. Отсутствие питания на самом отопителе — самая частая причина молчания устройства при нажатии кнопки включения.</p>
+
+<p>Также стоит обратить внимание на состояние клемм и массы. Окисленные контакты создают высокое сопротивление, из-за чего <strong>циркуляционный насос</strong> не получает достаточного тока для прокачки топлива. Плохая масса может имитировать сложные электронные неисправности, вводя в заблуждение даже опытных мастеров.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не пытайтесь «прикуривать» автономку напрямую от внешнего источника без проверки полярности. Блок управления <em>Eberspacher</em> крайне чувствителен к переполюсовке и может сгореть мгновенно.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте мультиметр для проверки напряжения непосредственно на штекере отопителя во время попытки запуска. Падение напряжения ниже 10.5 В указывает на проблему с АКБ или проводкой, а не с самим отопителем.</p></div>
+
+<h2 id="проблемы-с-подачей-топлива-и-насосом-дозатором">Проблемы с подачей топлива и насосом-дозатором</h2>
+
+<p>Если индикатор на пульте загорается, слышен звук работы вентилятора и насоса, но розжига не происходит, причина почти всегда в топливе. <strong>Насос-дозатор</strong> должен издавать характерные щелчки с определенной частотой. Если щелчков нет или они слишком редкие/частые, значит, топливо не поступает в камеру сгорания в нужном объеме.</p>
+
+<p>Частой причиной является завоздушивание системы или засорение топливного фильтра. В зимний период парафинизация солярки блокирует движение жидкости. Также стоит проверить заборную трубку в баке: если она треснула или негерметична, насос будет качать воздух вместо топлива.</p>
+
+<p>Для проверки подачи топлива можно временно отсоединить шланг от самого отопителя (подставив емкость) и запустить цикл работы. Если топливо идет пульсирующими порциями — насос исправен. Если нет — проблема в насосе, фильтре или баке.</p>
+
+<ul>
+<li>🛢️ Проверьте уровень топлива в баке: датчик автономки может отличаться от основного, и при малом остатке забор воздуха неизбежен.</li>
+<li>🔧 Осмотрите топливный фильтр: черный осадок или вода в отстойнике говорят о необходимости срочной замены.</li>
+<li>🔊 Прислушайтесь к ритму насоса: равномерные щелчки каждые несколько секунд — признак нормы, хаотичные звуки — признак неисправности.</li>
+</ul>
+
+<div class="poll-widget" id="poll-5a5fb9b0"><div class="poll-widget-question">📊 Как часто вы меняете топливный фильтр автономки?</div><div class="poll-widget-option" data-poll="5a5fb9b0" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Раз в сезон</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5a5fb9b0" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Только при поломке</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5a5fb9b0" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никогда не менял</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5a5fb9b0" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Каждые 10 000 км</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="неисправности-свечи-накаливания-и-камеры-сгорания">Неисправности свечи накаливания и камеры сгорания</h2>
+
+<p>Свеча накаливания — это расходный элемент, который со временем выгорает. Если она не раскаляется до нужной температуры, датчик пламени не зафиксирует розжиг, и блок управления аварийно остановит работу, откачав топливо обратно. На моделях <em>DAF 105</em> используется керамическая свеча, которая более долговечна, но чувствительна к качеству топлива.</p>
+
+<p>Проверить свечу можно визуально, сняв ее с отопителя. На исправной спирали не должно быть нагара, трещин или оплавлений. Сопротивление исправной свечи обычно находится в диапазоне от 0.4 до 1.0 Ом. Значительное отклонение указывает на необходимость замены.</p>
+
+<p>Нагар в камере сгорания также может препятствовать нормальному розжигу. Излишки несгоревшего топлива превращаются в кокс, который перекрывает доступ воздуха или мешает работе датчика перегрева. Регулярная чистка камеры сгорания продлевает жизнь устройству.</p>
+
+<table>
+<thead>
+<tr>
+<th>Симптом</th>
+<th>Вероятная причина</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Запуск и быстрое отключение</td>
+<td>Неисправна свеча накаливания</td>
+<td>Замерить сопротивление, заменить свечу</td>
+</tr>
+<tr>
+<td>Много дыма при старте</td>
+<td>Переобогащенная смесь</td>
+<td>Проверить насос-дозатор и подачу воздуха</td>
+</tr>
+<tr>
+<td>Ошибка перегрева</td>
+<td>Загрязнена камера сгорания</td>
+<td>Очистить камеру и датчик температуры</td>
+</tr>
+<tr>
+<td>Нет щелчков насоса</td>
+<td>Обрыв цепи насоса</td>
+<td>Прозвонить насос и проверить питание</td>
+</tr>
+</tbody>
+</table>
+
+<details class="faq-item"><summary>Как правильно чистить камеру сгорания?</summary><div class="faq-answer"><p>Снимите свечу и аккуратно удалите нагар мягкой щеткой, не используя острые металлические предметы, чтобы не повредить стенки камеры и датчики.</p></div></details>
+
+<h2 id="датчики-и-система-безопасности-eberspacher">Датчики и система безопасности Eberspacher</h2>
+
+<p>Современные системы <strong>Eberspacher</strong>, устанавливаемые на <em>DAF</em>, оснащены несколькими датчиками безопасности. Датчик перегрева и датчик пламени играют ключевую роль в цикле работы. Если датчик пламени «видит» отсутствие огня после подачи топлива, он блокирует дальнейшую работу.</p>
+
+<p>Датчик перегрева срабатывает, если температура внутри корпуса превышает допустимые нормы. Это может случиться из-за забитого выхлопного патрубка или неисправности вентилятора горелки. В таком случае система уходит в ошибку, которую часто нельзя сбросить простым выключением.</p>
+
+<p>Иногда проблема кроется в окислении контактов самих датчиков. Вибрация грузовика со временем нарушает контакт в разъемах. Прозвонка цепей датчиков поможет исключить их из списка подозреваемых.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не замыкайте контакты датчиков напрямую для проверки работы отопителя. Это может привести к пожару, так как система лишится защиты от критического перегрева.</p>
+</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Большинство ошибок датчиков носят временный характер и могут быть вызваны плохим контактом. Перед заменой датчика тщательно зачистите разъемы и проверьте проводку на предмет перетирания.</p></div>
+
+<h2 id="блок-управления-и-электронные-ошибки">Блок управления и электронные ошибки</h2>
+
+<p>Если все механические узлы исправны, топливо подается, свеча греет, но запуска нет, проблема может быть в «мозгах» — блоке управления (БУ). На <em>DAF 105</em> БУ часто интегрирован с системой автомобиля или представляет собой отдельный модуль. Сбои в прошивке или внутренние замыкания могут блокировать запуск.</p>
+
+<p>Для точной диагностики необходимо считать коды ошибок. Штатный пульт управления иногда показывает лишь общий символ неисправности, но не конкретный код. Подключение диагностического сканера через разъем <code>OBD</code> или специальный интерфейс отопителя даст точную информацию.</p>
+
+<p>Частой ошибкой является попытка сброса ошибок многократным включением/выключением. Это не всегда помогает, а в некоторых случаях блокирует БУ на определенное время (таймер блокировки). В таких случаях требуется полный цикл сброса через диагностику.</p>
+
+<div class="checklist-block"><h4>☑️ Диагностика блока управления</h4><label class="check-item"><input type="checkbox"><span>Подключить диагностический сканер</span></label><label class="check-item"><input type="checkbox"><span>Считать текущие коды ошибок</span></label><label class="check-item"><input type="checkbox"><span>Сверить коды с мануалом производителя</span></label><label class="check-item"><input type="checkbox"><span>Выполнить сброс ошибок при необходимости</span></label><label class="check-item"><input type="checkbox"><span>Проверить версию прошивки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="влияние-внешних-факторов-и-выхлопной-системы">Влияние внешних факторов и выхлопной системы</h2>
+
+<p>Не стоит забывать про выхлопную систему автономки. Если выхлопная труба забита грязью, снегом или льдом, продукты сгорания не могут выходить наружу. Это создает обратное давление, которое душит пламя на этапе розжига.</p>
+
+<p>Также важен забор воздуха. Если воздухозаборник расположен неудачно и забивается пылью или попадает в зону выхлопа самого двигателя грузовика, кислородное голодание приведет к неудачному запуску. Проверьте целостность патрубков подачи воздуха.</p>
+
+<p>Влияние низких температур на саму конструкцию автономки также нельзя игнорировать. Замерзание конденсата в глушителе — распространенная проблема. Вода расширяется при замерзании и может механически повредить внутренние элементы или просто заблокировать выход газов.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Почему автономка DAF 105 запускается и сразу глохнет?</summary>
+<p>Скорее всего, проблема в отсутствии розжига. Блок управления подает топливо, но не видит пламени от свечи накаливания. Причины: неисправная свеча, плохое топливо, подсос воздуха в топливную магистраль или неисправность датчика пламени.</p>
+</details>
+
+<details>
+<summary>Как сбросить ошибку на автономке без сканера?</summary>
+<p>Попробуйте снять минусовую клемму с аккумулятора на 10-15 минут. Это обесточит блок управления и может сбросить временные ошибки. Если ошибка аппаратная (например, пробой свечи), такой метод не поможет.</p>
+</details>
+
+<details>
+<summary>Можно ли эксплуатировать грузовик, если не работает автономка?</summary>
+<p>Да, на движение автомобиля это не влияет, так как автономка является независимым узлом. Однако зимой эксплуатация без подогрева двигателя и кабины крайне не рекомендуется из-за риска замерзания топлива и сложностей с запуском основного мотора.</p>
+</details>
+
+<details>
+<summary>Где находится предохранитель автономного отопителя на DAF 105?</summary>
+<p>Обычно он расположен в блоке предохранителей в кабине (часто под спальным местом или за панелью приборов) или в силовом блоке под капотом. Точное расположение зависит от года выпуска и комплектации, смотрите схему на крышке блока предохранителей.</p>
+</details>
+
+<details>
+<summary>Почему насос автономки щелкает, но топливо не идет?</summary>
+<p>Это указывает на завоздушивание системы, засорение фильтра или неисправность самого насоса (износ поршня). Также возможна утечка топлива через трещину в заборной трубке внутри бака.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-и-проверка-электропитания">Первичная диагностика и проверка электропитания</a></li><li><a href="#проблемы-с-подачей-топлива-и-насосом-дозатором">Проблемы с подачей топлива и насосом-дозатором</a></li><li><a href="#неисправности-свечи-накаливания-и-камеры-сгорания">Неисправности свечи накаливания и камеры сгорания</a></li><li><a href="#датчики-и-система-безопасности-eberspacher">Датчики и система безопасности Eberspacher</a></li><li><a href="#блок-управления-и-электронные-ошибки">Блок управления и электронные ошибки</a></li><li><a href="#влияние-внешних-факторов-и-выхлопной-системы">Влияние внешних факторов и выхлопной системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kakie-dolzhny-byt-patrubki-na-progretom-dvigatele-myagkie-ili-tverdye.html" class="related-card">Патрубки на прогретом двигателе: твердые или мягкие?</a></li><li><a href="/articles/2/25/25192230-termostat-v-sbore-s-korpusom.html" class="related-card">Термостат 25192230 в сборе с корпусом: где купить, как заменить, цены</a></li><li><a href="/articles/t/te/termostat-na-nivu-21214-kakoj-luchshe-kupit.html" class="related-card">Термостат на Ниву 21214: какой лучше купить в 2026 году</a></li><li><a href="/articles/p/pa/patrubki-na-grantu-8-klapanov.html" class="related-card">Патрубки на Гранту 8 клапанов: выбор, замена и нюансы</a></li><li><a href="/articles/g/gd/gde-nakhoditsya-termostat-golf-3.html" class="related-card">Где находится термостат Гольф 3: схема и замена</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kakie-dolzhny-byt-patrubki-na-progretom-dvigatele-myagkie-ili-tverdye.html" class="related-bottom-card"><span class="related-bottom-title">Патрубки на прогретом двигателе: твердые или мягкие?</span><span class="related-bottom-desc">Какой должна быть жесткость патрубков системы охлаждения? Анализ твердых и мягких шлангов для диагно</span></a><a href="/articles/2/25/25192230-termostat-v-sbore-s-korpusom.html" class="related-bottom-card"><span class="related-bottom-title">Термостат 25192230 в сборе с корпусом: где купить, как заменить, цены</span><span class="related-bottom-desc">Подробный гайд по термостату 25192230 с корпусом: совместимость, признаки неисправности, пошаговая з</span></a><a href="/articles/t/te/termostat-na-nivu-21214-kakoj-luchshe-kupit.html" class="related-bottom-card"><span class="related-bottom-title">Термостат на Ниву 21214: какой лучше купить в 2026 году</span><span class="related-bottom-desc">Рейтинг термостатов для Нивы 21214: сравнение моделей, цены, отзывы владельцев. Как выбрать надежный</span></a><a href="/articles/p/pa/patrubki-na-grantu-8-klapanov.html" class="related-bottom-card"><span class="related-bottom-title">Патрубки на Гранту 8 клапанов: выбор, замена и нюансы</span><span class="related-bottom-desc">Как выбрать и заменить патрубки системы охлаждения на Lada Granta 8V? Подробный гайд с фото, артикул</span></a><a href="/articles/g/gd/gde-nakhoditsya-termostat-golf-3.html" class="related-bottom-card"><span class="related-bottom-title">Где находится термостат Гольф 3: схема и замена</span><span class="related-bottom-desc">Подробное руководство по поиску и замене термостата на VW Golf 3. Расположение, признаки неисправнос</span></a><a href="/articles/k/kh/kholodnyj-termostat-astra-h.html" class="related-bottom-card"><span class="related-bottom-title">Холодный термостат Opel Astra H: причины, диагностика, ремонт</span><span class="related-bottom-desc">Почему термостат на Astra H не открывается? Как проверить и заменить термостат своими руками. Симпто</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Испаритель 0.2 Ом: сколько ватт выдерживает и как рассчитать мощность — Рем Набор</title>
+    <meta name="description" content="Разбираемся, как правильно подобрать мощность для испарителя 0.2 Ом: формулы расчёта, таблицы совместимости с аккумуляторами и безопасные пределы для вейпа. Пошаговая инструкция для новичков и опытных вейперов.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/0/0-/0-2-om-isparitel-skolko-vatt.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Испаритель 0.2 Ом: сколько ватт выдерживает и как рассчитать мощность">
+    <meta property="og:description" content="Разбираемся, как правильно подобрать мощность для испарителя 0.2 Ом: формулы расчёта, таблицы совместимости с аккумуляторами и безопасные пределы для вейпа. Пошаговая инструкция для новичков и опытных вейперов.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/avtozapchasti-i-raskhodniki/">Автозапчасти и расходники</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Испаритель 0.2 Ом: сколько ватт выдерживает и как рассчитать мощность</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Испаритель 0.2 Ом: сколько ватт можно подавать без риска сжечь спираль?</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#почему-сопротивление-02-ом-требует-высокой-мощности">Почему сопротивление 0.2 Ом требует высокой мощности?</a></li><li><a href="#формула-расчёта-мощности-для-испарителя-02-ом">Формула расчёта мощности для испарителя 0.2 Ом</a></li><li><a href="#таблица-совместимости-02-ом-и-аккумуляторы">Таблица совместимости: 0.2 Ом и аккумуляторы</a></li><li><a href="#как-понять-что-мощность-слишком-высока">Как понять, что мощность слишком высока?</a></li><li><a href="#практические-рекомендации-для-разных-типов-испарителей">Практические рекомендации для разных типов испарителей</a></li><li><a href="#частые-ошибки-при-работе-с-02-ом">Частые ошибки при работе с 0.2 Ом</a></li><li><a href="#faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Вы купили новый испаритель с сопротивлением <strong>0.2 Ом</strong>, но не уверены, сколько ватт можно на него подавать? Эта дилемма знакома и новичкам, и опытным вейперам. С одной стороны, хочется получить максимальный вкус и плотный пар, с другой — боитесь сжечь спираль или разрядить аккумулятор в ноль за пару затяжек. В этой статье разберёмся, как <strong>правильно рассчитать мощность</strong> для испарителя 0.2 Ом, какие факторы влияют на безопасный диапазон ватт, и почему даже идентичные спирали от разных брендов могут вести себя по-разному.</p>
+
+<p>Сопротивление <em>0.2 Ом</em> относится к категории <strong>субомных испарителей</strong> (ниже 1.0 Ом), которые предназначены для работы в режиме <em>прямого накала (Direct Lung, DL)</em>. Такие спирали требуют высокой мощности, но при этом чувствительны к перегреву. Если вы используете механический мод или бокс-мод с регулируемой мощностью, важно понимать, что <mark>предел в 80–100 Вт для 0.2 Ом — это не догма, а ориентир, который зависит от материала спирали, количества витков и даже состава жижки</mark>. Далее — подробный разбор с формулами, таблицами и практическими советами.</p>
+
+<h2 id="почему-сопротивление-02-ом-требует-высокой-мощности">Почему сопротивление 0.2 Ом требует высокой мощности?</h2>
+
+<p>Физика процесса проста: чем <strong>ниже сопротивление</strong>, тем больше тока протекает через спираль при той же подаваемой мощности. Это следует из <em>закона Ома</em>:</p>
+
+<pre><code>I = U / R</code></pre>
+
+<p>где <code>I</code> — сила тока, <code>U</code> — напряжение, <code>R</code> — сопротивление. Для испарителя 0.2 Ом при напряжении 4.2 В (стандартный заряд литий-ионного аккумулятора) ток составит <code>21 А</code>. А мощность (<code>P = U × I</code>) в этом случае будет <code>88.2 Вт</code>. Но это <strong>теоретический максимум</strong> — на практике такие значения приводят к мгновенному перегреву.</p>
+
+<p>Дело в том, что спираль не только нагревается, но и <strong>отдаёт тепло</strong> жидкости и окружающей среде. Если мощность слишком высока, теплоотдача не успевает за нагревом — спираль раскаляется докрасна, жижа начинает подгорать, а вкус превращается в гари. Оптимальный диапазон мощности для 0.2 Ом обычно лежит в пределах <strong>50–80 Вт</strong>, но это зависит от:</p>
+
+<ul>
+  <li>🔥 <strong>Материала спирали</strong>: никель (<em>Ni200</em>), титан (<em>Ti</em>), нержавеющая сталь (<em>SS316</em>) или кантал (<em>Kanthal</em>) имеют разную теплоёмкость.</li>
+  <li>🌀 <strong>Конструкции испарителя</strong>: количество витков, диаметр проволоки, тип намотки (клаптон, алиен, меш).</li>
+  <li>💧 <strong>Состав жижи</strong>: высокое содержание <em>VG</em> (растительного глицерина) требует большей мощности для испарения.</li>
+  <li>🔋 <strong>Типа аккумулятора</strong>: не каждый аккум выдержит 20+ ампер непрерывного разряда.</li>
+</ul>
+
+<div class="poll-widget" id="poll-b0fce38c"><div class="poll-widget-question">📊 Какой тип спирали вы используете чаще?</div><div class="poll-widget-option" data-poll="b0fce38c" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Кантал (Kanthal)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b0fce38c" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Нержавеющая сталь (SS316)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b0fce38c" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Никель (Ni200)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b0fce38c" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Титан (Ti)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="b0fce38c" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="формула-расчёта-мощности-для-испарителя-02-ом">Формула расчёта мощности для испарителя 0.2 Ом</h2>
+
+<p>Чтобы не гадать на кофейной гуще, воспользуемся <strong>формулой мощности через сопротивление и ток</strong>:</p>
+
+<pre><code>P = I² × R</code></pre>
+
+<p>где <code>P</code> — мощность в ваттах, <code>I</code> — ток в амперах, <code>R</code> — сопротивление в омах. Но как узнать ток? Для этого нужно знать <strong>напряжение аккумулятора</strong> (обычно 3.7–4.2 В) и <strong>предел разряда батареи</strong> (указывается на корпусе, например, <em>20A</em> или <em>30A</em>).</p>
+
+<p>Допустим, у вас аккумулятор <em>Sony VTC5A</em> с максимальным током разряда <code>25A</code>. Тогда:</p>
+
+<ol>
+  <li>Максимальный ток: <code>25A</code>.</li>
+  <li>Максимальная мощность: <code>P = 25² × 0.2 = 125 Вт</code>.</li>
+</ol>
+
+<p>Но это <strong>абсолютный предел</strong>, который приводит к перегреву! Реальная рабочая мощность должна быть на <strong>20–30% ниже</strong>, то есть <code>80–90 Вт</code>. А если спираль из нержавейки или титана, которые греются медленнее кантала, можно смело снижать до <code>60–70 Вт</code>.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте онлайн-калькуляторы вейп-мощности (например, <em>Steam Engine</em>), чтобы точно подобрать параметры под ваш испаритель и аккумулятор. Вводите сопротивление, материал спирали и желаемую температуру — система подскажет безопасный диапазон ватт.</p></div>
+
+<h2 id="таблица-совместимости-02-ом-и-аккумуляторы">Таблица совместимости: 0.2 Ом и аккумуляторы</h2>
+
+<p>Не все аккумуляторы подходят для работы с субомными испарителями. Ниже — таблица с популярными моделями батарей и их пригодностью для 0.2 Ом:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Модель аккумулятора</th>
+      <th>Ёмкость (мАч)</th>
+      <th>Макс. ток разряда (A)</th>
+      <th>Безопасная мощность для 0.2 Ом (Вт)</th>
+      <th>Пригодность</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Sony VTC5A</em></td>
+      <td>2600</td>
+      <td>25</td>
+      <td>80–100</td>
+      <td>✅ Оптимально</td>
+    </tr>
+    <tr>
+      <td><em>Samsung 25R</em></td>
+      <td>2500</td>
+      <td>20</td>
+      <td>60–70</td>
+      <td>⚠️ Только для опытных</td>
+    </tr>
+    <tr>
+      <td><em>LG HG2</em></td>
+      <td>3000</td>
+      <td>20</td>
+      <td>60–70</td>
+      <td>⚠️ Риск перегрева</td>
+    </tr>
+    <tr>
+      <td><em>Molicel P28A</em></td>
+      <td>2800</td>
+      <td>35</td>
+      <td>100–120</td>
+      <td>✅ Идеально</td>
+    </tr>
+    <tr>
+      <td><em>Efest IMR 18650</em></td>
+      <td>2000</td>
+      <td>30</td>
+      <td>90–110</td>
+      <td>✅ Хорошо</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Обратите внимание: <strong>ёмкость аккумулятора</strong> (мАч) не влияет напрямую на мощность, но определяет, сколько времени вы сможете вейпить на высоких ваттах. Например, <em>Sony VTC5A</em> на 80 Вт разрядится за 20–30 минут, тогда как <em>LG HG2</em> продержится дольше, но не выдержит такой нагрузки по току.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если ваш аккумулятор не указан в таблице или имеет максимальный ток разряда ниже <code>20A</code>, использовать его с испарителем 0.2 Ом <strong>категорически запрещено</strong>. Риск взрыва или возгорания при превышении тока разряда крайне высок!</blockquote>
+
+<h2 id="как-понять-что-мощность-слишком-высока">Как понять, что мощность слишком высока?</h2>
+
+<p>Даже если вы рассчитали всё по формулам, спираль может вести себя непредсказуемо. Вот <strong>признаки того, что мощность завышена</strong>:</p>
+
+<ul>
+  <li>🔥 <strong>Горелый вкус</strong>: жижа не успевает испаряться, а сгорает на раскалённой спирали.</li>
+  <li>💨 <strong>Слишком горячий пар</strong>: обжигает горло даже после короткой затяжки.</li>
+  <li>🔋 <strong>Аккумулятор греется</strong>: корпус мода становится тёплым или горячим.</li>
+  <li>🌀 <strong>Спираль краснеет</strong>: видно через отверстия в дрипке или баке.</li>
+  <li>💧 <strong>Жидкость быстро заканчивается</strong>: за 10–15 затяжек уровень в баке падает заметно.</li>
+</ul>
+
+<p>Если вы наблюдаете хотя бы один из этих симптомов, <strong>немедленно снизьте мощность</strong> на 10–15 Вт и проверьте, улучшилась ли ситуация. Иногда проблема кроется не в ваттах, а в <strong>неправильной сборке</strong> — например, плохой контакт спирали с базой или недостаточное количество ваты.</p>
+
+<details class="faq-item"><summary>Что делать, если спираль уже подгорела?</summary><div class="faq-answer"><p>
+<p>Если вы почувствовали гарь, не паникуйте. Снимите бак, промойте спираль под тёплой водой (если это возможно для вашей модели), затем просушите её и прокалите на минимальной мощности (10–15 Вт) в течение 5–10 секунд. Это поможет удалить нагар. Если вкус горелого остался — замените спираль.</p></div></details></p>
+
+<h2 id="практические-рекомендации-для-разных-типов-испарителей">Практические рекомендации для разных типов испарителей</h2>
+
+<p>Не все спирали 0.2 Ом одинаковы. Вот <strong>типичные диапазоны мощности</strong> для популярных конструкций:</p>
+
+<ul>
+  <li>🌀 <strong>Классическая круглая спираль (кантал)</strong>: <code>60–80 Вт</code>. Хороша для начинающих, равномерный нагрев.</li>
+  <li>🌀 <strong>Клаптон (Clapton)</strong>: <code>70–90 Вт</code>. Сложная намотка с внешней оболочкой, даёт плотный пар.</li>
+  <li>🌀 <strong>Алиен (Alien)</strong>: <code>80–100 Вт</code>. Быстрый нагрев, но требует мощного аккумулятора.</li>
+  <li>🌀 <strong>Меш (Mesh)</strong>: <code>50–70 Вт</code>. Равномерное испарение, меньше риск подгорания.</li>
+  <li>🌀 <strong>Твист (Twisted)</strong>: <code>65–85 Вт</code>. Хороший баланс вкуса и пара.</li>
+</ul>
+
+<p>Если вы используете <em>регулируемый мод</em> (например, <em>Voopoo Drag</em> или <em>GeekVape Aegis</em>), начните с <strong>минимальной рекомендованной мощности</strong> для вашего типа спирали и постепенно увеличивайте, делая паузы между затяжками. Так вы найдёте свой "сладкий диапазон" без риска сжечь вату.</p>
+
+
+<p>Убедитесь, что сопротивление спирали точно 0.2 Ом (проверьте омметром)</p>
+<p>Проверьте целостность изоляции аккумулятора</p>
+<p>Установите начальную мощность на 20% ниже расчётной</p>
+<p>Сделайте 2–3 тестовые затяжки с паузой 10 секунд</p>
+<p>Проверьте температуру мода и вкус пара--></p>
+
+<h2 id="частые-ошибки-при-работе-с-02-ом">Частые ошибки при работе с 0.2 Ом</h2>
+
+<p>Даже опытные вейперы иногда допускают ошибки, которые ведут к <strong>сгоревшей спирали</strong> или <strong>разряженному аккумулятору</strong>. Вот самые распространённые:</p>
+
+<ol>
+  <li><strong>Игнорирование сопротивления</strong>: некоторые моды (особенно механические) не показывают реальное сопротивление. Всегда проверяйте его <em>омметром</em> или через меню бокс-мода.</li>
+  <li><strong>Переоценка аккумулятора</strong>: батарея с надписью <code>40A</code> на этикетке не всегда выдерживает такой ток. Ориентируйтесь на <em>непрерывный ток разряда</em> (обычно в 2 раза ниже пикового).</li>
+  <li><strong>Неправильная вата</strong>: слишком плотная набивка ухудшает капиллярный эффект, жижа не поступает к спирали — та перегревается.</li>
+  <li><strong>Длинные затяжки</strong>: для 0.2 Ом оптимальна затяжка <code>3–5 секунд</code>. Дольше — риск перегрева.</li>
+  <li><strong>Низкокачественная жижа</strong>: дешёвые жидкости с примесями быстрее пригорают на высоких мощностях.</li>
+</ol>
+
+<p>Ещё одна типичная проблема — <strong>несовместимость мода и испарителя</strong>. Например, если вы используете <em>мехмод</em> (механический мод без электроники), то мощность зависит только от заряда аккумулятора и сопротивления. В этом случае <strong>расчёт по формулам обязателен</strong>, иначе риск короткого замыкания или взрыва батареи возрастает в разы.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если ваш мод не поддерживает сопротивление ниже 0.3 Ом (указано в инструкции), не пытайтесь обойти ограничение "вручную". Это может привести к поломке платы или пожару.</blockquote>
+
+<h2 id="faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</h2>
+
+<details>
+  <summary>Можно ли использовать испаритель 0.2 Ом на механическом моде?</summary>
+  <p>Да, но только если вы точно рассчитали мощность и используете аккумулятор с запасом по току (не менее <code>25A</code>). На мехмоде мощность регулируется напряжением аккумулятора: при 4.2 В и 0.2 Ом она составит <code>88.2 Вт</code>. Начинайте с полузаряженной батареи (3.7 В → <code>68.45 Вт</code>) и следите за нагревом.</p>
+</details>
+
+<details>
+  <summary>Почему при 80 Вт спираль 0.2 Ом не греется, а пар слабый?</summary>
+  <p>Вероятные причины:</p>
+  <ul>
+    <li>Плохой контакт спирали с базой (проверьте затяжку винтов).</li>
+    <li>Недостаточно ваты или она слишком плотно уложена.</li>
+    <li>Жидкость с высоким содержанием <em>PG</em> (пропиленгликоля), которая испаряется хуже <em>VG</em>.</li>
+    <li>Аккумулятор разряжен (напряжение ниже 3.5 В).</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Какой вкус лучше проявляется на 0.2 Ом: фруктовый или табачный?</summary>
+  <p>Субомные испарители (0.2–0.5 Ом) лучше передают <strong>плотные, насыщенные вкусы</strong> — десерты, кремы, кофейные и табачные оттенки. Фруктовые нотки могут "смазываться" из-за высокой температуры. Для фруктов лучше подойдёт сопротивление <code>0.4–0.6 Ом</code> на мощности <code>40–60 Вт</code>.</p>
+</details>
+
+<details>
+  <summary>Сколько затяжек можно сделать на одном заряде аккумулятора 2500 мАч при 70 Вт?</summary>
+  <p>При мощности <code>70 Вт</code> ток составит <code>√(70/0.2) ≈ 18.7 А</code>. Ёмкость аккумулятора 2500 мАч = 2.5 Ач. Время работы: <code>2.5 / 18.7 ≈ 0.13 часа</code> или <code>8 минут</code>. Если одна затяжка длится 4 секунды, а пауза между ними — 20 секунд, то за 8 минут вы сделаете около <code>20–25 затяжек</code>.</p>
+</details>
+
+<details>
+  <summary>Можно ли парить на 0.2 Ом с солью (nic salt)?</summary>
+  <p>Не рекомендуется. Солевой никотин предназначен для <strong>MTL-вейпинга</strong> (малый объём пара, высокое сопротивление 1.0–1.5 Ом). На 0.2 Ом вы получите слишком много никотина за одну затяжку, что может вызвать головокружение или тошноту. Если очень хочется, снизьте мощность до <code>30–40 Вт</code> и используйте жижу с низким содержанием соли (3–6 мг).</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#почему-сопротивление-02-ом-требует-высокой-мощности">Почему сопротивление 0.2 Ом требует высокой мощности?</a></li><li><a href="#формула-расчёта-мощности-для-испарителя-02-ом">Формула расчёта мощности для испарителя 0.2 Ом</a></li><li><a href="#таблица-совместимости-02-ом-и-аккумуляторы">Таблица совместимости: 0.2 Ом и аккумуляторы</a></li><li><a href="#как-понять-что-мощность-слишком-высока">Как понять, что мощность слишком высока?</a></li><li><a href="#практические-рекомендации-для-разных-типов-испарителей">Практические рекомендации для разных типов испарителей</a></li><li><a href="#частые-ошибки-при-работе-с-02-ом">Частые ошибки при работе с 0.2 Ом</a></li><li><a href="#faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/z/za/zamena-isparitelya-smoant-pasito-2.html" class="related-card">Замена испарителя Smoant Pasito 2: пошаговая инструкция и советы</a></li><li><a href="/articles/r/re/remkomplekt-pompy-d-245.html" class="related-card">Ремкомплект помпы Д-245: выбор, замена и ремонт своими руками</a></li><li><a href="/articles/c/ch/chto-takoe-patrubki-v-mashine.html" class="related-card">Патрубки в машине: назначение, виды и признаки неисправности</a></li><li><a href="/articles/0/0-/0-18-om-skolko-vatt.html" class="related-card">0.18 Ом в ватты: как перевести сопротивление в мощность для авто и техники</a></li><li><a href="/articles/k/ka/kak-snyat-khomut-s-patrubka.html" class="related-card">Как снять хомут с патрубка: пошаговая инструкция с фото</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/z/za/zamena-isparitelya-smoant-pasito-2.html" class="related-bottom-card"><span class="related-bottom-title">Замена испарителя Smoant Pasito 2: пошаговая инструкция и советы</span><span class="related-bottom-desc">Как самостоятельно заменить испаритель в вейпе Smoant Pasito 2: выбор запчастей, разборка, установка</span></a><a href="/articles/r/re/remkomplekt-pompy-d-245.html" class="related-bottom-card"><span class="related-bottom-title">Ремкомплект помпы Д-245: выбор, замена и ремонт своими руками</span><span class="related-bottom-desc">Как выбрать и заменить ремкомплект помпы Д-245 для тракторов МТЗ? Пошаговая инструкция с фото, цены,</span></a><a href="/articles/c/ch/chto-takoe-patrubki-v-mashine.html" class="related-bottom-card"><span class="related-bottom-title">Патрубки в машине: назначение, виды и признаки неисправности</span><span class="related-bottom-desc">Что такое патрубки в автомобиле, их функции, типы (силиконовые, резиновые), как проверить на износ и</span></a><a href="/articles/0/0-/0-18-om-skolko-vatt.html" class="related-bottom-card"><span class="related-bottom-title">0.18 Ом в ватты: как перевести сопротивление в мощность для авто и техники</span><span class="related-bottom-desc">Разбираемся, как рассчитать мощность (ватты) по сопротивлению 0.18 Ом для автомобильных и бытовых си</span></a><a href="/articles/k/ka/kak-snyat-khomut-s-patrubka.html" class="related-bottom-card"><span class="related-bottom-title">Как снять хомут с патрубка: пошаговая инструкция с фото</span><span class="related-bottom-desc">Подробный гайд по демонтажу хомутов с патрубков автомобиля или бытовой техники: инструменты, способы</span></a><a href="/articles/s/sk/skhema-remnya-daf-105.html" class="related-bottom-card"><span class="related-bottom-title">Схема ремня генератора DAF 105: установка и натяжение</span><span class="related-bottom-desc">Подробная схема ремня генератора DAF 105 (10, 11, 12, 13 кубов). Инструкция по замене, натяжению кли</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

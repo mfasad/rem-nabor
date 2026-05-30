@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Контроллер вентиляции погреба: управление влажностью и температурой — Рем Набор</title>
+    <meta name="description" content="Выбор и настройка контроллера влажности для погреба. Автоматизация вентиляции, схемы подключения датчиков и устранение конденсата в подвале.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ko/kontroller-ventilyatsii-pogreba-vlazhnosti.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Контроллер вентиляции погреба: управление влажностью и температурой">
+    <meta property="og:description" content="Выбор и настройка контроллера влажности для погреба. Автоматизация вентиляции, схемы подключения датчиков и устранение конденсата в подвале.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/ventilyatory-i-datchiki/">Вентиляторы и датчики</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Контроллер вентиляции погреба: управление влажностью и температурой</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Контроллер вентиляции погреба: управление влажностью и температурой</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-автоматического-регулятора-микроклимата">Принцип работы автоматического регулятора микроклимата</a></li><li><a href="#ключевые-критерии-выбора-оборудования-для-подвала">Ключевые критерии выбора оборудования для подвала</a></li><li><a href="#схема-подключения-и-монтаж-системы-вентиляции">Схема подключения и монтаж системы вентиляции</a></li><li><a href="#настройка-уставок-и-алгоритмов-работы">Настройка уставок и алгоритмов работы</a></li><li><a href="#типичные-неисправности-и-методы-диагностики">Типичные неисправности и методы диагностики</a></li><li><a href="#энергоэффективность-и-модернизация-системы">Энергоэффективность и модернизация системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Сохранение урожая и поддержание оптимальных условий в подземном хранилище напрямую зависят от микроклимата. Многие владельцы частных домов сталкиваются с проблемой избыточной сырости, которая приводит к гниению овощей и разрушению конструкций. Решением этой проблемы становится установка автоматизированной системы, где центральным элементом выступает <strong>контроллер влажности</strong>. Это устройство самостоятельно анализирует показатели среды и управляет работой вентиляторов, исключая необходимость ручного вмешательства.</p>
+
+<p>Современные системы климат-контроля для погребов работают на базе микропроцессоров, способных обрабатывать данные с нескольких сенсоров одновременно. Они не просто включают вытяжку при достижении порога, но и учитывают разницу температур внутри и снаружи, предотвращая промерзание или перегрев помещения. Грамотно настроенный <em>автоматический регулятор</em> продлевает срок службы вентиляционного оборудования и гарантирует стабильность условий хранения.</p>
+
+<p>В этой статье мы подробно разберем принципы работы таких устройств, критерии выбора и нюансы монтажа. Вы узнаете, как правильно интегрировать контроллер в существующую систему воздухообмена и какие параметры являются критически важными для вашего конкретного случая.</p>
+
+<h2 id="принцип-работы-автоматического-регулятора-микроклимата">Принцип работы автоматического регулятора микроклимата</h2>
+
+<p>Основная задача системы заключается в поддержании баланса между притоком свежего воздуха и удалением отработанного. <strong>Контроллер вентиляции</strong> непрерывно опрашивает подключенные датчики, сравнивая текущие значения с заданными пользователем уставками. Если уровень влажности превышает допустимый предел, например 85%, устройство подает сигнал на реле, которое замыкает цепь питания вытяжного вентилятора.</p>
+
+<p>Важной особенностью продвинутых моделей является наличие гистерезиса. Это задержка или диапазон значений, предотвращающий частое включение и выключение оборудования при пограничных показателях. Без этой функции <em>электронный блок управления</em> мог бы срабатывать каждую секунду при колебаниях влажности на доли процента, что быстро вывело бы из строя контакторы и двигатели вентиляторов.</p>
+
+<blockquote>⚠️ Внимание: При настройке гистерезиса учитывайте инерционность вашего помещения. В большом погребе изменение влажности происходит медленно, поэтому слишком узкий диапазон срабатывания приведет к неэффективной работе системы.</blockquote>
+
+<p>Некоторые модели также оснащены функцией контроля температуры. Это позволяет реализовать алгоритм, при котором вентиляция включается только тогда, когда уличный воздух холоднее и суше внутреннего. Такой подход особенно актуален в осенний период, когда необходимо быстро осушить помещение после закладки урожая, не допустив при этом резкого падения температуры.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Размещайте датчик влажности в центре помещения на уровне хранения овощей, вдали от прямых потоков воздуха от вентилятора, чтобы получать усредненные и точные данные.</p></div>
+
+<h2 id="ключевые-критерии-выбора-оборудования-для-подвала">Ключевые критерии выбора оборудования для подвала</h2>
+
+<p>Рынок предлагает множество решений, от простых термостатов до сложных программируемых логических контроллеров. При выборе устройства первостепенное значение имеет диапазон измеряемых величин и точность сенсоров. Для погреба критичен рабочий диапазон влажности от 0 до 100%, так как в таких условиях конденсат образуется практически постоянно.</p>
+
+<p>Обратите внимание на тип исполнения корпуса. Поскольку в подземных хранилищах часто бывает сыро и возможно прямое попадание капель воды, класс защиты должен быть не ниже <code>IP65</code>. Платы без защитного покрытия быстро окислятся, и контакты придут в негодность. Также важно оценить коммутирующую способность реле: мощность подключенных вентиляторов не должна превышать паспортные значения устройства.</p>
+
+<ul>
+<li>🌡️ Наличие двух независимых каналов управления для раздельного контроля приточной и вытяжной вентиляции.</li>
+<li>🔌 Возможность подключения внешних датчиков с выносным кабелем длиной не менее 2 метров для гибкого монтажа.</li>
+<li>⚙️ Наличие дисплея для визуального контроля текущих параметров без подключения компьютера.</li>
+<li>🛡️ Защита от короткого замыкания и перегрузки по току в цепях нагрузки.</li>
+</ul>
+
+<p>Профессиональные системы часто поддерживают протоколы связи, такие как <em>Modbus</em> или <strong>RS-485</strong>. Это позволяет объединить несколько контроллеров в единую сеть и выводить данные на центральный пульт или смартфон. Для обычного частного погреба такая функциональность может быть избыточной, но она полезна, если у вас сложная система с несколькими изолированными отсеками.</p>
+
+<div class="poll-widget" id="poll-35631112"><div class="poll-widget-question">📊 Какой тип управления вентиляцией вы предпочитаете?</div><div class="poll-widget-option" data-poll="35631112" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Полностью автоматический (по датчикам)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="35631112" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Таймерный (по расписанию)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="35631112" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Ручной (включение по факту)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="35631112" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Комбинированный</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="схема-подключения-и-монтаж-системы-вентиляции">Схема подключения и монтаж системы вентиляции</h2>
+
+<p>Установка контроллера требует соблюдения правил электробезопасности и правильной топологии подключения датчиков. Перед началом работ необходимо обесточить щиток. Монтаж обычно производится в сухом месте, желательно в тамбуре погреба или в специальном щитке на стене, чтобы исключить прямое воздействие агрессивной среды на электронику.</p>
+
+<p>Подключение силовой части осуществляется через клеммные колодки. Фазный провод сети разрывается и подключается к входу реле, а выход реле идет непосредственно на вентилятор. Нулевой провод соединяется напрямую. Для управления двухскоростными вентиляторами или реверсивными системами могут потребоваться дополнительные контакторы, управляемые сигналами контроллера.</p>
+
+<pre><code>Схема подключения:
+<p>[Сеть 220В] --> [Вход L контроллера]</p>
+<p>[Выход L1 реле] --> [Вентилятор Вытяжка]</p>
+<p>[Выход L2 реле] --> [Вентилятор Приток]</p>
+<p>[Датчик DHT22] --> [Порт Sensor 1]</code></pre></p>
+
+<p>Особое внимание уделите прокладке кабелей датчиков. Их нельзя располагать вплотную к силовым проводам, так как электромагнитные наводки могут искажать показания. Используйте экранированный кабель для подключения чувствительных элементов, особенно если расстояние от блока управления до точки замера превышает 5 метров.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед запуском</h4><label class="check-item"><input type="checkbox"><span>Затянуть все винты клемм</span></label><label class="check-item"><input type="checkbox"><span>Проверить полярность датчиков</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии замыканий</span></label><label class="check-item"><input type="checkbox"><span>Выставить начальные уставки</span></label><label class="check-item"><input type="checkbox"><span>Подать питание</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="настройка-уставок-и-алгоритмов-работы">Настройка уставок и алгоритмов работы</h2>
+
+<p>После физического монтажа наступает этап программирования логики работы. Интерфейс настройки может быть реализован через кнопки на корпусе или через программное обеспечение на ПК. Первым делом необходимо ввести базовые параметры: целевую влажность и температуру. Для хранения большинства овощей оптимальным считается уровень влажности 80-90% и температура +2...+4°C.</p>
+
+<p>Далее настраивается порог срабатывания и время задержки. Рекомендуется устанавливать задержку включения вентиляции на 5-10 минут после превышения порога. Это позволит системе не реагировать на кратковременные всплески, например, когда вы открыли дверь погреба. Также полезно настроить время минимальной работы вентилятора, чтобы обеспечить полноценный воздухообмен за один цикл.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Рекомендуемое значение</th>
+<th>Описание влияния</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Целевая влажность</td>
+<td>85%</td>
+<td>Оптимально для корнеплодов и капусты</td>
+</tr>
+<tr>
+<td>Гистерезис</td>
+<td>3-5%</td>
+<td>Предотвращает частые циклы включения</td>
+</tr>
+<tr>
+<td>Задержка старта</td>
+<td>300 сек</td>
+<td>Фильтрация ложных срабатываний</td>
+</tr>
+<tr>
+<td>Мин. время работы</td>
+<td>10 мин</td>
+<td>Гарантия эффективной смены воздуха</td>
+</tr>
+</tbody>
+</table>
+
+<p>Если ваш контроллер поддерживает суточные ритмы, можно настроить разные режимы для дня и ночи. Ночью, когда температура на улице обычно ниже, эффективность осушения выше. Поэтому имеет смысл сделать систему более чувствительной в ночное время суток.</p>
+
+<blockquote>⚠️ Внимание: Не устанавливайте целевую влажность ниже 75% для длительного хранения овощей. Это приведет к их увяданию и потере товарного вида из-за испарения влаги.</blockquote>
+
+<h2 id="типичные-неисправности-и-методы-диагностики">Типичные неисправности и методы диагностики</h2>
+
+<p>В процессе эксплуатации могут возникать ситуации, когда система ведет себя некорректно. Самой распространенной проблемой является загрязнение чувствительного элемента датчика. Пыль, паутина или плесень, оседающие на сенсоре, искажают показания, заставляя контроллер думать, что влажность в норме, когда на самом деле в помещении сыро.</p>
+
+<p>Еще одна частая неисправность связана с залипанием контактов реле. При коммутации индуктивной нагрузки (двигателя вентилятора) возникает искра, которая со временем образует нагар на контактах. Это приводит к тому, что вентилятор не включается по команде или, наоборот, не выключается. Для диагностики необходимо прозвонить контакты мультиметром в обесточенном состоянии.</p>
+
+<ul>
+<li>🔍 Проверка целостности кабеля датчика на предмет обрывов или повреждений изоляции грызунами.</li>
+<li>🧹 Очистка корпуса датчика мягкой кистью и спиртовым раствором от загрязнений.</li>
+<li>⚡ Замена предохранителя в цепи питания контроллера при отсутствии индикации на дисплее.</li>
+<li>🔄 Сброс настроек к заводским параметрам при программных сбоях логики.</li>
+</ul>
+
+<p>Если контроллер показывает явно неверные значения, например 0% или 100% постоянно, скорее всего, вышел из строя сам чувствительный элемент. В большинстве современных устройств датчик является сменным модулем, который можно заменить без покупки нового блока управления.</p>
+
+<details class="faq-item"><summary>Что делать если вентилятор гудит но не крутится?</summary><div class="faq-answer"><p>Это признак заклинивания крыльчатки или неисправности пускового конденсатора. Немедленно обесточьте систему, проверьте свободный ход лопастей рукой и замените конденсатор при необходимости.</p></div></details>
+
+<h2 id="энергоэффективность-и-модернизация-системы">Энергоэффективность и модернизация системы</h2>
+
+<p>Автоматизация вентиляции позволяет не только сохранить урожай, но и сэкономить электроэнергию. Вентиляторы работают только тогда, когда это действительно необходимо, в отличие от систем с постоянным включением. Для еще большей экономии можно рассмотреть установку вентиляторов с регулируемой скоростью вращения.</p>
+
+<p>Современные <strong>контроллеры</strong> с функцией ШИМ-управления (широтно-импульсная модуляция) могут плавно менять обороты двигателя. При небольшом превышении влажности вентилятор будет работать на минимальных оборотах, создавая меньше шума и потребляя меньше тока. При критическом сырости скорость возрастет до максимума.</p>
+
+<p>Также стоит задуматься о переходе на низковольтное оборудование. Использование вентиляторов на 12 или 24 вольта в паре с соответствующим блоком питания повышает электробезопасность во влажной среде и позволяет легко интегрировать систему с солнечными панелями или аккумуляторами для автономной работы.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Использование ШИМ-регулировки скорости вентилятора снижает энергопотребление системы до 40% по сравнению с работой в режиме вкл/выкл.</p></div>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли использовать обычный бытовой гигрометр вместо специального датчика для контроллера?</summary>
+<p>Нет, обычные бытовые гигрометры не имеют электрического интерфейса для передачи данных на контроллер. Вам необходим цифровой датчик, например серии DHT11, DHT22 или промышленные аналоги с аналоговым выходом 4-20 мА, которые совместимы с вашим устройством управления.</p>
+</details>
+
+<details>
+<summary>Как часто нужно калибровать датчик влажности в погребе?</summary>
+<p>Профилактическую проверку и очистку рекомендуется проводить раз в сезон, перед закладкой урожая. Точную калибровку с использованием эталонных растворов соли стоит делать раз в 1-2 года, так как сенсоры со временем могут дрейфовать.</p>
+</details>
+
+<details>
+<summary>Что делать, если зимой температура в погребе падает ниже нуля при работе вентиляции?</summary>
+<p>Необходимо настроить контроллер на работу в режиме приоритета температуры. Установите запрет на включение вентиляции, если уличная температура ниже +1°C. Для таких случаев лучше использовать систему с подогревом приточного воздуха или рекуператор.</p>
+</details>
+
+<details>
+<summary>Подойдет ли контроллер для управления системой осушения воздуха?</summary>
+<p>Да, если мощность осушителя соответствует нагрузочной способности реле контроллера. Логика работы будет аналогичной: при превышении порога влажности включается исполнительное устройство, в данном случае — компрессор осушителя.</p>
+</details>
+
+<details>
+<summary>Можно ли управлять системой через смартфон?</summary>
+<p>Это возможно, если ваш контроллер оснащен Wi-Fi или GSM модулем, либо подключен к внешнему шлюзу умного дома. В базовых моделях управление осуществляется только локально через кнопки на корпусе.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-автоматического-регулятора-микроклимата">Принцип работы автоматического регулятора микроклимата</a></li><li><a href="#ключевые-критерии-выбора-оборудования-для-подвала">Ключевые критерии выбора оборудования для подвала</a></li><li><a href="#схема-подключения-и-монтаж-системы-вентиляции">Схема подключения и монтаж системы вентиляции</a></li><li><a href="#настройка-уставок-и-алгоритмов-работы">Настройка уставок и алгоритмов работы</a></li><li><a href="#типичные-неисправности-и-методы-диагностики">Типичные неисправности и методы диагностики</a></li><li><a href="#энергоэффективность-и-модернизация-системы">Энергоэффективность и модернизация системы</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/v/va/valee-95-ventilyator-okhlazhdeniya.html" class="related-card">Валее 95 вентилятор охлаждения: ремонт и замена своими руками</a></li><li><a href="/articles/2/25/251002b700-i-251002b710-v-chem-raznitsa.html" class="related-card">251002b700 и 251002b710: ключевые отличия и совместимость</a></li><li><a href="/articles/k/ka/kak-pomenyat-motorchik-pechki-na-larguse-s-konditsionerom.html" class="related-card">Замена моторчика печки на Лада Ларгус с кондиционером</a></li><li><a href="/articles/k/ka/kak-prozvonit-ventilyator-okhlazhdeniya.html" class="related-card">Как прозвонить вентилятор охлаждения: пошаговая инструкция</a></li><li><a href="/articles/p/po/pochemu-ne-otklyuchaetsya-ventilyator-okhlazhdeniya.html" class="related-card">Почему не отключается вентилятор охлаждения: причины и ремонт</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/v/va/valee-95-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Валее 95 вентилятор охлаждения: ремонт и замена своими руками</span><span class="related-bottom-desc">Полный гид по системе охлаждения Валее 95. Как проверить вентилятор, заменить реле, датчик и мотор. </span></a><a href="/articles/2/25/251002b700-i-251002b710-v-chem-raznitsa.html" class="related-bottom-card"><span class="related-bottom-title">251002b700 и 251002b710: ключевые отличия и совместимость</span><span class="related-bottom-desc">Разбираемся, чем отличаются датчики температуры 251002b700 и 251002b710: технические параметры, взаи</span></a><a href="/articles/k/ka/kak-pomenyat-motorchik-pechki-na-larguse-s-konditsionerom.html" class="related-bottom-card"><span class="related-bottom-title">Замена моторчика печки на Лада Ларгус с кондиционером</span><span class="related-bottom-desc">Подробная инструкция по замене вентилятора отопителя Lada Largus с кондиционером. Снятие кожуха, дем</span></a><a href="/articles/k/ka/kak-prozvonit-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Как прозвонить вентилятор охлаждения: пошаговая инструкция</span><span class="related-bottom-desc">Узнайте, как правильно прозвонить вентилятор охлаждения мультиметром, проверить обмотку и контакты. </span></a><a href="/articles/p/po/pochemu-ne-otklyuchaetsya-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Почему не отключается вентилятор охлаждения: причины и ремонт</span><span class="related-bottom-desc">Подробный разбор причин, почему вентилятор охлаждения работает постоянно. Диагностика датчиков, реле</span></a><a href="/articles/c/ch/chto-to-zharko-stalo-vklyuchaem-ventilyatory.html" class="related-bottom-card"><span class="related-bottom-title">Жарко стало: как включить вентиляторы в авто и дома</span><span class="related-bottom-desc">Что делать, если стало жарко? Инструкция по включению вентиляторов охлаждения двигателя и бытовых пр</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Термостат с электронным управлением: выбор и настройка — Рем Набор</title>
+    <meta name="description" content="Как выбрать и настроить термостат с электронным управлением для котла или теплого пола. Точность, экономия и программирование.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termostat-s-elektronnym-upravleniem.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Термостат с электронным управлением: выбор и настройка">
+    <meta property="og:description" content="Как выбрать и настроить термостат с электронным управлением для котла или теплого пола. Точность, экономия и программирование.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Термостат с электронным управлением: выбор и настройка</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Электронный термостат: полное руководство по выбору и установке</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-и-ключевые-отличия-от-механики">Принцип работы и ключевые отличия от механики</a></li><li><a href="#классификация-электронных-терморегуляторов">Классификация электронных терморегуляторов</a></li><li><a href="#критерии-выбора-на-что-смотреть-перед-покупкой">Критерии выбора: на что смотреть перед покупкой</a></li><li><a href="#схемы-подключения-и-монтаж-оборудования">Схемы подключения и монтаж оборудования</a></li><li><a href="#настройка-и-программирование-режимов-работы">Настройка и программирование режимов работы</a></li><li><a href="#распространенные-неисправности-и-их-устранение">Распространенные неисправности и их устранение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Термостат с электронным управлением давно перестал быть роскошью и превратился в необходимый элемент современной системы отопления. В отличие от устаревших механических аналогов, цифровые приборы обеспечивают высочайшую точность поддержания температуры, что напрямую влияет на комфорт и расход энергоносителей. Вы можете забыть о постоянных перепадах температуры и сквозняках, которые неизбежны при использовании биметаллических пластин.</p>
+
+<p>Основное преимущество таких устройств заключается в их гибкости. Пользователь получает возможность запрограммировать отопление на неделю вперед, учитывая свой график жизни. <strong>Умная электроника</strong> сама решит, когда прогреть дом к вашему приходу, а когда снизить температуру для экономии. Это особенно актуально для владельцев частных домов, где каждый лишний градус на котле оборачивается ощутимыми затратами в конце месяца.</p>
+
+<p>Внедрение <em>цифрового контроля</em> в контур отопления — это первый шаг к созданию энергоэффективного жилья. Многие современные модели поддерживают удаленное управление через Wi-Fi или GSM, позволяя корректировать настройки прямо со смартфона, находясь в любой точке мира. Рассмотрим детально, как работает это оборудование и на что обратить внимание при покупке.</p>
+
+<h2 id="принцип-работы-и-ключевые-отличия-от-механики">Принцип работы и ключевые отличия от механики</h2>
+
+<p>В основе работы любого терморегулятора лежит сравнение текущей температуры с заданным значением. Однако способ получения данных и коммутации цепи кардинально отличается. Механические приборы полагаются на физические свойства материалов, расширяющихся при нагреве. Электронный термостат использует термочувствительные сенсоры, данные с которых обрабатываются микропроцессором.</p>
+
+<p><strong>Гистерезис</strong> — это ключевое понятие, определяющее разницу температур включения и выключения. У механических моделей этот разброс может достигать 3-5 градусов, что создает ощутимый дискомфорт. Электронные устройства способны поддерживать температуру с точностью до 0,1–0,5 градуса, практически исключая колебания микроклимата в помещении.</p>
+
+<blockquote>
+<p>⚠️ Внимание: При подключении электронного термостата к индукционным котлам или системам с электронным розжигом необходимо убедиться в наличии искрогасящих конденсаторов или использовать промежуточное реле, чтобы избежать помех в работе контроллера.</p>
+</blockquote>
+
+<p>Современные <em>микроконтроллеры</em> позволяют реализовать сложные алгоритмы работы. Например, функция адаптивного старта заранее рассчитывает время включения котла, чтобы к заданному часу помещение прогрелось до нужной отметки, а не начало греться ровно в момент наступления времени. Это экономит ресурсы и предотвращает работу оборудования на пиковой мощности в часы максимального тарифа.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если ваш котел часто включается и выключается (тактуется), установка электронного термостата с функцией антицикличности решит проблему и продлит жизнь горелке.</p></div>
+
+<h2 id="классификация-электронных-терморегуляторов">Классификация электронных терморегуляторов</h2>
+
+<p>Рынок климатической техники предлагает множество моделей, которые можно разделить по типу монтажа, способу питания и функционалу. Понимание этих различий поможет вам выбрать оптимальное решение для конкретной задачи, будь то управление радиаторами, теплым полом или целым котельным контуром.</p>
+
+<p>По типу установки устройства делятся на накладные и встраиваемые. Накладные модели крепятся непосредственно на стену поверх подрозетника или на специальную монтажную панель. Они идеально подходят для retrofit-проектов, когда ремонт уже сделан, и штробить стены для скрытой проводки нецелесообразно.</p>
+
+<ul>
+<li>📟 <strong>Накладные модели</strong>: просты в установке, часто имеют большие дисплеи и кнопки, легко заменяются при поломке без нарушения отделки.</li>
+<li>🏗️ <strong>Встраиваемые приборы</strong>: эстетично выглядят, утоплены в стену, требуют предварительной подготовки ниши глубиной не менее 45 мм.</li>
+<li>🔋 <strong>Автономные устройства</strong>: работают от батареек, не требуют подвода сетевого напряжения, но нуждаются в периодической замене элементов питания.</li>
+<li>⚡ <strong>Сетевые термостаты</strong>: питаются от сети 220В, что исключает риск внезапного отключения из-за севшей батарейки в морозы.</li>
+</ul>
+
+<p>Отдельного внимания заслуживают программируемые и непрограммируемые версии. Простые модели позволяют лишь выставить текущую температуру, тогда как продвинутые <em>программаторы</em> дают возможность задать почасовой график на 7 дней. Некоторые топовые модели оснащаются сенсорными экранами и поддержкой голосовых ассистентов.</p>
+
+<div class="poll-widget" id="poll-3dd6ef91"><div class="poll-widget-question">📊 Какой тип управления для вас важнее?</div><div class="poll-widget-option" data-poll="3dd6ef91" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Сенсорный экран</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3dd6ef91" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Механические кнопки</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3dd6ef91" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Дистанционный пульт</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3dd6ef91" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Управление со смартфона</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="критерии-выбора-на-что-смотреть-перед-покупкой">Критерии выбора: на что смотреть перед покупкой</h2>
+
+<p>Выбор подходящего устройства зависит от типа вашей системы отопления и требуемого функционала. Не всегда самая дорогая модель с Wi-Fi будет лучшим решением. Для дачи, где вы бываете наездами, важнее надежность и возможность удаленного старта, а для квартиры с центральным отоплением — точность датчика и управление сервоприводами.</p>
+
+<p>Обратите внимание на тип коммутируемой нагрузки. Большинство бытовых термостатов рассчитаны на ток до 16 Ампер, что достаточно для электрического котла небольшой мощности или циркуляционного насоса. Если вы планируете управлять мощным ТЭНом или группой насосов, может потребоваться установка внешнего <strong>контактора</strong> или магнитного пускателя.</p>
+
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Бюджетный сегмент</th>
+<th>Средний класс</th>
+<th>Премиум модели</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Точность</td>
+<td>±1.0 °C</td>
+<td>±0.5 °C</td>
+<td>±0.1 °C</td>
+</tr>
+<tr>
+<td>Дисплей</td>
+<td>ЖК без подсветки</td>
+<td>ЖК с подсветкой</td>
+<td>Сенсорный цветной</td>
+</tr>
+<tr>
+<td>Программирование</td>
+<td>Нет или суточное</td>
+<td>Недельное</td>
+<td>Гибкое + Геозона</td>
+</tr>
+<tr>
+<td>Связь</td>
+<td>Отсутствует</td>
+<td>RF-радиоканал</td>
+<td>Wi-Fi / ZigBee</td>
+</tr>
+</tbody>
+</table>
+
+<p>Важным фактором является наличие выносного датчика. Встроенный сенсор измеряет температуру воздуха в точке установки прибора. Если термостат висит в коридоре, а греть нужно гостиную, или если он установлен над работающей техникой, показания будут некорректными. Выносной <em>терморезистор</em> позволяет разместить измерительный элемент в наиболее репрезентативной зоне.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для систем"теплый пол" критически важно наличие ограничения максимальной температуры пола, чтобы не повредить напольное покрытие (ламинат, паркет).</p></div>
+
+<h2 id="схемы-подключения-и-монтаж-оборудования">Схемы подключения и монтаж оборудования</h2>
+
+<p>Установка электронного термостата требует соблюдения правил электробезопасности. Перед началом любых работ необходимо обесточить линию питания котла или насосной группы. Ошибка в подключении фазы и нуля может привести к выходу из строя платы управления отопительным прибором.</p>
+
+<p>Стандартная схема подключения предполагает разрыв фазного провода. Термостат включается в разрыв между источником питания и нагрузкой (котлом). Нулевой проводник обычно приходит напрямую к нагрузке, хотя некоторые модели требуют подключения нуля и для собственного питания. Всегда сверяйтесь со схемой на обратной стороне устройства или в инструкции <code>Manual_Install.pdf</code>.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед включением</h4><label class="check-item"><input type="checkbox"><span>Обесточить линию 220В</span></label><label class="check-item"><input type="checkbox"><span>Проверить сечение проводов</span></label><label class="check-item"><input type="checkbox"><span>Зачистить контакты</span></label><label class="check-item"><input type="checkbox"><span>Затянуть клеммы отверткой</span></label><label class="check-item"><input type="checkbox"><span>Проверить отсутствие короткого замыкания</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<pre><code>Схема подключения (упрощенно):
+<p>Фаза (L) Вход --> [L] Термостат [L' Выход] --> Котел</p>
+<p>Ноль (N) Вход --> [N] ------------- [N] ---------> Котел</code></pre></p>
+
+<p>Если вы используете беспроводную систему, состоящую из приемника и передатчика, монтаж упрощается. Приемник монтируется рядом с котлом и подключается к его клеммам управления, а передатчик (термостат) размещается в удобном месте комнаты на батарейках. Это избавляет от необходимости тянуть сигнальные провода через все помещение.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Не прокладывайте сигнальные кабели термостата в одной гофре с силовыми линиями 220В. Электромагнитные наводки могут вызывать ложные срабатывания или потерю связи в беспроводных системах.</p>
+</blockquote>
+
+<h2 id="настройка-и-программирование-режимов-работы">Настройка и программирование режимов работы</h2>
+
+<p>После физического монтажа наступает этап настройки логики работы прибора. Интерфейс может отличаться в зависимости от бренда, но базовые принципы едины. Первым делом необходимо выставить текущее время и день недели, иначе недельное программирование будет работать некорректно.</p>
+
+<p>Большинство пользователей выбирают один из двух основных режимов:"Комфорт" и"Эконом". Температура комфорта обычно устанавливается в диапазоне 20–22°C, а экономии — 15–17°C. Снижение температуры даже на 1 градус позволяет сократить расход газа или электроэнергии примерно на 5-6% за отопительный сезон.</p>
+
+<p>Для настройки расписания перейдите в меню <code>Settings -> Schedule</code>. Здесь вы можете создать профили для будних и выходных дней. Например, имеет смысл снизить температуру в рабочие часы, когда дома никого нет, и поднять её за час до возвращения семьи. Некоторые модели позволяют задать до 6 периодов переключения температур в сутки.</p>
+
+<details class="faq-item"><summary>Как работает функция"Открытое окно"?</summary><div class="faq-answer"><p>Алгоритм фиксирует резкое падение температуры (более 2 градусов за 5 минут) и принудительно отключает отопление на 30 минут, чтобы не греть улицу.</p></div></details>
+
+<p>Не забывайте про калибровку датчика. Если вы заметили расхождение между температурой на термостате и показаниями независимого термометра, воспользуйтесь функцией коррекции <code>Temp Offset</code>. Это позволит синхронизировать показания и обеспечить точное поддержание климата.</p>
+
+<h2 id="распространенные-неисправности-и-их-устранение">Распространенные неисправности и их устранение</h2>
+
+<p>Электронные термостаты отличаются высокой надежностью, но и они не застрахованы от проблем. Чаще всего пользователи сталкиваются с ситуацией, когда устройство не включает котел, хотя температура в помещении упала ниже заданной. В 90% случаев причина кроется в севших батарейках или ошибке подключения.</p>
+
+<p>Если дисплей погас или показывает символ разряженной батареи, замените элементы питания. Даже если индикация еще работает, слабое напряжение может приводить к нестабильной работе реле и потере связи с приемником. Используйте только качественные щелочные (Alkaline) батарейки, избегая дешевых солевых аналогов.</p>
+
+<ul>
+<li>🔌 <strong>Нет реакции на кнопки</strong>: проверьте, не активирована ли блокировка от детей (значок замка на экране).</li>
+<li>🌡️ <strong>Показания завышены</strong>: возможно, прибор установлен в зоне прямого солнечного света или над источником тепла.</li>
+<li>📶 <strong>Потеря связи (для RF)</strong>: проверьте расстояние между блоками и наличие металлических преград, экранирующих сигнал.</li>
+</ul>
+
+<p>В редких случаях может потребоваться сброс настроек до заводских. Обычно это делается длительным нажатием комбинации кнопок, описанной в мануале. Это помогает устранить программные сбои, возникшие после скачков напряжения в сети.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Можно ли использовать электронный термостат для управления электрическим теплым полом?</summary>
+<p>Да, но необходимо убедиться, что модель поддерживает нагрузку соответствующей мощности (обычно до 3.5 кВт для встроенных моделей). Для мощных систем (>3.5 кВт) обязательно использование внешнего контактора, управляемого термостатом. Также важен тип датчика: для теплого пола нужен выносной датчик температуры пола, а не только воздуха.</p>
+</details>
+
+<details>
+<summary>Что делать, если термостат часто щелкает реле?</summary>
+<p>Частое срабатывание (тактование) вредит оборудованию. Проверьте настройки гистерезиса (разницы температур включения/выключения). Увеличьте этот параметр с 0.5 до 1.0 или 2.0 градусов. Также убедитесь, что термостат не установлен на сквозняке, где температура воздуха быстро меняется.</p>
+</details>
+
+<details>
+<summary>Совместим ли мой газовый котел с электронным термостатом?</summary>
+<p>Абсолютное большинство современных газовых котлов имеют сухой контакт для подключения комнатного термостата. Вам нужно найти в инструкции котла клеммы, обозначенные как"Room Thermostat" или значком термометра, и замкнуть их через реле термостата. Старые котлы без такой функции требуют вмешательства в цепь питания горелки, что должен делать только специалист.</p>
+</details>
+
+<details>
+<summary>Как сэкономить заряд батареек в беспроводном термостате?</summary>
+<p>Используйте литиевые батарейки, которые лучше работают при низких температурах и имеют большую емкость. Отключите подсветку дисплея или установите минимальное время ее горения. Если термостат имеет режим передачи сигнала, выберите интервал не чаще одного раза в минуту, если это допускает точность регулирования.</p>
+</details>
+
+<details>
+<summary>Почему температура в комнате отличается от той, что на термостате?</summary>
+<p>Термостат измеряет температуру в точке своего (установки). Если он висит в коридоре, а вы находитесь в гостиной, показания могут различаться на 1-2 градуса из-за циркуляции воздуха. Для точного контроля используйте модели с выносным датчиком, который можно разместить именно в той зоне, где вы находитесь чаще всего.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-и-ключевые-отличия-от-механики">Принцип работы и ключевые отличия от механики</a></li><li><a href="#классификация-электронных-терморегуляторов">Классификация электронных терморегуляторов</a></li><li><a href="#критерии-выбора-на-что-смотреть-перед-покупкой">Критерии выбора: на что смотреть перед покупкой</a></li><li><a href="#схемы-подключения-и-монтаж-оборудования">Схемы подключения и монтаж оборудования</a></li><li><a href="#настройка-и-программирование-режимов-работы">Настройка и программирование режимов работы</a></li><li><a href="#распространенные-неисправности-и-их-устранение">Распространенные неисправности и их устранение</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/t/te/termostat-elektronnyj-s-datchikom-temperatury.html" class="related-card">Электронный термостат с датчиком температуры: выбор и настройка</a></li><li><a href="/articles/t/te/termoregulyator-dlya-kotla-otopleniya-elektronnyj-provodnoj.html" class="related-card">Электронный проводной терморегулятор для котла: выбор и монтаж</a></li><li><a href="/articles/e/es/esli-neispraven-termostat-kakie-priznaki.html" class="related-card">Признаки неисправного термостата: как распознать поломку</a></li><li><a href="/articles/w/w1/w1209-termoregulyator-instruktsiya-na-russkom.html" class="related-card">W1209 терморегулятор: инструкция на русском с схемами подключения</a></li><li><a href="/articles/t/te/termostat-tama-otzyvy-pokupatelej.html" class="related-card">Термостат TAMA: отзывы покупателей 2026 — плюсы и минусы, реальный опыт</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/t/te/termostat-elektronnyj-s-datchikom-temperatury.html" class="related-bottom-card"><span class="related-bottom-title">Электронный термостат с датчиком температуры: выбор и настройка</span><span class="related-bottom-desc">Как работает электронный термостат с датчиком температуры, схемы подключения, рейтинг моделей и поша</span></a><a href="/articles/t/te/termoregulyator-dlya-kotla-otopleniya-elektronnyj-provodnoj.html" class="related-bottom-card"><span class="related-bottom-title">Электронный проводной терморегулятор для котла: выбор и монтаж</span><span class="related-bottom-desc">Установка проводного термостата для котла отопления. Схемы подключения, настройка гистерезиса, эконо</span></a><a href="/articles/e/es/esli-neispraven-termostat-kakie-priznaki.html" class="related-bottom-card"><span class="related-bottom-title">Признаки неисправного термостата: как распознать поломку</span><span class="related-bottom-desc">Подробный разбор симптомов неисправного термостата в автомобиле и бытовой технике. Как проверить и ч</span></a><a href="/articles/w/w1/w1209-termoregulyator-instruktsiya-na-russkom.html" class="related-bottom-card"><span class="related-bottom-title">W1209 терморегулятор: инструкция на русском с схемами подключения</span><span class="related-bottom-desc">Подробная инструкция по настройке и подключению терморегулятора W1209 на русском: схема, параметры, </span></a><a href="/articles/t/te/termostat-tama-otzyvy-pokupatelej.html" class="related-bottom-card"><span class="related-bottom-title">Термостат TAMA: отзывы покупателей 2026 — плюсы и минусы, реальный опыт</span><span class="related-bottom-desc">Честные отзывы о термостатах TAMA: анализ надежности, сравнение моделей, типичные проблемы и советы </span></a><a href="/articles/c/ch/chto-budet-esli-ne-otkryvaetsya-termostat.html" class="related-bottom-card"><span class="related-bottom-title">Не открывается термостат: последствия и что делать в 2026 году</span><span class="related-bottom-desc">Разбираемся, почему не открывается термостат в авто или бытовой технике, какие будут последствия и к</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

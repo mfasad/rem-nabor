@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Не работает водяное охлаждение процессора: причины и ремонт — Рем Набор</title>
+    <meta name="description" content="Что делать, если СВО перестало охлаждать CPU? Диагностика неисправностей, ремонт и профилактика водяного охлаждения ПК своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/n/ne/ne-rabotaet-vodyanoe-okhlazhdenie-protsessora.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Не работает водяное охлаждение процессора: причины и ремонт">
+    <meta property="og:description" content="Что делать, если СВО перестало охлаждать CPU? Диагностика неисправностей, ремонт и профилактика водяного охлаждения ПК своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Не работает водяное охлаждение процессора: причины и ремонт</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Не работает водяное охлаждение процессора: 7 причин и способы устранения</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-признаки-неработающего-водяного-охлаждения">1. Признаки неработающего водяного охлаждения</a></li><li><a href="#2-проверка-подключения-и-питания">2. Проверка подключения и питания</a></li><li><a href="#3-диагностика-помпы-как-проверить-её-работоспособность">3. Диагностика помпы: как проверить её работоспособность</a></li><li><a href="#4-утечка-жидкости-как-обнаружить-и-что-делать">4. Утечка жидкости: как обнаружить и что делать</a></li><li><a href="#5-засорение-радиатора-и-шлангов">5. Засорение радиатора и шлангов</a></li><li><a href="#6-неисправности-вентиляторов-радиатора">6. Неисправности вентиляторов радиатора</a></li><li><a href="#7-когда-обращаться-в-сервис-и-стоимость-ремонта">7. Когда обращаться в сервис и стоимость ремонта</a></li><li><a href="#faq-частые-вопросы-о-неисправностях-сво">FAQ: Частые вопросы о неисправностях СВО</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Водяное охлаждение (СВО) считается одним из самых эффективных способов отвода тепла от процессора, но его сложная конструкция таит в себе риски. Если система перестала справляться с охлаждением, температура CPU резко подскакивает до <strong>90-100°C</strong> даже при минимальной нагрузке, а вентиляторы работают на максимальных оборотах — это верный признак неисправности. В отличие от воздушного кулера, где проблемы обычно сводятся к пыли или высохшей термопасте, жидкостное охлаждение может выйти из строя по десятку причин: от банальной утечки до отказа помпы или засора радиатора.</p>
+
+<p>В этой статье разберём <strong>все возможные причины</strong>, по которым водяное охлаждение перестаёт функционировать, — от очевидных (отсоединился разъём питания) до скрытых (разгерметизация контура). Вы узнаете, как <em>диагностировать проблему без разборки ПК</em>, какие инструменты понадобятся для ремонта, и когда стоит обратиться в сервис. Особое внимание уделим <mark>критическим симптомам, игнорирование которых может привести к выходу процессора из строя за считанные минуты</mark>.</p>
+
+<h2 id="1-признаки-неработающего-водяного-охлаждения">1. Признаки неработающего водяного охлаждения</h2>
+
+<p>Первый сигнал о проблемах с СВО — <strong>резкий рост температуры процессора</strong>. В нормальном режиме под нагрузкой (рендеринг, игры) значения не должны превышать <code>70-80°C</code> для большинства современных CPU. Если же датчики показывают <code>95°C+</code> в простое или <code>100°C+</code> при нагрузке — это повод бить тревогу. Другие симптомы:</p>
+
+<ul>
+  <li>🔊 Громкая работа вентиляторов (они пытаются компенсировать отсутствие охлаждения).</li>
+  <li>💻 Самопроизвольные выключения или перезагрузки ПК (срабатывает тепловая защита).</li>
+  <li>🌡️ В BIOS/UEFI температура CPU показывает аномально высокие значения сразу после включения.</li>
+  <li>💧 Видимые подтёки жидкости на материнской плате или внутри корпуса.</li>
+</ul>
+
+<p>Если вы наблюдаете хотя бы один из этих признаков, <strong>немедленно выключите компьютер</strong>. Длительная работа процессора при критических температурах приводит к <em>деградации кристалла</em> (т.н. "thermal throttling"), а в худшем случае — к полному выходу из строя. Особенно уязвимы современные многоядерные CPU от <em>Intel</em> (серии <em>Core i7/i9 13-14 поколений</em>) и <em>AMD Ryzen 7/9 7000 серии</em>, где тепловыделение может достигать <code>200-250 Вт</code>.</p>
+
+<blockquote>⚠️ Внимание: Если температура CPU превысила <code>105°C</code>, даже кратковременная работа может вызвать необратимые повреждения. Не пытайтесь диагностировать проблему "на горячую" — дайте системе остыть 10-15 минут.</blockquote>
+
+<div class="poll-widget" id="poll-3587ed12"><div class="poll-widget-question">📊 Какая у вас система охлаждения?</div><div class="poll-widget-option" data-poll="3587ed12" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Воздушный кулер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3587ed12" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Готовое СВО (AIO)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3587ed12" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Кастомное водяное охлаждение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3587ed12" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="2-проверка-подключения-и-питания">2. Проверка подключения и питания</h2>
+
+<p>Начните с самого простого: убедитесь, что <strong>все разъёмы СВО подключены правильно</strong>. Часто проблема кроется в банальном отсоединении кабеля питания помпы или вентиляторов. Вот что нужно проверить:</p>
+
+<ul>
+  <li>🔌 <strong>Питание помпы</strong>: обычно подключается к разъёму <code>CPU_FAN</code> или <code>AIO_PUMP</code> на материнской плате. Если разъём один, а подключений два (помпа + вентиляторы), используйте сплиттер.</li>
+  <li>🌀 <strong>Вентиляторы радиатора</strong>: должны быть подключены к <code>SYS_FAN</code> или <code>CHA_FAN</code>. Если они не вращаются, проверьте настройки в BIOS (режим <code>DC/PWM</code>).</li>
+  <li>⚡ <strong>Блок питания</strong>: некоторые AIO-системы (например, <em>Corsair iCUE H150i</em> или <em>NZXT Kraken</em>) требуют дополнительного питания через <code>SATA</code> или <code>Molex</code>.</li>
+</ul>
+
+<p>Если разъёмы подключены верно, но помпа не работает, попробуйте подключить её к другому <code>FAN</code>-разъёму на материнской плате. Некоторые платы (особенно от <em>ASUS ROG</em> или <em>MSI MEG</em>) имеют специализированные разъёмы для AIO с увеличенной мощностью (<code>3A</code> вместо стандартных <code>1A</code>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Симптом</th>
+      <th>Вероятная причина</th>
+      <th>Решение</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Помпа не вращается, вентиляторы работают</td>
+      <td>Отсутствует питание на разъёме помпы</td>
+      <td>Проверить подключение к <code>CPU_FAN</code> или <code>AIO_PUMP</code></td>
+    </tr>
+    <tr>
+      <td>Вентиляторы не вращаются, помпа работает</td>
+      <td>Неподключённые или неисправные вентиляторы</td>
+      <td>Проверить подключение к <code>SYS_FAN</code> и настройки в BIOS</td>
+    </tr>
+    <tr>
+      <td>Помпа и вентиляторы не работают</td>
+      <td>Отсутствует питание от БП или неисправен контроллер</td>
+      <td>Проверить кабели <code>SATA/Molex</code> и разъёмы на материнской плате</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>Убедиться, что помпа подключена к CPU_FAN или AIO_PUMP|</p>
+<p>Проверить вращение вентиляторов на радиаторе|</p>
+<p>Осмотреть кабели питания (SATA/Molex) на наличие повреждений|</p>
+<p>Запустить ПК без боковой крышки, чтобы визуально подтвердить работу помпы</p>
+<p>--></p>
+
+<h2 id="3-диагностика-помпы-как-проверить-её-работоспособность">3. Диагностика помпы: как проверить её работоспособность</h2>
+
+<p>Помпа — это "сердце" водяного охлаждения. Если она перестала работать, циркуляция жидкости останавливается, и система превращается в бесполезный "кирпич". Проверить помпу можно несколькими способами:</p>
+
+<ol>
+  <li><strong>Визуально</strong>: при работающем ПК аккуратно прикоснитесь к шлангам СВО. Если помпа исправна, вы почувствуете лёгкую вибрацию и услышите слабый гул. Отсутствие вибрации — признак неисправности.</li>
+  <li><strong>Через BIOS/UEFI</strong>: многие материнские платы (например, <em>ASUS</em>, <em>Gigabyte</em>) отображают скорость вращения помпы в разделе <code>Hardware Monitor</code>. Нормальные значения — <code>2000-3000 RPM</code> (зависит от модели).</li>
+  <li><strong>Программно</strong>: утилиты вроде <em>HWMonitor</em>, <em>AIDA64</em> или фирменного ПО (<em>Corsair iCUE</em>, <em>NZXT CAM</em>) показывают скорость помпы. Если значение <code>0 RPM</code> — помпа не работает.</li>
+</ol>
+
+<p>Если помпа не подаёт признаков жизни, причина может быть в:</p>
+<ul>
+  <li>🔋 <strong>Отказе двигателя</strong> (частая проблема у дешёвых AIO после 3-4 лет эксплуатации).</li>
+  <li>🔌 <strong>Плохом контакте в разъёме</strong> (окисление, загрязнение).</li>
+  <li>🛠️ <strong>Заводском браке</strong> (если система новая).</li>
+</ul>
+
+<p>В некоторых случаях помпу можно "реанимировать" путём <strong>переподключения</strong> или очистки контактов спиртом. Если это не помогло — потребуется замена. У большинства AIO-систем (например, <em>Cooler Master ML240</em> или <em>Arctic Liquid Freezer II</em>) помпа интегрирована в водоблок, и заменить её отдельно нельзя — придётся покупать новую систему.</p>
+
+<details class="faq-item"><summary>Что делать, если помпа работает, но шумно?</summary><div class="faq-answer"><p>
+<p>Гул или дребезжание помпы может указывать на:</p>
+<p>1) <strong>Попадание воздуха</strong> в систему (нужно стравить через специальный клапан, если он есть).</p>
+<p>2) <strong>Износ подшипника</strong> (характерно для систем старше 5 лет).</p>
+<p>3) <strong>Неправильную установку</strong> (например, водоблок плотно прижат к радиатору, что создаёт резонанс).</p>
+<p>В первых двух случаях помпа подлежит замене. В третьем — проверьте крепление и используйте резиновые прокладки для гашения вибраций.</p>
+<p></p></div></details></p>
+
+<h2 id="4-утечка-жидкости-как-обнаружить-и-что-делать">4. Утечка жидкости: как обнаружить и что делать</h2>
+
+<p>Одна из самых опасных неисправностей СВО — <strong>разгерметизация контура</strong>. Жидкость (обычно это пропиленгликоль или дистиллированная вода) может просочиться через микротрещины в шлангах, радиаторе или водоблоке. Последствия:</p>
+<ul>
+  <li>💧 <strong>Короткое замыкание</strong> на материнской плате или видеокарте (если жидкость попадёт на электронику).</li>
+  <li>🔥 <strong>Коррозия контактов</strong> (особенно опасно для <em>RGB-подсветки</em> и разъёмов питания).</li>
+  <li>🚫 <strong>Потеря охлаждающей способности</strong> (из-за уменьшения объёма жидкости).</li>
+</ul>
+
+<p>Признаки утечки:</p>
+<ul>
+  <li>🔍 Видимые капли или подтёки на шлангах, радиаторе или около водоблока.</li>
+  <li>🌫️ Белый налёт (от испарения жидкости) на компонентах ПК.</li>
+  <li>📉 Резкое падение уровня жидкости в расширительном бачке (если он есть).</li>
+</ul>
+
+<p>Если вы обнаружили утечку:</p>
+<ol>
+  <li>⚡ <strong>Немедленно отключите ПК от сети</strong> и не включайте, пока не устраните проблему.</li>
+  <li>🧹 Аккуратно промокните жидкость салфетками, не растирая её по плате.</li>
+  <li>🔧 Осмотрите место утечки. Если трещина на шланге — его можно заменить (в кастомных СВО). Если течёт радиатор или водоблок — система подлежит замене.</li>
+  <li>💨 Просушите корпус в течение 24 часов (можно использовать вентилятор для ускорения процесса).</li>
+</ol>
+
+<blockquote>⚠️ Внимание: Если жидкость попала на материнскую плату или видеокарту, <strong>не включайте ПК</strong>, даже если он внешне сухой. Остаточная влага может вызвать коррозию или замыкание через несколько дней. В этом случае рекомендуется промыть плату <em>изопропиловым спиртом (90%+)</em> и просушить её в сервисном центре.</blockquote>
+
+<h2 id="5-засорение-радиатора-и-шлангов">5. Засорение радиатора и шлангов</h2>
+
+<p>Со временем в системе охлаждения накапливаются отложения — <strong>минеральные соли, частицы пыли, продукты разложения жидкости</strong>. Это приводит к:</p>
+<ul>
+  <li>🌀 <strong>Ухудшению циркуляции</strong> (помпа работает, но жидкость движется медленно).</li>
+  <li>🔥 <strong>Снижению теплоотдачи</strong> (радиатор не успевает рассеивать тепло).</li>
+  <li>🛠️ <strong>Повышенному износу помпы</strong> (она работает под увеличенной нагрузкой).</li>
+</ul>
+
+<p>Как проверить засор:</p>
+<ol>
+  <li>Отключите ПК и снимите радиатор. Посветите фонариком через рёбра — если свет не проходит, радиатор засорён.</li>
+  <li>Проверьте шланги на просвет. Муть, хлопья или осадок — признак загрязнения.</li>
+  <li>Если система разборная (кастомное СВО), слейте жидкость. Цвет должен быть близким к исходному (обычно прозрачный или слегка окрашенный). Тёмный, ржавый или вязкий состав говорит о необходимости промывки.</li>
+</ol>
+
+<p>Чистку можно выполнить самостоятельно:</p>
+<ul>
+  <li>🧼 <strong>Радиатор</strong>: промойте под проточной водой с мягкой щёткой. Для удаления стойких отложений используйте <em>лимонную кислоту</em> (1 ст. ложка на 1 л воды).</li>
+  <li>🚰 <strong>Шланги</strong>: пропустите через них дистиллированную воду с помощью шприца.</li>
+  <li>🔄 <strong>Водоблок</strong>: замочите в тёплой воде с уксусом (1:1) на 30 минут, затем промойте.</li>
+</ul>
+
+<p>После чистки залейте новую жидкость. Для готовых AIO-систем (например, <em>Corsair H100i</em> или <em>Cooler Master ML360</em>) промывка невозможна — при засорении их приходится заменять.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вы используете кастомное СВО, добавьте в жидкость <strong>ингибитор коррозии</strong> (например, <em>EK-CryoFuel</em> или <em>Mayhems Pastel</em>). Это продлит срок службы системы и предотвратит образование отложений.</p></div>
+
+<h2 id="6-неисправности-вентиляторов-радиатора">6. Неисправности вентиляторов радиатора</h2>
+
+<p>Даже если помпа и контур СВО исправны, <strong>неработающие вентиляторы</strong> на радиаторе сведут эффективность охлаждения к нулю. Проверьте:</p>
+<ul>
+  <li>🌀 <strong>Вращение лопастей</strong>: при работающем ПК вентиляторы должны вращаться. Если нет — проверьте подключение.</li>
+  <li>📉 <strong>Скорость в BIOS/PО</strong>: нормальные значения — <code>800-1500 RPM</code> в простое и <code>1500-2500 RPM</code> под нагрузкой.</li>
+  <li>🔊 <strong>Посторонние звуки</strong>: скрип или треск указывает на износ подшипников.</li>
+</ul>
+
+<p>Частые причины неисправности вентиляторов:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Проблема</th>
+      <th>Причина</th>
+      <th>Решение</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Вентиляторы не вращаются</td>
+      <td>Отсутствует питание или неисправен контроллер</td>
+      <td>Проверить подключение к <code>SYS_FAN</code>, заменить вентилятор</td>
+    </tr>
+    <tr>
+      <td>Вентиляторы вращаются на малых оборотах</td>
+      <td>Неправильные настройки в BIOS (режим <code>DC</code> вместо <code>PWM</code>)</td>
+      <td>Зайти в BIOS и выставить режим <code>PWM</code> для <code>FAN</code>-разъёмов</td>
+    </tr>
+    <tr>
+      <td>Скрип или вибрация</td>
+      <td>Износ подшипника или дисбаланс лопастей</td>
+      <td>Заменить вентилятор (рекомендуемые модели: <em>Noctua NF-A12x25</em>, <em>Arctic P12 PWM</em>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Если вентиляторы исправны, но охлаждение недостаточное, проверьте <strong>направление воздушного потока</strong>:</p>
+<ul>
+  <li>🔥 <strong>Нагнетание</strong> (вдув): вентиляторы установлены на радиаторе со стороны корпуса и дуют <strong>на радиатор</strong>.</li>
+  <li>❄️ <strong>Выдув</strong>: вентиляторы установлены между радиатором и корпусом и дуют <strong>из радиатора наружу</strong>.</li>
+</ul>
+<p>Оптимальный вариант зависит от конфигурации корпуса. В большинстве случаев <strong>выдув</strong> эффективнее, так как горячий воздух сразу выводится из системы.</p>
+
+<h2 id="7-когда-обращаться-в-сервис-и-стоимость-ремонта">7. Когда обращаться в сервис и стоимость ремонта</h2>
+
+<p>Не все неисправности СВО можно устранить самостоятельно. Обратитесь в сервисный центр, если:</p>
+<ul>
+  <li>🔧 Требуется <strong>замена помпы</strong> в неразборной AIO-системе (например, <em>NZXT Kraken X63</em> или <em>DeepCool Castle 240EX</em>).</li>
+  <li>💧 Произошла <strong>масштабная утечка</strong> с попаданием жидкости на материнскую плату или видеокарту.</li>
+  <li>🔥 Температура CPU остаётся высокой даже после всех проверок (возможен <strong>дефект водоблока</strong> или радиатора).</li>
+</ul>
+
+<p>Стоимость ремонта зависит от проблемы:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Услуга</th>
+      <th>Стоимость (руб.)</th>
+      <th>Примечания</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Диагностика СВО</td>
+      <td>500–1500</td>
+      <td>Включает проверку помпы, радиатора, вентиляторов</td>
+    </tr>
+    <tr>
+      <td>Замена помпы в AIO</td>
+      <td>2000–4000</td>
+      <td>Без учёта стоимости запчастей (часто дешевле купить новую систему)</td>
+    </tr>
+    <tr>
+      <td>Чистка радиатора и замена жидкости (кастомное СВО)</td>
+      <td>1500–3000</td>
+      <td>Включает промывку, замену шлангов (при необходимости)</td>
+    </tr>
+    <tr>
+      <td>Ремонт после утечки (чистка платы)</td>
+      <td>3000–10000</td>
+      <td>Зависит от степени повреждений</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>В большинстве случаев <strong>ремонт готовых AIO-систем нерентабелен</strong> — дешевле купить новую (например, <em>Arctic Liquid Freezer II 240</em> стоит около 8000 руб., а замена помпы обойдётся в 3000–4000 руб.). Исключение — кастомные системы, где можно заменить отдельные компоненты.</p>
+
+<blockquote>⚠️ Внимание: Если ваш ПК ещё на гарантии, <strong>не разбирайте СВО самостоятельно</strong>. Большинство производителей (включая <em>Corsair</em>, <em>NZXT</em>, <em>Cooler Master</em>) аннулируют гарантию при вскрытии системы. Обратитесь в авторизованный сервисный центр.</blockquote>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Готовые AIO-системы (например, Corsair H100i или NZXT Kraken) рассчитаны на 3–5 лет эксплуатации. После этого риск отказа помпы или утечки резко возрастает. Если ваша система старше, рассмотрите возможность профилактической замены.</p></div>
+
+<h2 id="faq-частые-вопросы-о-неисправностях-сво">FAQ: Частые вопросы о неисправностях СВО</h2>
+
+<details>
+  <summary>Можно ли включать ПК, если не работает водяное охлаждение?</summary>
+  <p>Нет. Даже кратковременная работа процессора при температурах выше <code>90°C</code> может привести к <strong>thermal throttling</strong> (автоматическому снижению частот) или необратимому повреждению кристалла. Если СВО вышло из строя, используйте временный воздушный кулер (например, <em>Noctua NH-D15</em>), пока не устраните проблему.</p>
+</details>
+
+<details>
+  <summary>Как часто нужно менять жидкость в кастомном СВО?</summary>
+  <p>Рекомендуемый интервал — <strong>1 раз в 12–24 месяца</strong>. Если используете готовую жидкость с ингибиторами коррозии (например, <em>EK-CryoFuel</em>), срок можно увеличить до 3 лет. Признаки, что жидкость пора заменить:</p>
+  <ul>
+    <li>Изменение цвета (потемнение, помутнение).</li>
+    <li>Появление хлопьев или осадка.</li>
+    <li>Снижение производительности охлаждения.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Почему помпа СВО стала громко работать?</summary>
+  <p>Причины повышенного шума:</p>
+  <ol>
+    <li><strong>Попадание воздуха</strong> в контур (нужно стравить через клапан, если он есть).</li>
+    <li><strong>Износ подшипника</strong> (характерно для систем старше 4–5 лет).</li>
+    <li><strong>Засорение радиатора</strong> (помпа работает под повышенной нагрузкой).</li>
+    <li><strong>Неправильная установка</strong> (например, водоблок плотно прижат к радиатору, что вызывает резонанс).</li>
+  </ol>
+  <p>Если шум сопровождается вибрацией, попробуйте <strong>переустановить СВО</strong> с использованием резиновых прокладок для гашения колебаний.</p>
+</details>
+
+<details>
+  <summary>Можно ли использовать дистиллированную воду вместо специальной жидкости?</summary>
+  <p>Технически да, но <strong>не рекомендуется</strong>. Дистиллированная вода:</p>
+  <ul>
+    <li>✅ Дешевле и доступнее.</li>
+    <li>❌ Не содержит <strong>ингибиторов коррозии</strong>, что приводит к ржавчине металлических деталей.</li>
+    <li>❌ Быстрее испаряется, что увеличивает риск образования воздушных пробок.</li>
+    <li>❌ Может способствовать росту водорослей/бактерий (особенно при использовании негерметичных систем).</li>
+  </ul>
+  <p>Если вы всё же решили использовать воду, добавьте в неё <strong>биоцид</strong> (например, <em>Mayhems Biocide</em>) и <strong>ингибитор коррозии</strong> (например, <em>EK-CryoFuel Additive</em>).</p>
+</details>
+
+<details>
+  <summary>Как проверить, работает ли помпа, если нет тахометра?</summary>
+  <p>Если ваша материнская плата не отображает скорость помпы, воспользуйтесь одним из методов:</p>
+  <ol>
+    <li><strong>Тактильный</strong>: при работающем ПК аккуратно прикоснитесь к шлангу рядом с водоблоком. Вы должны почувствовать лёгкую вибрацию.</li>
+    <li><strong>Звуковой</strong>: поднесите ухо к водоблоку — исправная помпа издаёт равномерный низкочастотный гул.</li>
+    <li><strong>Температурный</strong>: если помпа не работает, температура CPU поднимется до <code>90°C+</code> в течение 1–2 минут после включения.</li>
+  </ol>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-признаки-неработающего-водяного-охлаждения">1. Признаки неработающего водяного охлаждения</a></li><li><a href="#2-проверка-подключения-и-питания">2. Проверка подключения и питания</a></li><li><a href="#3-диагностика-помпы-как-проверить-её-работоспособность">3. Диагностика помпы: как проверить её работоспособность</a></li><li><a href="#4-утечка-жидкости-как-обнаружить-и-что-делать">4. Утечка жидкости: как обнаружить и что делать</a></li><li><a href="#5-засорение-радиатора-и-шлангов">5. Засорение радиатора и шлангов</a></li><li><a href="#6-неисправности-вентиляторов-радиатора">6. Неисправности вентиляторов радиатора</a></li><li><a href="#7-когда-обращаться-в-сервис-и-стоимость-ремонта">7. Когда обращаться в сервис и стоимость ремонта</a></li><li><a href="#faq-частые-вопросы-о-неисправностях-сво">FAQ: Частые вопросы о неисправностях СВО</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/s/so/soprotivlenie-06-om-skolko-vatt.html" class="related-card">Сопротивление 0.6 Ом: сколько ватт, расчет мощности и выбор пар</a></li><li><a href="/articles/k/ka/kak-pomenyat-ispar-na-pasito-mini.html" class="related-card">Как поменять испаритель на Pasito Mini: пошаговая инструкция</a></li><li><a href="/articles/k/ka/kakoe-ruzhe-luchshe-kupit-dlya-okhoty-12-kalibr-gladkostvolnoe-vertikalnoe.html" class="related-card">Какое вертикальное ружье 12 калибра лучше: выбор охотничьего оружия</a></li><li><a href="/articles/z/zh/zhizha-dlya-knajt-80.html" class="related-card">Жидкость для Knight 80: Какую жижу лить и как разводить</a></li><li><a href="/articles/k/ka/kak-pomenyat-rezhim-na-knajt-80.html" class="related-card">Как поменять режим на КНАЙТ 80 (KNIGHT 80): настройка бокса</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/s/so/soprotivlenie-06-om-skolko-vatt.html" class="related-bottom-card"><span class="related-bottom-title">Сопротивление 0.6 Ом: сколько ватт, расчет мощности и выбор пар</span><span class="related-bottom-desc">Как рассчитать ватты при сопротивлении 0.6 Ом? Разбор формул, выбор режимов (VW/TC), безопасность ис</span></a><a href="/articles/k/ka/kak-pomenyat-ispar-na-pasito-mini.html" class="related-bottom-card"><span class="related-bottom-title">Как поменять испаритель на Pasito Mini: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по замене испарителя в вейпе Pasito Mini. Как определить износ, установить кар</span></a><a href="/articles/k/ka/kakoe-ruzhe-luchshe-kupit-dlya-okhoty-12-kalibr-gladkostvolnoe-vertikalnoe.html" class="related-bottom-card"><span class="related-bottom-title">Какое вертикальное ружье 12 калибра лучше: выбор охотничьего оружия</span><span class="related-bottom-desc">Подробный гид по выбору вертикального двуствольного ружья 12 калибра. Сравнение моделей, советы эксп</span></a><a href="/articles/z/zh/zhizha-dlya-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Жидкость для Knight 80: Какую жижу лить и как разводить</span><span class="related-bottom-desc">Полный гид по смазке цепи Knight 80: выбор жижи, пропорции разведения, способы нанесения. Обзор вазе</span></a><a href="/articles/k/ka/kak-pomenyat-rezhim-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Как поменять режим на КНАЙТ 80 (KNIGHT 80): настройка бокса</span><span class="related-bottom-desc">Полная инструкция по настройке режимов работы пуско-зарядного устройства KNIGHT 80. Проверка напряже</span></a><a href="/articles/p/po/pochemu-ya-ne-chuvstvuyu-vkus-zhizhi.html" class="related-bottom-card"><span class="related-bottom-title">Почему я не чувствую вкус жижи: причины потери вкуса</span><span class="related-bottom-desc">Разбираем, почему пропал вкус у жидкости для вейпа. Причины: нагар, усталость рецепторов, устройство</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

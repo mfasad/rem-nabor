@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Термостат на Ардуино и DS18B20 с ЖК дисплеем — Рем Набор</title>
+    <meta name="description" content="Подробная инструкция по сборке термостата на базе Arduino. Схема подключения датчика DS18B20, прошивка кода и настройка ЖК дисплея 1602.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termostat-na-arduino-ds18b20-s-zhk-displeem.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Термостат на Ардуино и DS18B20 с ЖК дисплеем">
+    <meta property="og:description" content="Подробная инструкция по сборке термостата на базе Arduino. Схема подключения датчика DS18B20, прошивка кода и настройка ЖК дисплея 1602.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/termoregulyatory/">Терморегуляторы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Термостат на Ардуино и DS18B20 с ЖК дисплеем</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Создание умного термостата на Ардуино с дисплеем</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#необходимые-компоненты-и-инструменты">Необходимые компоненты и инструменты</a></li><li><a href="#принципиальная-схема-подключения">Принципиальная схема подключения</a></li><li><a href="#подготовка-среды-разработки-и-библиотек">Подготовка среды разработки и библиотек</a></li><li><a href="#программная-логика-и-алгоритм-работы">Программная логика и алгоритм работы</a></li><li><a href="#сборка-корпуса-и-монтаж-компонентов">Сборка корпуса и монтаж компонентов</a></li><li><a href="#калибровка-и-тонкая-настройка-системы">Калибровка и тонкая настройка системы</a></li><li><a href="#возможные-проблемы-и-способы-их-решения">Возможные проблемы и способы их решения</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Создание собственной системы климат-контроля — это увлекательный процесс, который открывает возможности для точной настройки микроклимата в помещении или инкубаторе. Использование платформы <em>Arduino</em> в связке с цифровым датчиком температуры <em>DS18B20</em> и жидкокристаллическим экраном позволяет собрать устройство, которое по функциональности не уступает дорогим промышленным аналогам. Такой <strong>термостат</strong> идеально подходит для управления нагревательными элементами, вентиляторами или системами охлаждения.</p>
+
+<p>Главное преимущество данной схемы заключается в её доступности и гибкости. Вы можете самостоятельно задать логику работы, настроить гистерезис и пороговые значения срабатывания реле. В отличие от простых механических регуляторов, электронный контроллер обеспечивает высокую точность измерений, что критически важно для процессов, требующих стабильности, например, в аквариумистике или при сушке материалов.</p>
+
+<p>В этой статье мы детально разберем процесс сборки, начиная от подбора компонентов и заканчивая загрузкой программного кода. Вам не потребуются глубокие знания в электронике, так как мы используем проверенные библиотеки и стандартные модули. Результатом работы станет надежное устройство, отображающее текущую температуру и управляющее нагрузкой в автоматическом режиме.</p>
+
+<h2 id="необходимые-компоненты-и-инструменты">Необходимые компоненты и инструменты</h2>
+
+<p>Для успешной реализации проекта вам потребуется базовый набор электронных модулей, которые легко приобрести в любом магазине радиодеталей или на популярных маркетплейсах. Основой системы станет микроконтроллерная плата, которая будет обрабатывать данные и управлять исполнительными механизмами. Выбор конкретной модели зависит от ваших предпочтений, но наиболее распространенным вариантом является плата <em>Arduino Uno</em> или её совместимые аналоги на чипе <em>ATmega328P</em>.</p>
+
+<p>Ключевым элементом системы измерения является датчик <em>DS18B20</em>. Это цифровой термометр, который communicates по протоколу <strong>1-Wire</strong>. Его особенность в том, что он передает данные в цифровом виде, что исключает влияние помех на длинных проводах и обеспечивает высокую точность до 0.1 градуса Цельсия. Датчик может быть в водонепроницаемом корпусе из нержавеющей стали, что расширяет сферу его применения до жидких сред.</p>
+
+<ul>
+<li>📟 Плата <em>Arduino Uno</em> или <em>Nano</em> для управления всей логикой.</li>
+<li>🌡️ Цифровой датчик температуры <em>DS18B20</em> (в корпусе или открытый).</li>
+<li>💡 ЖК-дисплей <em>LCD 1602</em> с модулем <em>I2C</em> для отображения информации.</li>
+<li>⚡ Релейный модуль на 5 вольт для коммутации мощной нагрузки.</li>
+<li>🔌 Резистор 4.7 кОм для подтяжки линии данных датчика.</li>
+</ul>
+
+<p>Для отображения информации мы будем использовать дисплей <em>LCD 1602</em>. Крайне рекомендуется брать версию уже с распаянным модулем <strong>I2C</strong>. Это позволит сократить количество проводов с четырех до двух (питание и земля), что существенно упрощает монтаж и делает схему аккуратнее. Без этого модуля вам пришлось бы занимать много пинов контроллера для передачи данных параллельным способом.</p>
+
+<blockquote>
+<p>⚠️ Внимание! При выборе релейного модуля убедитесь, что он управляется логическим уровнем 5В. Некоторые промышленные реле требуют 12В или 24В, что несовместимо с прямым подключением к <em>Arduino</em> без дополнительных транзисторных ключей.</p>
+</blockquote>
+
+<h2 id="принципиальная-схема-подключения">Принципиальная схема подключения</h2>
+
+<p>Сборка электрической цепи требует внимательности, так как ошибка в полярности может вывести из строя дорогостоящие компоненты, особенно дисплей и датчик. Сначала рассмотрим подключение датчика температуры. Линия данных <em>DS18B20</em> требует обязательной подтяжки к питанию через резистор номиналом 4.7 кОм. Этот резистор подключается между пином питания (VCC) и пином данных (DQ).</p>
+
+<p>Без этого резистора связь по протоколу <strong>1-Wire</strong> будет нестабильной или полностью отсутствовать. Сигнальный провод датчика подключается к любому цифровому пину Arduino, в нашем примере мы будем использовать пин <code>D2</code>. Питание датчика можно взять с выхода 5В платы, а землю соединить с общим проводом <code>GND</code>. Такая трехпроводная схема является стандартной для большинства проектов.</p>
+
+<p>Подключение дисплея с модулем <em>I2C</em> еще проще. Модуль имеет четыре контакта: VCC, GND, SDA и SCL. Питание и земля соединяются с соответствующими пинами Arduino. Линии данных SDA и SCL на плате <em>Arduino Uno</em> находятся на аналоговых пинах <code>A4</code> и <code>A5</code> соответственно. На плате <em>Nano</em> расположение этих пинов идентично, что делает схему универсальной.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Используйте цветовую маркировку проводов (например, красный для плюса, черный для минуса, желтый для сигнала), чтобы избежать путаницы при отладке схемы в будущем.</p></div>
+
+<p>Релейный модуль подключается к цифровому пину, который мы запрограммируем как выход. Обычно для этого выбирают пин <code>D3</code> или <code>D4</code>. Сигнальный вход реле (IN) соединяется с выбранным пином, а питание модуля реле берется с 5В Arduino. </p>
+
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Пин Arduino</th>
+<th>Назначение</th>
+<th>Примечание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DS18B20 (Data)</td>
+<td>D2</td>
+<td>Передача данных</td>
+<td>Нужен резистор 4.7кОм</td>
+</tr>
+<tr>
+<td>LCD I2C (SDA)</td>
+<td>A4</td>
+<td>Линия данных</td>
+<td>Внутренняя подтяжка</td>
+</tr>
+<tr>
+<td>LCD I2C (SCL)</td>
+<td>A5</td>
+<td>Тактовый сигнал</td>
+<td>Внутренняя подтяжка</td>
+</tr>
+<tr>
+<td>Реле (IN)</td>
+<td>D3</td>
+<td>Управление нагрузкой</td>
+<td>Активный низкий/высокий</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="подготовка-среды-разработки-и-библиотек">Подготовка среды разработки и библиотек</h2>
+
+<p>Прежде чем загружать код в контроллер, необходимо подготовить программную среду <em>Arduino IDE</em>. Стандартный набор функций не включает в себя драйверы для работы с дисплеем и специфическими датчиками, поэтому нам потребуется установить дополнительные библиотеки. Это делается через встроенный менеджер библиотек, что значительно упрощает процесс и гарантирует совместимость версий.</p>
+
+<p>Для работы с датчиком <em>DS18B20</em> нам понадобятся две библиотеки: <strong>OneWire</strong> и <strong>DallasTemperature</strong>. Первая реализует низкоуровневый протокол общения, а вторая предоставляет удобные функции для чтения температуры. Без них контроллер просто не сможет расшифровать сигнал, поступающий с сенсора. Установка производится поиском названий в меню <code>Инструменты → Управление библиотеками</code>.</p>
+
+<p>Для управления дисплеем <em>LCD 1602</em> с модулем <em>I2C</em> оптимальным выбором является библиотека <em>LiquidCrystal_I2C</em>. Существует несколько форков этой библиотеки, но большинство из них совместимы между собой. Она позволяет легко выводить текст на экран, управлять подсветкой и курсором, не вдаваясь в сложные тайминги сигналов, которые требуются при параллельном подключении.</p>
+
+<details class="faq-item"><summary>Что делать, если библиотека не находится?</summary><div class="faq-answer"><p>Иногда стандартный менеджер не находит нужную библиотеку. В этом случае скачайте архив с GitHub (например, репозиторий marcoschwartz/LiquidCrystal_I2C), распакуйте его в папку libraries внутри директории скетчей Arduino и перезапустите IDE.</p></div></details>
+
+<p>После установки всех компонентов проверьте, выбрана ли правильная плата и порт в меню инструментов. Если вы используете клон <em>Arduino Uno</em> на чипе <em>CH340</em>, возможно, потребуется установить отдельный драйвер для USB-конвертера, чтобы компьютер увидел устройство. Без корректной настройки порта загрузка скетча будет невозможна, и среда выдаст ошибку соединения.</p>
+
+<h2 id="программная-логика-и-алгоритм-работы">Программная логика и алгоритм работы</h2>
+
+<p>Сердцем нашего термостата является программный код, который циклически опрашивает датчик, сравнивает показания с заданными уставками и принимает решение о включении или выключении реле. Алгоритм должен быть устойчив к кратковременным скачкам температуры, поэтому в код закладывается понятие <strong>гистерезиса</strong>. Это разница температур между включением и выключением, предотвращающая частое щелканье реле.</p>
+
+<p>В начале программы инициализируются все периферийные устройства: запускается последовательный порт для отладки, настраивается дисплей и опрашивается шина 1-Wire для поиска подключенных датчиков. Если датчик не найден, на экране может выводиться сообщение об ошибке, что упрощает диагностику неисправностей на этапе сборки. Это важная часть <strong>отладки</strong> системы.</p>
+
+<p>Основной цикл <code>loop()</code> выполняет запрос температуры к датчику. Полученное значение сохраняется в переменную и сравнивается с пороговыми значениями. Например, если температура упала ниже 20°C, реле включается (нагрев идет). Если температура поднялась выше 22°C (учитывая гистерезис в 2 градуса), реле отключается. Такая логика обеспечивает стабильность климата в заданном диапазоне.</p>
+
+<blockquote>
+<p>⚠️ Внимание! При написании кода учитывайте время отклика датчика. Запрос температуры у <em>DS18B20</em> занимает около 750 мс при максимальном разрешении. Не делайте запросы слишком часто, чтобы не нагружать шину и не создавать задержек в работе других элементов программы.</p>
+</blockquote>
+
+<p>Для удобства пользователя можно добавить возможность регулировки уставок прямо в коде или, в более сложных версиях, через кнопки. В базовом варианте переменные <code>targetTemp</code> (целевая температура) и <code>hysteresis</code> (зона нечувствительности) задаются в начале скетча. Изменение этих чисел позволяет адаптировать термостат под разные задачи без переделки схемы.</p>
+
+<div class="poll-widget" id="poll-a4f8ab18"><div class="poll-widget-question">📊 Какой режим работы вам нужен чаще всего?</div><div class="poll-widget-option" data-poll="a4f8ab18" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Поддержание температуры (нагрев)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a4f8ab18" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Охлаждение при превышении</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a4f8ab18" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Циклическое включение/выключение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="a4f8ab18" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Только мониторинг без реле</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="сборка-корпуса-и-монтаж-компонентов">Сборка корпуса и монтаж компонентов</h2>
+
+<p>Когда электронная часть проверена и работает корректно, наступает этап конструктивного оформления. Разбросанные провода на макетной плате подходят только для тестов, для постоянной эксплуатации устройство нужно поместить в корпус. Это защитит контакты от окисления, короткого замыкания и механических повреждений. Можно использовать готовые пластиковые боксы или напечатать корпус на 3D-принтере.</p>
+
+<p>При монтаже внутри корпуса старайтесь размещать блок питания и реле подальше от чувствительных линий данных. Силовые провода, идущие к нагрузке 220В, создают электромагнитные помехи, которые могут искажать показания датчика или вызывать сбои в работе дисплея. Использование экранированных проводов для сигнальных линий или простая их скрутка помогает снизить влияние наводок.</p>
+
+<ul>
+<li>🔩 Закрепите плату Arduino и модули на стойках, чтобы они не касались металлического дна корпуса.</li>
+<li>🔌 Выведите датчик температуры наружу через герметичный ввод, если он будет находиться в контролируемой среде.</li>
+<li>💡 Обеспечьте вентиляцию корпуса, особенно если внутри установлены мощные силовые элементы.</li>
+</ul>
+
+<p>Особое внимание уделите подключению сетевого напряжения к реле. Провода должны быть надежно зажаты в клеммах, а места пайки заизолированы термоусадкой. Никогда не оставляйте оголенные концы проводов под напряжением внутри пластикового корпуса. Ошибка в монтаже высоковольтной части может привести к пожару или поражению электрическим током.</p>
+
+<h2 id="калибровка-и-тонкая-настройка-системы">Калибровка и тонкая настройка системы</h2>
+
+<p>После окончательной сборки рекомендуется провести калибровку устройства. Хотя датчики <em>DS18B20</em> довольно точны из коробки, небольшая погрешность в 0.5-1 градус может присутствовать. Для проверки поместите датчик рядом с эталонным термометром в среду со стабильной температурой и сравните показания. При необходимости в коде можно ввести поправочный коэффициент.</p>
+
+<p>Если вы заметили, что реле срабатывает слишком часто (например, каждые 10 секунд), увеличьте значение гистерезиса. Частые переключения сокращают ресурс механических контактов реле и могут привести к их выгоранию. Оптимальным считается интервал между срабатываниями не менее 2-5 минут для систем отопления и 1-2 минут для систем охлаждения.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Правильно настроенный гистерезис — залог долговечности вашего термостата. Он предотвращает износ реле и обеспечивает плавную работу нагревательных приборов без резких скачков температуры.</p></div>
+
+<p>Также стоит проверить работу дисплея при разном угле обзора. Если контрастность недостаточна, на модуле <em>I2C</em> обычно есть небольшой подстроечный резистор (потенциометр). Вращая его маленькой отверткой, можно добиться четкого отображения символов. Это важно для удобства считывания информации в условиях плохого освещения.</p>
+
+<h2 id="возможные-проблемы-и-способы-их-решения">Возможные проблемы и способы их решения</h2>
+
+<p>В процессе эксплуатации или настройки вы можете столкнуться с рядом типичных проблем. Чаще всего пользователи жалуются на то, что дисплей светится, но символы не отображаются ("черный экран"). Это почти всегда проблема с контрастностью или неверным адресом I2C. Адрес можно узнать, запустив сканер шины I2C, так как у разных производителей модулей он может отличаться (часто 0x27 или 0x3F).</p>
+
+<p>Другая распространенная ошибка — чтение температуры 85.0°C. Это значение по умолчанию у датчика <em>DS18B20</em>, которое он выдает сразу после включения, пока не успеет провести первое измерение. Если значение 85.0 держится постоянно, проверьте наличие подтягивающего резистора 4.7 кОм и надежность контактов. Также убедитесь, что в коде указан правильный пин подключения датчика.</p>
+
+<blockquote>
+<p>⚠️ Внимание! Если реле щелкает, но нагрузка не включается, проверьте целостность предохранителя на модуле реле (если он есть) и исправность самой нагрузки. Не пытайтесь ремонтировать реле под напряжением.</p>
+</blockquote>
+
+<p>Иногда устройство может перезагружаться само по себе при срабатывании реле. Это признак того, что блок питания не справляется с пиковым током, потребляемым катушкой реле. Решение — использовать более мощный блок питания или разделить питание логики (Arduino) и силовой части (реле) на разные источники с общей землей.</p>
+
+<div class="checklist-block"><h4>☑️ Диагностика неисправностей</h4><label class="check-item"><input type="checkbox"><span>Проверить напряжение 5В на пине VCC</span></label><label class="check-item"><input type="checkbox"><span>Проверить наличие резистора 4.7кОм</span></label><label class="check-item"><input type="checkbox"><span>Запустить сканер I2C адреса</span></label><label class="check-item"><input type="checkbox"><span>Переподключить провода датчика</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<details>
+<summary>Можно ли использовать этот термостат для управления котлом отопления?</summary>
+<p>Да, можно, но с осторожностью. Релейный модуль обычно рассчитан на ток до 10А. Если котел потребляет больше, необходимо использовать промежуточное контактное реле или магнитный пускатель. Также важно обеспечить гальваническую развязку и надежное заземление системы.</p>
+</details>
+
+<details>
+<summary>Как увеличить точность измерений до 0.1 градуса?</summary>
+<p>Датчик <em>DS18B20</em> по умолчанию выдает 12 бит разрешения, что как раз и дает шаг 0.0625°C. В библиотеке <em>DallasTemperature</em> это настроено по умолчанию. Главное — обеспечить стабильное питание датчика и избегать наводок на длинных проводах.</p>
+</details>
+
+<details>
+<summary>Что делать, если дисплей показывает кракозябры?</summary>
+<p>Это означает, что в коде указан неверный адрес I2C модуля дисплея. Попробуйте изменить адрес в строке инициализации <code>LiquidCrystal_I2C lcd(0x27, 16, 2);</code> на <code>0x3F</code> или наоборот. Также проверьте качество пайки контактов SDA и SCL.</p>
+</details>
+
+<details>
+<summary>Можно ли добавить кнопку для ручной смены температуры?</summary>
+<p>Конечно. Для этого нужно подключить тактовую кнопку к свободному цифровому пину, настроить его как вход с подтяжкой и дописать логику в код: при нажатии увеличивать или уменьшать переменную целевой температуры и сохранять её в EEPROM памяти.</p>
+</details>
+
+<details>
+<summary>Безопасно ли оставлять устройство включенным на долгое время?</summary>
+<p>При правильной сборке и использовании качественных компонентов устройство может работать круглосуточно. Однако рекомендуется периодически проверять надежность контактов и отсутствие перегрева блока питания, особенно в летний период.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#необходимые-компоненты-и-инструменты">Необходимые компоненты и инструменты</a></li><li><a href="#принципиальная-схема-подключения">Принципиальная схема подключения</a></li><li><a href="#подготовка-среды-разработки-и-библиотек">Подготовка среды разработки и библиотек</a></li><li><a href="#программная-логика-и-алгоритм-работы">Программная логика и алгоритм работы</a></li><li><a href="#сборка-корпуса-и-монтаж-компонентов">Сборка корпуса и монтаж компонентов</a></li><li><a href="#калибровка-и-тонкая-настройка-системы">Калибровка и тонкая настройка системы</a></li><li><a href="#возможные-проблемы-и-способы-их-решения">Возможные проблемы и способы их решения</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/s/sk/skhema-podklyucheniya-termoregulyatora-k-obogrevatelyu.html" class="related-card">Схема подключения терморегулятора к обогревателю: пошаговая инструкция</a></li><li><a href="/articles/t/te/termostat-s-elektronnym-upravleniem.html" class="related-card">Термостат с электронным управлением: выбор и настройка</a></li><li><a href="/articles/t/te/termostat-za-chto-on-otvechaet.html" class="related-card">Термостат: за что отвечает, как работает и признаки неисправности</a></li><li><a href="/articles/w/w3/w3230-na-220v-termoregulyator.html" class="related-card">W3230 на 220В: полный обзор, настройка терморегулятора</a></li><li><a href="/articles/s/sk/skhema-podklyucheniya-termostata-k-obogrevatelyu.html" class="related-card">Подключение термостата к обогревателю: схемы и инструкции</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/s/sk/skhema-podklyucheniya-termoregulyatora-k-obogrevatelyu.html" class="related-bottom-card"><span class="related-bottom-title">Схема подключения терморегулятора к обогревателю: пошаговая инструкция</span><span class="related-bottom-desc">Подробная схема подключения терморегулятора к обогревателю. Выбор устройства, монтаж розеточного и н</span></a><a href="/articles/t/te/termostat-s-elektronnym-upravleniem.html" class="related-bottom-card"><span class="related-bottom-title">Термостат с электронным управлением: выбор и настройка</span><span class="related-bottom-desc">Как выбрать и настроить термостат с электронным управлением для котла или теплого пола. Точность, эк</span></a><a href="/articles/t/te/termostat-za-chto-on-otvechaet.html" class="related-bottom-card"><span class="related-bottom-title">Термостат: за что отвечает, как работает и признаки неисправности</span><span class="related-bottom-desc">Подробное руководство о термостате: принцип работы, функции в автомобиле и бытовой технике, симптомы</span></a><a href="/articles/w/w3/w3230-na-220v-termoregulyator.html" class="related-bottom-card"><span class="related-bottom-title">W3230 на 220В: полный обзор, настройка терморегулятора</span><span class="related-bottom-desc">Подробное руководство по терморегулятору W3230 220В: схемы подключения, настройка PID, коды ошибок и</span></a><a href="/articles/s/sk/skhema-podklyucheniya-termostata-k-obogrevatelyu.html" class="related-bottom-card"><span class="related-bottom-title">Подключение термостата к обогревателю: схемы и инструкции</span><span class="related-bottom-desc">Подробное руководство по монтажу терморегулятора для масляного, ИК или конвекторного обогревателя. С</span></a><a href="/articles/t/te/termostat-na-80-gradusov.html" class="related-bottom-card"><span class="related-bottom-title">Термостат на 80°C: выбор, установка и настройка для авто и техники</span><span class="related-bottom-desc">Как подобрать термостат на 80 градусов для автомобиля или системы охлаждения? Обзор моделей, инструк</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

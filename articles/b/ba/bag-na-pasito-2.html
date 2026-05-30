@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Баг на Пасито 2: причины, диагностика и ремонт своими руками — Рем Набор</title>
+    <meta name="description" content="Разбираем типичные неисправности кондиционера Пасито 2: почему не охлаждает, течёт вода или мигает индикатор. Пошаговые инструкции для самостоятельного ремонта.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/b/ba/bag-na-pasito-2.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Баг на Пасито 2: причины, диагностика и ремонт своими руками">
+    <meta property="og:description" content="Разбираем типичные неисправности кондиционера Пасито 2: почему не охлаждает, течёт вода или мигает индикатор. Пошаговые инструкции для самостоятельного ремонта.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/domashnie-konditsionery/">Домашние кондиционеры</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Баг на Пасито 2: причины, диагностика и ремонт своими руками</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Баг на кондиционере Пасито 2: как найти и устранить неисправность</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#типичные-баги-пасито-2-как-проявляются-и-что-означают">Типичные «баги» Пасито 2: как проявляются и что означают</a></li><li><a href="#коды-ошибок-пасито-2-расшифровка-и-что-делать">Коды ошибок Пасито 2: расшифровка и что делать</a></li><li><a href="#пасито-2-не-охлаждает-пошаговая-диагностика">Пасито 2 не охлаждает: пошаговая диагностика</a></li><li><a href="#течёт-вода-из-внутреннего-блока-причины-и-решения">Течёт вода из внутреннего блока: причины и решения</a></li><li><a href="#кондиционер-не-реагирует-на-пульт-что-делать">Кондиционер не реагирует на пульт: что делать</a></li><li><a href="#самопроизвольное-включениевыключение-ищем-причину">Самопроизвольное включение/выключение: ищем причину</a></li><li><a href="#когда-вызывать-мастера-признаки-серьёзных-поломок">Когда вызывать мастера: признаки серьёзных поломок</a></li><li><a href="#faq-частые-вопросы-о-багах-пасито-2">FAQ: Частые вопросы о багах Пасито 2</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Кондиционер <em>Pacific PS-2</em> (в народе — «Пасито 2») давно зарекомендовал себя как надёжное и недорогое решение для климат-контроля в квартирах и офисах. Но даже у проверенных моделей со временем проявляются «баги» — сбои в работе, которые пользователи часто описывают как «глюки», «неадекватное поведение» или «программные ошибки». На практике за этими формулировками скрываются как простые неполадки (засорённый фильтр, утечка фреона), так и серьёзные поломки (неисправность платы управления или компрессора).</p>
+
+<p>В этой статье мы разберём <strong>самые распространённые «баги» <em>Пасито 2</strong></strong> — от мигающих индикаторов до полного отказа системы — и покажем, как диагностировать проблему <strong>без вызова мастера</em>. Вы узнаете, какие ошибки можно исправить самостоятельно (например, сброс настроек или очистка дренажа), а в каких случаях потребуется специализированное оборудование. Особое внимание уделим <mark>коду ошибки E1 на дисплее — он сигнализирует о критической неисправности датчика температуры, которую часто путают с банальным загрязнением радиатора</mark>.</p>
+
+<p>Важно: если ваш кондиционер <em>Pacific PS-2</em> выпущен до 2018 года, некоторые рекомендации могут не подойти из-за различий в электронных платах. Уточните модель и год производства на шильдике устройства (обычно на внутреннем блоке сбоку).</p>
+
+<h2 id="типичные-баги-пасито-2-как-проявляются-и-что-означают">Типичные «баги» Пасито 2: как проявляются и что означают</h2>
+
+<p>Пользователи часто жалуются на «странное поведение» кондиционера, не подозревая, что за внешними симптомами скрываются конкретные неисправности. Вот <strong>топ-5 признаков</strong>, которые чаще всего принимают за «баги»:</p>
+
+<ul>
+  <li>🔄 <strong>Самопроизвольное включение/выключение</strong> — цикличная работа с интервалом 1–3 минуты. Причина: неисправность датчика температуры или замерзание испарителя из-за низкого давления фреона.</li>
+  <li>❄️ <strong>Обмерзание внутреннего блока</strong> — лёд на трубках или радиаторе. Виновники: утечка хладагента, загрязнённый фильтр или нерабочий вентилятор.</li>
+  <li>💧 <strong>Течь воды из внутреннего блока</strong> — забитый дренажный канал или неправильный угол установки.</li>
+  <li>🚨 <strong>Мигающие индикаторы</strong> (например, красный и зелёный одновременно) — код ошибки, требующий расшифровки по мануалу.</li>
+  <li>🔇 <strong>Кондиционер не реагирует на пульт</strong> — севшие батарейки, неисправность ИК-приёмника или сбой платы управления.</li>
+</ul>
+
+<p>Интересно, что <em>Пасито 2</em> первых партий (2015–2017 гг.) страдал от «детской болезни» — <strong>ложного срабатывания защиты по току</strong>. Проявлялось это так: кондиционер внезапно отключался через 10–15 минут работы, а на дисплее загорался код <code>E3</code>. Производитель устранил проблему в более поздних ревизиях, но если у вас ранняя модель, может потребоваться перепрошивка платы.</p>
+
+<blockquote>⚠️ Внимание: Если кондиционер <em>Пасито 2</em> издаёт <strong>громкий скрежет или стук</strong> при включении, немедленно отключите его от сети! Это признак механической поломки компрессора или вентилятора. Дальнейшая эксплуатация приведёт к дорогостоящему ремонту.</blockquote>
+
+<div class="poll-widget" id="poll-3f7e5f7e"><div class="poll-widget-question">📊 С каким "багом" Пасито 2 столкнулись вы?</div><div class="poll-widget-option" data-poll="3f7e5f7e" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Самопроизвольное выключение</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f7e5f7e" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Течь воды</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f7e5f7e" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Не реагирует на пульт</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f7e5f7e" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Мигают индикаторы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="3f7e5f7e" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой глюк</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="коды-ошибок-пасито-2-расшифровка-и-что-делать">Коды ошибок Пасито 2: расшифровка и что делать</h2>
+
+<p>Современные модели <em>Pacific PS-2</em> оснащены системой самодиагностики, которая выводит коды ошибок на дисплей внутреннего блока или мигает светодиодами (у старых версий). Ниже — таблица с расшифровкой и рекомендациями по устранению.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Код ошибки</th>
+      <th>Описание</th>
+      <th>Возможная причина</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>E1</code></td>
+      <td>Ошибка датчика температуры внутреннего блока</td>
+      <td>Обрыв цепи датчика, окисление контактов или его выход из строя</td>
+      <td>Проверить соединение датчика с платой. При обрыве — замена.</td>
+    </tr>
+    <tr>
+      <td><code>E2</code></td>
+      <td>Ошибка датчика температуры внешнего блока</td>
+      <td>Повреждение кабеля между блоками или неисправность датчика</td>
+      <td>Прозвонить кабель мультиметром. Заменить датчик при необходимости.</td>
+    </tr>
+    <tr>
+      <td><code>E3</code></td>
+      <td>Защита по току компрессора</td>
+      <td>Перегрузка сети, межвитковое замыкание в обмотках компрессора</td>
+      <td>Проверьте напряжение в сети (должно быть 220В ±10%). При повторении — диагностика компрессора.</td>
+    </tr>
+    <tr>
+      <td><code>E4</code></td>
+      <td>Низкое/высокое давление хладагента</td>
+      <td>Утечка фреона или засор в магистрали</td>
+      <td>Требуется заправка фреона и проверка на герметичность.</td>
+    </tr>
+    <tr>
+      <td><code>E5</code></td>
+      <td>Неисправность вентилятора внешнего блока</td>
+      <td>Заклинивание подшипника, обрыв обмотки двигателя</td>
+      <td>Осмотреть вентилятор на предмет механических препятствий. При обрыве — замена.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Если на дисплее отображается код <code>E6</code> или <code>E7</code>, это указывает на <strong>неисправность платы управления</strong>. В 80% случаев помогает сброс настроек до заводских: для этого <strong>удерживайте кнопку <code>MODE</code> на пульте 5–7 секунд</strong>, пока не прозвучит звуковой сигнал. Если ошибка осталась — потребуется перепрошивка или замена платы.</p>
+
+<details class="faq-item"><summary>Как сбросить ошибку без пульта?</summary><div class="faq-answer"><p>Если пульт не работает, сброс можно выполнить кнопкой на внутреннем блоке (обычно скрыта под декоративной панелью). Нажмите и удерживайте её 10 секунд до двойного сигнала.</p></div></details>
+
+<h2 id="пасито-2-не-охлаждает-пошаговая-диагностика">Пасито 2 не охлаждает: пошаговая диагностика</h2>
+
+<p>Одна из самых частых жалоб — кондиционер включается, вентилятор работает, но воздух не охлаждается. Причин может быть несколько, и мы разберём их по порядку — от простых к сложным.</p>
+
+<h3>1. Проверка фильтров и радиатора</h3>
+<p>Засорённые фильтры и радиатор (испаритель) внутреннего блока <strong>уменьшают теплообмен</strong>, из-за чего кондиционер работает «вхолостую». Как проверить:</p>
+<ul>
+  <li>🧹 Откройте переднюю панель внутреннего блока (обычно фиксируется защёлками).</li>
+  <li>🔍 Осмотрите фильтры: если они серые или чёрные — требуется очистка.</li>
+  <li>💨 Продуйте радиатор пылесосом (на минимальной мощности) или промойте мыльным раствором.</li>
+</ul>
+
+<h3>2. Диагностика уровня фреона</h3>
+<p>Если фильтры чистые, но охлаждения нет, вероятно, <strong>утечка хладагента</strong>. Признаки:</p>
+<ul>
+  <li>❄️ Обмерзание трубок на внешнем блоке.</li>
+  <li>🔊 Шипящий звук при работе (утечка через микротрещины).</li>
+  <li>📉 Падение эффективности охлаждения за 1–2 года.</li>
+</ul>
+<p>Для точной диагностики нужен <strong>манометрический коллектор</strong>, но приблизительно уровень фреона можно проверить так:</p>
+<ol>
+  <li>Включите кондиционер на охлаждение (режим <code>COOL</code>, температура 18°C).</li>
+  <li>Через 10 минут потрогайте <strong>толстую трубку</strong> (газовую магистраль) на внешнем блоке. Если она <em>тёплая</em> — фреона мало; если <em>холодная</em> — норма.</li>
+</ol>
+
+<blockquote>⚠️ Внимание: Заправку фреона должен выполнять сертифицированный специалист! Неправильная дозировка или использование несовместимого хладагента (например, <em>R-22</em> вместо <em>R-410A</em>) приведёт к поломке компрессора.</blockquote>
+
+<div class="checklist-block"><h4>☑️ Проверка перед заправкой фреона</h4><label class="check-item"><input type="checkbox"><span>Убедиться, что утечка устранена</span></label><label class="check-item"><input type="checkbox"><span>Проверить герметичность магистрали мыльным раствором</span></label><label class="check-item"><input type="checkbox"><span>Использовать только оригинальный хладагент R-410A</span></label><label class="check-item"><input type="checkbox"><span>Сбросить ошибки после заправки</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="течёт-вода-из-внутреннего-блока-причины-и-решения">Течёт вода из внутреннего блока: причины и решения</h2>
+
+<p>Если из кондиционера <em>Пасито 2</em> капает или льётся вода, проблема кроется в системе дренажа. В норме конденсат стекает по трубке на улицу, но при засорении или неправильном монтаже влага скапливается внутри.</p>
+
+<p><strong>Основные причины:</strong></p>
+<ul>
+  <li>🕳️ <strong>Засор дренажной трубки</strong> — скопление пыли, плесени или насекомых. Чистится проволокой или продувкой сжатым воздухом.</li>
+  <li>📉 <strong>Неправильный уклон трубки</strong> — если дренаж провисает или идёт вверх, вода застаивается. Нужно переустановить трубку с уклоном <code>3–5 мм на метр</code>.</li>
+  <li>❄️ <strong>Обмерзание испарителя</strong> — при таянии льда образуется избыток конденсата. Требуется проверка уровня фреона и работы вентилятора.</li>
+  <li>🔧 <strong>Трещина в дренажном поддоне</strong> — редко, но встречается у старых моделей. Решение — замена поддона или герметизация силиконом.</li>
+</ul>
+
+<p>Чтобы прочистить дренаж самостоятельно:</p>
+<ol>
+  <li>Отключите кондиционер от сети.</li>
+  <li>Снимите нижнюю крышку внутреннего блока (обычно крепится на клипсах).</li>
+  <li>Найдите дренажный шланг (пластиковая трубка, идущая наружу) и отсоедините его.</li>
+  <li>Продуйте трубку пылесосом или промойте раствором хлоргексидина (1:1 с водой) для дезинфекции.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если вода течёт даже после чистки дренажа, проверьте <strong>теплоизоляцию фреоновой трассы</strong>. При её повреждении на трубках образуется конденсат, который стекает внутрь помещения.</p></div>
+
+<h2 id="кондиционер-не-реагирует-на-пульт-что-делать">Кондиционер не реагирует на пульт: что делать</h2>
+
+<p>Если <em>Пасито 2</em> не включается с пульта, но реагирует на кнопки на внутреннем блоке, проблема кроется в одном из трёх компонентов: <strong>пульте управления, ИК-приёмнике или плате</strong>.</p>
+
+<p><strong>Пошаговая диагностика:</strong></p>
+<ol>
+  <li><strong>Проверьте батарейки</strong> в пульте. Даже если они «почти живые», замените их на новые (рекомендуются алкалиновые, например, <em>Duracell</em> или <em>Energizer</em>).</li>
+  <li><strong>Протестируйте пульт</strong> на другом устройстве (например, на телефоне с помощью приложения для проверки ИК-сигнала). Если сигнала нет — пульт неисправен.</li>
+  <li><strong>Осмотрите ИК-приёмник</strong> на внутреннем блоке (маленькое окошко под панелью). Протрите его ватной палочкой, смоченной в спирте — пыль или жир могут блокировать сигнал.</li>
+  <li><strong>Сбросьте настройки</strong> кондиционера (кнопкой <code>RESET</code> на блоке или через удержание <code>MODE</code> на пульте).</li>
+</ol>
+
+<p>Если пульт исправен, но кондиционер не реагирует, возможны две причины:</p>
+<ul>
+  <li>🔌 <strong>Неисправность ИК-приёмника</strong> — требуется замена (деталь стоит ~500–800 рублей).</li>
+  <li>🖥️ <strong>Сбой платы управления</strong> — в этом случае кондиционер может не реагировать и на кнопки на блоке. Нужна диагностика мультиметром.</li>
+</ul>
+
+<blockquote>⚠️ Внимание: Если после сброса настроек кондиционер <em>Пасито 2</em> начал мигать всеми индикаторами, это признак <strong>сброса прошивки</strong>. Не пытайтесь включать его — обратитесь в сервис для перепрошивки платы.</blockquote>
+
+<h2 id="самопроизвольное-включениевыключение-ищем-причину">Самопроизвольное включение/выключение: ищем причину</h2>
+
+<p>Если кондиционер <em>Pacific PS-2</em> включается и выключается без команды, это может быть связано с:</p>
+<ul>
+  <li>🌡️ <strong>Неисправностью датчика температуры</strong> — он подаёт ложные сигналы на плату управления.</li>
+  <li>⚡ <strong>Нестабильным напряжением</strong> в сети (скачки более 10% от 220В).</li>
+  <li>❄️ <strong>Обмерзанием испарителя</strong> — из-за низкого давления фреона или загрязнения.</li>
+  <li>🔄 <strong>Сбоем таймера</strong> (если ранее использовалась функция отложенного старта).</li>
+</ul>
+
+<p><strong>Как диагностировать:</strong></p>
+<ol>
+  <li>Проверьте <strong>напряжение в розетке</strong> тестером. Если оно ниже 198В или выше 242В — подключите кондиционер через стабилизатор.</li>
+  <li>Сбросьте настройки таймера: нажмите <code>TIMER</code> на пульте и удерживайте 3 секунды.</li>
+  <li>Осмотрите датчик температуры (тонкий провод с термистором на испарителе). Если он отсоединён или повреждён — требуется замена.</li>
+</ol>
+
+<p>Если проблема сохраняется, проверьте <strong>конденсаторы на плате управления</strong> (вздутые или потеки электролита — признак неисправности). Их можно заменить самостоятельно, подобрав аналогичные по ёмкости и напряжению.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Частая причина цикличной работы — <strong>загрязнённый конденсатор внешнего блока</strong>. Очистите его от пуха и пыли мягкой щёткой, не повредив рёбра радиатора.</p></div>
+
+<h2 id="когда-вызывать-мастера-признаки-серьёзных-поломок">Когда вызывать мастера: признаки серьёзных поломок</h2>
+
+<p>Некоторые неисправности <em>Пасито 2</em> требуют профессионального ремонта. Обратитесь в сервис, если:</p>
+<ul>
+  <li>🔧 <strong>Кондиционер издаёт громкий скрежет или стук</strong> — признак поломки компрессора или вентилятора.</li>
+  <li>⚡ <strong>Пахнет гарью или плавится изоляция</strong> — возможен пробой обмоток двигателя.</li>
+  <li>💥 <strong>Срабатывает автомат в щитке</strong> при включении кондиционера — короткое замыкание в цепи.</li>
+  <li>📛 <strong>На дисплее горит код <code>E3</code> или <code>E6</code></strong> после сброса — неисправность платы или компрессора.</li>
+</ul>
+
+<p>Стоимость ремонта <em>Пасито 2</em> в сервисе:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Тип ремонта</th>
+      <th>Стоимость (руб.)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Заправка фреона (до 1 кг)</td>
+      <td>2 500–3 500</td>
+    </tr>
+    <tr>
+      <td>Замена компрессора</td>
+      <td>8 000–12 000</td>
+    </tr>
+    <tr>
+      <td>Ремонт платы управления</td>
+      <td>3 000–6 000</td>
+    </tr>
+    <tr>
+      <td>Чистка внешнего блока</td>
+      <td>1 500–2 500</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Перед визитом мастера <strong>сфотографируйте</strong>:</p>
+<ul>
+  <li>📸 Код ошибки на дисплее (если есть).</li>
+  <li>📸 Этикетку с модели и серийным номером (на внутреннем блоке).</li>
+  <li>📸 Видео «глюка» (например, самопроизвольное выключение).</li>
+</ul>
+<p>Это поможет точнее диагностировать проблему и сэкономить время.</p>
+
+<h2 id="faq-частые-вопросы-о-багах-пасито-2">FAQ: Частые вопросы о багах Пасито 2</h2>
+
+<details>
+  <summary>Кондиционер Пасито 2 включается на 5 секунд и выключается. В чём дело?</summary>
+  <p>Это типичный признак <strong>срабатывания защиты по току</strong>. Причины:</p>
+  <ul>
+    <li>Перегрузка сети (подключите кондиционер в другую розетку).</li>
+    <li>Неисправность компрессора (требуется диагностика сопротивления обмоток).</li>
+    <li>Замыкание в цепи питания (проверьте кабель на повреждения).</li>
+  </ul>
+  <p>Если после сброса ошибки проблема повторяется — вызывайте мастера.</p>
+</details>
+
+<details>
+  <summary>На пульте мигает значок солнца, но кондиционер не греет. Что делать?</summary>
+  <p>Скорее всего, сработала защита от перегрева. Причины:</p>
+  <ul>
+    <li>Засорён фильтр внутреннего блока (чистка решит проблему).</li>
+    <li>Неисправен ТЭН внешнего блока (в моделях с зимним комплектом).</li>
+    <li>Низкое напряжение в сети (менее 200В).</li>
+  </ul>
+  <p>Отключите кондиционер на 10 минут, затем включите снова. Если ошибка осталась — проверьте фильтры и напряжение.</p>
+</details>
+
+<details>
+  <summary>Пасито 2 дует, но не охлаждает. Фреон заправлен, фильтры чистые. Что ещё может быть?</summary>
+  <p>Вероятные причины:</p>
+  <ul>
+    <li><strong>Неисправен четырёхходовой клапан</strong> (отвечает за переключение режимов).</li>
+    <li><strong>Заклинил вентилятор внешнего блока</strong> (проверьте его вращение вручную).</li>
+    <li><strong>Сбой прошивки платы</strong> (требуется перепрошивка).</li>
+  </ul>
+  <p>Для диагностики клапана и вентилятора нужен мастер.</p>
+</details>
+
+<details>
+  <summary>Можно ли самому заменить датчик температуры на Пасито 2?</summary>
+  <p>Да, это одна из немногих операций, которые можно выполнить без специального оборудования. Порядок действий:</p>
+  <ol>
+    <li>Отключите кондиционер от сети.</li>
+    <li>Снимите переднюю панель внутреннего блока.</li>
+    <li>Найдите датчик (тонкий провод с термистором на испарителе).</li>
+    <li>Отсоедините разъём и замените датчик на новый (купите аналогичный по сопротивлению).</li>
+  </ol>
+  <p>Сопротивление исправного датчика при комнатной температуре: <code>5–10 кОм</code>.</p>
+</details>
+
+<details>
+  <summary>После грозы кондиционер Пасито 2 перестал включаться. Что сгорело?</summary>
+  <p>Вероятнее всего, <strong>пробой по цепи питания</strong>. Проверьте:</p>
+  <ul>
+    <li><strong>Предохранитель</strong> на плате (может быть чёрным или вздутым).</li>
+    <li><strong>Варистор</strong> (защитный элемент от перенапряжения).</li>
+    <li><strong>Диодный мост</strong> (прозвоните мультиметром).</li>
+  </ul>
+  <p>Если нет опыта работы с электроникой — обратитесь в сервис. Ремонт обойдётся в <code>2 000–4 000 рублей</code>.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#типичные-баги-пасито-2-как-проявляются-и-что-означают">Типичные «баги» Пасито 2: как проявляются и что означают</a></li><li><a href="#коды-ошибок-пасито-2-расшифровка-и-что-делать">Коды ошибок Пасито 2: расшифровка и что делать</a></li><li><a href="#пасито-2-не-охлаждает-пошаговая-диагностика">Пасито 2 не охлаждает: пошаговая диагностика</a></li><li><a href="#течёт-вода-из-внутреннего-блока-причины-и-решения">Течёт вода из внутреннего блока: причины и решения</a></li><li><a href="#кондиционер-не-реагирует-на-пульт-что-делать">Кондиционер не реагирует на пульт: что делать</a></li><li><a href="#самопроизвольное-включениевыключение-ищем-причину">Самопроизвольное включение/выключение: ищем причину</a></li><li><a href="#когда-вызывать-мастера-признаки-серьёзных-поломок">Когда вызывать мастера: признаки серьёзных поломок</a></li><li><a href="#faq-частые-вопросы-о-багах-пасито-2">FAQ: Частые вопросы о багах Пасито 2</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kakoj-freon-luchshe-v-konditsionere.html" class="related-card">Какой фреон лучше в кондиционере: R410A или R32</a></li><li><a href="/articles/k/ka/kak-peregnat-freon-v-naruzhnyj-blok.html" class="related-card">Как перегнать фреон в наружный блок: пошаговая инструкция</a></li><li><a href="/articles/i/is/isparitel-dlya-split-sistemy.html" class="related-card">Испаритель для сплит системы: устройство, чистка и замена</a></li><li><a href="/articles/k/ka/kak-vklyuchit-knajt-80-posle-pokupki.html" class="related-card">Как включить кондиционер KNIGHT 80 после покупки: пошаговая инструкция</a></li><li><a href="/articles/k/ko/konditsioner-khajer-plokho-okhlazhdaet.html" class="related-card">Кондиционер Haier плохо охлаждает: 7 причин и как устранить</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kakoj-freon-luchshe-v-konditsionere.html" class="related-bottom-card"><span class="related-bottom-title">Какой фреон лучше в кондиционере: R410A или R32</span><span class="related-bottom-desc">Экспертный разбор: какой хладагент выбрать. Сравнение R410A и R32, плюсы нового фреона, экологичност</span></a><a href="/articles/k/ka/kak-peregnat-freon-v-naruzhnyj-blok.html" class="related-bottom-card"><span class="related-bottom-title">Как перегнать фреон в наружный блок: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по сборке хладагента в наружный блок. Инструкция для демонтажа кондиционера св</span></a><a href="/articles/i/is/isparitel-dlya-split-sistemy.html" class="related-bottom-card"><span class="related-bottom-title">Испаритель для сплит системы: устройство, чистка и замена</span><span class="related-bottom-desc">Полный гид по внутреннему блоку кондиционера. Как очистить испаритель, устранить течь и заменить рад</span></a><a href="/articles/k/ka/kak-vklyuchit-knajt-80-posle-pokupki.html" class="related-bottom-card"><span class="related-bottom-title">Как включить кондиционер KNIGHT 80 после покупки: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по первому запуску сплит-системы KNIGHT 80: подготовка, подключение, настройка</span></a><a href="/articles/k/ko/konditsioner-khajer-plokho-okhlazhdaet.html" class="related-bottom-card"><span class="related-bottom-title">Кондиционер Haier плохо охлаждает: 7 причин и как устранить</span><span class="related-bottom-desc">Почему сплит-система Haier слабо холодит? Разбираем неисправности фильтров, фреона, компрессора и да</span></a><a href="/articles/t/te/teploizolyatsiya-dlya-konditsionernykh-trubok.html" class="related-bottom-card"><span class="related-bottom-title">Теплоизоляция для кондиционерных трубок: выбор, монтаж, ошибки</span><span class="related-bottom-desc">Как правильно подобрать и установить теплоизоляцию для фреоновых трасс кондиционера? Обзор материало</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Новый картридж не тянется: диагностика струйных и лазерных принтеров — Рем Набор</title>
+    <meta name="description" content="Почему новый картридж не тянет бумагу или не печатает? Разбор причин замятия, проблем с захватом ролика, чипов и сброса настроек принтера.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/n/no/novyj-kartridzh-ne-tyanetsya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Новый картридж не тянется: диагностика струйных и лазерных принтеров">
+    <meta property="og:description" content="Почему новый картридж не тянет бумагу или не печатает? Разбор причин замятия, проблем с захватом ролика, чипов и сброса настроек принтера.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/bytovye-kholodilniki/">Бытовые холодильники</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Новый картридж не тянется: диагностика струйных и лазерных принтеров</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Почему новый картридж не тянет бумагу или не печатает?</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#механические-блокировки-и-транспортировочные-фиксаторы">Механические блокировки и транспортировочные фиксаторы</a></li><li><a href="#проблемы-совместимости-и-чипы-на-картриджах">Проблемы совместимости и чипы на картриджах</a></li><li><a href="#диагностика-механизма-захвата-бумаги-pick-up-roller">Диагностика механизма захвата бумаги (Pick-up Roller)</a></li><li><a href="#особенности-работы-струйных-печатающих-головок">Особенности работы струйных печатающих головок</a></li><li><a href="#сброс-ошибок-и-программные-настройки">Сброс ошибок и программные настройки</a></li><li><a href="#когда-требуется-вмешательство-сервисного-инженера">Когда требуется вмешательство сервисного инженера</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Ситуация, когда после установки свежего расходного материала устройство отказывается работать, вызывает недоумение у большинства пользователей. Часто формулировка проблемы звучит как «новый картридж не тянется», что может означать два принципиально разных сценария: либо механизм подачи бумаги перестал захватывать листы, либо сам модуль с тонером или чернилами не проходит инициализацию и не начинает печать. В обоих случаях виновником необязательно является сам расходник, хотя интуитивно мы склонны винить именно новую деталь.</p>
+
+<p>Для струйных и лазерных устройств причины такого поведения кардинально отличаются из-за различий в конструкции печатающих узлов. Если в лазерном принтере проблема чаще кроется в механическом сцеплении шестерен или блокировке датчиков, то в струйном аппарате «не тянется» может означать заклинивание каретки или отсутствие контакта с печатающей головкой. <strong>Диагностика</strong> должна начинаться не с разборки, а с анализа характера издаваемых звуков и кодов ошибок на дисплее.</p>
+
+<p>Прежде чем приступать к активным действиям, необходимо исключить самые банальные причины, связанные с транспортировочными элементами. Производители часто устанавливают ярко-оранжевые фиксаторы, которые блокируют движение подвижных частей для защиты при доставке. Если забыть удалить такой элемент, механизм попросту не сможет сдвинуться с места, имитируя поломку. Далее мы подробно разберем алгоритмы поиска неисправностей для разных типов техники.</p>
+
+<h2 id="механические-блокировки-и-транспортировочные-фиксаторы">Механические блокировки и транспортировочные фиксаторы</h2>
+
+<p>Самая распространенная причина того, что устройство не реагирует на установку нового модуля, заключается в забытых транспортировочных стопорах. При продаже нового оборудования или рециркулированного картриджа в упаковке часто находятся пластиковые клипсы или картонные вставки. Они предназначены для фиксации подвижных узлов, таких как <em>каретка</em> или барабан, чтобы предотвратить их повреждение от ударов во время перевозки.</p>
+
+<p>Если вы установили расходник, закрыли крышку, а принтер издает треск или гудит, но не начинает захват бумаги, немедленно отключите питание. Визуально осмотрите внутреннее пространство. В лазерных моделях часто блокируется доступ к валу первичного заряда, а в струйных — движение каретки с дюзами. <strong>Транспортировочная лента</strong> может быть наклеена непосредственно на контакты или механические выступы.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Никогда не пытайтесь силой провернуть шестерни или продвинуть каретку пальцами при включенном питании. Это может привести к срыву зубьев на приводной шестерне двигателя, что потребует дорогостоящего ремонта в сервисном центре.</p>
+</blockquote>
+
+<p>В некоторых моделях серии <em>HP LaserJet</em> или <em>Canon i-SENSYS</em> фиксатор представляет собой небольшую оранжевую чеку, которую нужно вытянуть за язычок. В других случаях это может быть кусок скотча, удерживающий рычаг блокировки. Отсутствие такого элемента в списке обязательных действий при установке — частая ошибка пользователей, приводящая к ложному диагнозу о неисправности электроники.</p>
+
+<div class="checklist-block"><h4>☑️ Первичный осмотр перед диагностикой</h4><label class="check-item"><input type="checkbox"><span>Удалить все оранжевые пластиковые клипсы</span></label><label class="check-item"><input type="checkbox"><span>Снять транспортировочный скотч с контактов</span></label><label class="check-item"><input type="checkbox"><span>Проверить свободу движения каретки рукой (при выключенном питании)</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в отсутствии посторонних предметов в лотке</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<p>После удаления всех внешних блокираторов попробуйте закрыть крышку и запустить тестовую печать. Если механизм по-прежнему не «тянет» бумагу или не издает характерных звуков подготовки к работе, проблема может крыться глубже — в несоответствии типа установленного картриджа или сбоях в системе распознавания.</p>
+
+<h2 id="проблемы-совместимости-и-чипы-на-картриджах">Проблемы совместимости и чипы на картриджах</h2>
+
+<p>Современная оргтехника оснащена сложной электроникой, которая ведет учет ресурса расходных материалов. Если вы приобрели совместимый (неоригинальный) картридж, ситуация, когда он «не тянется» в работу, часто связана с конфликтом версий прошивки. Производители принтеров регулярно выпускают обновления <strong>firmware</strong>, которые блокируют работу чипов сторонних производителей.</p>
+
+<p>В лазерных принтерах на боковой стенке картриджа расположен контактный чип. При установке он должен замкнуть цепь с ответными контактами внутри аппарата. Если чип не распознан, принтер может блокировать весь процесс печати, включая подачу бумаги, выдавая ошибку «Нет картриджа» или «Несовместимый расходник». В струйных моделях проблема аналогична: если головка не видит чип, каретка не выезжает на позицию парковки для прочистки.</p>
+
+<p>Иногда проблема решается простой очисткой контактов. Со временем на медных площадках образуется оксидная пленка или попадает тонерная пыль, нарушающая проводимость.</p>
+<ul>
+    <li>🧹 Возьмите безворсовую салфетку, слегка смоченную изопропиловым спиртом.</li>
+    <li>🔌 Аккуратно протрите контакты на самом картридже и ответные пружины внутри принтера.</li>
+    <li>🔄 Дайте спирту полностью испариться в течение 2-3 минут перед установкой.</li>
+    <li>📦 Убедитесь, что чип не имеет видимых физических повреждений или сколов.</li>
+</ul>
+
+<p>В случаях, когда чип исправен, но принтер все равно отказывается работать, может потребоваться сброс счетчика страницы или перепрошивка устройства. Однако стоит учитывать, что использование неоригинальных расходников может аннулировать гарантию на устройство.</p>
+
+<details class="faq-item"><summary>Как узнать версию прошивки принтера?</summary><div class="faq-answer"><p>Обычно информацию о версии ПО можно найти в меню устройства. Перейдите по пути <code>Настройки → Отчеты → Конфигурация</code> или распечатайте страницу конфигурации через комбинацию кнопок. Сравните номер версии с последними обновлениями на сайте производителя.</spoiler>
+
+<h2 id="диагностика-механизма-захвата-бумаги-pick-up-roller">Диагностика механизма захвата бумаги (Pick-up Roller)</h2>
+
+<p>Если фраза «картридж не тянется» означает, что принтер гудит, но лист бумаги остается в лотке, проблема кроется в узле подачи. За этот процесс отвечает резиновый ролик захвата (<em>pick-up roller</em>). Со временем резина теряет свои фрикционные свойства, покрывается бумажной пылью или просто изнашивается, становясь гладкой как стекло.</p>
+
+<p>Замена картриджа часто требует открытия доступа к внутренним механизмам, и пользователь может случайно задеть или сместить рычаг прижима ролика. В некоторых конструкциях лазерных принтеров, например, в старых моделях <em>Brother</em> или <em>Samsung</em>, сам блок картриджа участвует в прижиме бумаги к валу. Если картридж вставлен не до конца, зазор между роликом и бумагой увеличивается, и сцепление исчезает.</p>
+
+<p>Для проверки состояния ролика выполните следующие действия:</p>
+<ol>
+    <li>Извлеките лоток для бумаги и посветите фонариком внутрь принтера.</li>
+    <li>Найдите серый или черный резиновый вал, расположенный по центру или с краю.</li>
+    <li>Протрите его влажной тканью для удаления пыли и ворса.</li>
+    <li>Если резина выглядит «лысой» или потрескавшейся, требуется замена детали.</li>
+</ol>
+
+<p>Также стоит проверить состояние разделительной площадки (<em>separation pad</em>). Это небольшая резиновая прокладка, которая предотвращает захват нескольких листов одновременно. Если она изношена или загрязнена, механизм подачи может буксовать, создавая впечатление, что принтер «не тянет».</p>
+
+<blockquote>
+<p>⚠️ Внимание: Использование спирта или агрессивных растворителей для очистки резиновых роликов запрещено. Агрессивная химия может высушить резину, сделав ее хрупкой, что приведет к разрушению ролика при первом же обороте. Используйте только воду или специальные очистители для резины.</p>
+</blockquote>
+
+<h2 id="особенности-работы-струйных-печатающих-головок">Особенности работы струйных печатающих головок</h2>
+
+<p>В струйных принтерах понятие «тянется» часто относится к движению каретки. Если после установки новых чернильниц каретка не выходит из парковочной зоны или двигается рывками, проблема может быть в загустевших чернилах или загрязнении энкодерной ленты. <strong>Энкодерная лента</strong> — это прозрачная полоска с микроразметкой, проходящая по всей ширине принтера позади каретки. Она служит ориентиром для позиционирования.</p>
+
+<p>Попадание чернил или смазки на энкодерную ленту сбивает датчик положения, и электроника принтера блокирует движение, чтобы предотвратить удар каретки о края корпуса. Это выглядит как полная остановка механизма. Очистку ленты следует проводить крайне осторожно, используя мягкую ткань без ворса.</p>
+
+<p>Еще одна причина остановки — воздушная пробка в системе подачи чернил (СПЧ). Если картридж был установлен неправильно или долго лежал без дела, чернила могли отойти от сопел. В этом случае принтер будет пытаться прокачать систему, издавая звуки работы насоса, но печать не начнется.</p>
+
+
+
+<p>Для моделей с встроенной печатающей головкой (например, многие бюджетные модели <em>Canon PIXMA</em> или <em>HP DeskJet</em>) критически важен контакт между картриджем и кареткой. Окисление контактов на самой каретке может приводить к тому, что принтер «не видит» картридж и блокирует печать. В таких случаях помогает аккуратная чистка контактов внутри каретки ватной палочкой со спиртом.</p>
+
+<h2 id="сброс-ошибок-и-программные-настройки">Сброс ошибок и программные настройки</h2>
+
+<p>Иногда аппаратная часть исправна, но программный сбой не дает принтеру завершить цикл инициализации нового картриджа. В памяти контроллера могла сохраниться ошибка предыдущего цикла печати, которая блокирует запуск нового задания. В таких случаях необходим полный цикл сброса (<strong>Hard Reset</strong>).</p>
+
+<p>Процедура сброса варьируется в зависимости от производителя, но общий принцип схож. Необходимо обесточить устройство, отсоединив кабель питания не только от розетки, но и от самого принтера. Это необходимо для полного разряда конденсаторов на плате управления.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Бренд принтера</th>
+            <th>Метод сброса ошибок</th>
+            <th>Особенности процедуры</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>HP LaserJet</td>
+            <td>Удержание кнопки «Отмена» (X)</td>
+            <td>Нажмите и держите кнопку при включении питания до появления надписи «Permanent Storage Init».</td>
+        </tr>
+        <tr>
+            <td>Canon PIXMA</td>
+            <td>Сервисный режим (кнопки Stop + Power)</td>
+            <td>Сложная последовательность нажатий для входа в сервисное меню (требуется осторожность).</td>
+        </tr>
+        <tr>
+            <td>Epson EcoTank</td>
+            <td>Сброс через ПО WIC Reset</td>
+            <td>Часто требует использования сторонней утилиты для сброса счетчика памперса.</td>
+        </tr>
+        <tr>
+            <td>Brother</td>
+            <td>Меню настроек (Menu + Up/Down)</td>
+            <td>Сброс счетчика тонера через скрытое сервисное меню устройства.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>После выполнения сброса и повторного включения принтер должен пройти полный цикл самотестирования. В этот момент он опросит все датчики и попытается определить установленный картридж заново. Если ошибка повторяется, возможно, проблема носит аппаратный характер.</p>
+
+<div class="poll-widget" id="poll-7d5b2534"><div class="poll-widget-question">📊 С какой проблемой вы столкнулись чаще всего?</div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Принтер не захватывает бумагу</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Ошибка «Нет картриджа»</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Каретка застряла</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Принтер гудит, но не печатает</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="7d5b2534" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другое</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="когда-требуется-вмешательство-сервисного-инженера">Когда требуется вмешательство сервисного инженера</h2>
+
+<p>Существует ряд симптомов, при которых самостоятельный ремонт может привести к окончательной поломке устройства. Если вы слышите громкий скрежет металла о пластик, это может указывать на поломку главной шестерни привода (<em>main gear</em>) или заклинивание двигателя шагового хода. В таких случаях «новый картридж не тянется» лишь как следствие механической блокировки всего механизма.</p>
+
+<p>Также стоит обратиться к специалистам, если после замены ролика захвата и чистки контактов проблема с подачей бумаги сохраняется. Возможно, износился соленоид привода подачи или вышел из строя датчик наличия бумаги. Диагностика этих узлов требует наличия мультиметра и разборки корпуса, что не всегда целесообразно делать в домашних условиях.</p>
+
+<p>В случае со струйными принтерами критическим сигналом является запах гари или дым. Это говорит о коротком замыкании в блоке питания или на плате управления кареткой. Немедленно отключите устройство от сети. Попытки повторного включения могут привести к возгоранию.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если принтер находится на гарантии, любая самостоятельная разборка корпуса, кроме извлечения замятой бумаги или замены картриджа, аннулирует гарантийные обязательства. Вскрытие пломб на винтах корпуса является основанием для отказа в бесплатном ремонте.</p>
+</blockquote>
+
+<p>Иногда проблема кроется в несовместимости драйверов на компьютере. Убедитесь, что установленное ПО соответствует модели вашего устройства. Попробуйте удалить драйвер, перезагрузить компьютер и установить свежую версию с официального сайта производителя. Программный конфликт может имитировать аппаратную ошибку, запрещая отправку данных на печать.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+    <summary>Почему принтер пишет «Картридж пуст», хотя он новый?</summary>
+    <p>Это может происходить по трем причинам: чип картриджа заблокирован прошивкой принтера, контакты загрязнены и не проводят сигнал, либо сам чип неисправен (брак). Попробуйте протереть контакты спиртом. Если не поможет, возможно, потребуется замена чипа или перепрошивка принтера.</p>
+</details>
+
+<details>
+    <summary>Можно ли использовать картридж от другой модели принтера?</summary>
+    <p>Физически некоторые картриджи могут подходить по размеру (например, некоторые модели Canon и HP используют одинаковые механизмы), но прошивка принтера проверит ID чипа. Если ID не совпадает с базой данных устройства, печать будет заблокирована. Кроме того, могут отличаться характеристики тонера или чернил, что испортит печать.</p>
+</details>
+
+<details>
+    <summary>Что делать, если бумага застревает сразу после захвата?</summary>
+    <p>Скорее всего, проблема в разделительной площадке (сепараторе) или ролике захвата. Они могут быть изношены или загрязнены. Также проверьте, нет ли в лотке смятых листов или посторонних предметов (скрепок, этикеток), которые мешают ровному прохождению бумаги.</p>
+</details>
+
+<details>
+    <summary>Как продлить жизнь резиновому ролику подачи бумаги?</summary>
+    <p>Используйте качественную бумагу без ворса и пыли. Храните бумагу в упаковке, чтобы она не впитывала влагу. Раз в полгода протирайте ролик влажной тряпкой для удаления бумажной пыли, которая снижает трение. Избегайте печати на самоклеящихся этикетках, если принтер не предназначен для этого, так как клей может попасть на ролики.</p>
+</details>
+
+<details>
+    <summary>Почему струйный принтер не видит картридж после заправки?</summary>
+    <p>При заправке часто нарушается герметичность или в систему попадает воздух. Также возможно окисление контактов. Попробуйте сделать глубокую очистку дюз через драйвер. Если картридж с чипом, возможно, чип исчерпал свой ресурс счетчика страниц и требует замены или перепрограммирования.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#механические-блокировки-и-транспортировочные-фиксаторы">Механические блокировки и транспортировочные фиксаторы</a></li><li><a href="#проблемы-совместимости-и-чипы-на-картриджах">Проблемы совместимости и чипы на картриджах</a></li><li><a href="#диагностика-механизма-захвата-бумаги-pick-up-roller">Диагностика механизма захвата бумаги (Pick-up Roller)</a></li><li><a href="#особенности-работы-струйных-печатающих-головок">Особенности работы струйных печатающих головок</a></li><li><a href="#сброс-ошибок-и-программные-настройки">Сброс ошибок и программные настройки</a></li><li><a href="#когда-требуется-вмешательство-сервисного-инженера">Когда требуется вмешательство сервисного инженера</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/e/es/esli-namerzaet-zadnyaya-stenka-kholodilnika-chto-delat.html" class="related-card">Намерзает задняя стенка холодильника: причины и решения 2026</a></li><li><a href="/articles/g/gd/gde-nakhoditsya-termoregulyator-v-kholodilnike-beko.html" class="related-card">Где терморегулятор в холодильнике Beko: схема и фото (2026)</a></li><li><a href="/articles/k/ka/kak-regulirovat-termostat-kholodilnika.html" class="related-card">Как регулировать термостат холодильника: инструкция и настройки</a></li><li><a href="/articles/k/ka/kak-regulirovat-kholodilnik-indezit.html" class="related-card">Как отрегулировать холодильник Индезит: температура и реле</a></li><li><a href="/articles/p/po/pochemu-ne-parit-minifit.html" class="related-card">Минифит не парит: 7 причин и как устранить проблему самостоятельно</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/e/es/esli-namerzaet-zadnyaya-stenka-kholodilnika-chto-delat.html" class="related-bottom-card"><span class="related-bottom-title">Намерзает задняя стенка холодильника: причины и решения 2026</span><span class="related-bottom-desc">Почему на задней стенке холодильника образуется лед и снег? Подробная инструкция по диагностике и ус</span></a><a href="/articles/g/gd/gde-nakhoditsya-termoregulyator-v-kholodilnike-beko.html" class="related-bottom-card"><span class="related-bottom-title">Где терморегулятор в холодильнике Beko: схема и фото (2026)</span><span class="related-bottom-desc">Пошаговая инструкция с фото, как найти термостат в холодильниках Beko разных моделей. Где искать: вн</span></a><a href="/articles/k/ka/kak-regulirovat-termostat-kholodilnika.html" class="related-bottom-card"><span class="related-bottom-title">Как регулировать термостат холодильника: инструкция и настройки</span><span class="related-bottom-desc">Полное руководство по регулировке термостата холодильника. Узнайте, как настроить температуру, найти</span></a><a href="/articles/k/ka/kak-regulirovat-kholodilnik-indezit.html" class="related-bottom-card"><span class="related-bottom-title">Как отрегулировать холодильник Индезит: температура и реле</span><span class="related-bottom-desc">Подробная инструкция по регулировке температуры, термостата и компрессора холодильника Indesit. Наст</span></a><a href="/articles/p/po/pochemu-ne-parit-minifit.html" class="related-bottom-card"><span class="related-bottom-title">Минифит не парит: 7 причин и как устранить проблему самостоятельно</span><span class="related-bottom-desc">Разбираем почему не работает парогенератор MiniFit: от засоров до поломок нагревателя. Пошаговые инс</span></a><a href="/articles/p/po/pochemu-pasito-mini-migaet-krasnym-3-raza.html" class="related-bottom-card"><span class="related-bottom-title">Почему Pasito Mini мигает 3 раза красным: причины и ремонт</span><span class="related-bottom-desc">Диагностика ошибки: Pasito Mini мигает красным 3 раза. Проверка компрессора, платы, датчиков и устра</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

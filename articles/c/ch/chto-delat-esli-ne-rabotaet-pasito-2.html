@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Pasito 2 не работает: диагностика и решение проблем — Рем Набор</title>
+    <meta name="description" content="Pasito 2 не работает? Полный гид по ремонту: диагностика платы, замена флеш-памяти, проверка питания и сброс настроек своими руками.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/c/ch/chto-delat-esli-ne-rabotaet-pasito-2.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Pasito 2 не работает: диагностика и решение проблем">
+    <meta property="og:description" content="Pasito 2 не работает? Полный гид по ремонту: диагностика платы, замена флеш-памяти, проверка питания и сброс настроек своими руками.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Pasito 2 не работает: диагностика и решение проблем</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Ремонт Pasito 2: что делать если приставка не включается</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#первичная-диагностика-и-проверка-питания">Первичная диагностика и проверка питания</a></li><li><a href="#процедура-жесткого-сброса-hard-reset">Процедура жесткого сброса (Hard Reset)</a></li><li><a href="#диагностика-перегрева-и-аппаратные-неисправности">Диагностика перегрева и аппаратные неисправности</a></li><li><a href="#восстановление-через-перепрошивку-firmware-flash">Восстановление через перепрошивку (Firmware Flash)</a></li><li><a href="#проблемы-с-пультом-и-ик-приемником">Проблемы с пультом и ИК-приемником</a></li><li><a href="#когда-необходим-профессиональный-ремонт">Когда необходим профессиональный ремонт</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Ситуация, когда устройство <em>Pasito 2</em> внезапно перестает реагировать на команды или вообще не подает признаков жизни, знакома многим владельцам этой популярной модели ТВ-приставок. Обычно проблема кроется не в полной поломке «железа», а в специфических сбоях программного обеспечения, перегреве или деградации встроенной памяти. Прежде чем нести гаджет в сервисный центр, стоит провести самостоятельную диагностику, которая в 80% случаев позволяет восстановить работоспособность девайса без финансовых затрат.</p>
+
+<p>Основные симптомы неисправности варьируются от простого зависания на логотипе при загрузке до полного отсутствия индикации на корпусе. <strong>Критическим фактором</strong> здесь является правильная интерпретация поведения индикатора питания. Если светодиод горит красным, но не меняет цвет при нажатии кнопки, проблема может быть в пульте или приемнике ИК-сигнала. Если же индикатор мигает или горит синим, но экрана нет — скорее всего, произошел сбой в загрузчике системы Android.</p>
+
+<p>В этом руководстве мы разберем пошаговый алгоритм действий для реанимации <em>Pasito 2</em>. Вы узнаете, как выполнить жесткий сброс, проверить блок питания и, при необходимости, перепрошить устройство через компьютер. Помните, что некорректные действия при перепрошивке могут превратить приставку в «кирпич», поэтому внимательно следуйте инструкциям.</p>
+
+<h2 id="первичная-диагностика-и-проверка-питания">Первичная диагностика и проверка питания</h2>
+
+<p>Самая банальная, но часто игнорируемая причина неработоспособности — проблемы с электропитанием. Блок питания, идущий в комплекте с <em>Pasito 2</em>, со временем может терять свою мощность или выдавать нестабильное напряжение. Это приводит к тому, что процессору не хватает энергии для запуска системы, особенно в моменты пиковой нагрузки при старте.</p>
+
+<p>Попробуйте заменить оригинальный адаптер на другой с аналогичными характеристиками. Обратите внимание на маркировку: выходное напряжение должно быть строго <code>5V</code>, а сила тока — не менее <code>2A</code>. Использование зарядного устройства от смартфона с током <code>1A</code> недопустимо, так как это вызовет постоянные перезагрузки или циклический сброс.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Использование блоков питания с напряжением выше 5.5 Вольт может мгновенно вывести из строя контроллер питания на материнской плате приставки. Всегда проверяйте параметры вольтметром перед подключением.</p>
+</blockquote>
+
+<p>Также стоит проверить сам кабель micro-USB или USB-C (в зависимости от ревизии вашей модели). Внутренние переломы жил часто не видны снаружи, но создают высокое сопротивление, вызывая просадку напряжения. Подключите приставку напрямую к порту USB на телевизоре — иногда встроенный порт ТВ выдает более стабильный ток, чем дешевые сетевые адаптеры.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если у вас есть мультиметр, замерьте напряжение на выходе блока питания под нагрузкой (подключенной приставкой). Если оно падает ниже 4.75 Вольта — адаптер неисправен и требует замены.</p></div>
+
+<h2 id="процедура-жесткого-сброса-hard-reset">Процедура жесткого сброса (Hard Reset)</h2>
+
+<p>Если устройство включается, показывает логотип, но дальше не загружается, вероятнее всего, произошел конфликт системных файлов или кэша. В этом случае поможет процедура <strong>Hard Reset</strong>, которая вернет настройки к заводским. Для <em>Pasito 2</em> существует два способа выполнения этой операции: через меню восстановления (Recovery) и с помощью скрытой кнопки.</p>
+
+<p>Первый метод требует наличия исправного пульта ДУ. Вам необходимо полностью обесточить приставку, вытащив штекер из розетки. Затем зажмите кнопку включения на корпусе (или специальную кнопку сброса, если она есть) и, не отпуская её, подключите питание. Удерживайте кнопку до появления меню Recovery на экране телевизора.</p>
+
+<p>В меню восстановления навигация осуществляется кнопками громкости на пульте, а выбор — кнопкой «ОК». Вам нужно найти пункт <code>Wipe data/factory reset</code> и подтвердить действие. После завершения процесса выберите <code>Reboot system now</code>. Этот метод удаляет все пользовательские данные, но часто решает проблему программных зависаний.</p>
+
+<ul>
+<li>🔌 Полностью отключите питание устройства из сети.</li>
+<li>🔘 Зажмите кнопку сброса (или включения) на корпусе приставки.</li>
+<li>🔋 Подключите кабель питания, не отпуская кнопку, в течение 10-15 секунд.</li>
+<li>📺 Дождитесь появления логотипа Android или меню Recovery.</li>
+</ul>
+
+<div class="checklist-block"><h4>☑️ Подготовка к сбросу</h4><label class="check-item"><input type="checkbox"><span>Отключить все USB-устройства</span></label><label class="check-item"><input type="checkbox"><span>Запомнить пароли от Wi-Fi</span></label><label class="check-item"><input type="checkbox"><span>Подготовить пульт с новыми батарейками</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в стабильном напряжении сети</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="диагностика-перегрева-и-аппаратные-неисправности">Диагностика перегрева и аппаратные неисправности</h2>
+
+<p>Модель <em>Pasito 2</em> известна своим компактным корпусом, который не всегда обеспечивает эффективный отвод тепла. Длительная работа без перерыва приводит к перегреву процессора и чипа памяти. При достижении критической температуры срабатывает тепловая защита, и устройство выключается или переходит в режим троттлинга, становясь крайне медленным.</p>
+
+<p>Прикоснитесь к корпусу работающей (или только что выключенной) приставки. Если она обжигает руку, проблема явно в перегреве. В таких случаях необходимо обеспечить дополнительную вентиляцию: не ставьте устройство на другие приборы, подложите под него небольшие ножки для зазора или направьте на него вентилятор. В запущенных случаях может потребоваться разборка и замена термопрокладки на процессоре.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если после остывания устройство работает стабильно 10-15 минут, а затем снова зависает — это прямой признак неисправности системы охлаждения или деградации кристалла процессора.</p>
+</blockquote>
+
+<p>Еще одной аппаратной причиной может быть выход из строя флеш-памяти eMMC. Симптомы «смерти» памяти включают бесконечную перезагрузку (bootloop), появление артефактов на экране или полную тишину при включении. К сожалению, замена памяти в домашних условиях без паяльной станции и программатора невозможна.</p>
+
+<details class="faq-item"><summary>Признаки деградации памяти</summary><div class="faq-answer"><p>Если приставка начинает «забывать» установленные приложения после каждой перезагрузки или самостоятельно удаляет файлы — это первый звоночек о том, что ресурс чипа памяти исчерпан.</p></div></details>
+
+<h2 id="восстановление-через-перепрошивку-firmware-flash">Восстановление через перепрошивку (Firmware Flash)</h2>
+
+<p>Когда мягкий сброс не помогает, остается последний программный метод — полная перепрошивка. Для <em>Pasito 2</em> необходимо найти образ прошивки, строго соответствующий ревизии вашей платы. Установка неправильного ПО может привести к несовместимости драйверов Wi-Fi или пульта.</p>
+
+<p>Процесс прошивки обычно выполняется с помощью ПК и программы <em>Amlogic USB Burning Tool</em> (так как большинство таких приставок работают на чипах Amlogic). Вам понадобится кабель USB-Male-to-USB-Male. Скачайте актуальную прошивку с официального форума или сайта производителя и распакуйте архив.</p>
+
+<pre><code>1. Установите драйверы и USB Burning Tool на ПК.
+<p>2. Загрузите файл образа (.img) в программу.</p>
+<p>3. Зажмите кнопку сброса на приставке и подключите её к ПК.</p>
+<p>4. Нажмите кнопку Start и дождитесь завершения процесса (100%).</code></pre></p>
+
+<p>Во время прошивки индикатор на приставке может менять цвет или мигать. <strong>Категорически запрещено</strong> отключать кабель до появления сообщения «Burning Success». Если процесс прервется на середине, загрузчик будет поврежден, и восстановить устройство станет в разы сложнее.</p>
+
+<table>
+<thead>
+<tr>
+<th>Этап прошивки</th>
+<th>Статус индикатора</th>
+<th>Действия пользователя</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Подключение</td>
+<td>Не горит / Мигает</td>
+<td>Удерживать кнопку Reset</td>
+</tr>
+<tr>
+<td>Запись загрузчика</td>
+<td>Горит постоянно</td>
+<td>Не трогать кабель</td>
+</tr>
+<tr>
+<td>Запись системы</td>
+<td>Медленное мигание</td>
+<td>Ожидание прогресс-бара</td>
+</tr>
+<tr>
+<td>Завершение</td>
+<td>Зеленый / Сообщение в ПК</td>
+<td>Отключить и перезагрузить</td>
+</tr>
+</tbody>
+</table>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Успешная перепрошивка требует стабильного USB-порта на компьютере. Избегайте использования USB-хабов и передних портов системного блока — подключайте кабель напрямую в материнскую плату.</p></div>
+
+<h2 id="проблемы-с-пультом-и-ик-приемником">Проблемы с пультом и ИК-приемником</h2>
+
+<p>Иногда пользователи ошибочно полагают, что <em>Pasito 2</em> не работает, хотя на самом деле неисправен лишь пульт дистанционного управления. Если индикатор на приставке реагирует на нажатия (мигает), но меню не меняется, проблема в канале связи.</p>
+
+<p>Проверьте батарейки в пульте — даже если индикатор на нем светится, напряжения может не хватать для передачи ИК-сигнала на расстояние. Попробуйте управлять приставкой через приложение на смартфоне (например, CetusPlay), если оба устройства подключены к одной сети Wi-Fi. Это поможет локализовать неисправность.</p>
+
+<p>Если ИК-приемник на самой приставке загрязнен или закрыт посторонним предметом, сигнал не будет проходить. Протрите переднюю панель мягкой тканью. В редких случаях требуется замена самого ИК-модуля, что подразумевает пайку новых компонентов на плату.</p>
+
+<div class="poll-widget" id="poll-2112476f"><div class="poll-widget-question">📊 Как ведет себя ваш Pasito 2 при поломке?</div><div class="poll-widget-option" data-poll="2112476f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Не включается совсем</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2112476f" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Виснет на логотипе</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2112476f" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Периодически выключается</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="2112476f" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Работает, но без пульта</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="когда-необходим-профессиональный-ремонт">Когда необходим профессиональный ремонт</h2>
+
+<p>Существует ряд симптомов, при которых самостоятельный ремонт не только бесполезен, но и опасен для устройства. Если после всех манипуляций с питанием и прошивкой приставка не подает признаков жизни, вероятно, произошел выход из строя компонентов на уровне платы.</p>
+
+<p>Обратите внимание на запах. Характерный запах гари или паленой пластмассы при включении свидетельствует о коротком замыкании внутри корпуса. В таком случае немедленно отключите устройство и не пытайтесь включать его повторно — это может привести к возгоранию.</p>
+
+<blockquote>
+<p>⚠️ Внимание: Если вы видите вздувшиеся конденсаторы при визуальном осмотре платы (через вентиляционные отверстия), дальнейшая эксплуатация невозможна. Требуется замена элементов пайки.</p>
+</blockquote>
+
+<p>Также стоит обратиться к специалистам, если проблема связана с аппаратным модулем Wi-Fi/Bluetooth. Перепайка антенн или чипов связи требует микроскопа и тонкого жала паяльника. Ошибка в пару миллиметров может замкнуть соседние дорожки и окончательно убить процессор.</p>
+
+<h2 id="faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</h2>
+
+<details>
+<summary>Можно ли прошить Pasito 2, если он не определяется компьютером?</summary>
+<p>Это сложная ситуация. Попробуйте использовать другой USB-кабель, желательно короткий и качественный. Также попробуйте другой порт USB 2.0 (синий порт USB 3.0 иногда вызывает проблемы со старыми загрузчиками). Если ПК издает звук подключения устройства, но программа не видит его, возможно, потребуется установка специфических драйверов Amlogic в диспетчере устройств вручную.</p>
+</details>
+
+<details>
+<summary>Сбрасываются ли настройки оператора при Hard Reset?</summary>
+<p>Да, при выполнении <code>Wipe data/factory reset</code> удаляются все установленные приложения, аккаунты Google и настройки сети. Вам придется заново подключиться к Wi-Fi и настроить пульт. Однако привязка устройства к договору оператора (если она есть на уровне MAC-адреса) обычно сохраняется, так как это аппаратный идентификатор.</p>
+</details>
+
+<details>
+<summary>Почему приставка греется даже в режиме ожидания?</summary>
+<p>Некоторые версии прошивок некорректно управляют режимами сна, оставляя процессор активным. Также причиной может быть фоновая загрузка обновлений или работа торрент-клиентов в автозагрузке. Попробуйте отключить функцию «Быстрый старт» в настройках системы, если такая опция присутствует.</p>
+</details>
+
+<details>
+<summary>Какой блок питания лучше купить взамен родного?</summary>
+<p>Ищите блок с параметрами 5V 2A или 5V 2.5A. Важна полярность разъема (обычно плюс внутри, минус снаружи), но для micro-USB это стандартизировано. Хорошим вариантом являются качественные блоки от смартфонов Samsung или Huawei с поддержкой быстрой зарядки, которые умеют работать в обычном режиме 5V.</p>
+</details>
+
+<details>
+<summary>Есть ли риск потерять гарантию при перепрошивке?</summary>
+<p>В большинстве случаев, перепрошивка программного обеспечения аннулирует гарантию, особенно если вы устанавливаете кастомную (неофициальную) прошивку. Если устройство еще на гарантии и просто зависает, лучше сначала обратиться в сервисный центр продавца.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#первичная-диагностика-и-проверка-питания">Первичная диагностика и проверка питания</a></li><li><a href="#процедура-жесткого-сброса-hard-reset">Процедура жесткого сброса (Hard Reset)</a></li><li><a href="#диагностика-перегрева-и-аппаратные-неисправности">Диагностика перегрева и аппаратные неисправности</a></li><li><a href="#восстановление-через-перепрошивку-firmware-flash">Восстановление через перепрошивку (Firmware Flash)</a></li><li><a href="#проблемы-с-пультом-и-ик-приемником">Проблемы с пультом и ИК-приемником</a></li><li><a href="#когда-необходим-профессиональный-ремонт">Когда необходим профессиональный ремонт</a></li><li><a href="#faq-часто-задаваемые-вопросы">FAQ: Часто задаваемые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-zalit-zhizhu-v-knajt-80.html" class="related-card">Как залить жижу в Knight 80: инструкция и особенности</a></li><li><a href="/articles/p/pe/pechki-dlya-palatki-dlitelnogo-goreniya.html" class="related-card">Печки для палатки длительного горения: выбор и безопасность</a></li><li><a href="/articles/k/ko/kontejner-dlya-moyushchego-pylesosa-tomas.html" class="related-card">Контейнер для моющего пылесоса Thomas: устройство и ремонт</a></li><li><a href="/articles/p/po/pochemu-plyuetsya-kartridzh-zhizhej-vaporesso.html" class="related-card">Почему плюется картридж Vaporesso: причины и решения</a></li><li><a href="/articles/s/sk/skolko-nuzhno-propityvat-isparitel-na-pasito-2.html" class="related-card">Как и сколько пропитывать испаритель на Pasito 2: Инструкция</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-zalit-zhizhu-v-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Как залить жижу в Knight 80: инструкция и особенности</span><span class="related-bottom-desc">Подробное руководство по заправке электронной сигареты Knight 80. Как залить жидкость, избежать прот</span></a><a href="/articles/p/pe/pechki-dlya-palatki-dlitelnogo-goreniya.html" class="related-bottom-card"><span class="related-bottom-title">Печки для палатки длительного горения: выбор и безопасность</span><span class="related-bottom-desc">Как выбрать печь для палатки с длительным горением: обзор моделей, правила установки, топливо и меры</span></a><a href="/articles/k/ko/kontejner-dlya-moyushchego-pylesosa-tomas.html" class="related-bottom-card"><span class="related-bottom-title">Контейнер для моющего пылесоса Thomas: устройство и ремонт</span><span class="related-bottom-desc">Полный разбор контейнера для моющих пылесосов Thomas. Инструкции по очистке, замене уплотнителей и у</span></a><a href="/articles/p/po/pochemu-plyuetsya-kartridzh-zhizhej-vaporesso.html" class="related-bottom-card"><span class="related-bottom-title">Почему плюется картридж Vaporesso: причины и решения</span><span class="related-bottom-desc">Разбираемся, почему плюется жижа в картриджах Vaporesso. Основные причины: конденсат, слабая тяга, н</span></a><a href="/articles/s/sk/skolko-nuzhno-propityvat-isparitel-na-pasito-2.html" class="related-bottom-card"><span class="related-bottom-title">Как и сколько пропитывать испаритель на Pasito 2: Инструкция</span><span class="related-bottom-desc">Узнайте точное время пропитки испарителя для Pasito 2. Советы по заправке, замене картриджа и предот</span></a><a href="/articles/k/ka/kak-pravilno-propitat-isparitel.html" class="related-bottom-card"><span class="related-bottom-title">Как правильно пропитать испаритель: полная инструкция</span><span class="related-bottom-desc">Узнайте, как правильно пропитать испаритель для вейпа. Пошаговая инструкция, время ожидания и частые</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Терморегулятор для вентилятора 12В: выбор, схема, настройка — Рем Набор</title>
+    <meta name="description" content="Как подключить терморегулятор для кулера 12В. Обзор схем, датчиков и настройки порогов срабатывания для авто и ПК.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/t/te/termoregulyator-dlya-ventilyatora-12v.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Терморегулятор для вентилятора 12В: выбор, схема, настройка">
+    <meta property="og:description" content="Как подключить терморегулятор для кулера 12В. Обзор схем, датчиков и настройки порогов срабатывания для авто и ПК.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/ventilyatory-i-datchiki/">Вентиляторы и датчики</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Терморегулятор для вентилятора 12В: выбор, схема, настройка</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Умное управление охлаждением: терморегулятор для вентилятора 12В</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#принцип-работы-и-ключевые-компоненты-системы">Принцип работы и ключевые компоненты системы</a></li><li><a href="#выбор-типа-управления-шим-против-релейного">Выбор типа управления: ШИМ против релейного</a></li><li><a href="#схемы-подключения-и-монтаж-датчиков">Схемы подключения и монтаж датчиков</a></li><li><a href="#настройка-порогов-срабатывания-и-гистерезиса">Настройка порогов срабатывания и гистерезиса</a></li><li><a href="#распространенные-неисправности-и-диагностика">Распространенные неисправности и диагностика</a></li><li><a href="#безопасность-и-особенности-эксплуатации">Безопасность и особенности эксплуатации</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Системы пассивного охлаждения часто достигают своего предела эффективности при повышении нагрузки на оборудование или двигатель. В такие моменты статичный поток воздуха перестает справляться с отводом тепла, что ведет к перегреву критических узлов. Решение проблемы кроется в внедрении автоматической системы управления, которая активирует принудительный обдув только тогда, когда это действительно необходимо.</p>
+
+<p>Использование <strong>терморегулятора для вентилятора 12В</strong> позволяет не только защитить технику от температурных пиков, но и значительно снизить уровень шума в периоды простоя. Это особенно актуально для автомобильных систем, самодельных инкубаторов, серверных стоек и мощных блоков питания. Грамотная интеграция такого контроллера превращает обычный кулер в интеллектуальный элемент системы термостабилизации.</p>
+
+<p>В данной статье мы подробно разберем принципы работы термодатчиков, рассмотрим популярные схемы подключения и дадим практические рекомендации по калибровке порогов срабатывания. Вы узнаете, как избежать распространенных ошибок при монтаже и выбрать оптимальный алгоритм работы для ваших задач.</p>
+
+<h2 id="принцип-работы-и-ключевые-компоненты-системы">Принцип работы и ключевые компоненты системы</h2>
+
+<p>В основе любого автоматического регулятора лежит цепь обратной связи, которая постоянно мониторит текущее состояние окружающей среды или конкретного узла. Центральным элементом здесь выступает <strong>термодатчик</strong>, сопротивление которого изменяется в зависимости от температуры. Наиболее распространенным типом является термистор NTC, чье сопротивление падает при нагреве, что позволяет электронике легко интерпретировать изменения.</p>
+
+<p>Сигнал с датчика поступает на блок сравнения или микроконтроллер, где он сопоставляется с заданным пользователем эталоном. Если измеренное значение превышает установленный порог, контроллер подает напряжение на силовой ключ. В качестве такого ключа чаще всего используется <em>полевой транзистор</em> (MOSFET), способный коммутировать токи, необходимые для работы мощных вентиляторов, без существенного нагрева самого себя.</p>
+
+<blockquote>⚠️ Внимание: При выборе датчика критически важно учитывать его диапазон рабочих температур. Использование бытового сенсора в подкапотном пространстве автомобиля, где температура может достигать 100°C и выше, приведет к некорректным показаниям и отказу системы.</blockquote>
+
+<p>Для обеспечения плавности работы и защиты от частых включений-выключений при пограничных значениях температуры применяется механизм <strong>гистерезиса</strong>. Это разница между температурой включения и выключения вентилятора, которая предотвращает так называемое "дребезжание" реле или транзистора. Без гистерезиса вентилятор мог бы включаться и выключаться несколько раз в секунду при температуре, близкой к порогу срабатывания, что быстро вывело бы его из строя.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для самодельных схем на базе компаратора LM358 гистерезис реализуется добавлением резистора обратной связи между выходом и неинвертирующим входом. Чем меньше номинал этого резистора, тем шире зона нечувствительности.</p></div>
+
+<h2 id="выбор-типа-управления-шим-против-релейного">Выбор типа управления: ШИМ против релейного</h2>
+
+<p>При проектировании системы охлаждения перед мастером встает выбор между двумя основными методами управления нагрузкой. Первый вариант — релейное (или ключевое) управление, где вентилятор работает исключительно в двух режимах: полностью выключен или включен на полную мощность. Это простое и надежное решение, идеально подходящее для систем с большим запасом производительности.</p>
+
+<p>Второй, более продвинутый метод — <strong>ШИМ-регулирование</strong> (широтно-импульсная модуляция). В этом случае контроллер меняет среднюю скорость вращения крыльчатки, подавая импульсы тока с изменяемой скважностью. Это позволяет поддерживать температуру в очень узком диапазоне и обеспечивает акустический комфорт, так как вентилятор не выходит на максимальные обороты без острой необходимости.</p>
+
+<ul>
+<li>🚀 <strong>Релейная схема:</strong> Максимальная эффективность обдува при срабатывании, простота реализации, отсутствие радиопомех, но высокий уровень шума в момент включения.</li>
+<li>🎚️ <strong>ШИМ-контроллер:</strong> Плавная регулировка оборотов, низкий уровень шума, возможность тонкой настройки, но требует более сложной электроники и фильтров от помех.</li>
+<li>🔌 <strong>Линейное регулирование:</strong> Плавное изменение напряжения (редко используется для 12В моторов из-за низкого КПД и нагрева регулирующего элемента).</li>
+</ul>
+
+<p>Для автомобильных приложений часто выбирают гибридный подход: вентилятор запускается на минимальных оборотах при достижении первого порога и выходит на 100% мощности только при критическом перегреве. Реализовать такую логику можно с помощью программируемых микроконтроллеров типа <em>Arduino</em> или специализированных готовых модулей.</p>
+
+<div class="poll-widget" id="poll-8a1c063d"><div class="poll-widget-question">📊 Какой метод управления вы планируете использовать?</div><div class="poll-widget-option" data-poll="8a1c063d" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Релейный (Вкл/Выкл)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8a1c063d" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">ШИМ (Плавная регулировка)</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8a1c063d" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Готовый промышленный контроллер</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="8a1c063d" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Пока не решил</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="схемы-подключения-и-монтаж-датчиков">Схемы подключения и монтаж датчиков</h2>
+
+<p>Качество работы всей системы напрямую зависит от правильного расположения чувствительного элемента. Датчик должен иметь надежный тепловой контакт с объектом, температуру которого необходимо контролировать. В случае с электронными компонентами используется термопаста и стяжки, а для жидкостей и газов — погружные гильзы или монтаж в поток воздуха.</p>
+
+<p>Рассмотрим классическую схему подключения на базе компаратора. Питание 12В подается на вход схемы, а выход транзистора коммутирует цепь вентилятора. Важно использовать провода достаточного сечения, особенно если длина трассы от аккумулятора до потребителя превышает один метр.</p>
+
+<pre><code>Схема подключения (упрощенно):
+<p>[Источник 12В+] ---> [Предохранитель] ---> [Контакт 87 Реле/Сток Транзистора]</p>
+<p>[Источник 12В-] ---> [Общий минус]</p>
+<p>[Вентилятор +] ---> [Контакт 30 Реле/Исток Транзистора]</p>
+<p>[Вентилятор -] ---> [Общий минус]</p>
+<p>[Датчик] ---------> [Вход контроллера]</code></pre></p>
+
+<p>При монтаже в автомобиле необходимо предусмотреть защиту силовой части от вибраций и влаги. Все соединения следует выполнять с помощью пайки и изолировать термоусадочными трубками, избегая скруток, которые со временем окисляются и греются. Для подключения к штатной проводке автомобиля лучше использовать качественные обжимные коннекторы.</p>
+
+<div class="checklist-block"><h4>☑️ Проверка перед первым запуском</h4><label class="check-item"><input type="checkbox"><span>Проверить полярность подключения вентилятора</span></label><label class="check-item"><input type="checkbox"><span>Убедиться в надежности контакта датчика</span></label><label class="check-item"><input type="checkbox"><span>Замерить ток потребления в рабочем режиме</span></label><label class="check-item"><input type="checkbox"><span>Проверить срабатывание при нагреве феном</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 4</div></div>
+
+<h2 id="настройка-порогов-срабатывания-и-гистерезиса">Настройка порогов срабатывания и гистерезиса</h2>
+
+<p>Правильная калибровка — залог долговечности оборудования. Слишком раннее включение вентилятора приведет к его износу и лишнему шуму, а слишком позднее — к тепловому пробоям. Для настройки обычно используются подстроечные резисторы (потенциометры), выведенные на корпус устройства.</p>
+
+<p>Процесс настройки следует проводить в безопасных условиях, имитируя нагрев с помощью строительного фена или погружая датчик в воду контролируемой температуры (если он герметичен). Необходимо зафиксировать температуру включения и выключения, используя внешний термометр для верификации показаний.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип оборудования</th>
+<th>Температура включения (°C)</th>
+<th>Температура выключения (°C)</th>
+<th>Рекомендуемый гистерезис</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Автомобильный радиатор</td>
+<td>92 - 95</td>
+<td>85 - 88</td>
+<td>5 - 7°C</td>
+</tr>
+<tr>
+<td>Инкубатор / Террариум</td>
+<td>38.5</td>
+<td>37.5</td>
+<td>1°C</td>
+</tr>
+<tr>
+<td>Серверная стойка</td>
+<td>45</td>
+<td>40</td>
+<td>5°C</td>
+</tr>
+<tr>
+<td>Зарядное устройство</td>
+<td>50</td>
+<td>35</td>
+<td>15°C</td>
+</tr>
+</tbody>
+</table>
+
+<p>Обратите внимание, что для систем с большой тепловой инерцией (например, охлаждение жидкости в двигателе) гистерезис должен быть шире. Это связано с тем, что после выключения вентилятора температура датчика может по инерции еще немного вырасти, и если порог выключения будет слишком близок к порогу включения, система снова активируется через несколько секунд.</p>
+
+<blockquote>⚠️ Внимание: Никогда не устанавливайте температуру выключения выше температуры включения. Это приведет к тому, что вентилятор не отключится никогда, пока работает устройство, или будет работать в некорректном циклическом режиме.</blockquote>
+
+<h2 id="распространенные-неисправности-и-диагностика">Распространенные неисправности и диагностика</h2>
+
+<p>В процессе эксплуатации система может столкнуться с рядом типовых проблем. Чаще всего пользователи жалуются на то, что вентилятор не включается при явном перегреве или, наоборот, работает постоянно. В первом случае следует проверить целостность цепи датчика и наличие питания на управляющем модуле.</p>
+
+<p>Постоянная работа вентилятора часто указывает на короткое замыкание в цепи датчика (для схем с NTC термистором это интерпретируется как бесконечно высокая температура) или пробой силового транзистора. Также причиной может быть сбитая настройка потенциометра из-за вибрации.</p>
+
+<p>Для диагностики используйте мультиметр в режиме измерения сопротивления. Отключите датчик от схемы и замерьте его сопротивление при комнатной температуре, сверив значение с таблицей для конкретного типа термистора. Если сопротивление стремится к нулю или бесконечности независимо от нагрева — сенсор неисправен.</p>
+
+<details class="faq-item"><summary>Как проверить силовой ключ без схемы?</summary><div class="faq-answer"><p>Подключите лампочку 12В вместо вентилятора. Если при нагреве датчика лампа загорается, но реальный вентилятор молчит — проблема в самом моторе или проводке к нему. Если лампа не горит — неисправен контроллер или питание.</p></div></details>
+
+<h2 id="безопасность-и-особенности-эксплуатации">Безопасность и особенности эксплуатации</h2>
+
+<p>При работе с электрическими цепями 12В, особенно в автомобилях, нельзя забывать о рисках короткого замыкания. Бортовая сеть способна выдавать токи в сотни ампер при КЗ, что может привести к возгоранию проводки. Обязательным элементом любой самоделки является предохранитель, установленный как можно ближе к плюсовой клемме аккумулятора.</p>
+
+<p>Также стоит учитывать влияние электромагнитных помех от работы коллекторных двигателей вентиляторов на чувствительную электронику регулятора. Если вы замечаете сбои в работе контроллера при включении вентилятора, установите керамический конденсатор емкостью 0.1–1 мкФ параллельно клеммам мотора.</p>
+
+<p>Эксплуатация устройства в зимний период требует внимания к конденсату. Резкие перепады температур могут вызывать выпадение влаги на платах, что чревато короткими замыканиями. Рекомендуется помещать электронные блоки в герметичные корпуса с классом защиты не ниже <em>IP65</em>, если они находятся под открытым небом или в подкапотном пространстве.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Главный залог надежности — это не сложность схемы, а качество исполнения контактов и наличие правильной защиты от перегрузок по току.</p></div>
+
+<details>
+<summary>Можно ли использовать один терморегулятор для двух вентиляторов?</summary>
+<p>Да, можно, если суммарный ток потребления обоих вентиляторов не превышает максимальный ток коммутации вашего контроллера или реле. Если ток превышает допустимый (обычно 10А для реле и 5-20А для транзисторов), необходимо использовать промежуточное реле или более мощный силовой ключ.</p>
+</details>
+
+<details>
+<summary>Почему вентилятор гудит при работе через ШИМ?</summary>
+<p>Гудение возникает, когда частота ШИМ-сигнала попадает в слышимый диапазон (менее 20 кГц) и совпадает с резонансной частотой обмоток или крыльчатки. Для устранения проблемы попробуйте увеличить частоту генерации импульсов в настройках контроллера до 25 кГц и выше.</p>
+</details>
+
+<details>
+<summary>Какой длины можно делать провод до датчика температуры?</summary>
+<p>Для аналоговых термисторов длина провода не критична до 5-10 метров, если используется экранированный кабель. При большей длине сопротивление проводов может внести погрешность в измерения. Для цифровых датчиков (например, DS18B20) длина может достигать десятков метров при соблюдении правил подключения шины 1-Wire.</p>
+</details>
+
+<details>
+<summary>Нужно ли смазывать термопастой место контакта датчика?</summary>
+<p>Обязательно. Воздух является отличным теплоизолятором. Без термопасты между корпусом датчика и нагреваемой поверхностью будет воздушная прослойка, из-за чего регулятор будет реагировать на изменение температуры с большой задержкой, что снижает эффективность защиты.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#принцип-работы-и-ключевые-компоненты-системы">Принцип работы и ключевые компоненты системы</a></li><li><a href="#выбор-типа-управления-шим-против-релейного">Выбор типа управления: ШИМ против релейного</a></li><li><a href="#схемы-подключения-и-монтаж-датчиков">Схемы подключения и монтаж датчиков</a></li><li><a href="#настройка-порогов-срабатывания-и-гистерезиса">Настройка порогов срабатывания и гистерезиса</a></li><li><a href="#распространенные-неисправности-и-диагностика">Распространенные неисправности и диагностика</a></li><li><a href="#безопасность-и-особенности-эксплуатации">Безопасность и особенности эксплуатации</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/p/pr/prichiny-nesrabatyvaniya-ventilyatora-okhlazhdeniya.html" class="related-card">Почему не работает вентилятор охлаждения: 7 главных причин</a></li><li><a href="/articles/p/po/pochemu-ne-rabotaet-ventilyator-prichiny.html" class="related-card">Почему не работает вентилятор: основные причины и методы ремонта</a></li><li><a href="/articles/w/wy/wy-s95d1-kak-proverit.html" class="related-card">WY S95D1: как проверить датчик температуры — пошаговая инструкция</a></li><li><a href="/articles/p/po/pochemu-ne-rabotaet-ventilyator-na-radiatore.html" class="related-card">Почему не работает вентилятор на радиаторе: причины и ремонт</a></li><li><a href="/articles/k/ka/kak-razobrat-ventilyator-okhlazhdeniya.html" class="related-card">Как разобрать вентилятор охлаждения: пошаговая инструкция 2026</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/p/pr/prichiny-nesrabatyvaniya-ventilyatora-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Почему не работает вентилятор охлаждения: 7 главных причин</span><span class="related-bottom-desc">Разбираем причины отказа вентилятора радиатора: реле, датчики, предохранители. Диагностика и ремонт </span></a><a href="/articles/p/po/pochemu-ne-rabotaet-ventilyator-prichiny.html" class="related-bottom-card"><span class="related-bottom-title">Почему не работает вентилятор: основные причины и методы ремонта</span><span class="related-bottom-desc">Узнайте, почему не работает вентилятор: от поломок двигателя до проблем с платой. expert-диагностика</span></a><a href="/articles/w/wy/wy-s95d1-kak-proverit.html" class="related-bottom-card"><span class="related-bottom-title">WY S95D1: как проверить датчик температуры — пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по диагностике датчика WY S95D1: мультиметром, визуально, через ошибки ЭБУ. Сх</span></a><a href="/articles/p/po/pochemu-ne-rabotaet-ventilyator-na-radiatore.html" class="related-bottom-card"><span class="related-bottom-title">Почему не работает вентилятор на радиаторе: причины и ремонт</span><span class="related-bottom-desc">Подробный разбор причин, почему не включается вентилятор радиатора. Диагностика датчика, предохранит</span></a><a href="/articles/k/ka/kak-razobrat-ventilyator-okhlazhdeniya.html" class="related-bottom-card"><span class="related-bottom-title">Как разобрать вентилятор охлаждения: пошаговая инструкция 2026</span><span class="related-bottom-desc">Детальный гайд по разборке вентилятора охлаждения автомобиля или бытовой техники: инструменты, схемы</span></a><a href="/articles/v/ve/ventilyator-pechki-kalina-1-zamena.html" class="related-bottom-card"><span class="related-bottom-title">Замена вентилятора печки Лада Калина 1 своими руками</span><span class="related-bottom-desc">Как снять и заменить моторчик печки на Лада Калина 1. Диагностика шума, снятие без разборки панели, </span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

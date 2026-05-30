@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Ремонт водяного охлаждения процессора: устранение течей и смена жидкости — Рем Набор</title>
+    <meta name="description" content="Полное руководство по обслуживанию СЖО: как устранить течь, заменить помпу, почистить радиатор и выбрать правильный теплоноситель для системы.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/r/re/remont-vodyanogo-okhlazhdeniya-protsessora.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Ремонт водяного охлаждения процессора: устранение течей и смена жидкости">
+    <meta property="og:description" content="Полное руководство по обслуживанию СЖО: как устранить течь, заменить помпу, почистить радиатор и выбрать правильный теплоноситель для системы.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Ремонт водяного охлаждения процессора: устранение течей и смена жидкости</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Ремонт водяного охлаждения процессора: полное руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#диагностика-неисправностей-системы-охлаждения">Диагностика неисправностей системы охлаждения</a></li><li><a href="#подготовка-к-ремонту-и-слив-теплоносителя">Подготовка к ремонту и слив теплоносителя</a></li><li><a href="#очистка-и-промывка-компонентов-контура">Очистка и промывка компонентов контура</a></li><li><a href="#замена-помпы-и-устранение-течей">Замена помпы и устранение течей</a></li><li><a href="#выбор-и-заливка-новой-жидкости">Выбор и заливка новой жидкости</a></li><li><a href="#прокачка-системы-и-тестирование">Прокачка системы и тестирование</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Система жидкостного охлаждения (СЖО) или водяное охлаждение процессора — это эффективное решение для отвода тепла в высокопроизводительных игровых ПК и рабочих станциях. Однако, в отличие от традиционных воздушных кулеров, такая система требует регулярного обслуживания и контроля состояния компонентов.</p>
+
+<p>Со временем эксплуатация приводит к накоплению осадка внутри контура, снижению эффективности теплопередачи и, в худшем случае, к появлению протечек. Если вы заметили повышение температур под нагрузкой или странные звуки, доносящиеся из корпуса ПК, не стоит паниковать.</p>
+
+<p>В большинстве случаев проблему можно решить самостоятельно, не прибегая к покупке дорогостоящего нового комплекта. В этой статье мы подробно разберем этапы диагностики, профилактики и ремонта основных узлов системы жидкостного охлаждения.</p>
+
+<h2 id="диагностика-неисправностей-системы-охлаждения">Диагностика неисправностей системы охлаждения</h2>
+
+<p>Первым шагом перед началом любых ремонтных работ является точная диагностика. Не спешите разбирать систему сразу, как только увидели высокую температуру. Иногда причина кроется в программных сбоях или неправильной настройке кривых вращения вентиляторов в BIOS.</p>
+
+<p>Внимательно осмотрите все видимые части контура при включенном питании. Ищите следы влаги, капли или характерные разводы на трубках и фитингах. Особое внимание стоит уделить местам соединения шлангов с водоблоком и радиатором, так как именно там чаще всего возникают микротрещины.</p>
+
+<p>Прислушайтесь к работе помпы. <strong>Гул, треск или полное отсутствие звука</strong> могут свидетельствовать о том, что механизм вышел из строя или в системе образовалась воздушная пробка. Для проверки производительности помпы можно использовать специальные утилиты мониторинга, если контроллер подключен к материнской плате через USB или PWM.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> При обнаружении явных следов течи немедленно обесточьте компьютер. Попытка запустить систему с протечкой может привести к короткому замыканию и необратимому повреждению видеокарты, материнской платы и блока питания.</p>
+</blockquote>
+
+<p>Проверьте температуру жидкости с помощью датчиков, если они установлены в контуре. Разница температур на входе и выходе из водоблока должна быть минимальной в простое и заметной под нагрузкой. Если перепад слишком велик, это указывает на плохую циркуляцию или засорение микроканалов.</p>
+
+<div class="poll-widget" id="poll-cc8649ac"><div class="poll-widget-question">📊 Что чаще всего выходит из строя в вашей СЖО?</div><div class="poll-widget-option" data-poll="cc8649ac" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Помпа</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc8649ac" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Течь в фитингах</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc8649ac" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Засор радиатора</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc8649ac" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Высыхание жидкости</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="cc8649ac" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Вентиляторы</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="подготовка-к-ремонту-и-слив-теплоносителя">Подготовка к ремонту и слив теплоносителя</h2>
+
+<p>Для проведения качественного обслуживания вам потребуется чистое рабочее место и набор инструментов. Заранее подготовьте емкость для слива старой жидкости, дистиллированную воду для промывки, безворсовые салфетки и, при необходимости, новые фитинги или уплотнительные кольца.</p>
+
+<p>Перед началом работ обязательно снимите статическое электричество с рук, используя антистатический браслет или просто коснувшись заземленной металлической поверхности. Это предотвратит повреждение чувствительной электроники компонентов.</p>
+
+<p>Процесс слива жидкости должен проводиться аккуратно, чтобы не залить внутренние компоненты ПК. Если в вашей системе установлен сливной кран, используйте его. В противном случае придется отсоединять один из шлангов в самой низкой точке контура.</p>
+
+<div class="checklist-block"><h4>☑️ Подготовка к сливу жидкости</h4><label class="check-item"><input type="checkbox"><span>Отключить ПК от сети</span></label><label class="check-item"><input type="checkbox"><span>Подготовить емкость под слив</span></label><label class="check-item"><input type="checkbox"><span>Снять боковую крышку корпуса</span></label><label class="check-item"><input type="checkbox"><span>Найти нижнюю точку контура</span></label><label class="check-item"><input type="checkbox"><span>Проверить наличие сливного крана</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p>Наклоняйте корпус компьютера так, чтобы жидкость стекала самотеком в подготовленную тару. Не пытайтесь ускорить процесс продувкой, пока не убедитесь, что основные остатки удалены. Старая жидкость часто содержит биологические загрязнения и продукты коррозии, которые могут быть токсичны.</p>
+
+<h2 id="очистка-и-промывка-компонентов-контура">Очистка и промывка компонентов контура</h2>
+
+<p>После полного опорожнения системы необходимо тщательно промыть все компоненты. Даже если вы планируете использовать ту же марку жидкости, смешивание старого и нового теплоносителя не рекомендуется из-за возможной химической реакции присадок.</p>
+
+<p>Водоблок процессора требует особого внимания. Снимите крышку и осмотрите медное основание на предмет окисления. Микроканалы внутри могут быть забиты слизью или твердыми частицами, что критически снижает эффективность охлаждения.</p>
+
+<p>Для промывки используйте дистиллированную воду. Залейте её в радиатор и водоблок, аккуратно потрясите компоненты и слейте воду. Повторяйте процедуру до тех пор, пока сливаемая вода не станет абсолютно прозрачной.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Для удаления стойких отложений и слизи внутри радиатора можно использовать слабый раствор лимонной кислоты, но обязательно тщательно промойте систему дистиллированной водой afterward, чтобы нейтрализовать кислоту.</p></div>
+
+<p>Не используйте обычную водопроводную воду для финальной промывки, так как содержащиеся в ней соли и хлор могут вызвать коррозию алюминиевых или медных частей системы в будущем. Только дистиллят гарантирует чистоту контура.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Никогда не используйте агрессивные химические растворители, ацетон или спирт для очистки прозрачных трубок и акриловых резервуаров. Эти вещества могут вызвать помутнение пластика или появление микротрещин.</p>
+</blockquote>
+
+<p>Особое внимание уделите радиатору. Продуйте его сжатым воздухом со стороны, противоположной направлению потока жидкости, чтобы выбить пыль из ламелей. Чистый радиатор обеспечивает лучший теплообмен с окружающим воздухом.</p>
+
+<h2 id="замена-помпы-и-устранение-течей">Замена помпы и устранение течей</h2>
+
+<p>Если диагностика показала, что помпа не работает или работает с перебоями, её замена является единственным верным решением. В большинстве готовых систем (AIO) помпа интегрирована в водоблок, что упрощает замену всего узла целиком.</p>
+
+<p>В кастомных сборках помпа часто вынесена в отдельный резервуар или установлена в разрыв трубки. При замене убедитесь, что новая помпа имеет аналогичные характеристики напора и производительности, чтобы не нарушить баланс системы.</p>
+
+<p>Для устранения течей в резьбовых соединениях часто достаточно заменить уплотнительные кольца (O-rings). Со временем резина теряет эластичность и дубеет, переставая герметизировать стык.</p>
+
+<table>
+<thead>
+<tr>
+<th>Тип неисправности</th>
+<th>Вероятная причина</th>
+<th>Метод устранения</th>
+<th>Сложность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Шум помпы</td>
+<td>Воздушная пробка или износ подшипника</td>
+<td>Прокачка системы или замена помпы</td>
+<td>Средняя</td>
+</tr>
+<tr>
+<td>Течь в фитинге</td>
+<td>Износ O-ring или слабая затяжка</td>
+<td>Замена кольца и подтяжка</td>
+<td>Низкая</td>
+</tr>
+<tr>
+<td>Высокие температуры</td>
+<td>Засор микроканалов или высыхание жидкости</td>
+<td>Полная промывка и замена жидкости</td>
+<td>Высокая</td>
+</tr>
+<tr>
+<td>Пузыри в трубках</td>
+<td>Недостаточный уровень жидкости</td>
+<td>Доливка теплоносителя</td>
+<td>Низкая</td>
+</tr>
+</tbody>
+</table>
+
+<p>При сборке используйте только усилие рук для затяжки фитингов. Применение гаечных ключей или плоскогубцев может привести к срыву резьбы или трещине в акриловом корпусе фитинга, что гарантированно вызовет протечку в будущем.</p>
+
+<details class="faq-item"><summary>Как правильно менять уплотнительные кольца?</summary><div class="faq-answer"><p>Смажьте новые кольца силиконовой смазкой перед установкой. Это облегчит монтаж и предотвратит перекручивание резины, которое является частой причиной протечек сразу после сборки.</p></div></details>
+
+<h2 id="выбор-и-заливка-новой-жидкости">Выбор и заливка новой жидкости</h2>
+
+<p>Выбор теплоносителя — критически важный этап ремонта. На рынке представлены готовые смеси различных цветов и составов, а также концентраты, которые нужно разбавлять дистиллированной водой самостоятельно.</p>
+
+<p>Избегайте использования жидкостей с крупными блестками или металлической взвесью в системах с медными или алюминиевыми радиаторами. Такие частицы могут оседать в узких каналах водоблока, вызывая засоры и локальный перегрев процессора.</p>
+
+<p>Для большинства пользователей оптимальным выбором является прозрачная жидкость с антикоррозийными и биоцидными присадками. Она не скрывает возможные проблемы (например, появление пузырьков или изменение цвета) и безопасна для всех материалов.</p>
+
+<p>Заливайте жидкость медленно, постоянно доливая её в расширительный бак по мере заполнения контура. Это поможет минимизировать образование воздушных пробок. Закрутите крышку бака только после того, как уровень стабилизируется.</p>
+
+<blockquote>
+<p>⚠️ <strong>Внимание:</strong> Не смешивайте жидкости разных производителей и разных химических основ (например, гликолевые и водные). Несовместимость присадок может привести к выпадению осадка, который заблокирует систему за считанные дни.</p>
+</blockquote>
+
+<p>Убедитесь, что в контуре достаточно жидкости для работы помпы. Сухой ход помпы даже в течение нескольких секунд может вывести её из строя из-за перегрева подшипника скольжения.</p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Прозрачные жидкости с биоцидными присадками — самый надежный выбор для долгосрочной эксплуатации, так как они не создают отложений и позволяют визуально контролировать состояние системы.</p></div>
+
+<h2 id="прокачка-системы-и-тестирование">Прокачка системы и тестирование</h2>
+
+<p>После сборки и заливки жидкости наступает этап прокачки. Включите питание помпы, не запуская материнскую плату (можно использовать перемычку на блоке питания или кнопку старта на корпусе, если помпа подключена напрямую к БП).</p>
+
+<p>Наклоняйте корпус компьютера в разные стороны, помогая пузырькам воздуха подняться в расширительный бак. Вы услышите характерное бульканье — это нормальный процесс выхода воздуха из системы.</p>
+
+<p>Дайте помпе поработать в таком режиме 15-20 минут. Периодически проверяйте уровень жидкости в баке и доливайте её при необходимости, так как объем контура уменьшится после выхода всего воздуха.</p>
+
+<pre><code>Последовательность действий при прокачке:
+<p>1. Подключить питание помпы (12V).</p>
+<p>2. Наклонять корпус в 4 стороны по 30 секунд.</p>
+<p>3. Следить за уровнем в резервуаре.</p>
+<p>4. Повторять цикл до исчезновения крупных пузырей.</code></pre></p>
+
+<p>Только после того, как поток жидкости станет стабильным и свободным от крупных пузырей, можно подключать систему к материнской плате и запускать компьютер. Проведите стресс-тест процессора в течение 30 минут, контролируя температуры.</p>
+
+<p>Если температуры в норме и нет признаков протечек, сборку можно считать успешной. Регулярно проверяйте уровень жидкости и её цвет в первые недели эксплуатации после ремонта.</p>
+
+<h2 id="часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</h2>
+
+<details>
+<summary>Как часто нужно менять жидкость в системе водяного охлаждения?</summary>
+<p>Рекомендуется проводить полную замену жидкости и профилактику системы раз в 12-18 месяцев. Если вы используете жидкость низкого качества или без биоцидных присадок, интервал следует сократить до 6 месяцев.</p>
+</details>
+
+<details>
+<summary>Можно ли использовать обычную водопроводную воду вместо дистиллированной?</summary>
+<p>Категорически не рекомендуется. Водопроводная вода содержит соли, хлор и микроорганизмы, которые вызывают коррозию металлических частей, образование накипи и цветение (появление слизи) внутри контура.</p>
+</details>
+
+<details>
+<summary>Что делать, если помпа гудит, но жидкость не циркулирует?</summary>
+<p>Скорее всего, в системе образовалась серьезная воздушная пробка в районе крыльчатки помпы. Попробуйте интенсивно покачать корпус ПК при работающей помпе. Если не помогает — возможно, крыльчатка механически заблокирована мусором или подшипник заклинило.</p>
+</details>
+
+<details>
+<summary>Безопасно ли использовать цветные жидкости с блестками?</summary>
+<p>Использование таких жидкостей несет повышенные риски. Блестки и твердые пигменты могут оседать в микроканалах водоблока, снижая эффективность охлаждения и забивая узкие проходы. Для надежности лучше выбирать прозрачные растворы.</p>
+</details>
+
+<details>
+<summary>Почему после замены жидкости температура процессора выросла?</summary>
+<p>Возможные причины: осталась воздушная пробка в водоблоке, неправильно нанесена термопаста при снятии/установке блока, или новая жидкость имеет худшие теплопроводные свойства. Проверьте отсутствие пузырей под крышкой водоблока.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#диагностика-неисправностей-системы-охлаждения">Диагностика неисправностей системы охлаждения</a></li><li><a href="#подготовка-к-ремонту-и-слив-теплоносителя">Подготовка к ремонту и слив теплоносителя</a></li><li><a href="#очистка-и-промывка-компонентов-контура">Очистка и промывка компонентов контура</a></li><li><a href="#замена-помпы-и-устранение-течей">Замена помпы и устранение течей</a></li><li><a href="#выбор-и-заливка-новой-жидкости">Выбор и заливка новой жидкости</a></li><li><a href="#прокачка-системы-и-тестирование">Прокачка системы и тестирование</a></li><li><a href="#часто-задаваемые-вопросы-faq">Часто задаваемые вопросы (FAQ)</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/n/ne/ne-topitsya-pech-dymit-chto-delat.html" class="related-card">Печь дымит: причины и способы устранения своими руками</a></li><li><a href="/articles/k/ka/kak-ubrat-gar-v-odnorazke.html" class="related-card">Как убрать гарь в одноразке: реанимация и профилактика</a></li><li><a href="/articles/k/ka/kak-ubrat-garik-na-odnorazke.html" class="related-card">Как убрать гарик на одноразке: пошаговая инструкция 2026</a></li><li><a href="/articles/p/po/pochemu-na-novom-isparitele-garik.html" class="related-card">Вкус гари на новом испарителе: причины и устранение</a></li><li><a href="/articles/i/iz/izh-81-pompovoe-ruzhe.html" class="related-card">Ружье ИЖ-81: характеристики, устройство и обслуживание помповика</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/n/ne/ne-topitsya-pech-dymit-chto-delat.html" class="related-bottom-card"><span class="related-bottom-title">Печь дымит: причины и способы устранения своими руками</span><span class="related-bottom-desc">Почему дымит печь при растопке? Разбор причин: обратная тяга, холодный дымоход, дрова. Пошаговая инс</span></a><a href="/articles/k/ka/kak-ubrat-gar-v-odnorazke.html" class="related-bottom-card"><span class="related-bottom-title">Как убрать гарь в одноразке: реанимация и профилактика</span><span class="related-bottom-desc">Подгорело в электронной сигарете? Узнайте, как убрать вкус гари в одноразке, продлить жизнь испарите</span></a><a href="/articles/k/ka/kak-ubrat-garik-na-odnorazke.html" class="related-bottom-card"><span class="related-bottom-title">Как убрать гарик на одноразке: пошаговая инструкция 2026</span><span class="related-bottom-desc">Подробное руководство по удалению гарика с одноразового девайса: причины появления, безопасные метод</span></a><a href="/articles/p/po/pochemu-na-novom-isparitele-garik.html" class="related-bottom-card"><span class="related-bottom-title">Вкус гари на новом испарителе: причины и устранение</span><span class="related-bottom-desc">Почему на новом испарителе появляется вкус гари? Разбираем поломки, ошибки установки и брак вейпа. И</span></a><a href="/articles/i/iz/izh-81-pompovoe-ruzhe.html" class="related-bottom-card"><span class="related-bottom-title">Ружье ИЖ-81: характеристики, устройство и обслуживание помповика</span><span class="related-bottom-desc">Подробный обзор гладкоствольного помпового ружья ИЖ-81. Технические характеристики, разборка, тюнинг</span></a><a href="/articles/z/za/zachem-kipyatit-ispariteli-dlya-vejpa.html" class="related-bottom-card"><span class="related-bottom-title">Зачем кипятить испарители для вейпа: мифы и реальность</span><span class="related-bottom-desc">Правда о кипячении испарителей для вейпа: почему это опасно, как чистить картриджи и продлить их сро</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Система охлаждения двигателя: лекция для автовладельцев и студентов — Рем Набор</title>
+    <meta name="description" content="Подробный разбор принципа работы, типов систем охлаждения ДВС, диагностики неисправностей и советов по обслуживанию. Лекция с практическими примерами и схемами.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/s/si/sistema-okhlazhdeniya-dvigatelya-lektsiya.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Система охлаждения двигателя: лекция для автовладельцев и студентов">
+    <meta property="og:description" content="Подробный разбор принципа работы, типов систем охлаждения ДВС, диагностики неисправностей и советов по обслуживанию. Лекция с практическими примерами и схемами.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/sistema-okhlazhdeniya-avto/">Система охлаждения авто</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Система охлаждения двигателя: лекция для автовладельцев и студентов</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Система охлаждения двигателя: устройство, принцип работы и диагностика неисправностей</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#введение-почему-охлаждение-двигателя-критически-важная-система">Введение: почему охлаждение двигателя — критически важная система</a></li><li><a href="#1-типы-систем-охлаждения-двс-сравнение-и-особенности">1. Типы систем охлаждения ДВС: сравнение и особенности</a></li><li><a href="#2-устройство-жидкостной-системы-охлаждения-схемы-и-компоненты">2. Устройство жидкостной системы охлаждения: схемы и компоненты</a></li><li><a href="#3-принцип-работы-системы-от-холодного-запуска-до-перегрева">3. Принцип работы системы: от холодного запуска до перегрева</a></li><li><a href="#4-охлаждающие-жидкости-типы-свойства-и-совместимость">4. Охлаждающие жидкости: типы, свойства и совместимость</a></li><li><a href="#5-диагностика-неисправностей-симптомы-и-причины">5. Диагностика неисправностей: симптомы и причины</a></li><li><a href="#6-обслуживание-системы-охлаждения-регламент-и-практические-советы">6. Обслуживание системы охлаждения: регламент и практические советы</a></li><li><a href="#7-частые-ошибки-при-ремонте-и-как-их-избежать">7. Частые ошибки при ремонте и как их избежать</a></li><li><a href="#faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><h2 id="введение-почему-охлаждение-двигателя-критически-важная-система">Введение: почему охлаждение двигателя — критически важная система</h2>
+
+<p>Двигатель внутреннего сгорания (ДВС) работает в условиях экстремальных температур: в камере сгорания температура достигает <strong>2000–2500°C</strong>, а средняя рабочая температура блока цилиндров составляет <strong>80–110°C</strong>. Без эффективного отвода тепла металл деталей расширяется, смазка теряет свойства, а риск заклинивания поршней или разрушения головки блока цилиндров (ГБЦ) grows exponentially. Именно поэтому <em>система охлаждения</em> — одна из трёх ключевых систем автомобиля наряду с топливной и смазочной.</p>
+
+<p>В этой лекции мы разберём устройство системы охлаждения, её типы (жидкостная, воздушная, комбинированная), принцип работы каждого элемента — от <em>радиатора</em> до <em>термостата</em>, а также научимся диагностировать типичные неисправности. Материал будет полезен как студентам автотехнических специальностей, так и владельцам автомобилей, желающим разобраться в «анатомии» своей машины. Для наглядности приведём схемы, таблицы с характеристиками охлаждающих жидкостей и чек-листы для самостоятельной проверки.</p>
+
+<h2 id="1-типы-систем-охлаждения-двс-сравнение-и-особенности">1. Типы систем охлаждения ДВС: сравнение и особенности</h2>
+
+<p>Существует три основных типа систем охлаждения, каждый из которых имеет свои преимущества и ограничения. Выбор типа зависит от конструкции двигателя, его мощности и условий эксплуатации.</p>
+
+<ul>
+ <li>🔥 <strong>Воздушная система</strong> — используется в мотоциклах, малолитражных автомобилях (например, <em>ZAZ-968</em> или <em>Porsche 911</em> классических моделей) и авиационных двигателях. Проста в обслуживании, но малоэффективна для современных высоконагруженных ДВС.</li>
+ <li>💧 <strong>Жидкостная система</strong> — самый распространённый тип в легковых и грузовых автомобилях. Охлаждающая жидкость (тосол/антифриз) циркулирует по каналам блока цилиндров, отводя тепло к радиатору.</li>
+ <li>⚡ <strong>Комбинированная система</strong> — сочетает жидкостное охлаждение блока цилиндров и воздушное охлаждение головки (применялось, например, в <em>VW Beetle</em> или <em>Chevrolet Corvair</em>). Сегодня практически не используется.</li>
+</ul>
+
+<p>В современных автомобилях доминирует <strong>жидкостная система</strong> благодаря своей эффективности и возможности точного контроля температуры. Однако даже она имеет подвиды:</p>
+
+<ul>
+ <li>🔄 <strong>Закрытая система</strong> — жидкость циркулирует в герметичном контуре под давлением (1.1–1.3 атм), что повышает температуру кипения до <strong>120–130°C</strong>.</li>
+ <li>🚰 <strong>Открытая система</strong> — сообщается с атмосферой через расширительный бачок. Используется в старых моделях (например, <em>ВАЗ-2101</em>).</li>
+</ul>
+
+<div class="poll-widget" id="poll-e8f7826f"><div class="poll-widget-question">📊 Какой тип системы охлаждения в вашем автомобиле?</div><div class="poll-widget-option" data-poll="e8f7826f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Жидкостная закрытая</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e8f7826f" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Жидкостная открытая</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e8f7826f" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Воздушная</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="e8f7826f" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Не знаю</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p><strong>Почему воздушное охлаждение ушло в прошлое?</strong> Главная причина — невозможность равномерно охлаждать все зоны двигателя, особенно при высоких нагрузках. Например, в <em>Porsche 911</em> с воздушным охлаждением цилиндры, расположенные ближе к вентилятору, переохлаждались, а дальние — перегревались, что вело к неравномерному износу.</p>
+
+<h2 id="2-устройство-жидкостной-системы-охлаждения-схемы-и-компоненты">2. Устройство жидкостной системы охлаждения: схемы и компоненты</h2>
+
+<p>Жидкостная система охлаждения состоит из нескольких ключевых элементов, каждый из которых выполняет конкретную функцию. Ниже приведена схема типичной системы для современного автомобиля (например, <em>Toyota Corolla</em> или <em>Volkswagen Golf</em>):</p>
+
+<p><strong>Основные компоненты:</strong></p>
+<ol>
+ <li><strong>Радиатор</strong> — теплообменник, где горячая жидкость охлаждается потоком воздуха.</li>
+ <li><strong>Водяной насос (помпа)</strong> — обеспечивает принудительную циркуляцию жидкости.</li>
+ <li><strong>Термостат</strong> — регулирует направление потока жидкости (малый/большой круг).</li>
+ <li><strong>Расширительный бачок</strong> — компенсирует изменение объёма жидкости при нагреве.</li>
+ <li><strong>Вентилятор радиатора</strong> — включается при недостаточном обдуве (например, в пробках).</li>
+ <li><strong>Патрубки и шланги</strong> — соединяют все элементы системы.</li>
+ <li><strong>Датчик температуры</strong> — передаёт данные на приборную панель и ЭБУ.</li>
+</ol>
+
+<p>В современных автомобилях система дополняется <strong>электронным управлением</strong>: ЭБУ может корректировать работу вентилятора или помпы в зависимости от нагрузки на двигатель. Например, в <em>BMW</em> с системой <em>Valvetronic</em> охлаждение адаптируется под режим работы мотора.</p>
+
+<details class="faq-item"><summary>Как работает малый и большой круг циркуляции?</summary><div class="faq-answer"><p>При холодном запуске термостат закрыт, и жидкость циркулирует по малому кругу (блок цилиндров → помпа → термостат → блок), чтобы быстрее прогреть двигатель. При достижении 80–90°C термостат открывается, и жидкость идёт по большому кругу (включая радиатор), где охлаждается.</p></div></details>
+
+<table>
+ <thead>
+ <tr>
+ <th>Компонент</th>
+ <th>Функция</th>
+ <th>Типичные неисправности</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Радиатор</td>
+ <td>Охлаждение жидкости за счёт воздуха</td>
+ <td>Засорение сот, течи, повреждение пластиковых бачков</td>
+ </tr>
+ <tr>
+ <td>Помпа</td>
+ <td>Циркуляция жидкости</td>
+ <td>Износ подшипника, течь через сальник, обрыв крыльчатки</td>
+ </tr>
+ <tr>
+ <td>Термостат</td>
+ <td>Регулировка направления потока</td>
+ <td>Заклинивание в открытом/закрытом положении</td>
+ </tr>
+ <tr>
+ <td>Вентилятор</td>
+ <td>Принудительный обдув радиатора</td>
+ <td>Отказ электромотора, повреждение лопастей</td>
+ </tr>
+ </tbody>
+</table>
+
+<h2 id="3-принцип-работы-системы-от-холодного-запуска-до-перегрева">3. Принцип работы системы: от холодного запуска до перегрева</h2>
+
+<p>Рассмотрим поэтапно, как работает система охлаждения на примере <em>4-цилиндрового бензинового двигателя</em>:</p>
+
+<ol>
+ <li><strong>Холодный запуск</strong>: Термостат закрыт, жидкость циркулирует только по малому кругу (блок цилиндров → головка блока → помпа). Это ускоряет прогрев двигателя до рабочей температуры.</li>
+ <li><strong>Прогрев до 80–90°C</strong>: Термостат начинает открываться, часть жидкости идёт через радиатор (большой круг). Вентилятор пока выключен.</li>
+ <li><strong>Рабочий режим</strong>: Жидкость циркулирует по большому кругу, температура поддерживается в диапазоне <strong>90–105°C</strong>. Вентилятор включается при превышении порога (обычно 95–100°C).</li>
+ <li><strong>Перегрев</strong>: Если температура превышает <strong>110°C</strong>, срабатывает аварийный режим: включается вентилятор на максимальной скорости, на приборной панели загорается <code>CHECK ENGINE</code> или значок термометра.</li>
+</ol>
+
+<p><mark>Критическая температура для большинства двигателей — 120°C. При её превышении начинается деформация головки блока цилиндров, а масло теряет смазывающие свойства, что ведёт к заклиниванию поршней.</mark></p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если стрелка температуры на приборной панели поднимается выше нормы, немедленно остановитесь и заглушите двигатель. Продолжение движения даже на 5–10 минут может привести к капитальному ремонту.</p></div>
+
+<p>В дизельных двигателях (например, <em>Mercedes OM617</em>) система охлаждения часто дополняется <strong>масляным радиатором</strong>, так как дизельное топливо сгорает при более высоких температурах, и тепловая нагрузка на масло выше.</p>
+
+<h2 id="4-охлаждающие-жидкости-типы-свойства-и-совместимость">4. Охлаждающие жидкости: типы, свойства и совместимость</h2>
+
+<p>Охлаждающая жидкость (ОЖ) — это не просто вода, а специальный состав, который должен:</p>
+<ul>
+ <li>❄️ Не замерзать при минусовых температурах (до <strong>-40°C</strong> и ниже).</li>
+ <li>🔥 Не кипеть при высоких температурах (до <strong>130°C</strong> в закрытой системе).</li>
+ <li>🛡️ Защищать металл от коррозии и кавитации.</li>
+ <li>🧪 Быть совместимой с резиновыми и пластиковыми деталями системы.</li>
+</ul>
+
+<p>Существует три основных типа ОЖ:</p>
+<ol>
+ <li><strong>Традиционные (тосолы)</strong> — на основе этиленгликоля с неорганическими присадками (силикаты, фосфаты). Срок службы: <strong>2 года</strong>. Пример: <em>Тосол-А40М</em>.</li>
+ <li><strong>Гибридные (G11)</strong> — этиленгликоль + органические и неорганические присадки. Срок службы: <strong>3–5 лет</strong>. Пример: <em>CoolStream Hybrid</em>.</li>
+ <li><strong>Карбоксилатные (G12, G12+, G13)</strong> — этиленгликоль или пропиленгликоль с органическими присадками. Срок службы: <strong>5 лет и более</strong>. Пример: <em>Motul Inugel Optimal</em>.</li>
+</ol>
+
+<table>
+ <thead>
+ <tr>
+ <th>Тип ОЖ</th>
+ <th>Цвет</th>
+ <th>Срок службы</th>
+ <th>Совместимость</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>Тосол</td>
+ <td>Синий/красный</td>
+ <td>2 года</td>
+ <td>Старые отечественные авто</td>
+ </tr>
+ <tr>
+ <td>G11</td>
+ <td>Зелёный/жёлтый</td>
+ <td>3–5 лет</td>
+ <td>Иномарки до 2000-х</td>
+ </tr>
+ <tr>
+ <td>G12/G12+</td>
+ <td>Красный/фиолетовый</td>
+ <td>5+ лет</td>
+ <td>Современные авто (VW, Audi, Skoda)</td>
+ </tr>
+ <tr>
+ <td>G13</td>
+ <td>Оранжевый/розовый</td>
+ <td>Пожизненно*</td>
+ <td>Экологичные авто (Porsche, BMW)</td>
+ </tr>
+ </tbody>
+</table>
+<p><small>* —"Пожизненно" означает срок службы до 250 000 км или 10 лет, но требует проверки уровня и свойств.</small></p>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Никогда не смешивайте ОЖ разных типов (например, G11 и G12) — это приводит к выпадению осадка и засорению системы. При замене промывайте систему дистиллированной водой.</p></div>
+
+<p><strong>Можно ли использовать воду?</strong> В экстренных случаях — да, но только <strong>дистиллированную</strong> (обычная вода содержит соли, которые образуют накипь). Однако вода кипит уже при 100°C и не защищает от коррозии, поэтому её нужно заменить на антифриз при первой возможности.</p>
+
+<h2 id="5-диагностика-неисправностей-симптомы-и-причины">5. Диагностика неисправностей: симптомы и причины</h2>
+
+<p>Неисправности системы охлаждения проявляются либо <strong>перегревом</strong>, либо <strong>недогревом</strong> двигателя. Рассмотрим типичные симптомы и их причины:</p>
+
+<ul>
+ <li>🔥 <strong>Перегрев двигателя</strong>:
+ <ul>
+ <li>Утечка ОЖ (повреждённые патрубки, радиатор, помпа).</li>
+ <li>Заклинивший термостат (не открывается).</li>
+ <li>Неисправный вентилятор (проблемы с электрикой или датчиком).</li>
+ <li>Засорение радиатора или каналов блока цилиндров.</li>
+ </ul>
+ </li>
+ <li>❄️ <strong>Недогрев двигателя</strong>:
+ <ul>
+ <li>Заклинивший термостат (не закрывается).</li>
+ <li>Неисправный датчик температуры (показывает ложные данные).</li>
+ <li>Проблемы с помпой (слабая циркуляция).</li>
+ </ul>
+ </li>
+ <li>💦 <strong>Потеки ОЖ</strong>:
+ <ul>
+ <li>Трещины в радиаторе или расширительном бачке.</li>
+ <li>Износ сальника помпы.</li>
+ <li>Пробой прокладки ГБЦ (ОЖ попадает в масло или цилиндры).</li>
+ </ul>
+ </li>
+</ul>
+
+<div class="checklist-block"><h4>☑️ Чек-лист при перегреве двигателя</h4><label class="check-item"><input type="checkbox"><span>Остановиться и заглушить мотор</span></label><label class="check-item"><input type="checkbox"><span>Проверить уровень ОЖ в расширительном бачке</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть радиатор на предмет засорения</span></label><label class="check-item"><input type="checkbox"><span>Проконтролировать работу вентилятора</span></label><label class="check-item"><input type="checkbox"><span>Проверить температуру верхнего и нижнего патрубков радиатора</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<p><strong>Как быстро определить причину?</strong> Например, если при перегреве <strong>нижний патрубок радиатора холодный</strong>, а верхний горячий — это признак неисправного термостата. Если оба патрубка горячие, но вентилятор не включается — проблема в электрике или датчике.</p>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если из выхлопной трубы идёт белый густой дым (особенно в тёплую погоду), это признак попадания ОЖ в цилиндры. Немедленно остановитесь — дальнейшая работа двигателя приведёт к гидроудару и разрушению поршневой группы.</blockquote>
+
+<p>В дизельных двигателях перегрев часто сопровождается <strong>детонацией</strong> — металлическим стуком, который слышен даже без стетоскопа. Это критичный симптом, требующий немедленной остановки.</p>
+
+<h2 id="6-обслуживание-системы-охлаждения-регламент-и-практические-советы">6. Обслуживание системы охлаждения: регламент и практические советы</h2>
+
+<p>Профилактика — залог долгой службы системы охлаждения. Вот основные рекомендации:</p>
+
+<ol>
+ <li><strong>Проверка уровня ОЖ</strong> — каждые <strong>1–2 недели</strong> (при холодном двигателе). Уровень должен быть между отметками <code>MIN</code> и <code>MAX</code> на расширительном бачке.</li>
+ <li><strong>Замена ОЖ</strong> — согласно регламенту производителя (обычно каждые <strong>5 лет или 100 000 км</strong> для G12+).</li>
+ <li><strong>Промывка системы</strong> — при замене типа ОЖ или при обнаружении осадка/ржавчины. Используйте специальные промывки (например, <em>LIQUI MOLY Kuhler-Reiniger</em>).</li>
+ <li><strong>Проверка патрубков</strong> — раз в год осматривайте на предмет трещин или размягчения (признак старения резины).</li>
+ <li><strong>Диагностика термостата</strong> — если двигатель долго прогревается или перегревается, проверьте термостат (можно опустить в кипяток — исправный откроется).</li>
+</ol>
+
+<p><strong>Как промыть систему охлаждения?</strong></p>
+<ol>
+ <li>Слейте старую ОЖ (откройте краник на радиаторе и блоке цилиндров).</li>
+ <li>Залейте промывочную жидкость или дистиллированную воду с лимонной кислотой (50 г на 5 л).</li>
+ <li>Заведите двигатель, дайте поработать <strong>10–15 минут</strong>.</li>
+ <li>Слейте промывку, повторите при необходимости.</li>
+ <li>Залейте новую ОЖ, удалите воздушные пробки (откройте кран на блоке или патрубок в верхней точке системы).</li>
+</ol>
+
+<blockquote>⚠️ <strong>Внимание:</strong> В некоторых автомобилях (например, <em>Subaru</em> с оппозитными двигателями) слив ОЖ может потребовать снятия защиты картера или даже поддона. Уточните процедуру в руководстве по ремонту.</blockquote>
+
+<p>Для автомобилей с <em>алюминиевым блоком цилиндров</em> (например, <em>Honda K-series</em>) особенно важно использовать ОЖ без силикатов (G12+ или G13), так как силикаты могут вызывать коррозию алюминия.</p>
+
+<h2 id="7-частые-ошибки-при-ремонте-и-как-их-избежать">7. Частые ошибки при ремонте и как их избежать</h2>
+
+<p>Даже опытные автовладельцы допускают ошибки при обслуживании системы охлаждения. Вот самые распространённые:</p>
+
+<ul>
+ <li>🚫 <strong>Использование воды вместо ОЖ</strong> — приводит к коррозии и накипи, особенно в регионах с жёсткой водой.</li>
+ <li>🚫 <strong>Смешивание разных типов ОЖ</strong> — вызывает химическую реакцию и образование геля, который засоряет радиатор.</li>
+ <li>🚫 <strong>Игнорирование воздушных пробок</strong> — ведёт к локальному перегреву и ложным показаниям датчика температуры.</li>
+ <li>🚫 <strong>Замена термостата без проверки</strong> — новый термостат может быть бракованным (проверяйте в кипятке перед установкой).</li>
+ <li>🚫 <strong>Экономия на патрубках</strong> — дешёвые неоригинальные шланги часто трескаются через 1–2 года.</li>
+</ul>
+
+<p><strong>Пример из практики:</strong> В <em>Ford Focus 2</em> с двигателем <em>1.6 Ti-VCT</em> часто встречается проблема с течью ОЖ из-под помпы. Многие владельцы ограничиваются заменой помпы, но корень проблемы — в <strong>изношенном сальнике распредвала</strong>, который проедает канавку на валу. Без ремонта вала новая помпа прослужит не больше 20 000 км.</p>
+
+<p>Ещё одна типичная ошибка — <strong>неправильная затяжка хомутов</strong>. Слишком слабая приводит к подтёкам, слишком сильная — к повреждению патрубков. Используйте <strong>червячные хомуты</strong> (например, <em>Norma</em>) и затягивайте их с усилием <strong>2–3 Н·м</strong>.</p>
+
+<h2 id="faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</h2>
+
+<details>
+ <summary>Можно ли ездить без термостата?</summary>
+ <p>Технически можно, но не рекомендуется. Без термостата двигатель будет долго прогреваться (особенно зимой), а в жаркую погоду риск перегрева возрастёт, так как жидкость будет постоянно циркулировать через радиатор, не успевая охлаждаться. В старых автомобилях (например, <em>ВАЗ-2106</em>) иногда устанавливали термостат с фиксированной температурой открытия (70°C), но современные двигатели рассчитаны на работу с точной регулировкой.</p>
+</details>
+
+<details>
+ <summary>Почему в расширительном бачке появляется масляная плёнка?</summary>
+ <p>Это признак <strong>пробоя прокладки ГБЦ</strong> или трещины в блоке/головке. Масло из системы смазки попадает в каналы охлаждения, образуя эмульсию. Если не устранить проблему, это приведёт к засорению радиатора и перегреву. Диагностируйте компрессию в цилиндрах и проверьте наличие газов в ОЖ (с помощью тестера или визуально — пузыри в бачке при работе двигателя).</p>
+</details>
+
+<details>
+ <summary>Как часто нужно менять антифриз в современном автомобиле?</summary>
+ <p>Срок службы зависит от типа ОЖ:
+ <ul>
+ <li><strong>G11</strong> — каждые 3 года или 60 000 км.</li>
+ <li><strong>G12/G12+</strong> — каждые 5 лет или 100 000 км.</li>
+ <li><strong>G13</strong> — до 10 лет или 250 000 км (но проверяйте уровень и состояние ежегодно).</li>
+ </ul>
+<p>Однако если ОЖ помутнела, приобрела ржавый оттенок или в ней видна взвесь — замените её независимо от срока службы.</p></p>
+</details>
+
+<details>
+ <summary>Что делать, если лопнул патрубок в дороге?</summary>
+ <p>Временное решение:
+ <ol>
+ <li>Остановитесь и заглушите двигатель.</li>
+ <li>Обрежьте повреждённый участок патрубка (если трещина).</li>
+ <li>Соедините концы с помощью <strong>резиновой трубки</strong> и <strong>хомутов</strong>.</li>
+ <li>Долейте ОЖ (в крайнем случае — дистиллированную воду).</li>
+ <li>Двигайтесь на низких оборотах, следя за температурой.</li>
+ </ol>
+ <strong>Внимание:</strong> Это временная мера! При первой возможности замените патрубок на новый.</p>
+</details>
+
+<details>
+ <summary>Почему после замены антифриза двигатель греется сильнее?</summary>
+ <p>Вероятные причины:
+ <ul>
+ <li>В системе остался <strong>воздух</strong> (образуются пробки, препятствующие циркуляции).</li>
+ <li>Неисправен <strong>термостат</strong> (заклинил в закрытом положении).</li>
+ <li>Использован <strong>некачественный антифриз</strong> с низкой теплоёмкостью.</li>
+ <li>Засорён <strong>радиатор</strong> (снаружи — грязь/пух, внутри — накипь).</li>
+ </ul>
+<p>Проверьте температуру патрубков радиатора: если верхний горячий, а нижний холодный — проблема в циркуляции (воздух или помпа).</p></p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#введение-почему-охлаждение-двигателя-критически-важная-система">Введение: почему охлаждение двигателя — критически важная система</a></li><li><a href="#1-типы-систем-охлаждения-двс-сравнение-и-особенности">1. Типы систем охлаждения ДВС: сравнение и особенности</a></li><li><a href="#2-устройство-жидкостной-системы-охлаждения-схемы-и-компоненты">2. Устройство жидкостной системы охлаждения: схемы и компоненты</a></li><li><a href="#3-принцип-работы-системы-от-холодного-запуска-до-перегрева">3. Принцип работы системы: от холодного запуска до перегрева</a></li><li><a href="#4-охлаждающие-жидкости-типы-свойства-и-совместимость">4. Охлаждающие жидкости: типы, свойства и совместимость</a></li><li><a href="#5-диагностика-неисправностей-симптомы-и-причины">5. Диагностика неисправностей: симптомы и причины</a></li><li><a href="#6-обслуживание-системы-охлаждения-регламент-и-практические-советы">6. Обслуживание системы охлаждения: регламент и практические советы</a></li><li><a href="#7-частые-ошибки-при-ремонте-и-как-их-избежать">7. Частые ошибки при ремонте и как их избежать</a></li><li><a href="#faq-ответы-на-частые-вопросы">FAQ: Ответы на частые вопросы</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/k/ka/kak-pomenyat-termostat-na-lachetti.html" class="related-card">Замена термостата на Chevrolet Lacetti: пошаговая инструкция 2026</a></li><li><a href="/articles/r/ra/radiator-okhlazhdeniya-granta-s-konditsionerom-8-klapanov-artikul.html" class="related-card">Радиатор охлаждения Лада Гранта 8кл с кондиционером: артикулы, выбор, замена</a></li><li><a href="/articles/t/te/termostat-2110-16-klapanov-artikul.html" class="related-card">Термостат ВАЗ 2110 16 клапанов: артикул, выбор и замена</a></li><li><a href="/articles/z/za/zamena-termostata-vesta-18.html" class="related-card">Замена термостата Веста 1.8: пошаговая инструкция и советы</a></li><li><a href="/articles/e/el/elektronnyj-termostat-dlya-avtomobilya.html" class="related-card">Электронный термостат для авто: выбор, установка, настройка</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/k/ka/kak-pomenyat-termostat-na-lachetti.html" class="related-bottom-card"><span class="related-bottom-title">Замена термостата на Chevrolet Lacetti: пошаговая инструкция 2026</span><span class="related-bottom-desc">Как самостоятельно поменять термостат на Лачетти 1.4/1.6/1.8: признаки неисправности, выбор запчасти</span></a><a href="/articles/r/ra/radiator-okhlazhdeniya-granta-s-konditsionerom-8-klapanov-artikul.html" class="related-bottom-card"><span class="related-bottom-title">Радиатор охлаждения Лада Гранта 8кл с кондиционером: артикулы, выбор, замена</span><span class="related-bottom-desc">Подробный гайд по выбору оригинального и аналогового радиатора охлаждения для Лада Гранта 8 клапанов</span></a><a href="/articles/t/te/termostat-2110-16-klapanov-artikul.html" class="related-bottom-card"><span class="related-bottom-title">Термостат ВАЗ 2110 16 клапанов: артикул, выбор и замена</span><span class="related-bottom-desc">Какой артикул термостата на ВАЗ 2110 16 клапанов выбрать? Полный гид по замене, обзор производителей</span></a><a href="/articles/z/za/zamena-termostata-vesta-18.html" class="related-bottom-card"><span class="related-bottom-title">Замена термостата Веста 1.8: пошаговая инструкция и советы</span><span class="related-bottom-desc">Подробная инструкция по замене термостата Lada Vesta 1.8. Симптомы неисправности, выбор запчасти, сл</span></a><a href="/articles/e/el/elektronnyj-termostat-dlya-avtomobilya.html" class="related-bottom-card"><span class="related-bottom-title">Электронный термостат для авто: выбор, установка, настройка</span><span class="related-bottom-desc">Как работает электронный термостат в автомобиле? Сравнение с механическим, инструкция по замене и на</span></a><a href="/articles/r/re/remont-viskomufty-daf-105.html" class="related-bottom-card"><span class="related-bottom-title">Ремонт вискомуфты DAF 105: пошаговая инструкция и советы</span><span class="related-bottom-desc">Как самостоятельно диагностировать и отремонтировать вискомуфту вентилятора DAF 105? Причины неиспра</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

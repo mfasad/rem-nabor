@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Как проверить помпу водяного охлаждения ПК: 7 рабочих способов — Рем Набор</title>
+    <meta name="description" content="Не знаете, работает ли помпа в системе водяного охлаждения компьютера? Узнайте 7 проверенных методов диагностики — от визуального осмотра до программного мониторинга. Пошаговые инструкции с фото и советами по устранению неисправностей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/k/ka/kak-uznat-rabotaet-li-pompa-na-vodyanom-okhlazhdenii-v-kompyutere.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как проверить помпу водяного охлаждения ПК: 7 рабочих способов">
+    <meta property="og:description" content="Не знаете, работает ли помпа в системе водяного охлаждения компьютера? Узнайте 7 проверенных методов диагностики — от визуального осмотра до программного мониторинга. Пошаговые инструкции с фото и советами по устранению неисправностей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/drugoe/">Другое</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Как проверить помпу водяного охлаждения ПК: 7 рабочих способов</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как проверить, работает ли помпа в водяном охлаждении компьютера: пошаговое руководство</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#1-визуальный-осмотр-первые-признаки-неисправности">1. Визуальный осмотр: первые признаки неисправности</a></li><li><a href="#2-проверка-температуры-когда-bios-говорит-правду">2. Проверка температуры: когда BIOS говорит правду</a></li><li><a href="#3-проверка-подключения-разъёмы-и-питание">3. Проверка подключения: разъёмы и питание</a></li><li><a href="#4-тест-на-вибрацию-и-шум-тактильная-диагностика">4. Тест на вибрацию и шум: тактильная диагностика</a></li><li><a href="#5-проверка-мультиметром-для-опытных-пользователей">5. Проверка мультиметром: для опытных пользователей</a></li><li><a href="#6-программная-диагностика-когда-bios-молчит">6. Программная диагностика: когда BIOS молчит</a></li><li><a href="#7-крайние-меры-разборка-и-прямая-проверка">7. Крайние меры: разборка и прямая проверка</a></li><li><a href="#частые-вопросы-о-помпах-в-сво">Частые вопросы о помпах в СВО</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body">
+
+<p>Система водяного охлаждения (СВО) — это сердце высокопроизводительного ПК, и её <strong>помпа</strong> (насос) играет ключевую роль в циркуляции жидкости. Если помпа выходит из строя, последствия могут быть катастрофическими: от перегрева процессора до поломки видеокарты или материнской платы. Но как понять, что насос работает неправильно, если система внешне выглядит исправной?</p>
+
+<p>Многие пользователи сталкиваются с дилеммой: <strong>компьютер включается, кулеры крутятся, но температура процессора поднимается до критических значений</strong>. Первое подозрение падает на термопасту или радиатор, однако виновником часто оказывается именно помпа. В этой статье мы разберём <strong>7 надёжных способов проверки</strong> — от простейших визуальных тестов до глубокой диагностики с помощью программ и мультиметра. Вы узнаете, как распознать признаки неисправности на ранних стадиях и что делать, если помпа действительно сломалась.</p>
+
+<p>⚠️ <strong>Важно:</strong> Если ваша СВО находится на гарантии, разборка блока с помпой может аннулировать её. Перед любыми манипуляциями проверьте условия производителя (например, у <em>Corsair Hydro Series</em> или <em>NZXT Kraken</em> гарантия распространяется только на сервисные центры).</p>
+
+<h2 id="1-визуальный-осмотр-первые-признаки-неисправности">1. Визуальный осмотр: первые признаки неисправности</h2>
+
+<p>Начните с внешнего осмотра системы. Даже без специальных инструментов можно заметить очевидные проблемы:</p>
+
+<ul>
+  <li>🔍 <strong>Подтёки жидкости</strong> на трубках, радиаторе или блоке помпы. Если вы увидели влагу или белый налёт (от испарения антифриза), это сигнал о разгерметизации контура. В таком случае помпу нужно проверять в последнюю очередь — сначала устраните утечку.</li>
+  <li>🌀 <strong>Отсутствие пузырьков в резервуаре</strong> (если он прозрачный). В рабочей системе при включении ПК жидкость должна циркулировать, а пузырьки — двигаться по контуру. Статичная жидкость = помпа не качает.</li>
+  <li>🔊 <strong>Необычные звуки</strong>: скрежет, треск или полное отсутствие шума. Исправная помпа издаёт лёгкое жужжание (у <em>Alphacool Eisbaer</em> оно тише, чем у <em>Cooler Master ML</em>). Если насос молчит — это плохой знак.</li>
+</ul>
+
+<p>Также обратите внимание на <strong>состояние трубок</strong>. Если они сжаты или перекручены, это может блокировать поток жидкости, создавая иллюзию неисправной помпы. Проверьте, не пережат ли где-нибудь шланг.</p>
+
+<p>⚠️ <strong>Внимание:</strong> Некоторые СВО (например, <em>Arctic Liquid Freezer II</em>) имеют встроенные RGB-подсветки, которые могут маскировать подтёки. Осматривайте систему при выключенном свете или отключите подсветку в программе управления (например, <code>MSI Center</code> или <code>Corsair iCUE</code>).</p>
+
+<h2 id="2-проверка-температуры-когда-bios-говорит-правду">2. Проверка температуры: когда BIOS говорит правду</h2>
+
+<p>Если помпа не работает, первым делом это отразится на температурах компонентов. Вот как проверить это без разборки ПК:</p>
+
+<ol>
+  <li><strong>Зайдите в BIOS/UEFI</strong> (обычно клавиша <code>Del</code>, <code>F2</code> или <code>F12</code> при загрузке). Найдите раздел <code>Hardware Monitor</code> или <code>PC Health Status</code> — там отображаются температуры процессора (<code>CPU Temp</code>) и материнской платы.</li>
+  <li><strong>Сравните показатели</strong> с нормой:
+    <ul>
+      <li>🌡️ <strong>Холодный старт (2–5 минут после включения)</strong>: температура CPU должна быть на 5–10°C выше комнатной (например, 25–30°C при 20°C в помещении).</li>
+      <li>🔥 <strong>Под нагрузкой (стресс-тест)</strong>: если через 10 минут работы <em>AIDA64</em> или <em>Prime95</em> температура превышает 90–95°C — помпа точно не справляется.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Для более точной диагностики используйте программы мониторинга:</p>
+<ul>
+  <li><em>HWMonitor</em> — показывает температуры всех ядер и скорость вращения вентиляторов.</li>
+  <li><em>Open Hardware Monitor</em> — отображает данные с датчиков СВО (если они поддерживаются).</li>
+  <li><em>SpeedFan</em> — позволяет регулировать обороты помпы (если она подключена к 4-pin разъёму на материнке).</li>
+</ul>
+
+<div class="poll-widget" id="poll-4d2882a9"><div class="poll-widget-question">📊 Какую программу вы используете для мониторинга температур?</div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">HWMonitor</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">AIDA64</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Open Hardware Monitor</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">SpeedFan</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">BIOS/UEFI</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="4d2882a9" data-idx="5" onclick="pbPollVote(this)"><span class="poll-widget-label">Другую</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<p>💡 <strong>Совет:</strong> Если температура процессора поднимается до 100°C за считанные секунды после запуска стресс-теста, это может указывать не только на неисправную помпу, но и на <strong>отсутствие контакта между водоблоком и крышкой CPU</strong> (например, из-за неправильной установки или высохшей термопасты).</p>
+
+<h2 id="3-проверка-подключения-разъёмы-и-питание">3. Проверка подключения: разъёмы и питание</h2>
+
+<p>Часто проблема кроется не в самой помпе, а в её подключении. Вот что нужно проверить:</p>
+
+<ul>
+  <li>⚡ <strong>Питание помпы</strong>:
+    <ul>
+      <li>Большинство насосов подключаются к <code>CPU_FAN</code> или <code>PUMP_FAN</code> на материнской плате. Убедитесь, что разъём плотно сидит в гнезде.</li>
+      <li>Некоторые модели (например, <em>Corsair H100i</em>) требуют дополнительного подключения к <code>SATA</code> для питания. Проверьте, не выпал ли кабель.</li>
+    </ul>
+  </li>
+  <li>🔌 <strong>Тип разъёма</strong>:
+    <ul>
+      <li>3-pin — помпа работает на постоянных оборотах (не регулируется).</li>
+      <li>4-pin (PWM) — скорость насоса можно контролировать через BIOS или программно.</li>
+    </ul>
+<p>Если ваша материнская плата не поддерживает PWM-управление помпой, насос будет работать на максимальных оборотах постоянно.</p>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Тип разъёма</th>
+      <th>Характеристики</th>
+      <th>Как проверить</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>3-pin</td>
+      <td>Постоянное напряжение 12V, нет регулировки скорости</td>
+      <td>Измерить напряжение мультиметром на контактах 1 (+12V) и 3 (GND)</td>
+    </tr>
+    <tr>
+      <td>4-pin (PWM)</td>
+      <td>Регулируемая скорость через 4-й контакт (сигнал PWM)</td>
+      <td>В BIOS включить режим <code>PWM</code> для разъёма <code>CPU_FAN</code></td>
+    </tr>
+    <tr>
+      <td>SATA + 3/4-pin</td>
+      <td>Питание от блока питания, управление через материнскую плату</td>
+      <td>Проверить подключение обоих кабелей</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>⚠️ <strong>Внимание:</strong> Если помпа подключена к разъёму <code>SYS_FAN</code> вместо <code>CPU_FAN</code>, материнская плата может неверно интерпретировать её обороты и отключать ПК из-за "перегрева" (даже если температура в норме). Всегда используйте предназначенные для помпы разъёмы!</p>
+
+<div class="checklist-block"><h4>☑️ Проверка подключения помпы</h4><label class="check-item"><input type="checkbox"><span>Убедиться, что кабель плотно сидит в разъёме</span></label><label class="check-item"><input type="checkbox"><span>Проверить тип разъёма (3-pin или 4-pin)</span></label><label class="check-item"><input type="checkbox"><span>В BIOS включить режим PWM для 4-pin помпы</span></label><label class="check-item"><input type="checkbox"><span>Проверить подключение дополнительного питания (SATA)</span></label><label class="check-item"><input type="checkbox"><span>Осмотреть кабели на повреждения</span></label><div class="check-progress">Выполнено: <span class="check-count">0</span> / 5</div></div>
+
+<h2 id="4-тест-на-вибрацию-и-шум-тактильная-диагностика">4. Тест на вибрацию и шум: тактильная диагностика</h2>
+
+<p>Исправная помпа при работе создаёт лёгкую вибрацию, которую можно почувствовать рукой. Вот как это проверить:</p>
+
+<ol>
+  <li><strong>Выключите ПК</strong> и дотроньтесь до блока помпы (водоблока). Запомните его температуру.</li>
+  <li><strong>Включите компьютер</strong> и через 10–15 секунд аккуратно прикоснитесь к насосу снова. Исправная помпа должна:
+    <ul>
+      <li>🤲 <strong>Вибрировать</strong> (лёгкая дрожь под пальцами).</li>
+      <li>🔊 <strong>Жужжать</strong> (равномерный низкочастотный звук, без щелчков).</li>
+      <li>🌡️ <strong>Нагреваться</strong> (но не обжигать! Норма: до 40–45°C).</li>
+    </ol>
+  </li>
+  <li><strong>Сравните с эталоном</strong>: если у вас есть возможность, послушайте работу исправной СВО (например, в магазине или на видео). Звук неисправной помпы часто напоминает "хруст" или "скрежет" подшипников.</li>
+</ol>
+
+<p>💡 <strong>Полезный совет:</strong> Чтобы лучше услышать помпу, используйте <strong>стетоскоп</strong> (или его аналог — трубку от капельницы, приложенную к уху). Приложите второй конец к водоблоку: так вы услышите даже слабые шумы подшипника.</p>
+
+<details class="faq-item"><summary>Что делать, если помпа слишком шумная?</summary><div class="faq-answer"><p>Если насос издаёт громкий шум, но температура в норме, проблема может быть в:
+<p>- <strong>воздухе в системе</strong> (нужно стравить через специальный клапан);</p>
+<p>- <strong>износе подшипника</strong> (требуется замена помпы);</p>
+<p>- <strong>неправильной установке</strong> (проверьте крепление водоблока к процессору).</p></div></details></p>
+
+<h2 id="5-проверка-мультиметром-для-опытных-пользователей">5. Проверка мультиметром: для опытных пользователей</h2>
+
+<p>Если вы знакомы с электроникой, можно проверить помпу мультиметром. Это поможет выявить проблемы с питанием или обрывы в цепи.</p>
+
+<p><strong>Пошаговая инструкция:</strong></p>
+<ol>
+  <li><strong>Отключите ПК от сети</strong> и снимите боковую крышку.</li>
+  <li><strong>Найдите разъём помпы</strong> на материнской плате (обычно подписан как <code>CPU_FAN</code> или <code>PUMP_FAN</code>).</li>
+  <li><strong>Подключите мультиметр</strong> в режиме измерения постоянного напряжения (DC, 20V):
+    <ul>
+      <li>Чёрный щуп — к <code>GND</code> (обычно чёрный или коричневый провод).</li>
+      <li>Красный щуп — к <code>+12V</code> (жёлтый провод).</li>
+    </ul>
+  </li>
+  <li><strong>Включите ПК</strong> и замерьте напряжение. Норма: <mark>11.5–12.5V</mark>. Если напряжение ниже 10V, проблема в блоке питания или кабелях.</li>
+  <li><strong>Проверьте сопротивление обмотки</strong> (если помпа отключена):
+    <ul>
+      <li>Переведите мультиметр в режим омметра.</li>
+      <li>Подключите щупы к контактам питания помпы (без подключения к материнке!).</li>
+      <li>Нормальное сопротивление: <strong>5–30 Ом</strong>. Если прибор показывает <code>OL</code> (обрыв) или <code>0 Ом</code> (короткое замыкание), помпа неисправна.</li>
+    </ol>
+  </li>
+</ol>
+
+<p>⚠️ <strong>Внимание:</strong> Не все помпы можно тестировать омметром — некоторые имеют встроенную электронику, которая может выйти из строя при прямом измерении сопротивления. Перед тестом проверьте документацию к вашей модели (например, у <em>Thermaltake Water 3.0</em> допускается проверка, а у <em>NZXT Kraken X</em> — нет).</p>
+
+<h2 id="6-программная-диагностика-когда-bios-молчит">6. Программная диагностика: когда BIOS молчит</h2>
+
+<p>Современные СВО от <em>Corsair</em>, <em>NZXT</em> или <em>Asus ROG</em> оснащены встроенными датчиками, которые передают данные в фирменное ПО. Вот как ими пользоваться:</p>
+
+<ul>
+  <li>🖥️ <strong><em>Corsair iCUE</strong></strong>:
+    <ul>
+      <li>Откройте вкладку <code>Cooling</code>.</li>
+      <li>Найдите график <code>Pump Speed (RPM)</code>. Нормальные обороты: <strong>2000–3500 RPM</strong> (зависит от модели).</li>
+      <li>Если график показывает <code>0 RPM</code> — помпа не работает.</li>
+    </ul>
+  </li>
+  <li>🖥️ <strong><em>NZXT CAM</strong></strong>:
+    <ul>
+      <li>В разделе <code>Performance</code> проверьте параметр <code>Liquid Temp</code>.</li>
+      <li>Если температура жидкости растёт быстрее температуры CPU, циркуляция нарушена.</li>
+    </ul>
+  </li>
+  <li>🖥️ <strong><em>Asus Armoury Crate</strong></em> (для СВО <em>ROG Ryujin</em>):
+    <ul>
+      <li>Перейдите в <code>AIO Cooler</code>.</li>
+      <li>Проверьте <code>Pump Duty Cycle</code> (должен быть <strong>100%</strong> при нагрузке).</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Если фирменное ПО не показывает данные о помпе, попробуйте универсальные утилиты:</p>
+<ul>
+  <li><em>HWiNFO64</em> — отображает обороты помпы в разделе <code>Sensors</code> (ищите строку с <code>Pump</code>).</li>
+  <li><em>AIDA64</em> — в <code>Computer → Sensors</code> проверьте параметр <code>Coolant</code> или <code>Liquid Temperature</code>.</li>
+</ul>
+
+<p>💡 <strong>Ключевой вывод:</strong> Если программа показывает обороты помпы, но температура CPU растёт, проблема может быть в <strong>завоздушенности системы</strong> или <strong>засоре радиатора</strong>. В этом случае помпа работает, но эффективность охлаждения падает.</p>
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Отсутствие данных о помпе в программах может означать не только её поломку, но и проблемы с драйверами или подключением к USB-порту (актуально для СВО с цифровым управлением).</p></div>
+
+<h2 id="7-крайние-меры-разборка-и-прямая-проверка">7. Крайние меры: разборка и прямая проверка</h2>
+
+<p>Если все предыдущие методы не дали результата, остаётся самый радикальный способ — <strong>прямая проверка помпы вне системы</strong>. Это актуально для пользователей, которые готовят СВО к замене или имеют запасную помпу.</p>
+
+<p><strong>Инструкция:</strong></p>
+<ol>
+  <li><strong>Отключите СВО</strong> от ПК, слейте жидкость (если планируете использовать повторно).</li>
+  <li><strong>Подключите помпу к блоку питания</strong>:
+    <ul>
+      <li>Используйте <code>Molex</code>-разветвитель или переходник на <code>SATA</code>.</li>
+      <li>Подключите помпу к <code>+12V</code> (жёлтый провод) и <code>GND</code> (чёрный).</li>
+    </ul>
+  </li>
+  <li><strong>Включите блок питания</strong> (можно "обмануть" его, замкнув зелёный и чёрный провода на 24-pin разъёме).</li>
+  <li><strong>Проверьте работу</strong>:
+    <ul>
+      <li>Исправная помпа начнёт жужжать и вибрировать.</li>
+      <li>Если жидкость в контуре есть, она должна циркулировать (видно через прозрачные трубки).</li>
+    </ol>
+  </li>
+</ol>
+
+<p>⚠️ <strong>Внимание:</strong> Не все помпы можно запускать "всухую" (без жидкости)! Например, <em>Alphacool</em> и <em>EKWB</em> требуют обязательного наличия охлаждающей жидкости для смазки подшипников. Работа "вхолостую" может привести к мгновенной поломке.</p>
+
+<p>💡 <strong>Совет:</strong> Если вы разобрали СВО и обнаружили <strong>ржавчину или осадок</strong> внутри помпы, её лучше заменить. Даже если насос ещё работает, коррозия вскоре выведет его из строя.</p>
+
+<h2 id="частые-вопросы-о-помпах-в-сво">Частые вопросы о помпах в СВО</h2>
+
+<details>
+  <summary>🔹 Почему помпа работает, но температура процессора высокая?</summary>
+  <p>Это может быть вызвано несколькими причинами:</p>
+  <ul>
+    <li><strong>Завоздушенность системы</strong> — воздух блокирует циркуляцию жидкости. Решение: стравить воздух через специальный клапан (если есть) или наклонить ПК так, чтобы пузыри поднялись в расширительный бачок.</li>
+    <li><strong>Засор радиатора или трубок</strong> — со временем в системе накапливается осадок (особенно если использовалась дистиллированная вода без присадок). Решение: промыть контур специальной жидкостью (например, <em>EK-CryoFuel Clear</em>).</li>
+    <li><strong>Неправильная установка водоблока</strong> — если между ним и процессором есть зазор, теплопередача нарушается. Решение: переустановить водоблок с новой термопастой.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🔹 Можно ли ремонтировать помпу или только заменить?</summary>
+  <p>Большинство помп в СВО <strong>неремонтопригодны</strong>, так как они герметичны и запчастей для них не продают. Однако есть исключения:</p>
+  <ul>
+    <li><em>Alphacool Eisbaer</em> — можно заменить ротор или подшипник (продаются ремкомплекты).</li>
+    <li><em>Custom--loop</em> (самосборные СВО) — помпу можно разобрать и почистить, но это требует опыта.</li>
+  </ul>
+  <p>В 90% случаев проще и дешевле купить новую помпу, чем ремонтировать старую. Средняя стоимость замены — от 2 000 до 6 000 рублей (в зависимости от модели).</p>
+</details>
+
+<details>
+  <summary>🔹 Как часто нужно менять помпу в СВО?</summary>
+  <p>Срок службы помпы зависит от модели и условий эксплуатации:</p>
+  <ul>
+    <li><strong>AIO-системы</strong> (например, <em>Cooler Master ML240</em>): <strong>3–5 лет</strong>. После этого риск утечки или поломки насоса резко возрастает.</li>
+    <li><strong>Custom-loop</strong> (например, <em>EKWB D5</em>): <strong>5–7 лет</strong>, но требуют регулярного обслуживания (замена жидкости раз в 1–2 года).</li>
+    <li><strong>Помпы с керамическими подшипниками</strong> (например, <em>Laing DDC</em>) служат дольше — до <strong>8–10 лет</strong>.</li>
+  </ul>
+  <p>Признаки того, что помпу пора менять:</p>
+  <ul>
+    <li>Увеличение шума (скрежет, визг).</li>
+    <li>Падение оборотов (видно в программах мониторинга).</li>
+    <li>Рост температуры CPU при тех же нагрузках.</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🔹 Что делать, если помпа заклинила?</summary>
+  <p>Если помпа полностью перестала работать (не жужжит, не вибрирует), попробуйте следующие шаги:</p>
+  <ol>
+    <li><strong>Проверьте питание</strong> — возможно, отошёл кабель или сгорел разъём на материнской плате.</li>
+    <li><strong>Попробуйте "раскачать" помпу</strong>:
+      <ul>
+        <li>Отключите ПК от сети.</li>
+        <li>Аккуратно постучите по корпусу помпы (не по трубкам!) деревянной палочкой.</li>
+        <li>Подключите питание и попробуйте запустить насос снова.</li>
+      </ol>
+      <p>Иногда это помогает сдвинуть заклинивший ротор.</p>
+    </li>
+    <li><strong>Если ничего не помогло</strong> — помпу придётся заменить. Не рискуйте включать ПК с неработающим охлаждением!</li>
+  </ol>
+</details>
+
+<details>
+  <summary>🔹 Можно ли использовать СВО без помпы (например, для теста)?</summary>
+  <p><strong>Категорически нет!</strong> Без циркуляции жидкости тепло от процессора не отводится, и он перегреется за считанные секунды. Даже если вы просто хотите проверить подсветку или вентиляторы, <strong>не включайте ПК без работающей помпы</strong>.</p>
+  <p>Если нужно протестировать другие компоненты СВО (например, вентиляторы на радиаторе), отключите водоблок от процессора и запускайте систему с воздушным кулером.</p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#1-визуальный-осмотр-первые-признаки-неисправности">1. Визуальный осмотр: первые признаки неисправности</a></li><li><a href="#2-проверка-температуры-когда-bios-говорит-правду">2. Проверка температуры: когда BIOS говорит правду</a></li><li><a href="#3-проверка-подключения-разъёмы-и-питание">3. Проверка подключения: разъёмы и питание</a></li><li><a href="#4-тест-на-вибрацию-и-шум-тактильная-диагностика">4. Тест на вибрацию и шум: тактильная диагностика</a></li><li><a href="#5-проверка-мультиметром-для-опытных-пользователей">5. Проверка мультиметром: для опытных пользователей</a></li><li><a href="#6-программная-диагностика-когда-bios-молчит">6. Программная диагностика: когда BIOS молчит</a></li><li><a href="#7-крайние-меры-разборка-и-прямая-проверка">7. Крайние меры: разборка и прямая проверка</a></li><li><a href="#частые-вопросы-о-помпах-в-сво">Частые вопросы о помпах в СВО</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/b/ba/batarejka-na-knajt-80.html" class="related-card">Батарейка на Кнайт 80: как заменить, модели и ошибки</a></li><li><a href="/articles/k/ka/kak-ubrat-gar-iz-isparitelya.html" class="related-card">Как убрать гарь из испарителя: чистка парогенератора и утюга</a></li><li><a href="/articles/p/po/pochemu-v-khlebopechke-ne-krutitsya-lopast.html" class="related-card">Почему в хлебопечке не крутится лопасть: 5 причин и ремонт</a></li><li><a href="/articles/v/v-/v-khlebopechke-ne-krutitsya-meshalka-prichina.html" class="related-card">В хлебопечке не крутится мешалка: причины и ремонт</a></li><li><a href="/articles/s/sm/smoant-knight-80-ne-vklyuchaetsya.html" class="related-card">Smoant Knight 80 не включается: причины и ремонт своими руками</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/b/ba/batarejka-na-knajt-80.html" class="related-bottom-card"><span class="related-bottom-title">Батарейка на Кнайт 80: как заменить, модели и ошибки</span><span class="related-bottom-desc">Инструкция по замене батарейки на Кнайт 80 (Knight). Какие элементы питания подходят, коды ошибок и </span></a><a href="/articles/k/ka/kak-ubrat-gar-iz-isparitelya.html" class="related-bottom-card"><span class="related-bottom-title">Как убрать гарь из испарителя: чистка парогенератора и утюга</span><span class="related-bottom-desc">Эффективные методы удаления накипи и гари из испарителя. Инструкция по чистке утюгов, отпаривателей </span></a><a href="/articles/p/po/pochemu-v-khlebopechke-ne-krutitsya-lopast.html" class="related-bottom-card"><span class="related-bottom-title">Почему в хлебопечке не крутится лопасть: 5 причин и ремонт</span><span class="related-bottom-desc">Лопасть в хлебопечке не вращается? Полный гид по диагностике: ремень, мотор, втулки. Инструкция по у</span></a><a href="/articles/v/v-/v-khlebopechke-ne-krutitsya-meshalka-prichina.html" class="related-bottom-card"><span class="related-bottom-title">В хлебопечке не крутится мешалка: причины и ремонт</span><span class="related-bottom-desc">Почему в хлебопечке не вращается лопасть? Полный разбор причин: ремень, двигатель, редуктор. Инструк</span></a><a href="/articles/s/sm/smoant-knight-80-ne-vklyuchaetsya.html" class="related-bottom-card"><span class="related-bottom-title">Smoant Knight 80 не включается: причины и ремонт своими руками</span><span class="related-bottom-desc">Подробный разбор причин, почему Smoant Knight 80 не реагирует на кнопку включения. Пошаговые инструк</span></a><a href="/articles/s/sk/skolko-nuzhno-sushit-isparitel-posle-kipyacheniya.html" class="related-bottom-card"><span class="related-bottom-title">Сколько сушить испаритель после кипячения: точное время</span><span class="related-bottom-desc">Полное руководство по сушке испарителя после кипячения. Узнайте, сколько времени ждать, как проверит</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>

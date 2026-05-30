@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔧</text></svg>">
+    <title>Подключение датчика бойлера к котлу Protherm: схема и инструкция — Рем Набор</title>
+    <meta name="description" content="Пошаговое руководство по подключению внешнего датчика бойлера к котлу Protherm. Схемы, ошибки, настройки и совместимость моделей.">
+    <link rel="canonical" href="https://rem-nabor.vercel.app/articles/p/po/podklyuchenie-datchika-bojlera-k-kotlu-proterm.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Подключение датчика бойлера к котлу Protherm: схема и инструкция">
+    <meta property="og:description" content="Пошаговое руководство по подключению внешнего датчика бойлера к котлу Protherm. Схемы, ошибки, настройки и совместимость моделей.">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css?v=1780103448">
+    <style>
+    .site-footer-premium {
+        margin-top: 60px; padding: 40px 0 0; background: #1e293b; color: #94a3b8;
+    }
+    .footer-grid {
+        display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+        padding-bottom: 32px; border-bottom: 1px solid #334155;
+    }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .footer-about { font-size: 0.9rem; line-height: 1.6; margin-bottom: 8px; }
+    .footer-updated { font-size: 0.8rem; color: #64748b; }
+    .footer-col h4 { color: #f1f5f9; font-size: 0.95rem; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a { color: #94a3b8; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-col a:hover { color: #60a5fa; }
+    .footer-bottom { padding: 20px 0; text-align: center; font-size: 0.85rem; }
+    @media (max-width: 640px) {
+        .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .cookie-popup {
+        position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff;
+        padding: 16px; transition: transform 0.5s ease; z-index: 9999; border-top: 2px solid #2563eb;
+        transform: translateY(100%);
+    }
+    .cookie-popup.visible { transform: translateY(0); }
+    .cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.9rem; }
+    .cookie-btn { background: #2563eb; color: #fff; border: none; padding: 8px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .cookie-btn:hover { background: #1d4ed8; }
+    @media (max-width: 640px) {
+        .cookie-inner { flex-direction: column; text-align: center; }
+    }
+</style>
+    
+    <!--#include virtual="/ssi/head.html" -->
+</head>
+<body>
+        <!--#include virtual="/ssi/body_top.html" -->
+    <style>
+    .nav-dropdown { position: relative; display: inline-block; }
+    .dropdown-toggle {
+        background: none; border: none; cursor: pointer;
+        font: inherit; color: inherit; padding: 8px 12px;
+        border-radius: 8px; transition: background 0.2s;
+    }
+    .dropdown-toggle:hover { background: rgba(0,0,0,0.05); }
+    .dropdown-menu {
+        display: none; position: absolute; right: 0; top: 100%;
+        min-width: 240px; max-height: 70vh; overflow-y: auto;
+        background: var(--card-bg, #fff); border: 1px solid var(--border, #e5e7eb);
+        border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        padding: 8px 0; z-index: 1000;
+    }
+    .nav-dropdown::after {
+        content: ''; position: absolute; left: 0; right: 0;
+        top: 100%; height: 12px;
+    }
+    .nav-dropdown:hover .dropdown-menu,
+    .nav-dropdown:focus-within .dropdown-menu { display: block; }
+    .dropdown-item {
+        display: block; padding: 10px 20px; color: var(--text, #1f2937);
+        text-decoration: none; font-size: 0.95rem; transition: background 0.15s;
+        white-space: nowrap;
+    }
+    .dropdown-item:hover { background: rgba(37,99,235,0.06); color: var(--primary, #2563eb); }
+    @media (max-width: 768px) {
+        .main-nav > .nav-link { display: none; }
+        .dropdown-toggle { display: none; }
+        .dropdown-menu {
+            display: block !important; position: static;
+            box-shadow: none; border: none; border-radius: 0;
+            min-width: auto; max-height: none; padding: 0;
+            background: transparent;
+        }
+        .dropdown-item {
+            padding: 8px 0; font-size: 1rem;
+        }
+    }
+    </style>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                <span class="logo-icon">🔧</span>
+                <span>Рем Набор</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Меню" id="menuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <a href="/category/sistema-okhlazhdeniya-avto/" class="nav-link">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="nav-link">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="nav-link">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="nav-link">🔥 Отопление салона</a>
+<div class="nav-dropdown">
+            <button class="nav-link dropdown-toggle">📂 Все разделы ▾</button>
+            <div class="dropdown-menu"><a href="/category/sistema-okhlazhdeniya-avto/" class="dropdown-item">🚗 Система охлаждения авто</a>
+<a href="/category/avtomobilnyj-konditsioner/" class="dropdown-item">❄️ Автомобильный кондиционер</a>
+<a href="/category/ventilyatory-i-datchiki/" class="dropdown-item">🌬️ Вентиляторы и датчики</a>
+<a href="/category/otoplenie-salona/" class="dropdown-item">🔥 Отопление салона</a>
+<a href="/category/bytovye-kholodilniki/" class="dropdown-item">🧊 Бытовые холодильники</a>
+<a href="/category/domashnie-konditsionery/" class="dropdown-item">🏠 Домашние кондиционеры</a>
+<a href="/category/vodonagrevateli-i-kotly/" class="dropdown-item">🚿 Водонагреватели и котлы</a>
+<a href="/category/nasosy-dlya-vody/" class="dropdown-item">💧 Насосы для воды</a>
+<a href="/category/radiatory-i-teploobmenniki/" class="dropdown-item">🌡️ Радиаторы и теплообменники</a>
+<a href="/category/freon-i-khladagenty/" class="dropdown-item">🧪 Фреон и хладагенты</a>
+<a href="/category/termoregulyatory/" class="dropdown-item">🎛️ Терморегуляторы</a>
+<a href="/category/avtozapchasti-i-raskhodniki/" class="dropdown-item">🛒 Автозапчасти и расходники</a>
+<a href="/category/drugoe/" class="dropdown-item">📁 Другое</a></div>
+        </div>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="breadcrumbs" aria-label="Навигация">
+        <div class="container"><a href="/">Главная</a><span class="breadcrumb-sep">›</span><a href="/category/vodonagrevateli-i-kotly/">Водонагреватели и котлы</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Подключение датчика бойлера к котлу Protherm: схема и инструкция</span></div>
+    </nav>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="article-layout">
+                <article class="article-main">
+                    
+                    <h1>Как правильно подключить датчик бойлера к котлу Protherm: пошаговая инструкция с схемами</h1>
+                    <nav class="mobile-toc"><details><summary>📋 Содержание</summary><ul><li><a href="#какие-датчики-бойлера-совместимы-с-котлами-protherm">Какие датчики бойлера совместимы с котлами Protherm</a></li><li><a href="#необходимые-инструменты-и-материалы">Необходимые инструменты и материалы</a></li><li><a href="#схемы-подключения-датчика-бойлера-к-котлу-protherm">Схемы подключения датчика бойлера к котлу Protherm</a></li><li><a href="#пошаговая-инструкция-по-подключению-датчика">Пошаговая инструкция по подключению датчика</a></li><li><a href="#типичные-ошибки-и-их-устранение">Типичные ошибки и их устранение</a></li><li><a href="#настройка-приоритета-нагрева-бойлера">Настройка приоритета нагрева бойлера</a></li><li><a href="#обслуживание-и-проверка-работоспособности">Обслуживание и проверка работоспособности</a></li><li><a href="#faq-частые-вопросы-по-подключению-датчика-бойлера-к-protherm">FAQ: Частые вопросы по подключению датчика бойлера к Protherm</a></li></ul></details></nav>
+                    <!--#include virtual="/ssi/article_before.html" -->
+                    <div class="article-body"><p>Подключение внешнего датчика бойлера к котлу <em>Protherm</em> — задача, с которой сталкиваются владельцы систем отопления при интеграции накопительного водонагревателя. Без правильной настройки котел не сможет корректно управлять нагревом воды в бойлере, что приведет к перерасходу газа, нестабильной температуре или даже поломке оборудования. В этой статье разберемся, как избежать типичных ошибок, какие схемы подключения существуют для разных моделей <em>Protherm</em> (например, <em>Protherm Panther</em>, <em>Protherm Gepard</em> или <em>Protherm Lynx</em>), и что делать, если котел «не видит» датчик после установки.</p>
+
+<p>Особенность котлов <em>Protherm</em> в том, что они поддерживают работу с внешними датчиками температуры, но требуют строгого соблюдения полярности и параметров подключения. Например, для моделей с платой управления <code>EVM-2</code> или <code>EVM-3</code> схемы могут отличаться. Мы подробно разберем каждый этап — от выбора кабеля до настройки меню котла, а также дадим рекомендации по диагностике неисправностей.</p>
+
+<h2 id="какие-датчики-бойлера-совместимы-с-котлами-protherm">Какие датчики бойлера совместимы с котлами Protherm</h2>
+
+<p>Котлы <em>Protherm</em> работают с двумя типами внешних датчиков:</p>
+<ul>
+  <li>🔹 <strong>Терморезисторные датчики (NTC)</strong> — наиболее распространенный вариант. Сопротивление изменяется в зависимости от температуры (например, 10 кОм при 25°C). Подходят для большинства моделей, включая <em>Protherm Panther 25 KOV</em> и <em>Protherm Gepard 23 MOV</em>.</li>
+  <li>🔹 <strong>Цифровые датчики (1-Wire или Modbus)</strong> — используются в продвинутых системах с погодозависимой автоматикой. Требуют специального адаптера и настройки через сервисное меню.</li>
+</ul>
+
+<p>Важно: <em>Protherm</em> не поставляет датчики в комплекте с котлами — их нужно покупать отдельно. Оригинальные датчики имеют артикулы вида <code>0020014526</code> (для NTC) или <code>0020014527</code> (для цифровых систем). Можно использовать аналоги от <em>Honeywell</em> или <em>Siemens</em>, но сопротивление и диапазон температур должны совпадать с требованиями котла.</p>
+
+<p>Для проверки совместимости обратите внимание на:</p>
+<ul>
+  <li>📌 <strong>Диапазон измеряемых температур</strong> (обычно от 0°C до 110°C).</li>
+  <li>📌 <strong>Длина кабеля</strong> — не более 30 метров для NTC-датчиков (иначе возможны погрешности).</li>
+  <li>📌 <strong>Тип разъема</strong> — у <em>Protherm</em> часто используется двухконтактный разъем <code>Molex 51021-0200</code>.</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если вы используете бойлер косвенного нагрева с объемом более 200 литров, датчик должен быть установлен в <strong>верхней трети бака</strong> — это минимизирует погрешность измерений при стратификации воды.</blockquote>
+
+<h2 id="необходимые-инструменты-и-материалы">Необходимые инструменты и материалы</h2>
+
+<p>Перед началом работ подготовьте:</p>
+
+<p>Отвертка крестовая (PH2)</p>
+<p>Мультиметр для проверки сопротивления датчика</p>
+<p>Двухжильный экранированный кабель (сечение 0.75–1.5 мм²)</p>
+<p>Термоусадочная трубка или изолента</p>
+<p>Клеммные колодки (например, Wago 221)</p>
+<p>Шуруповерт (для крепления кабеля к стене)</p>
+<p>Пассатижи</p>
+<p>Схема подключения для вашей модели котла (см. инструкцию)</p>
+<p>--></p>
+
+<p>Кабель для подключения датчика должен быть <strong>экранированным</strong> — это защищает сигнал от помех, которые могут искажать показания температуры. Оптимальные марки кабеля: <em>FG-2T</em> или <em>LiYY</em>. Длина кабеля не должна превышать 50 метров (для NTC-датчиков), иначе сопротивление провода повлияет на точность измерений.</p>
+
+<p>Если вы подключаете датчик к бойлеру косвенного нагрева, дополнительно потребуется:</p>
+<ul>
+  <li>🔧 <strong>Гильза для герметизации</strong> (если датчик устанавливается в резьбовое отверстие бака).</li>
+  <li>🔧 <strong>Термопаста</strong> — для улучшения теплопередачи между датчиком и стенкой бойлера.</li>
+  <li>🔧 <strong>Тройник или адаптер</strong> — если в бойлере нет штатного отверстия под датчик.</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Не используйте обычный телефонный кабель (<em>«лапшу»</em>) для подключения датчика! Его жилы слишком тонкие и не обеспечивают стабильный контакт, что приведет к ошибкам <code>F28</code> или <code>F36</code> на дисплее котла.</blockquote>
+
+<h2 id="схемы-подключения-датчика-бойлера-к-котлу-protherm">Схемы подключения датчика бойлера к котлу Protherm</h2>
+
+<p>Схема подключения зависит от модели котла и типа датчика. Ниже приведены три наиболее распространенных варианта:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Модель котла</th>
+      <th>Тип датчика</th>
+      <th>Схема подключения</th>
+      <th>Клеммы на плате</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Protherm Panther</em> (серия KOV)</td>
+      <td>NTC (10 кОм)</td>
+      <td>Датчик → Клеммы <code>T1</code> и <code>T2</code> на плате</td>
+      <td><code>T1</code> (+), <code>T2</code> (–)</td>
+    </tr>
+    <tr>
+      <td><em>Protherm Gepard</em> (серия MOV)</td>
+      <td>NTC (10 кОм)</td>
+      <td>Датчик → Клеммы <code>S1</code> и <code>S2</code> (через клеммник X15)</td>
+      <td><code>S1</code> (сигнал), <code>S2</code> (общий)</td>
+    </tr>
+    <tr>
+      <td><em>Protherm Lynx</em> (конденсационные)</td>
+      <td>Цифровой (1-Wire)</td>
+      <td>Датчик → Адаптер → Разъем <code>X10</code> на плате</td>
+      <td><code>DQ</code> (данные), <code>GND</code> (земля)</td>
+    </tr>
+    <tr>
+      <td><em>Protherm Медведь</em> (KLOM)</td>
+      <td>NTC (5 кОм)</td>
+      <td>Датчик → Клеммы <code>TH1</code> и <code>TH2</code></td>
+      <td><code>TH1</code> (+5V), <code>TH2</code> (сигнал)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Для подключения NTC-датчика к котлам <em>Protherm Panther</em> или <em>Gepard</em> используйте следующую схему:</p>
+<ol>
+  <li>Подсоедините <strong>красный провод</strong> датчика к клемме <code>T1</code> (или <code>S1</code>).</li>
+  <li>Подсоедините <strong>белый провод</strong> к клемме <code>T2</code> (или <code>S2</code>).</li>
+  <li>Зафиксируйте кабель стяжкой, чтобы избежать натяжения.</li>
+</ol>
+
+<p>Если ваш котел оснащен платой <code>EVM-3</code>, возможно, потребуется активировать режим работы с бойлером в сервисном меню. Для этого:</p>
+<ol>
+  <li>Зажмите кнопку <code>MODE</code> на 5 секунд.</li>
+  <li>Введите код <code>35</code> (для доступа к настройкам датчиков).</li>
+  <li>Выберите параметр <code>d.53</code> и установите значение <code>1</code> (включить внешний датчик).</li>
+</ol>
+
+<div class="poll-widget" id="poll-5f14b16f"><div class="poll-widget-question">📊 Какой котел Protherm у вас установлен?</div><div class="poll-widget-option" data-poll="5f14b16f" data-idx="0" onclick="pbPollVote(this)"><span class="poll-widget-label">Panther</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5f14b16f" data-idx="1" onclick="pbPollVote(this)"><span class="poll-widget-label">Gepard</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5f14b16f" data-idx="2" onclick="pbPollVote(this)"><span class="poll-widget-label">Lynx</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5f14b16f" data-idx="3" onclick="pbPollVote(this)"><span class="poll-widget-label">Медведь</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div><div class="poll-widget-option" data-poll="5f14b16f" data-idx="4" onclick="pbPollVote(this)"><span class="poll-widget-label">Другой</span><span class="poll-widget-bar"></span><span class="poll-widget-pct"></span></div></div>
+
+<h2 id="пошаговая-инструкция-по-подключению-датчика">Пошаговая инструкция по подключению датчика</h2>
+
+<p>Рассмотрим процесс на примере котла <em>Protherm Panther 25 KOV</em> и бойлера косвенного нагрева <em>Drazice OKC 200 NTR</em>.</p>
+
+<h3>Шаг 1: Установка датчика в бойлер</h3>
+<p>Если в бойлере есть штатное отверстие для датчика (обычно расположено в верхней части бака), выполните следующие действия:</p>
+<ol>
+  <li>Нанесите термопасту на резьбовую часть датчика.</li>
+  <li>Вверните датчик в отверстие и затяните ключом (усилие не более 1.5 Н·м).</li>
+  <li>Уплотните соединение льном или фум-лентой.</li>
+</ol>
+
+<p>Если отверстия нет, используйте <strong>тройник</strong>, который устанавливается на трубу горячей воды (ГВС) рядом с бойлером. Датчик крепится к тройнику через гильзу.</p>
+
+<h3>Шаг 2: Прокладка кабеля</h3>
+<p>Проложите кабель от датчика к котлу, избегая:</p>
+<ul>
+  <li>🔥 Источников тепла (трубы отопления, дымоход).</li>
+  <li>⚡ Электропроводки 220В (минимальное расстояние — 10 см).</li>
+  <li>💧 Мест возможного попадания влаги.</li>
+</ul>
+
+<p>Кабель можно крепить к стене с помощью клипс или кабельных каналов. На концах провода зачистите изоляцию на 5–7 мм и обожмите клеммы.</p>
+
+<h3>Шаг 3: Подключение к котлу</h3>
+<p>Отключите котел от сети (выньте вилку из розетки или отключите автомат). Снимите переднюю панель котла, отыскав плату управления. На платах <em>Protherm</em> клеммы для датчика бойлера обычно подписаны как <code>T_Boiler</code> или <code>S_Boiler</code>.</p>
+
+<p>Подсоедините провода датчика к клеммам, соблюдая полярность:
+<ul>
+  <li>🔴 Красный (+) → <code>T1</code> или <code>S+</code>.</li>
+  <li>⚪ Белый (–) → <code>T2</code> или <code>S–</code>.</li>
+</ul>
+<strong>Не перепутайте полярность!</strong> Ошибка приведет к некорректным показаниям или ошибке <code>F28</code> («Обрыв датчика бойлера»).</p>
+
+<h3>Шаг 4: Настройка котла</h3>
+<p>После подключения физических контактов необходимо активировать датчик в меню котла:</p>
+<ol>
+  <li>Включите котел и зайдите в меню настроек (кнопка <code>MODE</code>).</li>
+  <li>Перейдите в раздел <code>d.53</code> («Внешний датчик бойлера») и установите значение <code>1</code>.</li>
+  <li>В параметре <code>d.54</code> укажите тип датчика: <code>0</code> для NTC, <code>1</code> для цифрового.</li>
+  <li>Настройте целевую температуру бойлера в параметре <code>d.60</code> (рекомендуется 60–65°C).</li>
+</ol>
+
+<p>Для проверки работоспособности:</p>
+<ol>
+  <li>Зайдите в меню диагностики (код <code>35</code>).</li>
+  <li>Проверьте текущее значение температуры бойлера в параметре <code>T_Boiler</code>.</li>
+  <li>Если показания отличаются от реальной температуры более чем на 5°C, проверьте качество контактов или замените датчик.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Если котел не реагирует на датчик, попробуйте «сбросить» ошибку: отключите питание на 30 секунд, затем включите снова. Иногда это помогает при «зависании» платы.</p></div>
+
+<h2 id="типичные-ошибки-и-их-устранение">Типичные ошибки и их устранение</h2>
+
+<p>Даже при правильном подключении могут возникнуть проблемы. Рассмотрим самые распространенные:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ошибка на дисплее</th>
+      <th>Причина</th>
+      <th>Решение</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>F28</code></td>
+      <td>Обрыв цепи датчика или короткое замыкание</td>
+      <td>Прозвоните кабель мультиметром, проверьте клеммы</td>
+    </tr>
+    <tr>
+      <td><code>F36</code></td>
+      <td>Неисправность датчика или неверное сопротивление</td>
+      <td>Замените датчик, проверьте соответствие сопротивления (10 кОм при 25°C)</td>
+    </tr>
+    <tr>
+      <td><code>F62</code></td>
+      <td>Ошибка связи с цифровым датчиком</td>
+      <td>Проверьте адаптер 1-Wire, обновите прошивку котла</td>
+    </tr>
+    <tr>
+      <td>–</td>
+      <td>Котел не греет бойлер</td>
+      <td>Проверьте настройку <code>d.53</code> (должно быть <code>1</code>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Если на дисплее появляется ошибка <code>F28</code>, выполните следующие шаги:</p>
+<ol>
+  <li>Отключите датчик от котла.</li>
+  <li>Измерьте сопротивление датчика мультиметром при комнатной температуре (должно быть ~10 кОм).</li>
+  <li>Прозвоните кабель на обрыв: сопротивление между жилами должно быть близко к 0 Ом.</li>
+  <li>Если датчик исправен, проверьте клеммы на плате — иногда окисление контактов приводит к потере сигнала.</li>
+</ol>
+
+<p><mark>Критическая ошибка: если котел <em>Protherm Lynx</em> выдает <code>F62</code> после подключения цифрового датчика, никогда не пытайтесь «сбросить» ошибку через сервисное меню без обновления прошивки! Это может привести к блокировке платы. Обратитесь в сервисный центр для перепрошивки.</mark></p>
+
+<p>Еще одна частая проблема — котел греет бойлер до максимальной температуры и не отключается. Причины:</p>
+<ul>
+  <li>🔥 Неправильно установлен датчик (например, в нижней части бойлера, где вода холоднее).</li>
+  <li>🔥 Завышено значение в параметре <code>d.60</code> (установите не более 70°C).</li>
+  <li>🔥 Неисправен термостат бойлера (проверьте мультиметром).</li>
+</ul>
+
+<h2 id="настройка-приоритета-нагрева-бойлера">Настройка приоритета нагрева бойлера</h2>
+
+<p>Котлы <em>Protherm</em> позволяют задать приоритет нагрева бойлера над отоплением. Это полезно, если вам нужно быстро получить горячую воду, не ожидая, пока котел прогреет систему отопления.</p>
+
+<p>Чтобы настроить приоритет:</p>
+<ol>
+  <li>Зайдите в сервисное меню (код <code>35</code>).</li>
+  <li>Найдите параметр <code>d.48</code> («Приоритет ГВС»).</li>
+  <li>Установите значение:
+    <ul>
+      <li><code>0</code> — приоритета нет (котел греет отопление и бойлер одновременно).</li>
+      <li><code>1</code> — приоритет бойлера (котел временно прекращает греть отопление, пока бойлер не нагреется до заданной температуры).</li>
+    </ol>
+  </li>
+</ol>
+
+<p>Рекомендуемые настройки для разных сценариев:</p>
+<ul>
+  <li>🏠 <strong>Дом с постоянным проживанием:</strong> <code>d.48 = 1</code>, <code>d.60 = 60°C</code> (приоритет бойлера, экономичный режим).</li>
+  <li>🏡 <strong>Дача с периодическим посещением:</strong> <code>d.48 = 0</code>, <code>d.60 = 70°C</code> (бойлер греется медленнее, но отопление не страдает).</li>
+  <li>🏢 <strong>Квартира с высоким потреблением ГВС:</strong> <code>d.48 = 1</code>, <code>d.60 = 65°C</code>, <code>d.55 = 30</code> (минимальная температура отопления во время приоритета).</li>
+</ul>
+
+<blockquote>⚠️ <strong>Внимание:</strong> Если вы используете приоритет бойлера (<code>d.48 = 1</code>) в морозы (ниже –10°C), следите за температурой в доме! Котел может недостаточно прогревать отопление, что приведет к замерзанию системы.</blockquote>
+
+<h2 id="обслуживание-и-проверка-работоспособности">Обслуживание и проверка работоспособности</h2>
+
+<p>После подключения датчика рекомендуется раз в полгода проводить проверку системы:</p>
+<ul>
+  <li>🔧 <strong>Визуальный осмотр:</strong> Убедитесь, что кабель датчика не поврежден, а клеммы не окислены.</li>
+  <li>🔧 <strong>Проверка сопротивления:</strong> Измерьте сопротивление датчика при разных температурах (например, в холодной и горячей воде). Сравните с таблицей:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Температура (°C)</th>
+      <th>Сопротивление NTC-датчика (кОм)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>27.5–30.0</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>10.0–10.5</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>3.5–4.0</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>1.5–1.8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Если сопротивление выходит за пределы нормы, датчик нужно заменить. Также проверьте:</p>
+<ul>
+  <li>📊 <strong>Лог ошибок котла:</strong> В меню <code>d.0</code> посмотрите историю сбоев (коды <code>F28</code>, <code>F36</code> указывают на проблемы с датчиком).</li>
+  <li>📊 <strong>Температурный гистерезис:</strong> Разница между включением и выключением нагрева бойлера должна быть 5–10°C (настраивается в <code>d.61</code>).</li>
+</ul>
+
+<p>Для очистки датчика от накипи (если бойлер используется с жесткой водой):</p>
+<ol>
+  <li>Отключите датчик от котла.</li>
+  <li>Извлеките его из бойлера.</li>
+  <li>Промойте в растворе лимонной кислоты (50 г на 1 л воды) в течение 30 минут.</li>
+  <li>Просушите и установите обратно, нанеся новую термопасту.</li>
+</ol>
+
+<div class="attention-box attention-tip"><span class="attention-icon">💡</span><p>Регулярная проверка датчика бойлера позволяет избежать до 30% ложных срабатываний котла и продлевает срок службы ТЭНа за счет точного контроля температуры.</p></div>
+
+<h2 id="faq-частые-вопросы-по-подключению-датчика-бойлера-к-protherm">FAQ: Частые вопросы по подключению датчика бойлера к Protherm</h2>
+
+<details>
+  <summary>Можно ли использовать датчик от другого производителя (например, Ariston или Baxi)?</summary>
+  <p>Да, но только если его сопротивление и температурная характеристика совпадают с требованиями <em>Protherm</em>. Например, для котлов <em>Panther</em> подойдет датчик с сопротивлением 10 кОм при 25°C (маркировка <code>NTC 10K B3950</code>). Перед покупкой проверьте совместимость по таблице сопротивлений.</p>
+</details>
+
+<details>
+  <summary>Котел Protherm не видит датчик бойлера — что делать?</summary>
+  <p>Сначала проверьте:
+  <ol>
+    <li>Полярность подключения (красный — <code>+</code>, белый — <code>–</code>).</li>
+    <li>Целостность кабеля (прозвоните мультиметром).</li>
+    <li>Настройку <code>d.53</code> (должно быть <code>1</code>).</li>
+  </ol>
+<p>Если проблема остается, сбросьте настройки котла до заводских (код <code>d.0 = 999</code>) и настройте датчик заново.</p></p>
+</details>
+
+<details>
+  <summary>Какой кабель лучше использовать для подключения датчика?</summary>
+  <p>Оптимальный вариант — <strong>экранированный кабель</strong> с многожильными проводами сечением 0.75–1.5 мм² (например, <em>FG-2T</em> или <em>LiYY</em>). Не используйте витую пару или телефонный кабель — они не обеспечивают стабильный сигнал. Длина кабеля не должна превышать 50 метров.</p>
+</details>
+
+<details>
+  <summary>Нужно ли обновлять прошивку котла после подключения датчика?</summary>
+  <p>Обновление прошивки требуется только в двух случаях:
+  <ol>
+    <li>Вы подключаете <strong>цифровой датчик</strong> (1-Wire) к старой модели котла (до 2018 года выпуска).</li>
+    <li>На дисплее появляется ошибка <code>F62</code> (несовместимость протокола связи).</li>
+  </ol>
+<p>Для большинства NTC-датчиков обновление не нужно. Актуальные версии прошивок можно найти на сайте <em>Protherm</em> в разделе поддержки.</p></p>
+</details>
+
+<details>
+  <summary>Можно ли подключить два датчика к одному котлу (например, для бойлера и теплого пола)?</summary>
+  <p>Да, но только если ваша модель котла поддерживает несколько внешних датчиков. Например, <em>Protherm Lynx</em> имеет два входа: <code>T_Boiler</code> и <code>T_Floor</code>. Для подключения второго датчика:
+  <ol>
+    <li>Используйте отдельный кабель.</li>
+    <li>Подключите ко второму разъему на плате (обычно <code>X16</code>).</li>
+    <li>Активируйте датчик в параметре <code>d.56</code>.</li>
+  </ol>
+<p>В котлах <em>Panther</em> и <em>Gepard</em> обычно только один вход для внешнего датчика.</p></p>
+</details></div>
+                    <!--#include virtual="/ssi/article_after.html" -->
+
+                </article>
+                <aside class="article-sidebar"><!--#include virtual="/ssi/sidebar_top.html" --><nav class="sidebar-search"><div class="sidebar-search-box"><input type="text" id="globalSearchInput" placeholder="🔍 Поиск статей..." autocomplete="off"><div class="search-dropdown" id="globalSearchDropdown"></div></div></nav><!--#include virtual="/ssi/sidebar_before_toc.html" --><nav class="sidebar-toc" id="sidebarToc"><h3>Содержание</h3><ul><li><a href="#какие-датчики-бойлера-совместимы-с-котлами-protherm">Какие датчики бойлера совместимы с котлами Protherm</a></li><li><a href="#необходимые-инструменты-и-материалы">Необходимые инструменты и материалы</a></li><li><a href="#схемы-подключения-датчика-бойлера-к-котлу-protherm">Схемы подключения датчика бойлера к котлу Protherm</a></li><li><a href="#пошаговая-инструкция-по-подключению-датчика">Пошаговая инструкция по подключению датчика</a></li><li><a href="#типичные-ошибки-и-их-устранение">Типичные ошибки и их устранение</a></li><li><a href="#настройка-приоритета-нагрева-бойлера">Настройка приоритета нагрева бойлера</a></li><li><a href="#обслуживание-и-проверка-работоспособности">Обслуживание и проверка работоспособности</a></li><li><a href="#faq-частые-вопросы-по-подключению-датчика-бойлера-к-protherm">FAQ: Частые вопросы по подключению датчика бойлера к Protherm</a></li></ul></nav><!--#include virtual="/ssi/sidebar_before_related.html" --><nav class="sidebar-related"><h3>Похожие статьи</h3><ul><li><a href="/articles/o/ot/otopitel-na-otrabotannom-masle.html" class="related-card">Отопитель на отработанном масле: устройство, типы и безопасность</a></li><li><a href="/articles/t/te/ten-s-termostatom-dlya-dushevogo-baka.html" class="related-card">ТЭН с термостатом для душевого бака: выбор, установка, ремонт</a></li><li><a href="/articles/k/ko/kotel-ks-tg-10-2.html" class="related-card">Котел КС-ТГ-10-2: характеристики, монтаж и обслуживание</a></li><li><a href="/articles/a/an/anod-v-bojlere-kosvennogo-nagreva.html" class="related-card">Анод в бойлере косвенного нагрева: зачем нужен и как заменить</a></li><li><a href="/articles/b/bo/bojler-kosvennogo-nagreva-rispa-otzyvy.html" class="related-card">Rispa бойлеры косвенного нагрева: реальные отзывы 2026 года</a></li></ul></nav><!--#include virtual="/ssi/sidebar_after_related.html" --></aside>
+            </div>
+        </div>
+    </main>
+
+    <!--#include virtual="/ssi/before_related_bottom.html" -->
+    <section class="related-bottom">
+        <div class="container">
+            <h2 class="related-bottom-heading">📖 Читайте также</h2>
+            <div class="related-bottom-grid"><a href="/articles/o/ot/otopitel-na-otrabotannom-masle.html" class="related-bottom-card"><span class="related-bottom-title">Отопитель на отработанном масле: устройство, типы и безопасность</span><span class="related-bottom-desc">Полный обзор печей на отработке. Принцип работы, плюсы и минусы, сравнение капельных и факельных гор</span></a><a href="/articles/t/te/ten-s-termostatom-dlya-dushevogo-baka.html" class="related-bottom-card"><span class="related-bottom-title">ТЭН с термостатом для душевого бака: выбор, установка, ремонт</span><span class="related-bottom-desc">Как правильно выбрать ТЭН с терморегулятором для душевого бака? Сравнение моделей, инструкция по уст</span></a><a href="/articles/k/ko/kotel-ks-tg-10-2.html" class="related-bottom-card"><span class="related-bottom-title">Котел КС-ТГ-10-2: характеристики, монтаж и обслуживание</span><span class="related-bottom-desc">Полный обзор котла КС-ТГ-10-2: технические параметры, схема подключения, настройка автоматики и сове</span></a><a href="/articles/a/an/anod-v-bojlere-kosvennogo-nagreva.html" class="related-bottom-card"><span class="related-bottom-title">Анод в бойлере косвенного нагрева: зачем нужен и как заменить</span><span class="related-bottom-desc">Разбираемся, почему магниевый анод в бойлере косвенного нагрева защищает бак от коррозии, как провер</span></a><a href="/articles/b/bo/bojler-kosvennogo-nagreva-rispa-otzyvy.html" class="related-bottom-card"><span class="related-bottom-title">Rispa бойлеры косвенного нагрева: реальные отзывы 2026 года</span><span class="related-bottom-desc">Анализ отзывов о бойлерах Rispa косвенного нагрева: плюсы и минусы, сравнение моделей, советы по выб</span></a><a href="/articles/k/ka/kak-pomenyat-termostat-v-vodonagrevatele.html" class="related-bottom-card"><span class="related-bottom-title">Как заменить термостат в водонагревателе: пошаговая инструкция</span><span class="related-bottom-desc">Подробное руководство по самостоятельной замене термостата в бойлере: инструменты, схемы, ошибки и с</span></a></div>
+        </div>
+    </section>
+    <!--#include virtual="/ssi/after_related_bottom.html" -->
+
+    <footer class="site-footer-premium">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">🔧 Рем Набор</div>
+                    <p class="footer-about">Практические руководства по ремонту автомобилей, бытовой техники и систем климат-контроля своими руками.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Разделы</h4>
+                    <ul><li><a href="/category/sistema-okhlazhdeniya-avto/">🚗 Система охлаждения авто</a></li>
+<li><a href="/category/avtomobilnyj-konditsioner/">❄️ Автомобильный кондиционер</a></li>
+<li><a href="/category/ventilyatory-i-datchiki/">🌬️ Вентиляторы и датчики</a></li>
+<li><a href="/category/otoplenie-salona/">🔥 Отопление салона</a></li>
+<li><a href="/category/bytovye-kholodilniki/">🧊 Бытовые холодильники</a></li>
+<li><a href="/category/domashnie-konditsionery/">🏠 Домашние кондиционеры</a></li></ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/about.html">О проекте</a></li>
+                        <li><a href="/categories.html">Все разделы</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/sitemap.xml">Карта сайта</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Рем Набор. Все права защищены.</p>
+                <!--LiveInternet counter--><div style="margin-top:10px;"><a href="https://www.liveinternet.ru/click"
+                target="_blank"><img id="licnt06C4" width="88" height="15" style="border:0" 
+                title="LiveInternet: показано число посетителей за сегодня"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+                alt=""/></a><script>(function(d,s){d.getElementById("licnt06C4").src=
+                "https://counter.yadro.ru/hit?t26.5;r"+escape(d.referrer)+
+                ((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+                (s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+                ";h"+escape(d.title.substring(0,150))+";"+Math.random()})(document,screen)</script></div><!--/LiveInternet-->
+            </div>
+        </div>
+    </footer>
+    <div id="cookie-consent" class="cookie-popup">
+        <div class="cookie-inner">
+            <span>🍪 Мы используем файлы cookie для улучшения работы сайта.</span>
+            <button id="cookie-accept" class="cookie-btn">Принять</button>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+    <script>
+    (function() {
+        const popup = document.getElementById('cookie-consent');
+        const btn = document.getElementById('cookie-accept');
+        if (popup && btn && !localStorage.getItem('cookie-accepted')) {
+            popup.classList.add('visible');
+            btn.onclick = () => {
+                localStorage.setItem('cookie-accepted', 'true');
+                popup.classList.remove('visible');
+            };
+        }
+    })();
+    </script>
+    <script>
+    function pbPollVote(el) {
+        var poll = el.closest('.poll-widget');
+        if (poll.classList.contains('voted')) return;
+        poll.classList.add('voted');
+        el.classList.add('selected');
+        var opts = poll.querySelectorAll('.poll-widget-option');
+        var n = opts.length;
+        var raw = [];
+        var sum = 0;
+        for (var i = 0; i < n; i++) {
+            var v = Math.random() * 50 + 5;
+            if (opts[i] === el) v += 30;
+            raw.push(v);
+            sum += v;
+        }
+        var pcts = raw.map(function(v) { return Math.round(v / sum * 100); });
+        var diff = 100 - pcts.reduce(function(a,b){ return a+b; }, 0);
+        pcts[Array.from(opts).indexOf(el)] += diff;
+        setTimeout(function() {
+            opts.forEach(function(opt, i) {
+                opt.querySelector('.poll-widget-bar').style.width = pcts[i] + '%';
+                opt.querySelector('.poll-widget-pct').textContent = pcts[i] + '%';
+            });
+        }, 50);
+    }
+    </script>
+    <!--#include virtual="/ssi/body_bottom.html" -->
+    <script src="/static/js/inject.js" defer></script>
+</body>
+</html>
